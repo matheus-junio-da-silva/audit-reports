@@ -1,0 +1,197 @@
+{
+  "contract": "CreditLine",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/61/contracts/CreditLine/CreditLine.sol",
+  "coverage_status": "FULL",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "owner",
+    "owner_predicate": "e.msg.sender == owner()",
+    "evidence": [
+      "OwnableUpgradeable.owner() getter (OZ 3.4.2) -> CreditLine.sol:7,9",
+      "onlyOwner modifier on update* config functions -> CreditLine.sol:289,303,317,331,345,360,375",
+      "initialize transfers ownership to _owner -> CreditLine.sol:274-275"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateDefaultStrategy(address)",
+      "claim": "a caller other than the pre-state owner cannot update the default strategy",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updateDefaultStrategy(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can update for some input",
+      "source_evidence": ["CreditLine.sol:289 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updatePriceOracle(address)",
+      "claim": "a caller other than the pre-state owner cannot update the price oracle",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updatePriceOracle(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can update for some input",
+      "source_evidence": ["CreditLine.sol:303 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateSavingsAccount(address)",
+      "claim": "a caller other than the pre-state owner cannot update the savings account",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updateSavingsAccount(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can update for some input",
+      "source_evidence": ["CreditLine.sol:317 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateProtocolFeeFraction(uint256)",
+      "claim": "a caller other than the pre-state owner cannot update the protocol fee fraction",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updateProtocolFeeFraction(uint256)"],
+      "hypotheses": [],
+      "reachability_check": "owner can update for some input",
+      "source_evidence": ["CreditLine.sol:331 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateProtocolFeeCollector(address)",
+      "claim": "a caller other than the pre-state owner cannot update the protocol fee collector",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updateProtocolFeeCollector(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can update for some input",
+      "source_evidence": ["CreditLine.sol:345 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateStrategyRegistry(address)",
+      "claim": "a caller other than the pre-state owner cannot update the strategy registry",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updateStrategyRegistry(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can update for some input",
+      "source_evidence": ["CreditLine.sol:360 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateLiquidatorRewardFraction(uint256)",
+      "claim": "a caller other than the pre-state owner cannot update the liquidator reward fraction",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updateLiquidatorRewardFraction(uint256)"],
+      "hypotheses": [],
+      "reachability_check": "owner can update for some input",
+      "source_evidence": ["CreditLine.sol:375 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "manual_model_required",
+      "target": "borrow(uint256,uint256)",
+      "claim": "a caller other than the credit-line borrower cannot borrow for that credit line (onlyCreditLineBorrower)",
+      "property_kind": "none",
+      "symbols": ["creditLineConstants(uint256)", "borrow(uint256,uint256)"],
+      "hypotheses": ["the predicate creditLineConstants[_id].borrower == msg.sender requires reading a struct field of a public struct mapping; CVL struct-field access via the ABI accessor needs explicit multi-return modeling"],
+      "reachability_check": "requires modeling the creditLineConstants struct field access (not auto-generated)",
+      "source_evidence": ["CreditLine.sol:74 (public struct mapping), 125-131 (modifier onlyCreditLineBorrower), 691"]
+    },
+    {
+      "ontology_id": "CAC-AC-007",
+      "id": "S4.1.G10",
+      "status": "applicable",
+      "target": "initialize(address,address,address,address,address,uint256,address,uint256)",
+      "claim": "after one successful initialization every later initialize call reverts",
+      "property_kind": "revert_implication_rule",
+      "symbols": ["initialize(address,address,address,address,address,uint256,address,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "initialize succeeds from a fresh uninitialized state",
+      "source_evidence": ["CreditLine.sol:263-281 (modifier initializer)"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "manual_model_required",
+      "target": "N/A",
+      "claim": "no whitelist on CreditLine entry functions; verification is delegated to the caller of request/accept which requires collateral transfer and external verification; not a simple whitelist gate",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["CreditLine.sol request/accept use external savings/verification flows"]
+    },
+    {
+      "ontology_id": "CAC-AC-008",
+      "id": "S4.1.G11",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "one-step OZ OwnableUpgradeable transferOwnership; no pending-owner lifecycle",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["OwnableUpgradeable.sol:69 one-step transfer"]
+    },
+    {
+      "ontology_id": "CAC-AC-003",
+      "id": "S4.1.G4",
+      "status": "manual_model_required",
+      "target": "N/A",
+      "claim": "borrow/repay move assets via SavingsAccountUtil linked-contract helpers; a debit-allowance property requires modeling those helpers",
+      "property_kind": "none",
+      "symbols": ["SavingsAccountUtil"],
+      "hypotheses": [],
+      "reachability_check": "requires linked SavingsAccount/SavingsAccountUtil harness",
+      "source_evidence": ["CreditLine.sol borrow/repay use SavingsAccountUtil.transferTokens etc."]
+    },
+    {
+      "ontology_id": "CAC-AC-004",
+      "id": "S4.1.G7",
+      "status": "manual_model_required",
+      "target": "N/A",
+      "claim": "no protocol-level solvency invariant modeled for CreditLine without linked asset/savings accounting; admin drain assessment needs asset identity + liability accounting",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "requires linked asset + accounting harness",
+      "source_evidence": ["CreditLine.sol asset flows through savings account helpers"]
+    },
+    {
+      "ontology_id": "CAC-AC-005",
+      "id": "S4.1.G8",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no schedule/execute timelock lifecycle",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["CreditLine.sol has no timelock schedule/execute"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no trust-sensitive external callback entry point in CreditLine",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["CreditLine.sol defines no callback"]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "contract": "BasePoolV2",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/dex-v2/pool/BasePoolV2.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "router_whitelist",
+    "predicate": "e.msg.sender == router()",
+    "evidence": [
+      "BasePoolV2.sol:585-590 _onlyRouter require(msg.sender == router)",
+      "BasePoolV2.sol:598-601 onlyRouter modifier used on mint/swap/doubleSwap",
+      "BasePoolV2.sol:510-517 rescue has no such modifier (no authority predicate defined)"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "swap(address,uint256,uint256,address)",
+      "claim": "a caller other than the router cannot successfully swap",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["router()", "swap(address,uint256,uint256,address)"],
+      "hypotheses": [],
+      "reachability_check": "router caller can swap for a supported pair with valid one-sided input",
+      "source_evidence": ["BasePoolV2.sol:426-438 swap onlyRouter supportedToken"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "doubleSwap(address,address,uint256,address)",
+      "claim": "a caller other than the router cannot successfully double swap",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["router()", "doubleSwap(address,address,uint256,address)"],
+      "hypotheses": [],
+      "reachability_check": "router caller can double swap for two supported pairs",
+      "source_evidence": ["BasePoolV2.sol:315-328 doubleSwap onlyRouter supportedToken"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "mint(address,uint256,uint256,address,address)",
+      "claim": "a caller other than the router cannot successfully add liquidity",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["router()", "mint(address,uint256,uint256,address,address)"],
+      "hypotheses": [],
+      "reachability_check": "router caller can mint for a supported pair",
+      "source_evidence": ["BasePoolV2.sol:168-180 mint onlyRouter supportedToken"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "manual_model_required",
+      "target": "rescue(address)",
+      "claim": "rescue transfers unaccounted foreign balance to msg.sender with no documented authorization predicate; intended caller is undefined in source",
+      "property_kind": "reachability_witness",
+      "symbols": ["pairInfo(address)", "rescue(address)"],
+      "hypotheses": ["unaccounted = foreignBalance - reserveForeign > 0"],
+      "reachability_check": "satisfy witness that an arbitrary caller can complete rescue",
+      "source_evidence": ["BasePoolV2.sol:510-517 rescue external, no modifier"]
+    }
+  ]
+}

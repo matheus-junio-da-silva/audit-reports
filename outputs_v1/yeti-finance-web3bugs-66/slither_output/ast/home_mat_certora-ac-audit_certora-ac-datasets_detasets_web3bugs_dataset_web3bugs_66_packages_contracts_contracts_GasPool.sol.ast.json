@@ -1,0 +1,46 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/GasPool.sol",
+  "exportedSymbols": {
+    "GasPool": [
+      3
+    ]
+  },
+  "id": 4,
+  "license": "UNLICENSED",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "0.6",
+        ".11"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "42:23:0"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "contract",
+      "documentation": {
+        "id": 2,
+        "nodeType": "StructuredDocumentation",
+        "src": "71:547:0",
+        "text": " The purpose of this contract is to hold YUSD tokens for gas compensation:\n https://github.com/liquity/dev#gas-compensation\n When a borrower opens a trove, an additional 50 YUSD debt is issued,\n and 50 YUSD is minted and sent to this contract.\n When a borrower closes their active trove, this gas compensation is refunded:\n 50 YUSD is burned from the this contract's balance, and the corresponding\n 50 YUSD debt on the trove is cancelled.\n See this issue for more context: https://github.com/liquity/dev/issues/186"
+      },
+      "fullyImplemented": true,
+      "id": 3,
+      "linearizedBaseContracts": [
+        3
+      ],
+      "name": "GasPool",
+      "nodeType": "ContractDefinition",
+      "nodes": [],
+      "scope": 4,
+      "src": "620:117:0"
+    }
+  ],
+  "src": "42:697:0"
+}

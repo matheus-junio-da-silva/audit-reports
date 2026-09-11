@@ -1,0 +1,59 @@
+{
+  "contract": "UniswapV2TokenAdapter",
+  "source_file": "projects/mochi-cssr/contracts/adapter/UniswapV2TokenAdapter.sol",
+  "compiler": "0.8.7",
+  "priority": "Medium",
+  "evidence": {
+    "onlyGov_modifier": "UniswapV2TokenAdapter.sol:22-25 (require(msg.sender == owned.governance(), \"!gov\"))",
+    "addKeyCurrency": "UniswapV2TokenAdapter.sol:39-42 (external onlyGov)",
+    "removeKeyCurrency": "UniswapV2TokenAdapter.sol:44-52 (external onlyGov)",
+    "setMinimumLiquidity": "UniswapV2TokenAdapter.sol:54-59 (external onlyGov)",
+    "oracle_paths_permissionless": "UniswapV2TokenAdapter.sol:71-218 (update/getPrice/getLiquidity no auth by design)"
+  },
+  "checklist_matrix": {
+    "S4.1.G1": "not_applicable",
+    "S4.1.G2": "not_applicable",
+    "S4.1.G3": "not_applicable",
+    "S4.1.G4": "not_applicable",
+    "S4.1.G5": "not_applicable",
+    "S4.1.G6": "automated - three onlyGov configuration setters (shared predicate)",
+    "S4.1.G7": "not_applicable",
+    "S4.1.G8": "not_applicable",
+    "S4.1.G9": "not_applicable",
+    "S4.1.G10": "not_applicable",
+    "S4.1.G11": "not_applicable",
+    "S4.2.G1": "automated - non-gov rejected on all three setters",
+    "S4.2.G3": "not_applicable",
+    "S4.2.G4": "not_applicable"
+  },
+  "rules": [
+    {
+      "id": "RC-UTA-001",
+      "item": "S4.1.G6 / S4.2.G1",
+      "statement": "addKeyCurrency/removeKeyCurrency/setMinimumLiquidity must revert for non-governance callers",
+      "feasibility": "automated",
+      "pattern": "core_authorization_revert parametric (shared predicate)",
+      "expected": "VERIFIED"
+    },
+    {
+      "id": "RC-UTA-002",
+      "item": "S4.1.G6",
+      "statement": "authorized path reachable: governance caller can add a key currency",
+      "feasibility": "automated",
+      "pattern": "satisfy_witness",
+      "expected": "VERIFIED"
+    }
+  ],
+  "conf": {
+    "files": [
+      "projects/mochi-cssr/contracts/adapter/UniswapV2TokenAdapter.sol"
+    ],
+    "solc": "0.8.7",
+    "notes": "removeKeyCurrency has an inner require keyCurrency[_idx]==_currency - non-gov calls revert at onlyGov before it; oracle/update paths permissionless by design"
+  },
+  "verification_status": "manual_model_required",
+  "notes": "// ============================================================\n// file: UniswapV2TokenAdapter.spec\n// verified contract: UniswapV2TokenAdapter.sol\n// status: manual_model_required (NOT submitted to the prover)\n// reason: every authority-bearing method is guarded by\n//   require(msg.sender == owned.governance(), \"!gov\")\n//   where `owned` is an immutable IGovernanceOwned link. The cssr\n//   bundle contains NO implementing contract of `governance()` (only\n//   the interface, which has no bytecode), so the getter cannot be\n//   resolved to a known declaration in any scene, and CVL offers no\n//   envfree/optional path (verified empirically: `optional` + missing\n//   method aborts the prover with SkipOptionalRules exception).\n//   A governance() model would amount to fabricated authority and is\n//   explicitly out of scope for the automatic pipeline.\n// UniswapV2TokenAdapter guards setToken with require(msg.sender == owned.governance(),'!gov').\n// Verdict: UniswapV2TokenAdapter S4.1.G6/S4.2.G1 -> manual_model_required.\n// ============================================================\n\n// no rules derived: all state access is gated behind the unrepresentable link\n",
+  "terminal_results": {
+    "all": "manual_model_required"
+  }
+}

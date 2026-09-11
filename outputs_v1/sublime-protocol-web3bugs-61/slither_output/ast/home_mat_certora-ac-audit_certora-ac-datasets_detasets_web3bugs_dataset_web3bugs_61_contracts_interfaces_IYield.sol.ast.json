@@ -1,0 +1,1010 @@
+{
+  "absolutePath": "contracts/interfaces/IYield.sol",
+  "exportedSymbols": {
+    "IYield": [
+      18879
+    ]
+  },
+  "id": 18880,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 18792,
+      "literals": [
+        "solidity",
+        "0.7",
+        ".6"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "33:22:55"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "fullyImplemented": false,
+      "id": 18879,
+      "linearizedBaseContracts": [
+        18879
+      ],
+      "name": "IYield",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18793,
+            "nodeType": "StructuredDocumentation",
+            "src": "83:241:55",
+            "text": " @dev emitted when tokens are locked\n @param user the address of user, tokens locked for\n @param investedTo the address of contract to invest in\n @param lpTokensReceived the amount of shares received*"
+          },
+          "id": 18801,
+          "name": "LockedTokens",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18800,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18795,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "user",
+                "nodeType": "VariableDeclaration",
+                "scope": 18801,
+                "src": "349:20:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18794,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "349:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18797,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "investedTo",
+                "nodeType": "VariableDeclaration",
+                "scope": 18801,
+                "src": "371:26:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18796,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "371:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18799,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "lpTokensReceived",
+                "nodeType": "VariableDeclaration",
+                "scope": 18801,
+                "src": "399:24:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18798,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "399:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "348:76:55"
+          },
+          "src": "330:95:55"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18802,
+            "nodeType": "StructuredDocumentation",
+            "src": "433:204:55",
+            "text": " @dev emitted when tokens are unlocked/redeemed\n @param investedTo the address of contract invested in\n @param collateralReceived the amount of underlying asset received*"
+          },
+          "id": 18808,
+          "name": "UnlockedTokens",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18807,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18804,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "investedTo",
+                "nodeType": "VariableDeclaration",
+                "scope": 18808,
+                "src": "664:26:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18803,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "664:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18806,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "collateralReceived",
+                "nodeType": "VariableDeclaration",
+                "scope": 18808,
+                "src": "692:26:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18805,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "692:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "663:56:55"
+          },
+          "src": "643:77:55"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18809,
+            "nodeType": "StructuredDocumentation",
+            "src": "728:214:55",
+            "text": " @notice emitted when a shares are unlocked from yield\n @param asset address of the base token for which shares are being withdrawn\n @param sharesReleased amount of shares unlocked"
+          },
+          "id": 18815,
+          "name": "UnlockedShares",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18814,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18811,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 18815,
+                "src": "969:21:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18810,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "969:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18813,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "sharesReleased",
+                "nodeType": "VariableDeclaration",
+                "scope": 18815,
+                "src": "992:22:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18812,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "992:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "968:47:55"
+          },
+          "src": "948:68:55"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18816,
+            "nodeType": "StructuredDocumentation",
+            "src": "1024:154:55",
+            "text": " @notice emitted when savings account address is updated\n @param savingsAccount updated address of the savings account contract"
+          },
+          "id": 18820,
+          "name": "SavingsAccountUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18819,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18818,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "savingsAccount",
+                "nodeType": "VariableDeclaration",
+                "scope": 18820,
+                "src": "1212:30:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18817,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1212:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1211:32:55"
+          },
+          "src": "1184:60:55"
+        },
+        {
+          "documentation": {
+            "id": 18821,
+            "nodeType": "StructuredDocumentation",
+            "src": "1252:190:55",
+            "text": " @dev Used to get liquidity token address from asset address\n @param asset the address of underlying token\n @return tokenAddress address of liquidity token*"
+          },
+          "functionSelector": "1391abc7",
+          "id": 18828,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "liquidityToken",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18824,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18823,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 18828,
+                "src": "1472:13:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18822,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1472:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1471:15:55"
+          },
+          "returnParameters": {
+            "id": 18827,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18826,
+                "mutability": "mutable",
+                "name": "tokenAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18828,
+                "src": "1510:20:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18825,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1510:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1509:22:55"
+          },
+          "scope": 18879,
+          "src": "1448:84:55",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "documentation": {
+            "id": 18829,
+            "nodeType": "StructuredDocumentation",
+            "src": "1540:274:55",
+            "text": " @dev Used to lock tokens in available protocol\n @param user the address of user locking tokens\n @param asset the address of token to invest\n @param amount the amount of asset\n @return sharesReceived amount of shares received*"
+          },
+          "functionSelector": "4767ceee",
+          "id": 18840,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "lockTokens",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18836,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18831,
+                "mutability": "mutable",
+                "name": "user",
+                "nodeType": "VariableDeclaration",
+                "scope": 18840,
+                "src": "1850:12:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18830,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1850:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18833,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 18840,
+                "src": "1873:13:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18832,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1873:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18835,
+                "mutability": "mutable",
+                "name": "amount",
+                "nodeType": "VariableDeclaration",
+                "scope": 18840,
+                "src": "1897:14:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18834,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1897:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1839:79:55"
+          },
+          "returnParameters": {
+            "id": 18839,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18838,
+                "mutability": "mutable",
+                "name": "sharesReceived",
+                "nodeType": "VariableDeclaration",
+                "scope": 18840,
+                "src": "1945:22:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18837,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1945:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1944:24:55"
+          },
+          "scope": 18879,
+          "src": "1820:149:55",
+          "stateMutability": "payable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "documentation": {
+            "id": 18841,
+            "nodeType": "StructuredDocumentation",
+            "src": "1977:245:55",
+            "text": " @dev Used to unlock tokens from available protocol\n @param asset the address of underlying token\n @param amount the amount of liquidity shares to unlock\n @return tokensReceived amount of tokens received*"
+          },
+          "functionSelector": "9d564d9a",
+          "id": 18850,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "unlockTokens",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18846,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18843,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 18850,
+                "src": "2250:13:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18842,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2250:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18845,
+                "mutability": "mutable",
+                "name": "amount",
+                "nodeType": "VariableDeclaration",
+                "scope": 18850,
+                "src": "2265:14:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18844,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2265:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2249:31:55"
+          },
+          "returnParameters": {
+            "id": 18849,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18848,
+                "mutability": "mutable",
+                "name": "tokensReceived",
+                "nodeType": "VariableDeclaration",
+                "scope": 18850,
+                "src": "2299:22:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18847,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2299:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2298:24:55"
+          },
+          "scope": 18879,
+          "src": "2228:95:55",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "76467da0",
+          "id": 18859,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "unlockShares",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18855,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18852,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 18859,
+                "src": "2353:13:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18851,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2353:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18854,
+                "mutability": "mutable",
+                "name": "amount",
+                "nodeType": "VariableDeclaration",
+                "scope": 18859,
+                "src": "2368:14:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18853,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2368:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2352:31:55"
+          },
+          "returnParameters": {
+            "id": 18858,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18857,
+                "mutability": "mutable",
+                "name": "received",
+                "nodeType": "VariableDeclaration",
+                "scope": 18859,
+                "src": "2402:16:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18856,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2402:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2401:18:55"
+          },
+          "scope": 18879,
+          "src": "2331:89:55",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "documentation": {
+            "id": 18860,
+            "nodeType": "StructuredDocumentation",
+            "src": "2428:238:55",
+            "text": " @dev Used to get amount of underlying tokens for current number of shares\n @param shares the amount of shares\n @param asset the address of token locked\n @return amount amount of underlying tokens*"
+          },
+          "functionSelector": "59846d29",
+          "id": 18869,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getTokensForShares",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18865,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18862,
+                "mutability": "mutable",
+                "name": "shares",
+                "nodeType": "VariableDeclaration",
+                "scope": 18869,
+                "src": "2700:14:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18861,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2700:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18864,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 18869,
+                "src": "2716:13:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18863,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2716:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2699:31:55"
+          },
+          "returnParameters": {
+            "id": 18868,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18867,
+                "mutability": "mutable",
+                "name": "amount",
+                "nodeType": "VariableDeclaration",
+                "scope": 18869,
+                "src": "2749:14:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18866,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2749:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2748:16:55"
+          },
+          "scope": 18879,
+          "src": "2672:93:55",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "934a5252",
+          "id": 18878,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getSharesForTokens",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18874,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18871,
+                "mutability": "mutable",
+                "name": "amount",
+                "nodeType": "VariableDeclaration",
+                "scope": 18878,
+                "src": "2801:14:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18870,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2801:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18873,
+                "mutability": "mutable",
+                "name": "asset",
+                "nodeType": "VariableDeclaration",
+                "scope": 18878,
+                "src": "2817:13:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18872,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2817:7:55",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2800:31:55"
+          },
+          "returnParameters": {
+            "id": 18877,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18876,
+                "mutability": "mutable",
+                "name": "shares",
+                "nodeType": "VariableDeclaration",
+                "scope": 18878,
+                "src": "2850:14:55",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18875,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2850:7:55",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2849:16:55"
+          },
+          "scope": 18879,
+          "src": "2773:93:55",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 18880,
+      "src": "59:2810:55"
+    }
+  ],
+  "src": "33:2838:55"
+}

@@ -1,0 +1,111 @@
+{
+  "contract": "MochiProfileV0",
+  "source_file": "projects/mochi-core/contracts/profile/MochiProfileV0.sol",
+  "compiler": "0.8.7",
+  "priority": "High",
+  "evidence": {
+    "onlyGov_modifier": "MochiProfileV0.sol:36-39 (require(msg.sender == engine.governance(), \"!gov\"))",
+    "registerAsset_no_modifier": "MochiProfileV0.sol:58-62 (external, no auth; unconditionally _register(_asset, AssetClass.Sigma))",
+    "registerAssetByGov": "MochiProfileV0.sol:64-72 (onlyGov; also deploys vault per asset)",
+    "changeAssetClass": "MochiProfileV0.sol:82-89 (onlyGov)",
+    "changeCreditCap": "MochiProfileV0.sol:91-98 (onlyGov)",
+    "changeLiquidityRequirement": "MochiProfileV0.sol:50-56 (onlyGov)",
+    "changeMinimumDebt": "MochiProfileV0.sol:78-80 (onlyGov)",
+    "setDelay": "MochiProfileV0.sol:100-102 (onlyGov)",
+    "assetClass_enum": "interfaces/IMochiProfile.sol:7-14 (Invalid=0..Sigma=6..Revoked=7)",
+    "ground_truth_H04": "web3bugs/42/report.md H-04: registerAsset can overwrite asset class previously set by governance"
+  },
+  "checklist_matrix": {
+    "S4.1.G1": "not_applicable - no ownership-transition flow",
+    "S4.1.G2": "not_applicable - no role manager",
+    "S4.1.G3": "not_applicable - registration is permissionless for Sigma, gov-only otherwise",
+    "S4.1.G4": "not_applicable - no debit/allowance surface",
+    "S4.1.G5": "not_applicable - no funds held",
+    "S4.1.G6": "automated - gov-only setters (linked engine.governance(), 1 hop)",
+    "S4.1.G7": "not_applicable - no solvency model in profile",
+    "S4.1.G8": "not_applicable - no timelock",
+    "S4.1.G9": "not_applicable - no whitelist (asset classes, not addresses)",
+    "S4.1.G10": "not_applicable - constructor-initialized",
+    "S4.1.G11": "not_applicable - no two-step transfer",
+    "S4.2.G1": "automated - non-gov rejected on gov setters",
+    "S4.2.G3": "not_applicable - no callback",
+    "S4.2.G4": "not_applicable - no allowance policy"
+  },
+  "rules": [
+    {
+      "id": "RC-PROF-001",
+      "item": "CAC-AC-001 / S4.1.G3",
+      "statement": "registerAsset must not overwrite an already-registered asset's class (H-04 target; observed via riskFactor view, bijective on valid classes)",
+      "feasibility": "manual_model_required",
+      "pattern": "effect_preservation_after_permissionless_function (riskFactor-based)",
+      "expected": "MODEL_ERROR (M1) -> reclassified manual",
+      "evidence": "EMPIRICAL (ATTEMPT-2, 2026-08-27): 5 linked rules (registerAsset H-04 PROBE VERIFIED-VIOLATION); 4 gov-reject rules reported VIOLATED as FALSE violations -> rule-level engine().governance(e) vs contract-internal read diverge; CVL cannot correlate stored engine() address with ambient MochiEngine instance in a scoped rule. All gov-linked rules reclassified manual_model_required (NOT vulnerabilities; model error M1). S4.1.G6 on governor-endpoints needs a linked model."
+    },
+    {
+      "id": "RC-PROF-002",
+      "item": "S4.1.G6",
+      "statement": "changeMinimumDebt must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "MODEL_ERROR (M1) -> reclassified manual",
+      "evidence": "EMPIRICAL (ATTEMPT-2, 2026-08-27): 5 linked rules (registerAsset H-04 PROBE VERIFIED-VIOLATION); 4 gov-reject rules reported VIOLATED as FALSE violations -> rule-level engine().governance(e) vs contract-internal read diverge; CVL cannot correlate stored engine() address with ambient MochiEngine instance in a scoped rule. All gov-linked rules reclassified manual_model_required (NOT vulnerabilities; model error M1). S4.1.G6 on governor-endpoints needs a linked model."
+    },
+    {
+      "id": "RC-PROF-003",
+      "item": "S4.1.G6",
+      "statement": "changeLiquidityRequirement must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "MODEL_ERROR (M1) -> reclassified manual",
+      "evidence": "EMPIRICAL (ATTEMPT-2, 2026-08-27): 5 linked rules (registerAsset H-04 PROBE VERIFIED-VIOLATION); 4 gov-reject rules reported VIOLATED as FALSE violations -> rule-level engine().governance(e) vs contract-internal read diverge; CVL cannot correlate stored engine() address with ambient MochiEngine instance in a scoped rule. All gov-linked rules reclassified manual_model_required (NOT vulnerabilities; model error M1). S4.1.G6 on governor-endpoints needs a linked model."
+    },
+    {
+      "id": "RC-PROF-004",
+      "item": "S4.1.G6",
+      "statement": "setDelay must revert for non-governance callers",
+      "feasibility": "automated",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "VERIFIED",
+      "evidence": "EMPIRICAL (ATTEMPT-2, 2026-08-27): 5 linked rules (registerAsset H-04 PROBE VERIFIED-VIOLATION); 4 gov-reject rules reported VIOLATED as FALSE violations -> rule-level engine().governance(e) vs contract-internal read diverge; CVL cannot correlate stored engine() address with ambient MochiEngine instance in a scoped rule. All gov-linked rules reclassified manual_model_required (NOT vulnerabilities; model error M1). S4.1.G6 on governor-endpoints needs a linked model."
+    },
+    {
+      "id": "RC-PROF-005",
+      "item": "S4.1.G6",
+      "statement": "changeCreditCap must revert for non-governance callers (empty-array frame) ",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "MODEL_ERROR (M1) -> reclassified manual",
+      "evidence": "EMPIRICAL (ATTEMPT-2, 2026-08-27): 5 linked rules (registerAsset H-04 PROBE VERIFIED-VIOLATION); 4 gov-reject rules reported VIOLATED as FALSE violations -> rule-level engine().governance(e) vs contract-internal read diverge; CVL cannot correlate stored engine() address with ambient MochiEngine instance in a scoped rule. All gov-linked rules reclassified manual_model_required (NOT vulnerabilities; model error M1). S4.1.G6 on governor-endpoints needs a linked model."
+    },
+    {
+      "id": "RC-PROF-007",
+      "item": "S4.1.G6",
+      "statement": "authorized path reachable: governance() caller can set the delay",
+      "feasibility": "manual_model_required",
+      "pattern": "satisfy_witness",
+      "expected": "MODEL_ERROR (M1) -> reclassified manual",
+      "evidence": "EMPIRICAL (ATTEMPT-2, 2026-08-27): 5 linked rules (registerAsset H-04 PROBE VERIFIED-VIOLATION); 4 gov-reject rules reported VIOLATED as FALSE violations -> rule-level engine().governance(e) vs contract-internal read diverge; CVL cannot correlate stored engine() address with ambient MochiEngine instance in a scoped rule. All gov-linked rules reclassified manual_model_required (NOT vulnerabilities; model error M1). S4.1.G6 on governor-endpoints needs a linked model."
+    },
+    {
+      "id": "RC-PROF-006",
+      "item": "S4.1.G6",
+      "statement": "changeAssetClass rejects non-governance callers (AssetClass[] arg) - NOT VERIFIED AUTOMATICALLY: CVL cannot type Solidity enum arrays; the gov predicate is identical to changeCreditCap which is verified; marked manual_model_required",
+      "feasibility": "manual_model_required",
+      "pattern": "cvl_enum_array_typing_limitation",
+      "expected": "MODEL_ERROR (M1) -> reclassified manual",
+      "evidence": "EMPIRICAL (ATTEMPT-2, 2026-08-27): 5 linked rules (registerAsset H-04 PROBE VERIFIED-VIOLATION); 4 gov-reject rules reported VIOLATED as FALSE violations -> rule-level engine().governance(e) vs contract-internal read diverge; CVL cannot correlate stored engine() address with ambient MochiEngine instance in a scoped rule. All gov-linked rules reclassified manual_model_required (NOT vulnerabilities; model error M1). S4.1.G6 on governor-endpoints needs a linked model."
+    }
+  ],
+  "conf": {
+    "files": [
+      "projects/mochi-core/contracts/profile/MochiProfileV0.sol"
+    ],
+    "solc": "0.8.7",
+    "notes": "gov rules use linked engine().governance() (1 hop, envfree, interface added to scene files); enum-return assetClass getter replaced by riskFactor view to avoid CVL enum typing; changeAssetClass takes AssetClass[] as uint8[] in ABI; array setters framed with empty arrays"
+  },
+  "terminal_results": {
+    "registerAsset_preserves_existing_class": "VIOLATION (H-04 CONFIRMED)",
+    "gov-linked (4 rules)": "MODEL_ERROR M1 -> manual",
+    "setDelay_governance_can_change": "VERIFIED (witness only; dropped)"
+  }
+}

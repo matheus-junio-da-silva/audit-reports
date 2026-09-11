@@ -1,0 +1,54 @@
+{
+  "contract": "Allocation",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/insurance/Allocation.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "coverage_status": "FULL",
+  "authority_model": {
+    "kind": "ownership",
+    "predicate": "per-function: onlyOwner",
+    "evidence": [
+      "Allocation.sol:46 setSwapThreshold external onlyOwner",
+      "Allocation.sol:51 setCurvePercentThreshold external onlyOwner",
+      "Allocation.sol:62 calcSystemTargetDelta public view (no state mutation)",
+      "Allocation.sol:92 calcVaultTargetDelta public view",
+      "Allocation.sol:262 calcStrategyPercent public pure"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "setSwapThreshold(uint256), setCurvePercentThreshold(uint256)",
+      "claim": "a caller other than the pre-state owner reverts on allocation threshold governance",
+      "property_kind": "parametric_revert_rule",
+      "symbols": ["owner()", "the 2 exact selectors"],
+      "hypotheses": [],
+      "reachability_check": "owner path proven for setSwapThreshold (no other preconditions)",
+      "source_evidence": ["Allocation.sol:46,51"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "setSwapThreshold(uint256) reachability",
+      "claim": "the pre-state owner has a reachable successful path for the allocation threshold setter",
+      "property_kind": "satisfy_witness",
+      "symbols": ["owner()", "setSwapThreshold(uint256)"],
+      "hypotheses": [],
+      "reachability_check": "onlyOwner is the only gate",
+      "source_evidence": ["Allocation.sol:46-49"]
+    }
+  ],
+  "not_applicable": [
+    {"id": "S4.1.G2", "reason": "no RBAC", "evidence": "flat owner via Controllable"},
+    {"id": "S4.1.G4", "reason": "no ERC20 debit surface", "evidence": "no transferFrom"},
+    {"id": "S4.1.G7", "reason": "no asset custody; pure calculation contract", "evidence": "no funds or mint/burn"},
+    {"id": "S4.1.G8", "reason": "no timelock", "evidence": "no delay state"},
+    {"id": "S4.1.G9", "reason": "no whitelist use", "evidence": "no onlyWhitelist functions"},
+    {"id": "S4.1.G10", "reason": "no initialize()", "evidence": "no init entry"},
+    {"id": "S4.1.G11", "reason": "inherits OZ one-step ownership transfer", "evidence": "Ownable via Controllable"},
+    {"id": "S4.2.G3", "reason": "no callback surface", "evidence": "no callback"},
+    {"id": "S4.2.G4", "reason": "no allowance policy", "evidence": "no allowance state"}
+  ]
+}

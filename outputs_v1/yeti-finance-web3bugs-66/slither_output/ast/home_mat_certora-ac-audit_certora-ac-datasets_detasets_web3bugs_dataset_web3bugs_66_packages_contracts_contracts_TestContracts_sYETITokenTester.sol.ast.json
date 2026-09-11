@@ -1,0 +1,349 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/TestContracts/sYETITokenTester.sol",
+  "exportedSymbols": {
+    "sYETITokenTester": [
+      26
+    ]
+  },
+  "id": 27,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "0.6",
+        ".12"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "32:23:0"
+    },
+    {
+      "id": 2,
+      "literals": [
+        "experimental",
+        "ABIEncoderV2"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "57:33:0"
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/YETI/sYETIToken.sol",
+      "file": "../YETI/sYETIToken.sol",
+      "id": 3,
+      "nodeType": "ImportDirective",
+      "scope": 27,
+      "sourceUnit": 1121,
+      "src": "94:32:0",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "arguments": null,
+          "baseName": {
+            "contractScope": null,
+            "id": 4,
+            "name": "sYETIToken",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 1120,
+            "src": "159:10:0",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_sYETIToken_$1120",
+              "typeString": "contract sYETIToken"
+            }
+          },
+          "id": 5,
+          "nodeType": "InheritanceSpecifier",
+          "src": "159:10:0"
+        }
+      ],
+      "contractDependencies": [
+        1120,
+        1774,
+        1897,
+        1989,
+        2541
+      ],
+      "contractKind": "contract",
+      "documentation": null,
+      "fullyImplemented": true,
+      "id": 26,
+      "linearizedBaseContracts": [
+        26,
+        1120,
+        1897,
+        1774,
+        1989,
+        2541
+      ],
+      "name": "sYETITokenTester",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "body": {
+            "id": 24,
+            "nodeType": "Block",
+            "src": "271:66:0",
+            "statements": [
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "components": [
+                    {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 14,
+                          "name": "users",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 114,
+                          "src": "286:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$109_storage_$",
+                            "typeString": "mapping(address => struct sYETIToken.User storage ref)"
+                          }
+                        },
+                        "id": 16,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 15,
+                          "name": "user",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 7,
+                          "src": "292:4:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "286:11:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_User_$109_storage",
+                          "typeString": "struct sYETIToken.User storage ref"
+                        }
+                      },
+                      "id": 17,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "balance",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 106,
+                      "src": "286:19:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    },
+                    {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 18,
+                          "name": "users",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 114,
+                          "src": "307:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_User_$109_storage_$",
+                            "typeString": "mapping(address => struct sYETIToken.User storage ref)"
+                          }
+                        },
+                        "id": 20,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 19,
+                          "name": "user",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 7,
+                          "src": "313:4:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "307:11:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_User_$109_storage",
+                          "typeString": "struct sYETIToken.User storage ref"
+                        }
+                      },
+                      "id": 21,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "lockedUntil",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 108,
+                      "src": "307:23:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint128",
+                        "typeString": "uint128"
+                      }
+                    }
+                  ],
+                  "id": 22,
+                  "isConstant": false,
+                  "isInlineArray": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "nodeType": "TupleExpression",
+                  "src": "285:46:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$_t_uint128_$_t_uint128_$",
+                    "typeString": "tuple(uint128,uint128)"
+                  }
+                },
+                "functionReturnParameters": 13,
+                "id": 23,
+                "nodeType": "Return",
+                "src": "278:53:0"
+              }
+            ]
+          },
+          "documentation": null,
+          "functionSelector": "6386c1c7",
+          "id": 25,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getUserInfo",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 8,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 7,
+                "mutability": "mutable",
+                "name": "user",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 25,
+                "src": "198:12:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 6,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "198:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "197:14:0"
+          },
+          "returnParameters": {
+            "id": 13,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 10,
+                "mutability": "mutable",
+                "name": "balance",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 25,
+                "src": "233:15:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 9,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "233:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 12,
+                "mutability": "mutable",
+                "name": "lockedUntil",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 25,
+                "src": "250:19:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                },
+                "typeName": {
+                  "id": 11,
+                  "name": "uint128",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "250:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint128",
+                    "typeString": "uint128"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "232:38:0"
+          },
+          "scope": 26,
+          "src": "177:160:0",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "public"
+        }
+      ],
+      "scope": 27,
+      "src": "130:210:0"
+    }
+  ],
+  "src": "32:308:0"
+}

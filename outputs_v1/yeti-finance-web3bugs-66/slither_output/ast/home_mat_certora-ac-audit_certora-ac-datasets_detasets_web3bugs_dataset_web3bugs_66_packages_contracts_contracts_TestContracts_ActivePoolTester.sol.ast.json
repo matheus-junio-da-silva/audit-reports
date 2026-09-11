@@ -1,0 +1,286 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/TestContracts/ActivePoolTester.sol",
+  "exportedSymbols": {
+    "ActivePoolTester": [
+      22
+    ]
+  },
+  "id": 23,
+  "license": "UNLICENSED",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "0.6",
+        ".11"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "42:23:14"
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/ActivePool.sol",
+      "file": "../ActivePool.sol",
+      "id": 2,
+      "nodeType": "ImportDirective",
+      "scope": 23,
+      "sourceUnit": 864,
+      "src": "69:27:14",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "arguments": null,
+          "baseName": {
+            "contractScope": null,
+            "id": 3,
+            "name": "ActivePool",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 863,
+            "src": "129:10:14",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ActivePool_$863",
+              "typeString": "contract ActivePool"
+            }
+          },
+          "id": 4,
+          "nodeType": "InheritanceSpecifier",
+          "src": "129:10:14"
+        }
+      ],
+      "contractDependencies": [
+        863,
+        894,
+        977,
+        2137,
+        2225,
+        2838,
+        2918,
+        2930
+      ],
+      "contractKind": "contract",
+      "documentation": null,
+      "fullyImplemented": true,
+      "id": 22,
+      "linearizedBaseContracts": [
+        22,
+        863,
+        2137,
+        2838,
+        2225,
+        2918,
+        2930,
+        894,
+        977
+      ],
+      "name": "ActivePoolTester",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "body": {
+            "id": 16,
+            "nodeType": "Block",
+            "src": "213:52:14",
+            "statements": [
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "id": 14,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "argumentTypes": null,
+                    "id": 9,
+                    "name": "YUSDDebt",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 68,
+                    "src": "224:8:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 12,
+                        "name": "_amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6,
+                        "src": "249:7:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 10,
+                        "name": "YUSDDebt",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 68,
+                        "src": "236:8:14",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "id": 11,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1223,
+                      "src": "236:12:14",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
+                        "typeString": "function (uint256,uint256) pure returns (uint256)"
+                      }
+                    },
+                    "id": 13,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "236:21:14",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "src": "224:33:14",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "id": 15,
+                "nodeType": "ExpressionStatement",
+                "src": "224:33:14"
+              }
+            ]
+          },
+          "documentation": null,
+          "functionSelector": "0e8f67f7",
+          "id": 17,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "unprotectedIncreaseYUSDDebt",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 7,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 6,
+                "mutability": "mutable",
+                "name": "_amount",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 17,
+                "src": "190:12:14",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "190:4:14",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "189:14:14"
+          },
+          "returnParameters": {
+            "id": 8,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "213:0:14"
+          },
+          "scope": 22,
+          "src": "153:112:14",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 20,
+            "nodeType": "Block",
+            "src": "324:78:14",
+            "statements": []
+          },
+          "documentation": null,
+          "functionSelector": "f3af7c3b",
+          "id": 21,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "unprotectedPayable",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 18,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "304:2:14"
+          },
+          "returnParameters": {
+            "id": 19,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "324:0:14"
+          },
+          "scope": 22,
+          "src": "277:125:14",
+          "stateMutability": "payable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 23,
+      "src": "100:305:14"
+    }
+  ],
+  "src": "42:363:14"
+}

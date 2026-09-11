@@ -1,0 +1,93 @@
+{
+  "contract": "Insurance",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/insurance/Insurance.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "coverage_status": "FULL",
+  "authority_model": {
+    "kind": "hybrid_ownership_allowlist_dual_authority",
+    "predicate": "per-function: onlyOwner | msg.sender in {owner(), controller()} | onlyWhitelist | msg.sender == controller.withdrawHandler()",
+    "evidence": [
+      "Insurance.sol:83 setAllocation external onlyOwner",
+      "Insurance.sol:91 setExposure external onlyOwner",
+      "Insurance.sol:100 setUnderlyingTokenPercent requires msg.sender == controller || msg.sender == owner()",
+      "Insurance.sol:106 setCurveVaultPercent external onlyOwner",
+      "Insurance.sol:113 setExposureBufferRebalance external onlyOwner",
+      "Insurance.sol:122 setWhaleThresholdWithdraw external onlyOwner",
+      "Insurance.sol:131 setWhaleThresholdDeposit external onlyOwner",
+      "Insurance.sol:202 rebalance external onlyWhitelist",
+      "Insurance.sol:221 rebalanceForWithdraw requires msg.sender == _controller().withdrawHandler()"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "owner-only (6): setAllocation, setExposure, setCurveVaultPercent, setExposureBufferRebalance, setWhaleThresholdWithdraw, setWhaleThresholdDeposit",
+      "claim": "a caller other than the pre-state owner reverts on every owner-only insurance function",
+      "property_kind": "parametric_revert_rule",
+      "symbols": ["owner()", "the 6 exact selectors"],
+      "hypotheses": [],
+      "reachability_check": "owner path proven for setAllocation (non-zero allocation)",
+      "source_evidence": ["Insurance.sol:83,91,106,113,122,131"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "setUnderlyingTokenPercent(uint256,uint256)",
+      "claim": "a caller that is neither the pre-state owner nor the pre-state controller reverts",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "controller()", "setUnderlyingTokenPercent(uint256,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "controller and owner each have their own path; revert rule targets the complement",
+      "source_evidence": ["Insurance.sol:100-104"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "rebalance()",
+      "claim": "a non-whitelisted caller cannot trigger a system rebalance",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["whitelist(address)", "rebalance()"],
+      "hypotheses": [],
+      "reachability_check": "revert rule exercises only the whitelist gate",
+      "source_evidence": ["Insurance.sol:202"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "manual_model_required",
+      "target": "rebalanceForWithdraw(uint256,bool)",
+      "claim": "only the controller-derived withdrawHandler may call rebalanceForWithdraw",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["controller()", "withdrawHandler() on linked controller"],
+      "hypotheses": [],
+      "reachability_check": "trusted caller is derived cross-contract via IController.withdrawHandler(); linked controller not compiled in this proof",
+      "source_evidence": ["Insurance.sol:221-224"],
+      "note": "Cross-contract trusted-source derivation (controller.withdrawHandler()). With the controller not linked into the verification scene, no sound local predicate exists; a method-summary model would be approximate. Covered on the Controller side instead (burnGToken/mintGToken S4.2.G3 rules)."
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "setAllocation(address) reachability",
+      "claim": "the pre-state owner has a reachable successful path for an owner-only setter",
+      "property_kind": "satisfy_witness",
+      "symbols": ["owner()", "setAllocation(address)"],
+      "hypotheses": ["_allocation != address(0)"],
+      "reachability_check": "setAllocation requires only non-zero allocation and onlyOwner",
+      "source_evidence": ["Insurance.sol:83-87"]
+    }
+  ],
+  "not_applicable": [
+    {"id": "S4.1.G2", "reason": "no RBAC", "evidence": "flat owner+controller+whitelist"},
+    {"id": "S4.1.G4", "reason": "no ERC20 debit surface", "evidence": "no transferFrom"},
+    {"id": "S4.1.G7", "reason": "no privileged unconstrained asset withdrawal; rebalance/whale paths move assets within allocation bounds and require exposure models (Buoy3Pool absent)", "evidence": "Buoy3Pool gap; no reserve accounting here"},
+    {"id": "S4.1.G8", "reason": "no timelock", "evidence": "no delay state"},
+    {"id": "S4.1.G10", "reason": "no initialize()", "evidence": "constructor-initialized"},
+    {"id": "S4.1.G11", "reason": "inherits OZ one-step ownership transfer", "evidence": "Ownable"},
+    {"id": "S4.2.G4", "reason": "no allowance policy", "evidence": "no allowance state"}
+  ]
+}

@@ -1,0 +1,761 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/AccountVerifier.sol",
+  "exportedSymbols": {
+    "AccountVerifier": [
+      56
+    ],
+    "BlockVerifier": [
+      72
+    ],
+    "MerklePatriciaVerifier": [
+      556
+    ],
+    "Rlp": [
+      1662
+    ]
+  },
+  "id": 57,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "^",
+        "0.8",
+        ".0"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "35:23:0"
+    },
+    {
+      "id": 2,
+      "literals": [
+        "abicoder",
+        "v2"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "60:19:0"
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/BlockVerifier.sol",
+      "file": "./BlockVerifier.sol",
+      "id": 4,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 57,
+      "sourceUnit": 73,
+      "src": "83:52:0",
+      "symbolAliases": [
+        {
+          "foreign": {
+            "id": 3,
+            "name": "BlockVerifier",
+            "nodeType": "Identifier",
+            "overloadedDeclarations": [],
+            "src": "92:13:0",
+            "typeDescriptions": {}
+          },
+          "nameLocation": "-1:-1:-1"
+        }
+      ],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/MerklePatriciaVerifier.sol",
+      "file": "./MerklePatriciaVerifier.sol",
+      "id": 6,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 57,
+      "sourceUnit": 557,
+      "src": "137:70:0",
+      "symbolAliases": [
+        {
+          "foreign": {
+            "id": 5,
+            "name": "MerklePatriciaVerifier",
+            "nodeType": "Identifier",
+            "overloadedDeclarations": [],
+            "src": "146:22:0",
+            "typeDescriptions": {}
+          },
+          "nameLocation": "-1:-1:-1"
+        }
+      ],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/Rlp.sol",
+      "file": "./Rlp.sol",
+      "id": 8,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 57,
+      "sourceUnit": 1663,
+      "src": "209:32:0",
+      "symbolAliases": [
+        {
+          "foreign": {
+            "id": 7,
+            "name": "Rlp",
+            "nodeType": "Identifier",
+            "overloadedDeclarations": [],
+            "src": "218:3:0",
+            "typeDescriptions": {}
+          },
+          "nameLocation": "-1:-1:-1"
+        }
+      ],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "library",
+      "fullyImplemented": true,
+      "id": 56,
+      "linearizedBaseContracts": [
+        56
+      ],
+      "name": "AccountVerifier",
+      "nameLocation": "255:15:0",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "body": {
+            "id": 54,
+            "nodeType": "Block",
+            "src": "469:296:0",
+            "statements": [
+              {
+                "assignments": [
+                  20
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 20,
+                    "mutability": "mutable",
+                    "name": "accountDetailsBytes",
+                    "nameLocation": "493:19:0",
+                    "nodeType": "VariableDeclaration",
+                    "scope": 54,
+                    "src": "480:32:0",
+                    "stateVariable": false,
+                    "storageLocation": "memory",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_memory_ptr",
+                      "typeString": "bytes"
+                    },
+                    "typeName": {
+                      "id": 19,
+                      "name": "bytes",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "480:5:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage_ptr",
+                        "typeString": "bytes"
+                      }
+                    },
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 32,
+                "initialValue": {
+                  "arguments": [
+                    {
+                      "id": 23,
+                      "name": "stateRoot",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 12,
+                      "src": "556:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "id": 27,
+                              "name": "account",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 10,
+                              "src": "594:7:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "expression": {
+                              "id": 25,
+                              "name": "abi",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": -1,
+                              "src": "577:3:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_abi",
+                                "typeString": "abi"
+                              }
+                            },
+                            "id": 26,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "encodePacked",
+                            "nodeType": "MemberAccess",
+                            "src": "577:16:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                              "typeString": "function () pure returns (bytes memory)"
+                            }
+                          },
+                          "id": 28,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "577:25:0",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        ],
+                        "id": 24,
+                        "name": "keccak256",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -8,
+                        "src": "567:9:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                          "typeString": "function (bytes memory) pure returns (bytes32)"
+                        }
+                      },
+                      "id": 29,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "567:36:0",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    {
+                      "id": 30,
+                      "name": "accountProof",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14,
+                      "src": "605:12:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_memory_ptr",
+                        "typeString": "bytes memory"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      },
+                      {
+                        "typeIdentifier": "t_bytes_memory_ptr",
+                        "typeString": "bytes memory"
+                      }
+                    ],
+                    "expression": {
+                      "id": 21,
+                      "name": "MerklePatriciaVerifier",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 556,
+                      "src": "515:22:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_MerklePatriciaVerifier_$556_$",
+                        "typeString": "type(library MerklePatriciaVerifier)"
+                      }
+                    },
+                    "id": 22,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "getValueFromProof",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 322,
+                    "src": "515:40:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_pure$_t_bytes32_$_t_bytes32_$_t_bytes_memory_ptr_$returns$_t_bytes_memory_ptr_$",
+                      "typeString": "function (bytes32,bytes32,bytes memory) pure returns (bytes memory)"
+                    }
+                  },
+                  "id": 31,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "515:103:0",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes memory"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "480:138:0"
+              },
+              {
+                "assignments": [
+                  38
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 38,
+                    "mutability": "mutable",
+                    "name": "accountDetails",
+                    "nameLocation": "647:14:0",
+                    "nodeType": "VariableDeclaration",
+                    "scope": 54,
+                    "src": "629:32:0",
+                    "stateVariable": false,
+                    "storageLocation": "memory",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Item_$581_memory_ptr_$dyn_memory_ptr",
+                      "typeString": "struct Rlp.Item[]"
+                    },
+                    "typeName": {
+                      "baseType": {
+                        "id": 36,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 35,
+                          "name": "Rlp.Item",
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 581,
+                          "src": "629:8:0"
+                        },
+                        "referencedDeclaration": 581,
+                        "src": "629:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Item_$581_storage_ptr",
+                          "typeString": "struct Rlp.Item"
+                        }
+                      },
+                      "id": 37,
+                      "nodeType": "ArrayTypeName",
+                      "src": "629:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Item_$581_storage_$dyn_storage_ptr",
+                        "typeString": "struct Rlp.Item[]"
+                      }
+                    },
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 46,
+                "initialValue": {
+                  "arguments": [
+                    {
+                      "arguments": [
+                        {
+                          "id": 43,
+                          "name": "accountDetailsBytes",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 20,
+                          "src": "686:19:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        ],
+                        "expression": {
+                          "id": 41,
+                          "name": "Rlp",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1662,
+                          "src": "675:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_Rlp_$1662_$",
+                            "typeString": "type(library Rlp)"
+                          }
+                        },
+                        "id": 42,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "toItem",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 723,
+                        "src": "675:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_bytes_memory_ptr_$returns$_t_struct$_Item_$581_memory_ptr_$",
+                          "typeString": "function (bytes memory) pure returns (struct Rlp.Item memory)"
+                        }
+                      },
+                      "id": 44,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "675:31:0",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Item_$581_memory_ptr",
+                        "typeString": "struct Rlp.Item memory"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_struct$_Item_$581_memory_ptr",
+                        "typeString": "struct Rlp.Item memory"
+                      }
+                    ],
+                    "expression": {
+                      "id": 39,
+                      "name": "Rlp",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1662,
+                      "src": "664:3:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_Rlp_$1662_$",
+                        "typeString": "type(library Rlp)"
+                      }
+                    },
+                    "id": 40,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "toList",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 1142,
+                    "src": "664:10:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_pure$_t_struct$_Item_$581_memory_ptr_$returns$_t_array$_t_struct$_Item_$581_memory_ptr_$dyn_memory_ptr_$",
+                      "typeString": "function (struct Rlp.Item memory) pure returns (struct Rlp.Item memory[] memory)"
+                    }
+                  },
+                  "id": 45,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "664:43:0",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Item_$581_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct Rlp.Item memory[] memory"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "629:78:0"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "baseExpression": {
+                        "id": 49,
+                        "name": "accountDetails",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 38,
+                        "src": "739:14:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Item_$581_memory_ptr_$dyn_memory_ptr",
+                          "typeString": "struct Rlp.Item memory[] memory"
+                        }
+                      },
+                      "id": 51,
+                      "indexExpression": {
+                        "hexValue": "32",
+                        "id": 50,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "754:1:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_2_by_1",
+                          "typeString": "int_const 2"
+                        },
+                        "value": "2"
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "739:17:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Item_$581_memory_ptr",
+                        "typeString": "struct Rlp.Item memory"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_struct$_Item_$581_memory_ptr",
+                        "typeString": "struct Rlp.Item memory"
+                      }
+                    ],
+                    "expression": {
+                      "id": 47,
+                      "name": "Rlp",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1662,
+                      "src": "725:3:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_Rlp_$1662_$",
+                        "typeString": "type(library Rlp)"
+                      }
+                    },
+                    "id": 48,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "toBytes32",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 1359,
+                    "src": "725:13:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_pure$_t_struct$_Item_$581_memory_ptr_$returns$_t_bytes32_$",
+                      "typeString": "function (struct Rlp.Item memory) pure returns (bytes32)"
+                    }
+                  },
+                  "id": 52,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "725:32:0",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "functionReturnParameters": 18,
+                "id": 53,
+                "nodeType": "Return",
+                "src": "718:39:0"
+              }
+            ]
+          },
+          "id": 55,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getAccountStorageRoot",
+          "nameLocation": "287:21:0",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 15,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 10,
+                "mutability": "mutable",
+                "name": "account",
+                "nameLocation": "327:7:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 55,
+                "src": "319:15:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 9,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "319:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 12,
+                "mutability": "mutable",
+                "name": "stateRoot",
+                "nameLocation": "353:9:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 55,
+                "src": "345:17:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 11,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "345:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 14,
+                "mutability": "mutable",
+                "name": "accountProof",
+                "nameLocation": "386:12:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 55,
+                "src": "373:25:0",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_memory_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 13,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "373:5:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "308:97:0"
+          },
+          "returnParameters": {
+            "id": 18,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17,
+                "mutability": "mutable",
+                "name": "storageRootHash",
+                "nameLocation": "446:15:0",
+                "nodeType": "VariableDeclaration",
+                "scope": 55,
+                "src": "438:23:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 16,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "438:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "427:41:0"
+          },
+          "scope": 56,
+          "src": "278:487:0",
+          "stateMutability": "pure",
+          "virtual": false,
+          "visibility": "internal"
+        }
+      ],
+      "scope": 57,
+      "src": "247:521:0",
+      "usedErrors": []
+    }
+  ],
+  "src": "35:735:0"
+}

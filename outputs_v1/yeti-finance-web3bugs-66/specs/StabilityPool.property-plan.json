@@ -1,0 +1,81 @@
+{
+  "contract": "StabilityPool",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/StabilityPool.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "priority": {"level": "High", "score": 25, "reason": "asset/accounting centrality; known dataset bug target (receiveCollateral)"},
+  "authority_model": {
+    "kind": "owner + configured-protocol-callers",
+    "predicate_owner": "e.msg.sender == owner()",
+    "predicate_configured": "e.msg.sender in {activePool, troveManagerLiquidationsAddress, whitelistAddress} (internal, no public getter)",
+    "evidence": [
+      "setAddresses: onlyOwner (StabilityPool.sol:306), ends _renounceOwnership() (StabilityPool.sol:333)",
+      "offset: _requireCallerIsTML() (StabilityPool.sol:524)",
+      "receiveCollateral: _requireCallerIsActivePool() (StabilityPool.sol:1155)",
+      "addCollateralType: _requireCallerIsWhitelist() (StabilityPool.sol:1166)",
+      "Dependencies/Ownable.sol:33 owner() public getter"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "setAddresses(address,address,address,address,address,address,address,address)",
+      "claim": "a caller other than the pre-state owner cannot successfully configure the pool (pre-init window)",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setAddresses(address,address,address,address,address,address,address,address)"],
+      "hypotheses": ["e.msg.sender != 0 (zero address cannot originate a transaction)", "owner() != 0 (pre-init window; after _renounceOwnership config is locked)"],
+      "reachability_check": "owner-equal caller completes setAddresses in the pre-init state",
+      "source_evidence": ["StabilityPool.sol:306", "StabilityPool.sol:333"]
+    },
+    {
+      "ontology_id": "CAC-AC-010",
+      "id": "S4.1.G10",
+      "status": "applicable",
+      "target": "setAddresses(...)",
+      "claim": "after one successful setAddresses a second call must revert (init-once via _renounceOwnership)",
+      "property_kind": "before_double_call_implication_rule",
+      "symbols": ["owner()", "setAddresses(...)"],
+      "hypotheses": ["e1.msg.sender == owner(), e1.msg.sender != 0", "e2.msg.sender != 0"],
+      "reachability_check": "successful first setAddresses exists (owner sender)",
+      "source_evidence": ["StabilityPool.sol:306", "StabilityPool.sol:333 (_renounceOwnership)"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "manual_model_required",
+      "target": "receiveCollateral(address[],uint256[])",
+      "claim": "only the configured ActivePool may increase totalColl (dataset bug web3bugs-66 H-01 surface)",
+      "property_kind": "callback_caller_verification",
+      "symbols": ["activePool (internal)"],
+      "hypotheses": [],
+      "reachability_check": "needs public getter or harness for activePool identity",
+      "source_evidence": ["StabilityPool.sol:1151-1157", "StabilityPool.sol:1133-1137 (_requireCallerIsActivePool)"],
+      "limitation": "trusted caller is an internal field with no public getter; precise identity rule requires a harness (documented scope limitation)"
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "manual_model_required",
+      "target": "offset(uint256,address[],uint256[])",
+      "claim": "only TroveManagerLiquidations may offset deposited YUSD",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["troveManagerLiquidationsAddress (internal)"],
+      "hypotheses": [],
+      "reachability_check": "needs getter/harness for troveManagerLiquidationsAddress",
+      "source_evidence": ["StabilityPool.sol:519-524", "StabilityPool.sol:1139-1144"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "manual_model_required",
+      "target": "addCollateralType(address)",
+      "claim": "only Whitelist may register a new collateral type",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["whitelistAddress (internal)"],
+      "hypotheses": [],
+      "reachability_check": "needs getter/harness for whitelistAddress",
+      "source_evidence": ["StabilityPool.sol:1163-1168", "StabilityPool.sol:1123-1127"]
+    }
+  ]
+}

@@ -1,0 +1,2137 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Proxy/BorrowerWrappersScript.sol",
+  "exportedSymbols": {
+    "BorrowerWrappersScript": [
+      156
+    ]
+  },
+  "id": 157,
+  "license": "UNLICENSED",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "0.6",
+        ".11"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "42:23:18"
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Dependencies/SafeMath.sol",
+      "file": "../Dependencies/SafeMath.sol",
+      "id": 2,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 582,
+      "src": "69:38:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Dependencies/LiquityMath.sol",
+      "file": "../Dependencies/LiquityMath.sol",
+      "id": 3,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 386,
+      "src": "109:41:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/IERC20.sol",
+      "file": "../Interfaces/IERC20.sol",
+      "id": 4,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 960,
+      "src": "152:34:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/IBorrowerOperations.sol",
+      "file": "../Interfaces/IBorrowerOperations.sol",
+      "id": 5,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 849,
+      "src": "188:47:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/ITroveManager.sol",
+      "file": "../Interfaces/ITroveManager.sol",
+      "id": 6,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 1972,
+      "src": "237:41:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/IStabilityPool.sol",
+      "file": "../Interfaces/IStabilityPool.sol",
+      "id": 7,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 1368,
+      "src": "280:42:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/IPriceFeed.sol",
+      "file": "../Interfaces/IPriceFeed.sol",
+      "id": 8,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 972,
+      "src": "324:38:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/ISYETI.sol",
+      "file": "../Interfaces/ISYETI.sol",
+      "id": 9,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 1098,
+      "src": "364:34:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Proxy/BorrowerOperationsScript.sol",
+      "file": "./BorrowerOperationsScript.sol",
+      "id": 10,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 2173,
+      "src": "400:40:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Proxy/ETHTransferScript.sol",
+      "file": "./ETHTransferScript.sol",
+      "id": 11,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 2197,
+      "src": "442:33:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Proxy/SYETIScript.sol",
+      "file": "./SYETIScript.sol",
+      "id": 12,
+      "nodeType": "ImportDirective",
+      "scope": 157,
+      "sourceUnit": 2234,
+      "src": "477:27:18",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "arguments": null,
+          "baseName": {
+            "contractScope": null,
+            "id": 13,
+            "name": "BorrowerOperationsScript",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 2172,
+            "src": "545:24:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_BorrowerOperationsScript_$2172",
+              "typeString": "contract BorrowerOperationsScript"
+            }
+          },
+          "id": 14,
+          "nodeType": "InheritanceSpecifier",
+          "src": "545:24:18"
+        },
+        {
+          "arguments": null,
+          "baseName": {
+            "contractScope": null,
+            "id": 15,
+            "name": "ETHTransferScript",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 2196,
+            "src": "571:17:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ETHTransferScript_$2196",
+              "typeString": "contract ETHTransferScript"
+            }
+          },
+          "id": 16,
+          "nodeType": "InheritanceSpecifier",
+          "src": "571:17:18"
+        },
+        {
+          "arguments": null,
+          "baseName": {
+            "contractScope": null,
+            "id": 17,
+            "name": "SYETIScript",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 2233,
+            "src": "590:11:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_SYETIScript_$2233",
+              "typeString": "contract SYETIScript"
+            }
+          },
+          "id": 18,
+          "nodeType": "InheritanceSpecifier",
+          "src": "590:11:18"
+        }
+      ],
+      "contractDependencies": [
+        2172,
+        2196,
+        2233,
+        2494
+      ],
+      "contractKind": "contract",
+      "documentation": null,
+      "fullyImplemented": true,
+      "id": 156,
+      "linearizedBaseContracts": [
+        156,
+        2233,
+        2196,
+        2172,
+        2494
+      ],
+      "name": "BorrowerWrappersScript",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "id": 21,
+          "libraryName": {
+            "contractScope": null,
+            "id": 19,
+            "name": "SafeMath",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 581,
+            "src": "615:8:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_SafeMath_$581",
+              "typeString": "library SafeMath"
+            }
+          },
+          "nodeType": "UsingForDirective",
+          "src": "609:24:18",
+          "typeName": {
+            "id": 20,
+            "name": "uint",
+            "nodeType": "ElementaryTypeName",
+            "src": "628:4:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            }
+          }
+        },
+        {
+          "constant": true,
+          "functionSelector": "a3f4df7e",
+          "id": 24,
+          "mutability": "constant",
+          "name": "NAME",
+          "nodeType": "VariableDeclaration",
+          "overrides": null,
+          "scope": 156,
+          "src": "641:55:18",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          },
+          "typeName": {
+            "id": 22,
+            "name": "bytes32",
+            "nodeType": "ElementaryTypeName",
+            "src": "641:7:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            }
+          },
+          "value": {
+            "argumentTypes": null,
+            "hexValue": "426f72726f7765725772617070657273536372697074",
+            "id": 23,
+            "isConstant": false,
+            "isLValue": false,
+            "isPure": true,
+            "kind": "string",
+            "lValueRequested": false,
+            "nodeType": "Literal",
+            "src": "672:24:18",
+            "subdenomination": null,
+            "typeDescriptions": {
+              "typeIdentifier": "t_stringliteral_b41f1a8aa27fa106d0874aa4a742fdcd555526cb6cb54f7ebd016ccb6b17a413",
+              "typeString": "literal_string \"BorrowerWrappersScript\""
+            },
+            "value": "BorrowerWrappersScript"
+          },
+          "visibility": "public"
+        },
+        {
+          "constant": false,
+          "id": 26,
+          "mutability": "immutable",
+          "name": "troveManager",
+          "nodeType": "VariableDeclaration",
+          "overrides": null,
+          "scope": 156,
+          "src": "705:36:18",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_contract$_ITroveManager_$1971",
+            "typeString": "contract ITroveManager"
+          },
+          "typeName": {
+            "contractScope": null,
+            "id": 25,
+            "name": "ITroveManager",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 1971,
+            "src": "705:13:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ITroveManager_$1971",
+              "typeString": "contract ITroveManager"
+            }
+          },
+          "value": null,
+          "visibility": "internal"
+        },
+        {
+          "constant": false,
+          "id": 28,
+          "mutability": "immutable",
+          "name": "stabilityPool",
+          "nodeType": "VariableDeclaration",
+          "overrides": null,
+          "scope": 156,
+          "src": "748:38:18",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_contract$_IStabilityPool_$1367",
+            "typeString": "contract IStabilityPool"
+          },
+          "typeName": {
+            "contractScope": null,
+            "id": 27,
+            "name": "IStabilityPool",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 1367,
+            "src": "748:14:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IStabilityPool_$1367",
+              "typeString": "contract IStabilityPool"
+            }
+          },
+          "value": null,
+          "visibility": "internal"
+        },
+        {
+          "constant": false,
+          "id": 30,
+          "mutability": "immutable",
+          "name": "yusdToken",
+          "nodeType": "VariableDeclaration",
+          "overrides": null,
+          "scope": 156,
+          "src": "793:26:18",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_contract$_IERC20_$959",
+            "typeString": "contract IERC20"
+          },
+          "typeName": {
+            "contractScope": null,
+            "id": 29,
+            "name": "IERC20",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 959,
+            "src": "793:6:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IERC20_$959",
+              "typeString": "contract IERC20"
+            }
+          },
+          "value": null,
+          "visibility": "internal"
+        },
+        {
+          "constant": false,
+          "id": 32,
+          "mutability": "immutable",
+          "name": "yetiToken",
+          "nodeType": "VariableDeclaration",
+          "overrides": null,
+          "scope": 156,
+          "src": "826:26:18",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_contract$_IERC20_$959",
+            "typeString": "contract IERC20"
+          },
+          "typeName": {
+            "contractScope": null,
+            "id": 31,
+            "name": "IERC20",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 959,
+            "src": "826:6:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IERC20_$959",
+              "typeString": "contract IERC20"
+            }
+          },
+          "value": null,
+          "visibility": "internal"
+        },
+        {
+          "constant": false,
+          "id": 34,
+          "mutability": "immutable",
+          "name": "sYETI",
+          "nodeType": "VariableDeclaration",
+          "overrides": null,
+          "scope": 156,
+          "src": "859:22:18",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_contract$_ISYETI_$1097",
+            "typeString": "contract ISYETI"
+          },
+          "typeName": {
+            "contractScope": null,
+            "id": 33,
+            "name": "ISYETI",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 1097,
+            "src": "859:6:18",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ISYETI_$1097",
+              "typeString": "contract ISYETI"
+            }
+          },
+          "value": null,
+          "visibility": "internal"
+        },
+        {
+          "body": {
+            "id": 140,
+            "nodeType": "Block",
+            "src": "1165:1053:18",
+            "statements": [
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "id": 52,
+                      "name": "_troveManagerAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 38,
+                      "src": "1190:20:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 51,
+                    "name": "checkContract",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2493,
+                    "src": "1176:13:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_view$_t_address_$returns$__$",
+                      "typeString": "function (address) view"
+                    }
+                  },
+                  "id": 53,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1176:35:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 54,
+                "nodeType": "ExpressionStatement",
+                "src": "1176:35:18"
+              },
+              {
+                "assignments": [
+                  56
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 56,
+                    "mutability": "mutable",
+                    "name": "troveManagerCached",
+                    "nodeType": "VariableDeclaration",
+                    "overrides": null,
+                    "scope": 140,
+                    "src": "1222:32:18",
+                    "stateVariable": false,
+                    "storageLocation": "default",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                      "typeString": "contract ITroveManager"
+                    },
+                    "typeName": {
+                      "contractScope": null,
+                      "id": 55,
+                      "name": "ITroveManager",
+                      "nodeType": "UserDefinedTypeName",
+                      "referencedDeclaration": 1971,
+                      "src": "1222:13:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                        "typeString": "contract ITroveManager"
+                      }
+                    },
+                    "value": null,
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 60,
+                "initialValue": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "id": 58,
+                      "name": "_troveManagerAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 38,
+                      "src": "1271:20:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 57,
+                    "name": "ITroveManager",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1971,
+                    "src": "1257:13:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_type$_t_contract$_ITroveManager_$1971_$",
+                      "typeString": "type(contract ITroveManager)"
+                    }
+                  },
+                  "id": 59,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "typeConversion",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1257:35:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                    "typeString": "contract ITroveManager"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "1222:70:18"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "id": 63,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "argumentTypes": null,
+                    "id": 61,
+                    "name": "troveManager",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 26,
+                    "src": "1303:12:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                      "typeString": "contract ITroveManager"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "argumentTypes": null,
+                    "id": 62,
+                    "name": "troveManagerCached",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 56,
+                    "src": "1318:18:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                      "typeString": "contract ITroveManager"
+                    }
+                  },
+                  "src": "1303:33:18",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                    "typeString": "contract ITroveManager"
+                  }
+                },
+                "id": 64,
+                "nodeType": "ExpressionStatement",
+                "src": "1303:33:18"
+              },
+              {
+                "assignments": [
+                  66
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 66,
+                    "mutability": "mutable",
+                    "name": "stabilityPoolCached",
+                    "nodeType": "VariableDeclaration",
+                    "overrides": null,
+                    "scope": 140,
+                    "src": "1349:34:18",
+                    "stateVariable": false,
+                    "storageLocation": "default",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IStabilityPool_$1367",
+                      "typeString": "contract IStabilityPool"
+                    },
+                    "typeName": {
+                      "contractScope": null,
+                      "id": 65,
+                      "name": "IStabilityPool",
+                      "nodeType": "UserDefinedTypeName",
+                      "referencedDeclaration": 1367,
+                      "src": "1349:14:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IStabilityPool_$1367",
+                        "typeString": "contract IStabilityPool"
+                      }
+                    },
+                    "value": null,
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 70,
+                "initialValue": {
+                  "argumentTypes": null,
+                  "arguments": [],
+                  "expression": {
+                    "argumentTypes": [],
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 67,
+                      "name": "troveManagerCached",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 56,
+                      "src": "1386:18:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                        "typeString": "contract ITroveManager"
+                      }
+                    },
+                    "id": 68,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "stabilityPool",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 1536,
+                    "src": "1386:32:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$__$returns$_t_contract$_IStabilityPool_$1367_$",
+                      "typeString": "function () view external returns (contract IStabilityPool)"
+                    }
+                  },
+                  "id": 69,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1386:34:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IStabilityPool_$1367",
+                    "typeString": "contract IStabilityPool"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "1349:71:18"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 74,
+                          "name": "stabilityPoolCached",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 66,
+                          "src": "1453:19:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_IStabilityPool_$1367",
+                            "typeString": "contract IStabilityPool"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_contract$_IStabilityPool_$1367",
+                            "typeString": "contract IStabilityPool"
+                          }
+                        ],
+                        "id": 73,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1445:7:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": {
+                          "id": 72,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1445:7:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": null,
+                            "typeString": null
+                          }
+                        }
+                      },
+                      "id": 75,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1445:28:18",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 71,
+                    "name": "checkContract",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2493,
+                    "src": "1431:13:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_view$_t_address_$returns$__$",
+                      "typeString": "function (address) view"
+                    }
+                  },
+                  "id": 76,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1431:43:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 77,
+                "nodeType": "ExpressionStatement",
+                "src": "1431:43:18"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "id": 80,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "argumentTypes": null,
+                    "id": 78,
+                    "name": "stabilityPool",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 28,
+                    "src": "1485:13:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IStabilityPool_$1367",
+                      "typeString": "contract IStabilityPool"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "argumentTypes": null,
+                    "id": 79,
+                    "name": "stabilityPoolCached",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 66,
+                    "src": "1501:19:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IStabilityPool_$1367",
+                      "typeString": "contract IStabilityPool"
+                    }
+                  },
+                  "src": "1485:35:18",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IStabilityPool_$1367",
+                    "typeString": "contract IStabilityPool"
+                  }
+                },
+                "id": 81,
+                "nodeType": "ExpressionStatement",
+                "src": "1485:35:18"
+              },
+              {
+                "assignments": [
+                  83
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 83,
+                    "mutability": "mutable",
+                    "name": "yusdTokenCached",
+                    "nodeType": "VariableDeclaration",
+                    "overrides": null,
+                    "scope": 140,
+                    "src": "1699:23:18",
+                    "stateVariable": false,
+                    "storageLocation": "default",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "typeName": {
+                      "id": 82,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1699:7:18",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "value": null,
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 90,
+                "initialValue": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 86,
+                          "name": "troveManagerCached",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 56,
+                          "src": "1733:18:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                            "typeString": "contract ITroveManager"
+                          }
+                        },
+                        "id": 87,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "yusdToken",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1541,
+                        "src": "1733:28:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$__$returns$_t_contract$_IYUSDToken_$2463_$",
+                          "typeString": "function () view external returns (contract IYUSDToken)"
+                        }
+                      },
+                      "id": 88,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1733:30:18",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IYUSDToken_$2463",
+                        "typeString": "contract IYUSDToken"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_contract$_IYUSDToken_$2463",
+                        "typeString": "contract IYUSDToken"
+                      }
+                    ],
+                    "id": 85,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "nodeType": "ElementaryTypeNameExpression",
+                    "src": "1725:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_type$_t_address_$",
+                      "typeString": "type(address)"
+                    },
+                    "typeName": {
+                      "id": 84,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1725:7:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": null,
+                        "typeString": null
+                      }
+                    }
+                  },
+                  "id": 89,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "typeConversion",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1725:39:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "1699:65:18"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "id": 92,
+                      "name": "yusdTokenCached",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 83,
+                      "src": "1789:15:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 91,
+                    "name": "checkContract",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2493,
+                    "src": "1775:13:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_view$_t_address_$returns$__$",
+                      "typeString": "function (address) view"
+                    }
+                  },
+                  "id": 93,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1775:30:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 94,
+                "nodeType": "ExpressionStatement",
+                "src": "1775:30:18"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "id": 99,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "argumentTypes": null,
+                    "id": 95,
+                    "name": "yusdToken",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 30,
+                    "src": "1816:9:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$959",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 97,
+                        "name": "yusdTokenCached",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 83,
+                        "src": "1835:15:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 96,
+                      "name": "IERC20",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 959,
+                      "src": "1828:6:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IERC20_$959_$",
+                        "typeString": "type(contract IERC20)"
+                      }
+                    },
+                    "id": 98,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1828:23:18",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$959",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "src": "1816:35:18",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$959",
+                    "typeString": "contract IERC20"
+                  }
+                },
+                "id": 100,
+                "nodeType": "ExpressionStatement",
+                "src": "1816:35:18"
+              },
+              {
+                "assignments": [
+                  102
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 102,
+                    "mutability": "mutable",
+                    "name": "yetiTokenCached",
+                    "nodeType": "VariableDeclaration",
+                    "overrides": null,
+                    "scope": 140,
+                    "src": "1864:23:18",
+                    "stateVariable": false,
+                    "storageLocation": "default",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "typeName": {
+                      "id": 101,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1864:7:18",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "value": null,
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 109,
+                "initialValue": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 105,
+                          "name": "troveManagerCached",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 56,
+                          "src": "1898:18:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                            "typeString": "contract ITroveManager"
+                          }
+                        },
+                        "id": 106,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "yetiToken",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1546,
+                        "src": "1898:28:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$__$returns$_t_contract$_IYETIToken_$2404_$",
+                          "typeString": "function () view external returns (contract IYETIToken)"
+                        }
+                      },
+                      "id": 107,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1898:30:18",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IYETIToken_$2404",
+                        "typeString": "contract IYETIToken"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_contract$_IYETIToken_$2404",
+                        "typeString": "contract IYETIToken"
+                      }
+                    ],
+                    "id": 104,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "nodeType": "ElementaryTypeNameExpression",
+                    "src": "1890:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_type$_t_address_$",
+                      "typeString": "type(address)"
+                    },
+                    "typeName": {
+                      "id": 103,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1890:7:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": null,
+                        "typeString": null
+                      }
+                    }
+                  },
+                  "id": 108,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "typeConversion",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1890:39:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "1864:65:18"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "id": 111,
+                      "name": "yetiTokenCached",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 102,
+                      "src": "1954:15:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 110,
+                    "name": "checkContract",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 2493,
+                    "src": "1940:13:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_view$_t_address_$returns$__$",
+                      "typeString": "function (address) view"
+                    }
+                  },
+                  "id": 112,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1940:30:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 113,
+                "nodeType": "ExpressionStatement",
+                "src": "1940:30:18"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "id": 118,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "argumentTypes": null,
+                    "id": 114,
+                    "name": "yetiToken",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 32,
+                    "src": "1981:9:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$959",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 116,
+                        "name": "yetiTokenCached",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 102,
+                        "src": "2000:15:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 115,
+                      "name": "IERC20",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 959,
+                      "src": "1993:6:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IERC20_$959_$",
+                        "typeString": "type(contract IERC20)"
+                      }
+                    },
+                    "id": 117,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1993:23:18",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$959",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "src": "1981:35:18",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$959",
+                    "typeString": "contract IERC20"
+                  }
+                },
+                "id": 119,
+                "nodeType": "ExpressionStatement",
+                "src": "1981:35:18"
+              },
+              {
+                "assignments": [
+                  121
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 121,
+                    "mutability": "mutable",
+                    "name": "sYETICached",
+                    "nodeType": "VariableDeclaration",
+                    "overrides": null,
+                    "scope": 140,
+                    "src": "2029:18:18",
+                    "stateVariable": false,
+                    "storageLocation": "default",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISYETI_$1097",
+                      "typeString": "contract ISYETI"
+                    },
+                    "typeName": {
+                      "contractScope": null,
+                      "id": 120,
+                      "name": "ISYETI",
+                      "nodeType": "UserDefinedTypeName",
+                      "referencedDeclaration": 1097,
+                      "src": "2029:6:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ISYETI_$1097",
+                        "typeString": "contract ISYETI"
+                      }
+                    },
+                    "value": null,
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 125,
+                "initialValue": {
+                  "argumentTypes": null,
+                  "arguments": [],
+                  "expression": {
+                    "argumentTypes": [],
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 122,
+                      "name": "troveManagerCached",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 56,
+                      "src": "2050:18:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                        "typeString": "contract ITroveManager"
+                      }
+                    },
+                    "id": 123,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "sYETI",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 1551,
+                    "src": "2050:24:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$__$returns$_t_contract$_ISYETI_$1097_$",
+                      "typeString": "function () view external returns (contract ISYETI)"
+                    }
+                  },
+                  "id": 124,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2050:26:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISYETI_$1097",
+                    "typeString": "contract ISYETI"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "2029:47:18"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "id": 132,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "id": 127,
+                        "name": "_sYETIAddress",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 40,
+                        "src": "2095:13:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 130,
+                            "name": "sYETICached",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 121,
+                            "src": "2120:11:18",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_ISYETI_$1097",
+                              "typeString": "contract ISYETI"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_ISYETI_$1097",
+                              "typeString": "contract ISYETI"
+                            }
+                          ],
+                          "id": 129,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "2112:7:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": {
+                            "id": 128,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "2112:7:18",
+                            "typeDescriptions": {
+                              "typeIdentifier": null,
+                              "typeString": null
+                            }
+                          }
+                        },
+                        "id": 131,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2112:20:18",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "src": "2095:37:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "argumentTypes": null,
+                      "hexValue": "426f72726f77657257726170706572735363726970743a2057726f6e672053594554492061646472657373",
+                      "id": 133,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2134:45:18",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_c561b8d3e4b2ccca15d39dfb21bd3325a6913776370f3fe3334ef84ee9152d52",
+                        "typeString": "literal_string \"BorrowerWrappersScript: Wrong SYETI address\""
+                      },
+                      "value": "BorrowerWrappersScript: Wrong SYETI address"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_c561b8d3e4b2ccca15d39dfb21bd3325a6913776370f3fe3334ef84ee9152d52",
+                        "typeString": "literal_string \"BorrowerWrappersScript: Wrong SYETI address\""
+                      }
+                    ],
+                    "id": 126,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "2087:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 134,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2087:93:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 135,
+                "nodeType": "ExpressionStatement",
+                "src": "2087:93:18"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "id": 138,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "argumentTypes": null,
+                    "id": 136,
+                    "name": "sYETI",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 34,
+                    "src": "2191:5:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISYETI_$1097",
+                      "typeString": "contract ISYETI"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "argumentTypes": null,
+                    "id": 137,
+                    "name": "sYETICached",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 121,
+                    "src": "2199:11:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISYETI_$1097",
+                      "typeString": "contract ISYETI"
+                    }
+                  },
+                  "src": "2191:19:18",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISYETI_$1097",
+                    "typeString": "contract ISYETI"
+                  }
+                },
+                "id": 139,
+                "nodeType": "ExpressionStatement",
+                "src": "2191:19:18"
+              }
+            ]
+          },
+          "documentation": null,
+          "id": 141,
+          "implemented": true,
+          "kind": "constructor",
+          "modifiers": [
+            {
+              "arguments": [
+                {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "id": 44,
+                      "name": "_borrowerOperationsAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 36,
+                      "src": "1079:26:18",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 43,
+                    "name": "IBorrowerOperations",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 848,
+                    "src": "1059:19:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_type$_t_contract$_IBorrowerOperations_$848_$",
+                      "typeString": "type(contract IBorrowerOperations)"
+                    }
+                  },
+                  "id": 45,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "typeConversion",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1059:47:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IBorrowerOperations_$848",
+                    "typeString": "contract IBorrowerOperations"
+                  }
+                }
+              ],
+              "id": 46,
+              "modifierName": {
+                "argumentTypes": null,
+                "id": 42,
+                "name": "BorrowerOperationsScript",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 2172,
+                "src": "1034:24:18",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_contract$_BorrowerOperationsScript_$2172_$",
+                  "typeString": "type(contract BorrowerOperationsScript)"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "1034:73:18"
+            },
+            {
+              "arguments": [
+                {
+                  "argumentTypes": null,
+                  "id": 48,
+                  "name": "_sYETIAddress",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 40,
+                  "src": "1129:13:18",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                }
+              ],
+              "id": 49,
+              "modifierName": {
+                "argumentTypes": null,
+                "id": 47,
+                "name": "SYETIScript",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 2233,
+                "src": "1117:11:18",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_contract$_SYETIScript_$2233_$",
+                  "typeString": "type(contract SYETIScript)"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "1117:26:18"
+            }
+          ],
+          "name": "",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 41,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 36,
+                "mutability": "mutable",
+                "name": "_borrowerOperationsAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 141,
+                "src": "912:34:18",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 35,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "912:7:18",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 38,
+                "mutability": "mutable",
+                "name": "_troveManagerAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 141,
+                "src": "957:28:18",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 37,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "957:7:18",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 40,
+                "mutability": "mutable",
+                "name": "_sYETIAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 141,
+                "src": "996:21:18",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 39,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "996:7:18",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "901:123:18"
+          },
+          "returnParameters": {
+            "id": 50,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1165:0:18"
+          },
+          "scope": 156,
+          "src": "890:1328:18",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "public"
+        },
+        {
+          "body": {
+            "id": 154,
+            "nodeType": "Block",
+            "src": "6356:126:18",
+            "statements": [
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 149,
+                          "name": "_depositor",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 143,
+                          "src": "6402:10:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 147,
+                          "name": "troveManager",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 26,
+                          "src": "6375:12:18",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_ITroveManager_$1971",
+                            "typeString": "contract ITroveManager"
+                          }
+                        },
+                        "id": 148,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "isTroveActive",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 1738,
+                        "src": "6375:26:18",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_bool_$",
+                          "typeString": "function (address) view external returns (bool)"
+                        }
+                      },
+                      "id": 150,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "6375:38:18",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "argumentTypes": null,
+                      "hexValue": "426f72726f77657257726170706572735363726970743a2063616c6c6572206d757374206861766520616e206163746976652074726f7665",
+                      "id": 151,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "6415:58:18",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_4a4512576ce71beaeb35a15dcb8cfc5f7f1b6dd5bf4d03bc145033793f3160ee",
+                        "typeString": "literal_string \"BorrowerWrappersScript: caller must have an active trove\""
+                      },
+                      "value": "BorrowerWrappersScript: caller must have an active trove"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_4a4512576ce71beaeb35a15dcb8cfc5f7f1b6dd5bf4d03bc145033793f3160ee",
+                        "typeString": "literal_string \"BorrowerWrappersScript: caller must have an active trove\""
+                      }
+                    ],
+                    "id": 146,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "6367:7:18",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 152,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "6367:107:18",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 153,
+                "nodeType": "ExpressionStatement",
+                "src": "6367:107:18"
+              }
+            ]
+          },
+          "documentation": null,
+          "id": 155,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "_requireUserHasTrove",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 144,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 143,
+                "mutability": "mutable",
+                "name": "_depositor",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 155,
+                "src": "6322:18:18",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 142,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6322:7:18",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "6321:20:18"
+          },
+          "returnParameters": {
+            "id": 145,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6356:0:18"
+          },
+          "scope": 156,
+          "src": "6292:190:18",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "internal"
+        }
+      ],
+      "scope": 157,
+      "src": "510:5975:18"
+    }
+  ],
+  "src": "42:6443:18"
+}

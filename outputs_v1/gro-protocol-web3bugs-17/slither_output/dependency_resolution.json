@@ -1,0 +1,39 @@
+{
+ "project": "gro-protocol-web3bugs-17",
+ "package_manager": "npm",
+ "lockfile": null,
+ "attempts": [
+  {
+   "package": "all (package.json deps)",
+   "category": "NPM_SCOPED",
+   "command": "npm install --ignore-scripts --package-lock=false",
+   "attempt": 1,
+   "exit_code": 0,
+   "resolution": "RESOLVED",
+   "note": "node_modules present; no lockfile was created (prohibited flag)"
+  }
+ ],
+ "packages_resolved": [
+  {
+   "name": "@openzeppelin/contracts",
+   "method": "npm",
+   "version": "^3.3.0"
+  },
+  {
+   "name": "@chainlink/contracts",
+   "method": "npm",
+   "version": "0.0.11"
+  }
+ ],
+ "packages_unresolvable": [],
+ "incomplete_project_refs": [
+  {
+   "path": "contracts/interfaces/IChainlinkAggregator.sol",
+   "referenced_by": [
+    "contracts/pools/oracle/Buoy3Pool.sol"
+   ],
+   "reason": "file absent from project checkout"
+  }
+ ],
+ "brownie_remappings": []
+}

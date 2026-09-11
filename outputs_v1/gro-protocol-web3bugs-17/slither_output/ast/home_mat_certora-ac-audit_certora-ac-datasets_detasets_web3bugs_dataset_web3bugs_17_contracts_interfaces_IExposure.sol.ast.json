@@ -1,0 +1,895 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/interfaces/IExposure.sol",
+  "exportedSymbols": {
+    "IExposure": [
+      67
+    ]
+  },
+  "id": 68,
+  "license": "AGPLv3",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        ">=",
+        "0.6",
+        ".0",
+        "<",
+        "0.7",
+        ".0"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "36:31:1"
+    },
+    {
+      "id": 2,
+      "literals": [
+        "experimental",
+        "ABIEncoderV2"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "69:33:1"
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/common/StructDefinitions.sol",
+      "file": "../common/StructDefinitions.sol",
+      "id": 3,
+      "nodeType": "ImportDirective",
+      "scope": 68,
+      "sourceUnit": 149,
+      "src": "106:41:1",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "documentation": null,
+      "fullyImplemented": false,
+      "id": 67,
+      "linearizedBaseContracts": [
+        67
+      ],
+      "name": "IExposure",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "2b512dfc",
+          "id": 10,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "calcRiskExposure",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 6,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 5,
+                "mutability": "mutable",
+                "name": "sysState",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 10,
+                "src": "204:29:1",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_SystemState_$97_calldata_ptr",
+                  "typeString": "struct SystemState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 4,
+                  "name": "SystemState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 97,
+                  "src": "204:11:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SystemState_$97_storage_ptr",
+                    "typeString": "struct SystemState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "203:31:1"
+          },
+          "returnParameters": {
+            "id": 9,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 8,
+                "mutability": "mutable",
+                "name": "expState",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 10,
+                "src": "258:29:1",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ExposureState_$111_memory_ptr",
+                  "typeString": "struct ExposureState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 7,
+                  "name": "ExposureState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 111,
+                  "src": "258:13:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ExposureState_$111_storage_ptr",
+                    "typeString": "struct ExposureState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "257:31:1"
+          },
+          "scope": 67,
+          "src": "178:111:1",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "700a63f9",
+          "id": 17,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getExactRiskExposure",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 13,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 12,
+                "mutability": "mutable",
+                "name": "sysState",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 17,
+                "src": "327:29:1",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_SystemState_$97_calldata_ptr",
+                  "typeString": "struct SystemState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 11,
+                  "name": "SystemState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 97,
+                  "src": "327:11:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SystemState_$97_storage_ptr",
+                    "typeString": "struct SystemState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "326:31:1"
+          },
+          "returnParameters": {
+            "id": 16,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 15,
+                "mutability": "mutable",
+                "name": "expState",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 17,
+                "src": "381:29:1",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ExposureState_$111_memory_ptr",
+                  "typeString": "struct ExposureState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 14,
+                  "name": "ExposureState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 111,
+                  "src": "381:13:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ExposureState_$111_storage_ptr",
+                    "typeString": "struct ExposureState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "380:31:1"
+          },
+          "scope": 67,
+          "src": "297:115:1",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "c1106979",
+          "id": 30,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getUnifiedAssets",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 22,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 21,
+                "mutability": "mutable",
+                "name": "vaults",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 30,
+                "src": "446:26:1",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$3_calldata_ptr",
+                  "typeString": "address[3]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 18,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "446:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 20,
+                  "length": {
+                    "argumentTypes": null,
+                    "hexValue": "33",
+                    "id": 19,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "454:1:1",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_3_by_1",
+                      "typeString": "int_const 3"
+                    },
+                    "value": "3"
+                  },
+                  "nodeType": "ArrayTypeName",
+                  "src": "446:10:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$3_storage_ptr",
+                    "typeString": "address[3]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "445:28:1"
+          },
+          "returnParameters": {
+            "id": 29,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 24,
+                "mutability": "mutable",
+                "name": "unifiedTotalAssets",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 30,
+                "src": "524:26:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 23,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "524:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 28,
+                "mutability": "mutable",
+                "name": "unifiedAssets",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 30,
+                "src": "552:31:1",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$3_memory_ptr",
+                  "typeString": "uint256[3]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 25,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "552:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 27,
+                  "length": {
+                    "argumentTypes": null,
+                    "hexValue": "33",
+                    "id": 26,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "560:1:1",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_3_by_1",
+                      "typeString": "int_const 3"
+                    },
+                    "value": "3"
+                  },
+                  "nodeType": "ArrayTypeName",
+                  "src": "552:10:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$3_storage_ptr",
+                    "typeString": "uint256[3]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "523:61:1"
+          },
+          "scope": 67,
+          "src": "420:165:1",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "72ea0acc",
+          "id": 49,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "sortVaultsByDelta",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 43,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 32,
+                "mutability": "mutable",
+                "name": "bigFirst",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 49,
+                "src": "630:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 31,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "630:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 34,
+                "mutability": "mutable",
+                "name": "unifiedTotalAssets",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 49,
+                "src": "654:26:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 33,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "654:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 38,
+                "mutability": "mutable",
+                "name": "unifiedAssets",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 49,
+                "src": "691:33:1",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$3_calldata_ptr",
+                  "typeString": "uint256[3]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 35,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "691:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 37,
+                  "length": {
+                    "argumentTypes": null,
+                    "hexValue": "33",
+                    "id": 36,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "699:1:1",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_3_by_1",
+                      "typeString": "int_const 3"
+                    },
+                    "value": "3"
+                  },
+                  "nodeType": "ArrayTypeName",
+                  "src": "691:10:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$3_storage_ptr",
+                    "typeString": "uint256[3]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 42,
+                "mutability": "mutable",
+                "name": "targetPercents",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 49,
+                "src": "735:34:1",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$3_calldata_ptr",
+                  "typeString": "uint256[3]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 39,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "735:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 41,
+                  "length": {
+                    "argumentTypes": null,
+                    "hexValue": "33",
+                    "id": 40,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "743:1:1",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_3_by_1",
+                      "typeString": "int_const 3"
+                    },
+                    "value": "3"
+                  },
+                  "nodeType": "ArrayTypeName",
+                  "src": "735:10:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$3_storage_ptr",
+                    "typeString": "uint256[3]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "619:157:1"
+          },
+          "returnParameters": {
+            "id": 48,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 47,
+                "mutability": "mutable",
+                "name": "vaultIndexes",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 49,
+                "src": "800:30:1",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$3_memory_ptr",
+                  "typeString": "uint256[3]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 44,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "800:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 46,
+                  "length": {
+                    "argumentTypes": null,
+                    "hexValue": "33",
+                    "id": 45,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "808:1:1",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_3_by_1",
+                      "typeString": "int_const 3"
+                    },
+                    "value": "3"
+                  },
+                  "nodeType": "ArrayTypeName",
+                  "src": "800:10:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$3_storage_ptr",
+                    "typeString": "uint256[3]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "799:32:1"
+          },
+          "scope": 67,
+          "src": "593:239:1",
+          "stateMutability": "pure",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "fe11df06",
+          "id": 66,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "calcRoughDelta",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 60,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 53,
+                "mutability": "mutable",
+                "name": "targets",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 66,
+                "src": "874:27:1",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$3_calldata_ptr",
+                  "typeString": "uint256[3]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 50,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "874:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 52,
+                  "length": {
+                    "argumentTypes": null,
+                    "hexValue": "33",
+                    "id": 51,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "882:1:1",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_3_by_1",
+                      "typeString": "int_const 3"
+                    },
+                    "value": "3"
+                  },
+                  "nodeType": "ArrayTypeName",
+                  "src": "874:10:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$3_storage_ptr",
+                    "typeString": "uint256[3]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 57,
+                "mutability": "mutable",
+                "name": "vaults",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 66,
+                "src": "912:26:1",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$3_calldata_ptr",
+                  "typeString": "address[3]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 54,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "912:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 56,
+                  "length": {
+                    "argumentTypes": null,
+                    "hexValue": "33",
+                    "id": 55,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "920:1:1",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_3_by_1",
+                      "typeString": "int_const 3"
+                    },
+                    "value": "3"
+                  },
+                  "nodeType": "ArrayTypeName",
+                  "src": "912:10:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$3_storage_ptr",
+                    "typeString": "address[3]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 59,
+                "mutability": "mutable",
+                "name": "withdrawUsd",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 66,
+                "src": "949:19:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 58,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "949:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "863:112:1"
+          },
+          "returnParameters": {
+            "id": 65,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 64,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 66,
+                "src": "999:17:1",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$3_memory_ptr",
+                  "typeString": "uint256[3]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 61,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "999:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 63,
+                  "length": {
+                    "argumentTypes": null,
+                    "hexValue": "33",
+                    "id": 62,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "number",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1007:1:1",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_rational_3_by_1",
+                      "typeString": "int_const 3"
+                    },
+                    "value": "3"
+                  },
+                  "nodeType": "ArrayTypeName",
+                  "src": "999:10:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$3_storage_ptr",
+                    "typeString": "uint256[3]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "998:19:1"
+          },
+          "scope": 67,
+          "src": "840:178:1",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 68,
+      "src": "151:870:1"
+    }
+  ],
+  "src": "36:987:1"
+}

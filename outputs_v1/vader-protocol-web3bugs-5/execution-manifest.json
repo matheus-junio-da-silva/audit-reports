@@ -1,0 +1,71 @@
+{
+  "pipeline": "cac-v1.1.0",
+  "run_id": "$RUN_ID",
+  "project": "vader-protocol-web3bugs-5",
+  "start_time": "2026-08-26T17:27:13Z",
+  "end_time": "$NOW",
+  "stages": {
+    "stage1_context_extraction": {
+      "status": "completed",
+      "agent": "certora-slither-context",
+      "raw_coverage": 95.5,
+      "weighted_coverage": 93.9,
+      "ast_files": 23,
+      "contracts_analyzed": 23
+    },
+    "stage2_cvl_generation": {
+      "status": "completed",
+      "agent": "certora-access-control",
+      "specs_generated": 4,
+      "rules_total": 21,
+      "conf_files": 4
+    },
+    "stage3_interpretation": {
+      "status": "completed",
+      "agent": "certora-interpreter",
+      "rules_verified": 11,
+      "rules_confirmed_vuln": 0,
+      "rules_false_positive": 3,
+      "rules_indeterminate": 8
+    },
+    "stage4_poc_generation": {
+      "status": "completed",
+      "agent": "certora-poc-generator",
+      "pocs_generated": 3,
+      "pocs_passed": 0,
+      "pocs_false_positive": 3,
+      "forge_version": "$(forge --version 2>&1 | head -1)",
+      "solc_version": "0.8.3"
+    }
+  },
+  "results": {
+    "confirmed_vulnerabilities": 0,
+    "false_positives": 3,
+    "indeterminate": 8,
+    "verified_rules": 11,
+    "conclusion": "All Certora findings were false positives. Protocol access control is properly implemented."
+  },
+  "artifacts": {
+    "vulnerability_report": "$OUTPUT_BASE/vulnerability-report.md",
+    "poc_report": "$OUTPUT_BASE/poc/poc-report.md",
+    "poc_files": [
+      "$OUTPUT_BASE/poc/PoC_VaderInit.t.sol",
+      "$OUTPUT_BASE/poc/PoC_USDVTransferFrom.t.sol",
+      "$OUTPUT_BASE/poc/PoC_RouterInit.t.sol"
+    ],
+    "specs": [
+      "$OUTPUT_BASE/specs/Vader.spec",
+      "$OUTPUT_BASE/specs/USDV.spec",
+      "$OUTPUT_BASE/specs/Router.spec",
+      "$OUTPUT_BASE/specs/Vault.spec"
+    ],
+    "conf_files": [
+      "$OUTPUT_BASE/specs/Vader.conf",
+      "$OUTPUT_BASE/specs/USDV.conf",
+      "$OUTPUT_BASE/specs/Router.conf",
+      "$OUTPUT_BASE/specs/Vault.conf"
+    ],
+    "slither_output": "$OUTPUT_BASE/slither_output/",
+    "contract_priorities": "$OUTPUT_BASE/contract-priorities.json"
+  }
+}

@@ -1,0 +1,1455 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Dependencies/TroveManagerBase.sol",
+  "exportedSymbols": {
+    "TroveManagerBase": [
+      3254
+    ]
+  },
+  "id": 3255,
+  "license": "UNLICENSED",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 3133,
+      "literals": [
+        "solidity",
+        "0.6",
+        ".11"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "42:23:7"
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/ITroveManager.sol",
+      "file": "../Interfaces/ITroveManager.sol",
+      "id": 3134,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 4598,
+      "src": "69:41:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/IStabilityPool.sol",
+      "file": "../Interfaces/IStabilityPool.sol",
+      "id": 3135,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 3994,
+      "src": "112:42:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/ICollSurplusPool.sol",
+      "file": "../Interfaces/ICollSurplusPool.sol",
+      "id": 3136,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 3346,
+      "src": "156:44:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/IYUSDToken.sol",
+      "file": "../Interfaces/IYUSDToken.sol",
+      "id": 3137,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 4851,
+      "src": "202:38:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/ISortedTroves.sol",
+      "file": "../Interfaces/ISortedTroves.sol",
+      "id": 3138,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 3724,
+      "src": "242:41:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/IYETIToken.sol",
+      "file": "../Interfaces/IYETIToken.sol",
+      "id": 3139,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 4792,
+      "src": "285:38:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/ISYETI.sol",
+      "file": "../Interfaces/ISYETI.sol",
+      "id": 3140,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 3583,
+      "src": "325:34:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/IActivePool.sol",
+      "file": "../Interfaces/IActivePool.sol",
+      "id": 3141,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 5473,
+      "src": "361:39:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/ITroveManagerLiquidations.sol",
+      "file": "../Interfaces/ITroveManagerLiquidations.sol",
+      "id": 3142,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 4609,
+      "src": "402:53:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/ITroveManagerRedemptions.sol",
+      "file": "../Interfaces/ITroveManagerRedemptions.sol",
+      "id": 3143,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 4631,
+      "src": "457:52:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Dependencies/LiquityBase.sol",
+      "file": "./LiquityBase.sol",
+      "id": 3144,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 5302,
+      "src": "511:27:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Dependencies/Ownable.sol",
+      "file": "./Ownable.sol",
+      "id": 3145,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 5385,
+      "src": "540:23:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Dependencies/CheckContract.sol",
+      "file": "./CheckContract.sol",
+      "id": 3146,
+      "nodeType": "ImportDirective",
+      "scope": 3255,
+      "sourceUnit": 4882,
+      "src": "565:29:7",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "arguments": null,
+          "baseName": {
+            "contractScope": null,
+            "id": 3148,
+            "name": "LiquityBase",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 5301,
+            "src": "833:11:7",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_LiquityBase_$5301",
+              "typeString": "contract LiquityBase"
+            }
+          },
+          "id": 3149,
+          "nodeType": "InheritanceSpecifier",
+          "src": "833:11:7"
+        },
+        {
+          "arguments": null,
+          "baseName": {
+            "contractScope": null,
+            "id": 3150,
+            "name": "Ownable",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 5384,
+            "src": "846:7:7",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_Ownable_$5384",
+              "typeString": "contract Ownable"
+            }
+          },
+          "id": 3151,
+          "nodeType": "InheritanceSpecifier",
+          "src": "846:7:7"
+        },
+        {
+          "arguments": null,
+          "baseName": {
+            "contractScope": null,
+            "id": 3152,
+            "name": "CheckContract",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 4881,
+            "src": "855:13:7",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_CheckContract_$4881",
+              "typeString": "contract CheckContract"
+            }
+          },
+          "id": 3153,
+          "nodeType": "InheritanceSpecifier",
+          "src": "855:13:7"
+        }
+      ],
+      "contractDependencies": [
+        4881,
+        5301,
+        5384,
+        6219,
+        6281,
+        6641
+      ],
+      "contractKind": "contract",
+      "documentation": {
+        "id": 3147,
+        "nodeType": "StructuredDocumentation",
+        "src": "598:202:7",
+        "text": " Contains shared functionality of TroveManagerLiquidations, TroveManagerRedemptions, and TroveManager. \n Keeps addresses to cache, events, structs, status, etc. Also keeps Trove struct. "
+      },
+      "fullyImplemented": true,
+      "id": 3254,
+      "linearizedBaseContracts": [
+        3254,
+        4881,
+        5384,
+        5301,
+        6219,
+        6641,
+        6281
+      ],
+      "name": "TroveManagerBase",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "canonicalName": "TroveManagerBase.ContractsCache",
+          "id": 3168,
+          "members": [
+            {
+              "constant": false,
+              "id": 3155,
+              "mutability": "mutable",
+              "name": "activePool",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3168,
+              "src": "1064:22:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IActivePool_$5472",
+                "typeString": "contract IActivePool"
+              },
+              "typeName": {
+                "contractScope": null,
+                "id": 3154,
+                "name": "IActivePool",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 5472,
+                "src": "1064:11:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IActivePool_$5472",
+                  "typeString": "contract IActivePool"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3157,
+              "mutability": "mutable",
+              "name": "defaultPool",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3168,
+              "src": "1097:24:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IDefaultPool_$6272",
+                "typeString": "contract IDefaultPool"
+              },
+              "typeName": {
+                "contractScope": null,
+                "id": 3156,
+                "name": "IDefaultPool",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 6272,
+                "src": "1097:12:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IDefaultPool_$6272",
+                  "typeString": "contract IDefaultPool"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3159,
+              "mutability": "mutable",
+              "name": "yusdToken",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3168,
+              "src": "1132:20:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IYUSDToken_$4850",
+                "typeString": "contract IYUSDToken"
+              },
+              "typeName": {
+                "contractScope": null,
+                "id": 3158,
+                "name": "IYUSDToken",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 4850,
+                "src": "1132:10:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IYUSDToken_$4850",
+                  "typeString": "contract IYUSDToken"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3161,
+              "mutability": "mutable",
+              "name": "sYETI",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3168,
+              "src": "1163:12:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ISYETI_$3582",
+                "typeString": "contract ISYETI"
+              },
+              "typeName": {
+                "contractScope": null,
+                "id": 3160,
+                "name": "ISYETI",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 3582,
+                "src": "1163:6:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_ISYETI_$3582",
+                  "typeString": "contract ISYETI"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3163,
+              "mutability": "mutable",
+              "name": "sortedTroves",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3168,
+              "src": "1186:26:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ISortedTroves_$3723",
+                "typeString": "contract ISortedTroves"
+              },
+              "typeName": {
+                "contractScope": null,
+                "id": 3162,
+                "name": "ISortedTroves",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 3723,
+                "src": "1186:13:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_ISortedTroves_$3723",
+                  "typeString": "contract ISortedTroves"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3165,
+              "mutability": "mutable",
+              "name": "collSurplusPool",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3168,
+              "src": "1223:32:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ICollSurplusPool_$3345",
+                "typeString": "contract ICollSurplusPool"
+              },
+              "typeName": {
+                "contractScope": null,
+                "id": 3164,
+                "name": "ICollSurplusPool",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 3345,
+                "src": "1223:16:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_ICollSurplusPool_$3345",
+                  "typeString": "contract ICollSurplusPool"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3167,
+              "mutability": "mutable",
+              "name": "gasPoolAddress",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3168,
+              "src": "1266:22:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              },
+              "typeName": {
+                "id": 3166,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "1266:7:7",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            }
+          ],
+          "name": "ContractsCache",
+          "nodeType": "StructDefinition",
+          "scope": 3254,
+          "src": "1031:265:7",
+          "visibility": "public"
+        },
+        {
+          "canonicalName": "TroveManagerBase.SingleRedemptionValues",
+          "id": 3175,
+          "members": [
+            {
+              "constant": false,
+              "id": 3170,
+              "mutability": "mutable",
+              "name": "YUSDLot",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3175,
+              "src": "1345:12:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              },
+              "typeName": {
+                "id": 3169,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "1345:4:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3172,
+              "mutability": "mutable",
+              "name": "CollLot",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3175,
+              "src": "1368:16:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_newColls_$5492_storage_ptr",
+                "typeString": "struct YetiCustomBase.newColls"
+              },
+              "typeName": {
+                "contractScope": null,
+                "id": 3171,
+                "name": "newColls",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 5492,
+                "src": "1368:8:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_newColls_$5492_storage_ptr",
+                  "typeString": "struct YetiCustomBase.newColls"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3174,
+              "mutability": "mutable",
+              "name": "cancelledPartial",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3175,
+              "src": "1395:21:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              },
+              "typeName": {
+                "id": 3173,
+                "name": "bool",
+                "nodeType": "ElementaryTypeName",
+                "src": "1395:4:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            }
+          ],
+          "name": "SingleRedemptionValues",
+          "nodeType": "StructDefinition",
+          "scope": 3254,
+          "src": "1304:120:7",
+          "visibility": "public"
+        },
+        {
+          "canonicalName": "TroveManagerBase.Status",
+          "id": 3181,
+          "members": [
+            {
+              "id": 3176,
+              "name": "nonExistent",
+              "nodeType": "EnumValue",
+              "src": "1455:11:7"
+            },
+            {
+              "id": 3177,
+              "name": "active",
+              "nodeType": "EnumValue",
+              "src": "1477:6:7"
+            },
+            {
+              "id": 3178,
+              "name": "closedByOwner",
+              "nodeType": "EnumValue",
+              "src": "1494:13:7"
+            },
+            {
+              "id": 3179,
+              "name": "closedByLiquidation",
+              "nodeType": "EnumValue",
+              "src": "1518:19:7"
+            },
+            {
+              "id": 3180,
+              "name": "closedByRedemption",
+              "nodeType": "EnumValue",
+              "src": "1548:18:7"
+            }
+          ],
+          "name": "Status",
+          "nodeType": "EnumDefinition",
+          "src": "1432:141:7"
+        },
+        {
+          "canonicalName": "TroveManagerBase.TroveManagerOperation",
+          "id": 3186,
+          "members": [
+            {
+              "id": 3182,
+              "name": "applyPendingRewards",
+              "nodeType": "EnumValue",
+              "src": "1619:19:7"
+            },
+            {
+              "id": 3183,
+              "name": "liquidateInNormalMode",
+              "nodeType": "EnumValue",
+              "src": "1649:21:7"
+            },
+            {
+              "id": 3184,
+              "name": "liquidateInRecoveryMode",
+              "nodeType": "EnumValue",
+              "src": "1681:23:7"
+            },
+            {
+              "id": 3185,
+              "name": "redeemCollateral",
+              "nodeType": "EnumValue",
+              "src": "1715:16:7"
+            }
+          ],
+          "name": "TroveManagerOperation",
+          "nodeType": "EnumDefinition",
+          "src": "1581:157:7"
+        },
+        {
+          "canonicalName": "TroveManagerBase.Trove",
+          "id": 3199,
+          "members": [
+            {
+              "constant": false,
+              "id": 3188,
+              "mutability": "mutable",
+              "name": "colls",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3199,
+              "src": "1815:14:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_newColls_$5492_storage_ptr",
+                "typeString": "struct YetiCustomBase.newColls"
+              },
+              "typeName": {
+                "contractScope": null,
+                "id": 3187,
+                "name": "newColls",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 5492,
+                "src": "1815:8:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_newColls_$5492_storage_ptr",
+                  "typeString": "struct YetiCustomBase.newColls"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3190,
+              "mutability": "mutable",
+              "name": "debt",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3199,
+              "src": "1840:9:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              },
+              "typeName": {
+                "id": 3189,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "1840:4:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3194,
+              "mutability": "mutable",
+              "name": "stakes",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3199,
+              "src": "1860:31:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                "typeString": "mapping(address => uint256)"
+              },
+              "typeName": {
+                "id": 3193,
+                "keyType": {
+                  "id": 3191,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1868:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "nodeType": "Mapping",
+                "src": "1860:24:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                  "typeString": "mapping(address => uint256)"
+                },
+                "valueType": {
+                  "id": 3192,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1879:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3196,
+              "mutability": "mutable",
+              "name": "status",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3199,
+              "src": "1902:13:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_Status_$3181",
+                "typeString": "enum TroveManagerBase.Status"
+              },
+              "typeName": {
+                "contractScope": null,
+                "id": 3195,
+                "name": "Status",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 3181,
+                "src": "1902:6:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_Status_$3181",
+                  "typeString": "enum TroveManagerBase.Status"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 3198,
+              "mutability": "mutable",
+              "name": "arrayIndex",
+              "nodeType": "VariableDeclaration",
+              "overrides": null,
+              "scope": 3199,
+              "src": "1926:18:7",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint128",
+                "typeString": "uint128"
+              },
+              "typeName": {
+                "id": 3197,
+                "name": "uint128",
+                "nodeType": "ElementaryTypeName",
+                "src": "1926:7:7",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint128",
+                  "typeString": "uint128"
+                }
+              },
+              "value": null,
+              "visibility": "internal"
+            }
+          ],
+          "name": "Trove",
+          "nodeType": "StructDefinition",
+          "scope": 3254,
+          "src": "1791:161:7",
+          "visibility": "public"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3203,
+          "name": "BorrowerOperationsAddressChanged",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3202,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3201,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_newBorrowerOperationsAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3203,
+                "src": "1999:37:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3200,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1999:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "1998:39:7"
+          },
+          "src": "1960:78:7"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3207,
+          "name": "YUSDTokenAddressChanged",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3206,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3205,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_newYUSDTokenAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3207,
+                "src": "2074:28:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3204,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2074:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "2073:30:7"
+          },
+          "src": "2044:60:7"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3211,
+          "name": "ActivePoolAddressChanged",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3210,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3209,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_activePoolAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3211,
+                "src": "2141:26:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3208,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2141:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "2140:28:7"
+          },
+          "src": "2110:59:7"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3215,
+          "name": "DefaultPoolAddressChanged",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3214,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3213,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_defaultPoolAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3215,
+                "src": "2207:27:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3212,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2207:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "2206:29:7"
+          },
+          "src": "2175:61:7"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3219,
+          "name": "StabilityPoolAddressChanged",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3218,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3217,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_stabilityPoolAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3219,
+                "src": "2276:29:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3216,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2276:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "2275:31:7"
+          },
+          "src": "2242:65:7"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3223,
+          "name": "GasPoolAddressChanged",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3222,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3221,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_gasPoolAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3223,
+                "src": "2341:23:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3220,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2341:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "2340:25:7"
+          },
+          "src": "2313:53:7"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3227,
+          "name": "CollSurplusPoolAddressChanged",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3226,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3225,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_collSurplusPoolAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3227,
+                "src": "2408:31:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3224,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2408:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "2407:33:7"
+          },
+          "src": "2372:69:7"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3231,
+          "name": "SortedTrovesAddressChanged",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3230,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3229,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_sortedTrovesAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3231,
+                "src": "2480:28:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3228,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2480:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "2479:30:7"
+          },
+          "src": "2447:63:7"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3235,
+          "name": "YETITokenAddressChanged",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3234,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3233,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_yetiTokenAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3235,
+                "src": "2546:25:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3232,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2546:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "2545:27:7"
+          },
+          "src": "2516:57:7"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3239,
+          "name": "SYETIAddressChanged",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3238,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3237,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_sYETIAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3239,
+                "src": "2605:21:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3236,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2605:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "2604:23:7"
+          },
+          "src": "2579:49:7"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 3253,
+          "name": "TroveUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 3252,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 3241,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "_borrower",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3253,
+                "src": "2655:25:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3240,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2655:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3243,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_debt",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3253,
+                "src": "2682:10:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3242,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2682:4:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3246,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_tokens",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3253,
+                "src": "2694:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                  "typeString": "address[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 3244,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2694:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 3245,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "2694:9:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3249,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_amounts",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3253,
+                "src": "2713:15:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                  "typeString": "uint256[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 3247,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2713:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 3248,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "2713:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                    "typeString": "uint256[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3251,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "operation",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 3253,
+                "src": "2730:31:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_TroveManagerOperation_$3186",
+                  "typeString": "enum TroveManagerBase.TroveManagerOperation"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 3250,
+                  "name": "TroveManagerOperation",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 3186,
+                  "src": "2730:21:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_TroveManagerOperation_$3186",
+                    "typeString": "enum TroveManagerBase.TroveManagerOperation"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "2654:108:7"
+          },
+          "src": "2636:127:7"
+        }
+      ],
+      "scope": 3255,
+      "src": "804:1962:7"
+    }
+  ],
+  "src": "42:2726:7"
+}

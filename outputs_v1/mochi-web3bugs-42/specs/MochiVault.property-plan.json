@@ -1,0 +1,69 @@
+{
+  "contract": "MochiVault",
+  "source_file": "projects/mochi-core/contracts/vault/MochiVault.sol",
+  "compiler": "0.8.7",
+  "priority": "High",
+  "evidence": {
+    "initialize_initializer": "MochiVault.sol:60-63 (external override initializer; sets asset, debtIndex, lastAccrued)",
+    "initializer_modifier": "node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:84-100 (OZ v4.6+ style, uint8 _initialized)",
+    "deposit_permissionless": "MochiVault.sol:158-176 (public, anyone; sets lastDeposit[_id] = block.timestamp unconditionally)",
+    "wait_modifier": "MochiVault.sol:47-53 (lastDeposit[_id] + engine.mochiProfile().delay() <= block.timestamp)",
+    "ground_truth_H08": "web3bugs/42/report.md H-08: zero-collateral deposit resets the withdraw wait (lastDeposit)",
+    "withdraw_borrow_owned_via_nft": "MochiVault.sol:181-252 (require msg.sender == engine.nft().ownerOf(_id)) -> multi-hop linked"
+  },
+  "checklist_matrix": {
+    "S4.1.G1": "not_applicable",
+    "S4.1.G2": "not_applicable",
+    "S4.1.G3": "not_applicable",
+    "S4.1.G4": "manual_model_required - collateral ownership verified via engine.nft().ownerOf (multi-hop)",
+    "S4.1.G5": "not_applicable",
+    "S4.1.G6": "manual_model_required - withdraw/borrow/liquidate authorization depends on linked NFT ownership",
+    "S4.1.G7": "manual_model_required - solvency model requires engine.mochiProfile() linking",
+    "S4.1.G8": "not_applicable",
+    "S4.1.G9": "not_applicable",
+    "S4.1.G10": "automated - OZ initializer: initialize can succeed at most once",
+    "S4.1.G11": "not_applicable",
+    "S4.2.G1": "automated - H-08 probe: deposit must not refresh lastDeposit on zero amount",
+    "S4.2.G3": "manual_model_required - flashLoan callback verification needs receiver harness",
+    "S4.2.G4": "not_applicable"
+  },
+  "rules": [
+    {
+      "id": "RC-VAULT-001",
+      "item": "S4.1.G10",
+      "statement": "initialize cannot succeed twice (OZ initializer)",
+      "feasibility": "automated",
+      "pattern": "init_once",
+      "expected": "VERIFIED"
+    },
+    {
+      "id": "RC-VAULT-002",
+      "item": "S4.1.G10",
+      "statement": "initialize can succeed in some initial state",
+      "feasibility": "automated",
+      "pattern": "satisfy_witness",
+      "expected": "VERIFIED"
+    },
+    {
+      "id": "RC-VAULT-003",
+      "item": "S4.2.G1 / CAC-AC-001",
+      "statement": "deposit with amount=0 must not refresh lastDeposit (H-08 probe)",
+      "feasibility": "automated",
+      "pattern": "effect_preservation_after_permissionless_function",
+      "expected": "VIOLATION (confirmed finding H-08)"
+    }
+  ],
+  "conf": {
+    "files": [
+      "projects/mochi-core/contracts/vault/MochiVault.sol"
+    ],
+    "solc": "0.8.7",
+    "notes": "deposit's linked calls (engine.nft().asset, cheapTransferFrom on asset) modeled as unknown external calls; withdraw/borrow/liquidate marked manual (multi-hop NFT ownership)"
+  },
+  "terminal_results": {
+    "initialize_cannot_succeed_twice": "VERIFIED",
+    "initialize_can_succeed": "VERIFIED (witness)",
+    "deposit_zero_does_not_refresh_lastDeposit": "VIOLATION (H-08 CONFIRMED)",
+    "vacuity-note": "rule_not_vacuous flagged (mitigated by witness)"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "contract": "WithdrawHandler",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/WithdrawHandler.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "coverage_status": "FULL",
+  "authority_model": {
+    "kind": "ownership_public_user_functions",
+    "predicate": "per-function: onlyOwner (setDependencies) | none (withdrawal entry points are open; burn authorization enforced on Controller side via burnGToken = withdrawHandler/emergencyHandler)",
+    "evidence": [
+      "WithdrawHandler.sol:75 setDependencies external onlyOwner",
+      "WithdrawHandler.sol:98 withdrawByLPToken external (open; burns msg.sender's own tokens via ctrl.burnGToken)",
+      "WithdrawHandler.sol:122 withdrawByStablecoin external (open)",
+      "WithdrawHandler.sol:152 withdrawAllSingle external (open)",
+      "WithdrawHandler.sol:167 withdrawAllBalanced external (open)",
+      "Controller.sol:398 burnGToken require(msg.sender in {withdrawHandler, emergencyHandler})"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "setDependencies()",
+      "claim": "a caller other than the pre-state owner cannot rewire protocol dependencies (ctrl/lg/buoy/insurance/emergencyHandler)",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setDependencies()"],
+      "hypotheses": [],
+      "reachability_check": "successful path additionally requires a live controller; recorded rather than proven in the isolated proof",
+      "source_evidence": ["WithdrawHandler.sol:75-88"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "not_applicable",
+      "target": "withdrawByLPToken/withdrawByStablecoin/withdrawAllSingle/withdrawAllBalanced",
+      "claim": "withdrawals deliberately accept any user; the user redeems their own tokens and burn authorization is enforced on the Controller side (burnGToken restricted to whitelisted handler registry). No additional authorization is intended.",
+      "property_kind": "none",
+      "symbols": ["withdrawByLPToken(bool,uint256,uint256[3])", "withdrawByStablecoin(bool,uint256,uint256,uint256)", "withdrawAllSingle(bool,uint256,uint256)", "withdrawAllBalanced(bool,uint256[3])"],
+      "hypotheses": [],
+      "reachability_check": "n/a",
+      "source_evidence": ["WithdrawHandler.sol:98-171"]
+    }
+  ],
+  "not_applicable": [
+    {"id": "S4.1.G2", "reason": "no RBAC", "evidence": "owner + open user functions"},
+    {"id": "S4.1.G4", "reason": "no ERC20 debit surface", "evidence": "no transferFrom"},
+    {"id": "S4.1.G7", "reason": "no privileged unconstrained asset withdrawal; burn routed via controller gate", "evidence": "no rescue/sweep"},
+    {"id": "S4.1.G8", "reason": "no timelock", "evidence": "no delay state"},
+    {"id": "S4.1.G9", "reason": "withdrawals public by design", "evidence": "WithdrawHandler.sol:98-171"},
+    {"id": "S4.1.G10", "reason": "no initialize()", "evidence": "constructor sets FixedStablecoins/FixedVaults"},
+    {"id": "S4.1.G11", "reason": "inherits OZ one-step ownership transfer", "evidence": "Ownable via Controllable"},
+    {"id": "S4.2.G3", "reason": "no callback", "evidence": "no callback surface"},
+    {"id": "S4.2.G4", "reason": "no allowance policy", "evidence": "no allowance state"}
+  ]
+}

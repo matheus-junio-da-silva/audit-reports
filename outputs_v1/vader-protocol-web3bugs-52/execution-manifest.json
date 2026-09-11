@@ -1,0 +1,89 @@
+{
+  "run_id": "20260828T123141.684159189-e019f99a",
+  "project": "vader-protocol-web3bugs-52",
+  "pipeline": "certora-ac-audit (CAC v1.1.0)",
+  "gate_decision": "PASS",
+  "pre_flight_verdict": "READY",
+  "stages": {
+    "1_certora-slither-context": {
+      "status": "COMPLETED",
+      "started": "2026-08-28T13:10:20Z",
+      "ended": "2026-08-28T13:17:54Z",
+      "elapsed_seconds": 454,
+      "outputs": [
+        "slither_output/access_control.md",
+        "slither_output/project_summary.md",
+        "slither_output/knowledge_graph.json",
+        "slither_output/ast/ast_manifest.json",
+        "project_info.json",
+        "coverage_gaps.json"
+      ],
+      "feedback": "runs/20260828T123141.684159189-e019f99a/feedback-logs/feedback-slither-context-20260828T123141.684159189-e019f99a.md"
+    },
+    "2_certora-access-control": {
+      "status": "COMPLETED",
+      "started": "2026-08-28T13:17:54Z",
+      "ended": "2026-08-28T15:10:00Z",
+      "elapsed_seconds": 6730,
+      "outputs": [
+        "specs/VaderPoolV2.{property-plan.json,spec,conf}",
+        "specs/BasePoolV2.{property-plan.json,spec,conf}",
+        "specs/VaderReserve.{property-plan.json,spec,conf}",
+        "specs/GovernorAlpha.{property-plan.json,spec,conf}",
+        "specs/Timelock.{property-plan.json,spec,conf}",
+        "specs/Vader.{property-plan.json,spec,conf}",
+        "specs/Owned.{property-plan.json,spec,conf}",
+        "specs/StakingRewards.{property-plan.json,spec,conf}",
+        "certora-raw-output.txt"
+      ],
+      "verified_rules": 38,
+      "confirmed_vulnerabilities": 2,
+      "model_errors_resolved": 1,
+      "indeterminate": 1,
+      "feedback": "runs/20260828T123141.684159189-e019f99a/feedback-logs/feedback-certora-access-control-20260828T123141.684159189-e019f99a.md"
+    },
+    "3_certora-interpreter": {
+      "status": "COMPLETED",
+      "started": "2026-08-28T15:20:00Z",
+      "ended": "2026-08-28T15:35:00Z",
+      "elapsed_seconds": 900,
+      "outputs": ["vulnerability-report.md"],
+      "feedback": "runs/20260828T123141.684159189-e019f99a/feedback-logs/feedback-certora-interpreter-20260828T123141.684159189-e019f99a.md"
+    },
+    "4_certora-poc-generator": {
+      "status": "COMPLETED",
+      "started": "2026-08-28T15:44:00Z",
+      "ended": "2026-08-28T15:52:00Z",
+      "elapsed_seconds": 480,
+      "outputs": [
+        "poc/foundry.toml",
+        "poc/src/Mocks.sol",
+        "poc/PoC_MintSynth.t.sol",
+        "poc/PoC_MintFungible.t.sol",
+        "poc/poc-report.md"
+      ],
+      "tests_passed": 2,
+      "tests_failed": 0,
+      "feedback": "runs/20260828T123141.684159189-e019f99a/feedback-logs/feedback-poc-generator-20260828T123141.684159189-e019f99a.md"
+    }
+  },
+  "findings": {
+    "CAC-AC-001-mintSynth": {
+      "severity": "High",
+      "checklist_item": "S4.2.G1",
+      "rule": "mintSynth_not_router_restricted",
+      "status": "confirmed_vulnerability",
+      "poC": "poc/PoC_MintSynth.t.sol"
+    },
+    "CAC-AC-001-mintFungible": {
+      "severity": "High",
+      "checklist_item": "S4.2.G1",
+      "rule": "mintFungible_not_router_restricted",
+      "status": "confirmed_vulnerability",
+      "poC": "poc/PoC_MintFungible.t.sol"
+    }
+  },
+  "pipeline_result": "COMPLETED",
+  "total_elapsed_seconds": 9730,
+  "generated_at": "2026-08-28T15:52:00Z"
+}

@@ -1,0 +1,67 @@
+{
+  "contract": "VaderReserve",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/reserve/VaderReserve.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "router_and_owner",
+    "predicates": [
+      "e.msg.sender == router",
+      "e.msg.sender == owner()"
+    ],
+    "evidence": [
+      "VaderReserve.sol:80-83 reimburseImpermanentLoss require(msg.sender == router)",
+      "VaderReserve.sol:49-62 grant onlyOwner",
+      "VaderReserve.sol:66-74 initialize onlyOwner"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "reimburseImpermanentLoss(address,uint256)",
+      "claim": "a caller other than the router cannot pay out impermanent loss coverage",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["router()", "reimburseImpermanentLoss(address,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "router caller can reimburse when reserve is non-zero",
+      "source_evidence": ["VaderReserve.sol:76-90 reimburseImpermanentLoss require(msg.sender == router)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "grant(address,uint256)",
+      "claim": "a caller other than the owner cannot distribute grants",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "grant(address,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "owner caller can grant once per throttle window",
+      "source_evidence": ["VaderReserve.sol:49-62 grant onlyOwner throttle"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "initialize(address,address)",
+      "claim": "a caller other than the owner cannot initialize the reserve",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "initialize(address,address)"],
+      "hypotheses": [],
+      "reachability_check": "owner caller can initialize with non-zero arguments",
+      "source_evidence": ["VaderReserve.sol:66-74 initialize onlyOwner"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "reimburseImpermanentLoss(address,uint256)",
+      "claim": "the router is able to reimburse impermanent loss (authorized-path witness)",
+      "property_kind": "specific_authorized_witness",
+      "symbols": ["router()", "reimburseImpermanentLoss(address,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "satisfy witness with msg.sender == router",
+      "source_evidence": ["VaderReserve.sol:76-90 reimburseImpermanentLoss router-checked payout"]
+    }
+  ]
+}

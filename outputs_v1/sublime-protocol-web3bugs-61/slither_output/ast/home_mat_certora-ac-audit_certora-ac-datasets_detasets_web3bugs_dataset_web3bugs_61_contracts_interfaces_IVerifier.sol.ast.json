@@ -1,0 +1,191 @@
+{
+  "absolutePath": "contracts/interfaces/IVerifier.sol",
+  "exportedSymbols": {
+    "IVerifier": [
+      18790
+    ]
+  },
+  "id": 18791,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 18775,
+      "literals": [
+        "solidity",
+        "0.7",
+        ".6"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "33:22:54"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "fullyImplemented": true,
+      "id": 18790,
+      "linearizedBaseContracts": [
+        18790
+      ],
+      "name": "IVerifier",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18776,
+            "nodeType": "StructuredDocumentation",
+            "src": "86:269:54",
+            "text": " @notice emitted when a user is registered\n @param user address of user registered\n @param isMasterLinked if true, master address is also considered to be linked to itself\n @param metadata any metadata related to registered user"
+          },
+          "id": 18784,
+          "name": "UserRegistered",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18783,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18778,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "user",
+                "nodeType": "VariableDeclaration",
+                "scope": 18784,
+                "src": "382:12:54",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18777,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "382:7:54",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18780,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "isMasterLinked",
+                "nodeType": "VariableDeclaration",
+                "scope": 18784,
+                "src": "396:19:54",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 18779,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "396:4:54",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18782,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "metadata",
+                "nodeType": "VariableDeclaration",
+                "scope": 18784,
+                "src": "417:15:54",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_memory_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 18781,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "417:6:54",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "381:52:54"
+          },
+          "src": "361:73:54"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18785,
+            "nodeType": "StructuredDocumentation",
+            "src": "442:117:54",
+            "text": " @notice emitted when a user is unregistered\n @param user address of the user unregistered"
+          },
+          "id": 18789,
+          "name": "UserUnregistered",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18788,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18787,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "user",
+                "nodeType": "VariableDeclaration",
+                "scope": 18789,
+                "src": "588:12:54",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18786,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "588:7:54",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "587:14:54"
+          },
+          "src": "565:37:54"
+        }
+      ],
+      "scope": 18791,
+      "src": "59:546:54"
+    }
+  ],
+  "src": "33:574:54"
+}

@@ -1,0 +1,71 @@
+{
+  "contract": "Timelock",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/governance/Timelock.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "admin_and_pending_admin",
+    "predicates": [
+      "e.msg.sender == admin",
+      "e.msg.sender == pendingAdmin",
+      "e.msg.sender == address(this)"
+    ],
+    "evidence": [
+      "Timelock.sol:203-210 queueTransaction require(msg.sender == admin)",
+      "Timelock.sol:231-242 cancelTransaction require(msg.sender == admin)",
+      "Timelock.sol:262-265 executeTransaction require(msg.sender == admin)",
+      "Timelock.sol:161-170 acceptAdmin require(msg.sender == pendingAdmin)",
+      "Timelock.sol:135-151 setDelay require(msg.sender == address(this))",
+      "Timelock.sol:179-187 setPendingAdmin require(msg.sender == address(this))"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-005",
+      "id": "S4.1.G8",
+      "status": "applicable",
+      "target": "executeTransaction(address,uint256,string,bytes,uint256)",
+      "claim": "a queued operation cannot execute before its eta (delay) is reached",
+      "property_kind": "flow_rule",
+      "symbols": ["admin()", "delay()", "queueTransaction(...)", "executeTransaction(...)"],
+      "hypotheses": ["admin caller", "eta >= now + delay on queue", "same calldata replayed"],
+      "reachability_check": "queue step succeeds; execution under same block time reverts",
+      "source_evidence": ["Timelock.sol:267-281 executeTransaction require queued, require now >= eta", "Timelock.sol:207-210 queueTransaction require eta >= now + delay"]
+    },
+    {
+      "ontology_id": "CAC-AC-008",
+      "id": "S4.1.G11",
+      "status": "applicable",
+      "target": "acceptAdmin() / setPendingAdmin(address)",
+      "claim": "admin transfer is two-step: a caller other than pendingAdmin cannot accept; pendingAdmin can accept and becomes admin",
+      "property_kind": "two_step_transfer",
+      "symbols": ["admin()", "pendingAdmin()", "acceptAdmin()", "setPendingAdmin(address)"],
+      "hypotheses": ["pendingAdmin() != address(0)"],
+      "reachability_check": "nominated acceptor path exists; non-nominated caller reverts",
+      "source_evidence": ["Timelock.sol:161-170 acceptAdmin require(msg.sender == pendingAdmin)", "Timelock.sol:179-187 setPendingAdmin self-only"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "queueTransaction(...) / cancelTransaction(...) / executeTransaction(...)",
+      "claim": "only the admin can queue, cancel, or execute transactions",
+      "property_kind": "specific_revert_rules",
+      "symbols": ["admin()", "queueTransaction(...)", "cancelTransaction(...)", "executeTransaction(...)"],
+      "hypotheses": [],
+      "reachability_check": "admin actions reachable",
+      "source_evidence": ["Timelock.sol:203-210", "Timelock.sol:231-242", "Timelock.sol:262-265"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "setDelay(uint256) / setPendingAdmin(address)",
+      "claim": "delay and pending-admin configuration can only be triggered by the timelock itself",
+      "property_kind": "specific_revert_rules",
+      "symbols": ["setDelay(uint256)", "setPendingAdmin(address)"],
+      "hypotheses": ["e.msg.sender != currentContract"],
+      "reachability_check": "self-invocation path via executed proposal",
+      "source_evidence": ["Timelock.sol:135-151 setDelay self-only", "Timelock.sol:179-187 setPendingAdmin self-only"]
+    }
+  ]
+}

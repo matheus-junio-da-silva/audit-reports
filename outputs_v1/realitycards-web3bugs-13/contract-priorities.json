@@ -1,0 +1,1462 @@
+{
+  "schema_version": "1.1",
+  "ontology": {
+    "id": "cac-access-control",
+    "version": "1.0.0"
+  },
+  "selection_rule": "Generate CVL for High and Medium; review Low; skip only explicit structural exclusions.",
+  "contracts": [
+    {
+      "contract": "RCTreasury",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/RCTreasury.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "addMarket",
+        "setMinRental",
+        "setMaxContractBalance",
+        "changeGlobalPause",
+        "changePauseMarket",
+        "toggleWhitelist",
+        "addToWhitelist",
+        "batchAddToWhitelist",
+        "setFactoryAddress",
+        "setOrderbookAddress",
+        "setNftHubAddress",
+        "setTokenAddress",
+        "setBridgeAddress",
+        "changeUberOwner",
+        "deposit",
+        "withdrawDeposit",
+        "topupMarketBalance",
+        "payRent",
+        "payout",
+        "refundUser",
+        "sponsor",
+        "updateLastRentalTime",
+        "updateRentalRate",
+        "increaseBidRate",
+        "decreaseBidRate",
+        "resetUser",
+        "collectRentUser"
+      ],
+      "critical_functions": [
+        "addToWhitelist",
+        "batchAddToWhitelist",
+        "changeGlobalPause",
+        "changePauseMarket",
+        "changeUberOwner",
+        "toggleWhitelist"
+      ],
+      "asset_functions": [
+        "deposit",
+        "refundUser",
+        "setMaxContractBalance",
+        "topupMarketBalance",
+        "withdrawDeposit"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "addToWhitelist",
+        "batchAddToWhitelist",
+        "changeUberOwner",
+        "topupMarketBalance"
+      ],
+      "authority_variables": [
+        "uberOwner"
+      ],
+      "asset_variables": [
+        "marketBalance",
+        "marketBalanceDiscrepancy",
+        "maxContractBalance",
+        "totalDeposits"
+      ],
+      "modifiers": [
+        "balancedBooks",
+        "onlyMarkets",
+        "onlyOrderbook",
+        "onlyOwner"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "IERC20",
+        "IRCBridge",
+        "IRCFactory",
+        "IRCNftHubL2",
+        "IRCOrderbook",
+        "IRCTreasury",
+        "NativeMetaTransaction",
+        "Ownable",
+        "User",
+        "balancedBooks",
+        "onlyMarkets",
+        "onlyOrderbook",
+        "onlyOwner"
+      ],
+      "score": 43,
+      "priority": "High",
+      "reasons": [
+        "27 mutable entry points",
+        "critical lifecycle/configuration functions (+12)",
+        "asset or accounting functions (+10)",
+        "critical surface without explicit modifier (+6)",
+        "authority state (+2 supporting)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "RCMarket",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/RCMarket.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "initialize",
+        "upgradeCard",
+        "transferCard",
+        "getWinnerFromOracle",
+        "setAmicableResolution",
+        "lockMarket",
+        "withdraw",
+        "claimCard",
+        "payArtist",
+        "payMarketCreator",
+        "payAffiliate",
+        "payCardAffiliate",
+        "collectRentAllCards",
+        "rentAllCards",
+        "newRental",
+        "updateTimeHeldLimit",
+        "exitAll",
+        "exit",
+        "sponsor",
+        "sponsor",
+        "circuitBreaker"
+      ],
+      "critical_functions": [
+        "initialize",
+        "upgradeCard"
+      ],
+      "asset_functions": [
+        "claimCard",
+        "transferCard",
+        "withdraw"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "claimCard",
+        "transferCard",
+        "withdraw"
+      ],
+      "authority_variables": [
+        "longestOwner"
+      ],
+      "asset_variables": [
+        "totalNftMintCount",
+        "treasury",
+        "userAlreadyClaimed",
+        "userAlreadyWithdrawn"
+      ],
+      "modifiers": [
+        "autoLock",
+        "autoUnlock",
+        "initializer",
+        "onlyTokenOwner"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "IRCFactory",
+        "IRCMarket",
+        "IRCNftHubL2",
+        "IRCOrderbook",
+        "IRCTreasury",
+        "IRealitio",
+        "Initializable",
+        "Mode",
+        "NativeMetaTransaction",
+        "States",
+        "autoLock",
+        "autoUnlock",
+        "initializer",
+        "onlyTokenOwner"
+      ],
+      "score": 33,
+      "priority": "High",
+      "reasons": [
+        "21 mutable entry points",
+        "critical lifecycle/configuration functions (+6)",
+        "asset or accounting functions (+6)",
+        "critical surface without explicit modifier (+6)",
+        "authority state (+2 supporting)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "RCNftHubL2",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/nfthubs/RCNftHubL2.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "addMarket",
+        "setFactoryAddress",
+        "mint",
+        "transferNft",
+        "deposit",
+        "withdraw",
+        "withdrawWithMetadata",
+        "transferFrom",
+        "safeTransferFrom"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "deposit",
+        "mint",
+        "safeTransferFrom",
+        "transferFrom",
+        "transferNft",
+        "withdraw",
+        "withdrawWithMetadata"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "mint",
+        "safeTransferFrom",
+        "transferFrom",
+        "transferNft",
+        "withdraw",
+        "withdrawWithMetadata"
+      ],
+      "authority_variables": [
+        "DEPOSITOR_ROLE"
+      ],
+      "asset_variables": [
+        "DEPOSITOR_ROLE",
+        "withdrawnTokens"
+      ],
+      "modifiers": [
+        "onlyOwner",
+        "onlyRole"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "AccessControl",
+        "ERC721",
+        "ERC721URIStorage",
+        "IRCMarket",
+        "IRCNftHubL2",
+        "NativeMetaTransaction",
+        "Ownable",
+        "onlyOwner",
+        "onlyRole",
+        "super"
+      ],
+      "score": 33,
+      "priority": "High",
+      "reasons": [
+        "9 mutable entry points",
+        "asset or accounting functions (+12)",
+        "critical surface without explicit modifier (+6)",
+        "authority state (+2 supporting)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "ERC20",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "transfer",
+        "approve",
+        "transferFrom",
+        "increaseAllowance",
+        "decreaseAllowance"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "decreaseAllowance",
+        "increaseAllowance",
+        "transfer",
+        "transferFrom"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "decreaseAllowance",
+        "increaseAllowance",
+        "transfer",
+        "transferFrom"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "_allowances",
+        "_balances",
+        "_totalSupply"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Context",
+        "IERC20",
+        "IERC20Metadata"
+      ],
+      "score": 25,
+      "priority": "High",
+      "reasons": [
+        "5 mutable entry points",
+        "asset or accounting functions (+8)",
+        "critical surface without explicit modifier (+6)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "RCOrderbook",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/RCOrderbook.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "changeUberOwner",
+        "setFactoryAddress",
+        "setLimits",
+        "addMarket",
+        "addBidToOrderbook",
+        "removeBidFromOrderbook",
+        "findNewOwner",
+        "removeUserFromOrderbook",
+        "closeMarket",
+        "removeOldBids",
+        "setTimeHeldlimit",
+        "reduceTimeHeldLimit"
+      ],
+      "critical_functions": [
+        "changeUberOwner",
+        "findNewOwner"
+      ],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "changeUberOwner"
+      ],
+      "authority_variables": [
+        "ownerOf",
+        "uberOwner"
+      ],
+      "asset_variables": [
+        "treasury",
+        "treasuryAddress"
+      ],
+      "modifiers": [
+        "onlyMarkets"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "Bid",
+        "IRCMarket",
+        "IRCOrderbook",
+        "IRCTreasury",
+        "Market",
+        "NativeMetaTransaction",
+        "Ownable",
+        "onlyMarkets"
+      ],
+      "score": 23,
+      "priority": "High",
+      "reasons": [
+        "12 mutable entry points",
+        "critical lifecycle/configuration functions (+6)",
+        "critical surface without explicit modifier (+2)",
+        "authority state (+2 supporting)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "RCFactory",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/RCFactory.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "setNftHubAddress",
+        "setOrderbookAddress",
+        "setPotDistribution",
+        "setminimumPriceIncreasePercent",
+        "setNFTMintingLimit",
+        "setMaxRentIterations",
+        "setRealitioAddress",
+        "setArbitrator",
+        "setTimeout",
+        "changeMarketCreationGovernorsOnly",
+        "changeApprovedArtistsOnly",
+        "changeApprovedAffilliatesOnly",
+        "setSponsorshipRequired",
+        "changeTrapCardsIfUnapproved",
+        "setAdvancedWarning",
+        "setMaximumDuration",
+        "changeGovernorApproval",
+        "changeMarketApproval",
+        "changeArtistApproval",
+        "changeAffiliateApproval",
+        "changeCardAffiliateApproval",
+        "setReferenceContractAddress",
+        "changeUberOwner",
+        "createMarket"
+      ],
+      "critical_functions": [
+        "changeUberOwner"
+      ],
+      "asset_functions": [
+        "setNFTMintingLimit"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "changeUberOwner"
+      ],
+      "authority_variables": [
+        "governors",
+        "marketCreationGovernorsOnly",
+        "uberOwner"
+      ],
+      "asset_variables": [
+        "nftMintingLimit",
+        "totalNftMintCount",
+        "treasury"
+      ],
+      "modifiers": [
+        "onlyGovernors",
+        "onlyOwner"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "IRCFactory",
+        "IRCMarket",
+        "IRCNftHubL2",
+        "IRCOrderbook",
+        "IRCTreasury",
+        "IRealitio",
+        "NativeMetaTransaction",
+        "Ownable",
+        "onlyGovernors",
+        "onlyOwner"
+      ],
+      "score": 22,
+      "priority": "High",
+      "reasons": [
+        "24 mutable entry points",
+        "critical lifecycle/configuration functions (+3)",
+        "asset or accounting functions (+2)",
+        "critical surface without explicit modifier (+2)",
+        "authority state (+2 supporting)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "ERC721",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "approve",
+        "setApprovalForAll",
+        "transferFrom",
+        "safeTransferFrom",
+        "safeTransferFrom"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "safeTransferFrom",
+        "transferFrom"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "safeTransferFrom",
+        "transferFrom"
+      ],
+      "authority_variables": [
+        "_operatorApprovals",
+        "_owners"
+      ],
+      "asset_variables": [
+        "_balances"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Address",
+        "Context",
+        "ERC165",
+        "IERC165",
+        "IERC721",
+        "IERC721Metadata",
+        "IERC721Receiver",
+        "Strings",
+        "super"
+      ],
+      "score": 21,
+      "priority": "High",
+      "reasons": [
+        "5 mutable entry points",
+        "asset or accounting functions (+4)",
+        "critical surface without explicit modifier (+4)",
+        "authority state (+2 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "BridgeMockup",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/mockups/BridgeMockup.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "requireToPassMessage",
+        "setProxyL1Address",
+        "setProxyL2Address"
+      ],
+      "critical_functions": [
+        "setProxyL1Address",
+        "setProxyL2Address"
+      ],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "setProxyL1Address",
+        "setProxyL2Address"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [
+        "call"
+      ],
+      "references": [],
+      "score": 17,
+      "priority": "High",
+      "reasons": [
+        "3 mutable entry points",
+        "critical lifecycle/configuration functions (+6)",
+        "low-level external execution (+4)",
+        "critical surface without explicit modifier (+4)"
+      ]
+    },
+    {
+      "contract": "RCNftHubL1",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/nfthubs/RCNftHubL1.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "mint",
+        "mint"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "mint"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [
+        "PREDICATE_ROLE"
+      ],
+      "asset_variables": [],
+      "modifiers": [
+        "onlyRole"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "AccessControl",
+        "ERC721",
+        "ERC721URIStorage",
+        "IRCNftHubL1",
+        "NativeMetaTransaction",
+        "Ownable",
+        "onlyRole",
+        "super"
+      ],
+      "score": 11,
+      "priority": "Medium",
+      "reasons": [
+        "2 mutable entry points",
+        "asset or accounting functions (+2)",
+        "authority state (+2 supporting)",
+        "access modifiers (+1 supporting)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "Migrations",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/Migrations.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "setCompleted",
+        "upgrade"
+      ],
+      "critical_functions": [
+        "upgrade"
+      ],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [
+        "owner"
+      ],
+      "asset_variables": [],
+      "modifiers": [
+        "restricted"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "restricted"
+      ],
+      "score": 9,
+      "priority": "Medium",
+      "reasons": [
+        "2 mutable entry points",
+        "critical lifecycle/configuration functions (+3)",
+        "authority state (+2 supporting)",
+        "access modifiers (+1 supporting)",
+        "protocol dependency centrality (+1)"
+      ]
+    },
+    {
+      "contract": "RealitioMockup",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/mockups/RealitioMockup.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "setResult",
+        "askQuestion"
+      ],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [
+        "askQuestion"
+      ],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 5,
+      "priority": "Low",
+      "reasons": [
+        "2 mutable entry points",
+        "payable/receive surface (+3)"
+      ]
+    },
+    {
+      "contract": "SelfDestructMockup",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/mockups/SelfDestructMockup.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "killme",
+        "receive"
+      ],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [
+        "receive"
+      ],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 5,
+      "priority": "Low",
+      "reasons": [
+        "2 mutable entry points",
+        "payable/receive surface (+3)"
+      ]
+    },
+    {
+      "contract": "AccessControl",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/access/AccessControl.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "grantRole",
+        "revokeRole",
+        "renounceRole"
+      ],
+      "critical_functions": [
+        "grantRole",
+        "renounceRole",
+        "revokeRole"
+      ],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "renounceRole"
+      ],
+      "authority_variables": [
+        "DEFAULT_ADMIN_ROLE",
+        "_roles"
+      ],
+      "asset_variables": [],
+      "modifiers": [
+        "onlyRole"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "Context",
+        "ERC165",
+        "IAccessControl",
+        "RoleData",
+        "onlyRole",
+        "super"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "Address",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/utils/Address.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Clones",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/proxy/Clones.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Context",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/utils/Context.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "DaiMockup",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/mockups/DaiMockup.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "no public/external mutable entry points"
+      ]
+    },
+    {
+      "contract": "ERC165",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC165"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "ERC20Burnable",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "burn",
+        "burnFrom"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "burn",
+        "burnFrom"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "burn",
+        "burnFrom"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Context",
+        "ERC20"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "ERC20PresetFixedSupply",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/token/ERC20/presets/ERC20PresetFixedSupply.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "ERC20",
+        "ERC20Burnable"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "no public/external mutable entry points"
+      ]
+    },
+    {
+      "contract": "ERC721URIStorage",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "ERC721",
+        "Strings",
+        "super"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "IAccessControl",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/access/AccessControl.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC165",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC20",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC20Dai",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/interfaces/IERC20Dai.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC20Metadata",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC20"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC721",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC165"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC721Metadata",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC721"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC721Receiver",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IRCBridge",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/interfaces/IRCBridge.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IRCFactory",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/interfaces/IRCFactory.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IRCNftHubL2",
+        "IRCOrderbook",
+        "IRCTreasury",
+        "IRealitio"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IRCMarket",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/interfaces/IRCMarket.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "States"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IRCNftHubL1",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/interfaces/IRCNftHubL1.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IRCNftHubL2",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/interfaces/IRCNftHubL2.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IRCOrderbook",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/interfaces/IRCOrderbook.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IRCTreasury",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/interfaces/IRCTreasury.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC20"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IRealitio",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/interfaces/IRealitio.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Initializable",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/proxy/utils/Initializable.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "is"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "NativeMetaTransaction",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/lib/NativeMetaTransaction.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "executeMetaTransaction"
+      ],
+      "critical_functions": [
+        "executeMetaTransaction"
+      ],
+      "asset_functions": [],
+      "payable_functions": [
+        "executeMetaTransaction"
+      ],
+      "unmodified_critical_functions": [
+        "executeMetaTransaction"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "Ownable",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/access/Ownable.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "renounceOwnership",
+        "transferOwnership"
+      ],
+      "critical_functions": [
+        "renounceOwnership",
+        "transferOwnership"
+      ],
+      "asset_functions": [
+        "transferOwnership"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [
+        "_owner"
+      ],
+      "asset_variables": [],
+      "modifiers": [
+        "onlyOwner"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "Context",
+        "onlyOwner"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "SafeCast",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/utils/math/SafeCast.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Strings",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/node_modules/@openzeppelin/contracts/utils/Strings.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "tokenMockup",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/13/contracts/mockups/tokenMockup.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "ERC20PresetFixedSupply"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "no public/external mutable entry points"
+      ]
+    }
+  ]
+}

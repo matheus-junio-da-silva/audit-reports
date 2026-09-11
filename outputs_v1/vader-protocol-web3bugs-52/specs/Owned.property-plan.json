@@ -1,0 +1,67 @@
+{
+  "contract": "Owned",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/staking-rewards/Owned.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "two_step_ownership",
+    "predicates": [
+      "e.msg.sender == owner",
+      "e.msg.sender == nominatedOwner"
+    ],
+    "evidence": [
+      "Owned.sol:14-17 nominateNewOwner onlyOwner",
+      "Owned.sol:19-24 acceptOwnership require(msg.sender == nominatedOwner)",
+      "Owned.sol:31-33 _onlyOwner require(msg.sender == owner)"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-008",
+      "id": "S4.1.G11",
+      "status": "applicable",
+      "target": "nominateNewOwner(address)",
+      "claim": "only the current owner can nominate a new owner",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "nominateNewOwner(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can nominate",
+      "source_evidence": ["Owned.sol:14-17 nominateNewOwner onlyOwner"]
+    },
+    {
+      "ontology_id": "CAC-AC-008",
+      "id": "S4.1.G11",
+      "status": "applicable",
+      "target": "nominateNewOwner(address)",
+      "claim": "nomination does not change the current owner",
+      "property_kind": "frame_rule",
+      "symbols": ["owner()", "nominatedOwner()", "nominateNewOwner(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can nominate and owner stays fixed",
+      "source_evidence": ["Owned.sol:14-17 nomination only sets nominatedOwner"]
+    },
+    {
+      "ontology_id": "CAC-AC-008",
+      "id": "S4.1.G11",
+      "status": "applicable",
+      "target": "acceptOwnership()",
+      "claim": "a caller other than the nominated owner cannot accept ownership",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["nominatedOwner()", "acceptOwnership()"],
+      "hypotheses": [],
+      "reachability_check": "nominated caller can accept",
+      "source_evidence": ["Owned.sol:19-24 acceptOwnership require(msg.sender == nominatedOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-008",
+      "id": "S4.1.G11",
+      "status": "applicable",
+      "target": "acceptOwnership()",
+      "claim": "the nominated caller can accept and ownership transfers to them",
+      "property_kind": "transition_rule",
+      "symbols": ["owner()", "nominatedOwner()", "acceptOwnership()"],
+      "hypotheses": ["nominatedOwner() != address(0)"],
+      "reachability_check": "nominated path transfers and clears nomination",
+      "source_evidence": ["Owned.sol:19-24 owner = nominatedOwner; nominatedOwner = address(0)"]
+    }
+  ]
+}

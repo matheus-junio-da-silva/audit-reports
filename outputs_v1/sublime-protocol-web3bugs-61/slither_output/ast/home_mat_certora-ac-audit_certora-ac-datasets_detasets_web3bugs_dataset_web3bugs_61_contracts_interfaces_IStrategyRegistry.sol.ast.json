@@ -1,0 +1,560 @@
+{
+  "absolutePath": "contracts/interfaces/IStrategyRegistry.sol",
+  "exportedSymbols": {
+    "IStrategyRegistry": [
+      18684
+    ]
+  },
+  "id": 18685,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 18633,
+      "literals": [
+        "solidity",
+        "0.7",
+        ".6"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "33:22:52"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "fullyImplemented": false,
+      "id": 18684,
+      "linearizedBaseContracts": [
+        18684
+      ],
+      "name": "IStrategyRegistry",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18634,
+            "nodeType": "StructuredDocumentation",
+            "src": "94:126:52",
+            "text": " @notice emitted when a strategy is added to registry\n @param strategy address of the stratgy added"
+          },
+          "id": 18638,
+          "name": "StrategyAdded",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18637,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18636,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "strategy",
+                "nodeType": "VariableDeclaration",
+                "scope": 18638,
+                "src": "246:24:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18635,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "246:7:52",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "245:26:52"
+          },
+          "src": "226:46:52"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18639,
+            "nodeType": "StructuredDocumentation",
+            "src": "280:130:52",
+            "text": " @notice emitted when a strategy is removed to registry\n @param strategy address of the stratgy removed"
+          },
+          "id": 18643,
+          "name": "StrategyRemoved",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18642,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18641,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "strategy",
+                "nodeType": "VariableDeclaration",
+                "scope": 18643,
+                "src": "438:24:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18640,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "438:7:52",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "437:26:52"
+          },
+          "src": "416:48:52"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18644,
+            "nodeType": "StructuredDocumentation",
+            "src": "472:167:52",
+            "text": " @notice emitted when a maximum number of approved strategies is updated\n @param maxStrategies updated number of maximum approved strategies"
+          },
+          "id": 18648,
+          "name": "MaxStrategiesUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18647,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18646,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "maxStrategies",
+                "nodeType": "VariableDeclaration",
+                "scope": 18648,
+                "src": "672:21:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18645,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "672:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "671:23:52"
+          },
+          "src": "645:50:52"
+        },
+        {
+          "functionSelector": "038defd7",
+          "id": 18655,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "registry",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18651,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18650,
+                "mutability": "mutable",
+                "name": "_strategy",
+                "nodeType": "VariableDeclaration",
+                "scope": 18655,
+                "src": "721:17:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18649,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "721:7:52",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "720:19:52"
+          },
+          "returnParameters": {
+            "id": 18654,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18653,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18655,
+                "src": "763:4:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 18652,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "763:4:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "762:6:52"
+          },
+          "scope": 18684,
+          "src": "703:66:52",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "b49a60bb",
+          "id": 18661,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getStrategies",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18656,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "799:2:52"
+          },
+          "returnParameters": {
+            "id": 18660,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18659,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18661,
+                "src": "825:16:52",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                  "typeString": "address[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 18657,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "825:7:52",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 18658,
+                  "nodeType": "ArrayTypeName",
+                  "src": "825:9:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "824:18:52"
+          },
+          "scope": 18684,
+          "src": "777:66:52",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "documentation": {
+            "id": 18662,
+            "nodeType": "StructuredDocumentation",
+            "src": "851:202:52",
+            "text": " @dev Add strategies to invest in. Please ensure that number of strategies are less than maxStrategies.\n @param _strategy address of the owner of the savings account contract*"
+          },
+          "functionSelector": "223e5479",
+          "id": 18667,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "addStrategy",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18665,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18664,
+                "mutability": "mutable",
+                "name": "_strategy",
+                "nodeType": "VariableDeclaration",
+                "scope": 18667,
+                "src": "1080:17:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18663,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1080:7:52",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1079:19:52"
+          },
+          "returnParameters": {
+            "id": 18666,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1107:0:52"
+          },
+          "scope": 18684,
+          "src": "1059:49:52",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "documentation": {
+            "id": 18668,
+            "nodeType": "StructuredDocumentation",
+            "src": "1116:118:52",
+            "text": " @dev Remove strategy to invest in.\n @param _strategyIndex Index of the strategy to remove*"
+          },
+          "functionSelector": "c0cbbca6",
+          "id": 18673,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "removeStrategy",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18671,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18670,
+                "mutability": "mutable",
+                "name": "_strategyIndex",
+                "nodeType": "VariableDeclaration",
+                "scope": 18673,
+                "src": "1264:22:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18669,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1264:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1263:24:52"
+          },
+          "returnParameters": {
+            "id": 18672,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1296:0:52"
+          },
+          "scope": 18684,
+          "src": "1240:57:52",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "documentation": {
+            "id": 18674,
+            "nodeType": "StructuredDocumentation",
+            "src": "1305:222:52",
+            "text": " @dev Update strategy to invest in.\n @param _strategyIndex Index of the strategy to remove\n @param _oldStrategy Strategy that is to be removed\n @param _newStrategy Updated strategy*"
+          },
+          "functionSelector": "76ba717b",
+          "id": 18683,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "updateStrategy",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18681,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18676,
+                "mutability": "mutable",
+                "name": "_strategyIndex",
+                "nodeType": "VariableDeclaration",
+                "scope": 18683,
+                "src": "1567:22:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18675,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1567:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18678,
+                "mutability": "mutable",
+                "name": "_oldStrategy",
+                "nodeType": "VariableDeclaration",
+                "scope": 18683,
+                "src": "1600:20:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18677,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1600:7:52",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18680,
+                "mutability": "mutable",
+                "name": "_newStrategy",
+                "nodeType": "VariableDeclaration",
+                "scope": 18683,
+                "src": "1631:20:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18679,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1631:7:52",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1556:102:52"
+          },
+          "returnParameters": {
+            "id": 18682,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1667:0:52"
+          },
+          "scope": 18684,
+          "src": "1533:135:52",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 18685,
+      "src": "59:1612:52"
+    }
+  ],
+  "src": "33:1640:52"
+}

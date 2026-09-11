@@ -1,0 +1,155 @@
+{
+  "contract": "Controller",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/Controller.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "coverage_status": "FULL",
+  "authority_model": {
+    "kind": "hybrid_ownership_allowlist_trusted_caller",
+    "predicate": "per-function: onlyOwner | onlyWhitelist | msg.sender == depositHandler() | msg.sender in {withdrawHandler(), emergencyHandler()} | vaultIndexes[msg.sender] > 0",
+    "evidence": [
+      "Controller.sol:97 pause() external onlyWhitelist",
+      "Controller.sol:101 unpause() external onlyOwner",
+      "Controller.sol:105-213 owner-only protocol configuration setters",
+      "Controller.sol:200 addReferral external requires msg.sender == depositHandler",
+      "Controller.sol:261 distributeCurveAssets external onlyWhitelist",
+      "Controller.sol:317 emergency external onlyWhitelist",
+      "Controller.sol:341 restart external onlyOwner whenPaused",
+      "Controller.sol:355 distributeStrategyGainLoss requires vaultIndexes[msg.sender] > 0",
+      "Controller.sol:398 burnGToken requires msg.sender in {withdrawHandler, emergencyHandler}",
+      "Controller.sol:416 mintGToken requires msg.sender == depositHandler",
+      "Controller.sol:54-55 public depositHandler/withdrawHandler/emergencyHandler",
+      "Controller.sol:44-70 public state getters vaultIndexes, paused, etc."
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "owner-only setters (17): setWithdrawHandler, setDepositHandler, setVault, setCurveVault, setLifeGuard, setInsurance, setPnL, addSafeAddress, switchEoaOnly, setBigFishThreshold, setReward, setWithdrawalFee, realizePriceChange, setUtilisationRatioLimitPwrd, setUtilisationRatioLimitGvt, unpause, restart",
+      "claim": "a caller other than the pre-state owner reverts on every owner-only configuration/emergency-recovery function",
+      "property_kind": "parametric_revert_rule",
+      "symbols": ["owner()", "the 17 exact selectors"],
+      "hypotheses": [],
+      "reachability_check": "owner path proven for setReward (only precondition is non-zero reward)",
+      "source_evidence": ["Controller.sol:101,105,112,137,145,152,159,165,171,176,187,194,210,384,457,464,341"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "pause()",
+      "claim": "a caller not on the whitelist cannot pause the protocol",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["whitelist(address)", "pause()"],
+      "hypotheses": [],
+      "reachability_check": "whitelisted caller with protocol unpaused can pause",
+      "source_evidence": ["Controller.sol:97"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "emergency(uint256)",
+      "claim": "only a whitelisted caller may enter emergency mode and freeze a stablecoin",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["whitelist(address)", "emergency(uint256)"],
+      "hypotheses": [],
+      "reachability_check": "whitelisted caller can trigger emergency on a valid coin index",
+      "source_evidence": ["Controller.sol:317"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "distributeCurveAssets(uint256,uint256[3])",
+      "claim": "only a whitelisted caller may redistribute curve vault assets to stable vaults",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["whitelist(address)", "distributeCurveAssets(uint256,uint256[3])"],
+      "hypotheses": [],
+      "reachability_check": "requires a linked lifeguard; the revert rule only exercises the whitelist gate",
+      "source_evidence": ["Controller.sol:261"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "mintGToken(bool,address,uint256)",
+      "claim": "only the pre-state depositHandler can mint GTokens",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["depositHandler()", "mintGToken(bool,address,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "requires linked PnL/IToken; revert rule exercises only the caller gate",
+      "source_evidence": ["Controller.sol:416-425"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "burnGToken(bool,bool,address,uint256,uint256)",
+      "claim": "only pre-state withdrawHandler or emergencyHandler can burn GTokens",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["withdrawHandler()", "emergencyHandler()", "burnGToken(bool,bool,address,uint256,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "requires linked PnL/IToken; revert rule exercises only the caller gate",
+      "source_evidence": ["Controller.sol:398-414"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "addReferral(address,address)",
+      "claim": "only the pre-state depositHandler may record referrals",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["depositHandler()", "addReferral(address,address)"],
+      "hypotheses": [],
+      "reachability_check": "revert rule exercises only the caller gate",
+      "source_evidence": ["Controller.sol:200-205"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "distributeStrategyGainLoss(uint256,uint256)",
+      "claim": "only a registered vault adaptor (vaultIndexes[msg.sender] > 0) may submit harvest gains/losses",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["vaultIndexes(address)", "distributeStrategyGainLoss(uint256,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "revert rule exercises only the registration gate",
+      "source_evidence": ["Controller.sol:355-358"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "setReward(address) reachability",
+      "claim": "the pre-state owner has a reachable successful path for an owner-only setter",
+      "property_kind": "satisfy_witness",
+      "symbols": ["owner()", "setReward(address)"],
+      "hypotheses": ["reward != address(0)"],
+      "reachability_check": "setReward only requires non-zero reward and onlyOwner",
+      "source_evidence": ["Controller.sol:194-198"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "pause() reachability",
+      "claim": "a whitelisted caller can pause an unpaused protocol",
+      "property_kind": "satisfy_witness",
+      "symbols": ["whitelist(address)", "paused()", "pause()"],
+      "hypotheses": ["!paused()"],
+      "reachability_check": "OZ Pausable._pause() requires !paused()",
+      "source_evidence": ["Controller.sol:97-99"]
+    }
+  ],
+  "not_applicable": [
+    {"id": "S4.1.G2", "reason": "no RBAC role system", "evidence": "no AccessControl; flat owner+whitelist"},
+    {"id": "S4.1.G4", "reason": "no ERC20 debit/allowance in Controller (tokens handled in GERC20/GToken)", "evidence": "no transferFrom here"},
+    {"id": "S4.1.G7", "reason": "privileged paths are pump/burn through whitelisted handlers; no owner drain (owner has safety checks in realizePriceChange state reads only); solvency invariant would require modeling Buoy3Pool/vaults which are NOT extracted (coverage_gaps CRITICAL)", "evidence": "permittedWithdrawal semantics absent; Buoy3Pool gap"},
+    {"id": "S4.1.G8", "reason": "no timelock/delay state", "evidence": "no schedule/execute"},
+    {"id": "S4.1.G10", "reason": "constructor-initialized, no initialize()", "evidence": "no init entry"},
+    {"id": "S4.1.G11", "reason": "inherits OZ one-step ownership transfer unchanged", "evidence": "Ownable"},
+    {"id": "S4.2.G4", "reason": "no allowance policy in Controller", "evidence": "no allowance state"}
+  ]
+}

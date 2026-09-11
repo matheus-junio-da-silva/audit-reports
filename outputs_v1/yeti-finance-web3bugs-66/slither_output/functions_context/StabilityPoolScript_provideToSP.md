@@ -1,0 +1,40 @@
+# Context: StabilityPoolScript.provideToSP
+
+**Contract:** `StabilityPoolScript` (Inherits: CheckContract)
+**Signature:** `provideToSP(uint256,address)`
+**Method Selector ID:** `0x5f788d65`
+**Visibility:** `external`
+**Environment-Free:** `Yes`
+**Modifiers:** None
+
+### State Variables Interaction
+- **Reads:** stabilityPool
+- **Writes:** None
+
+### Environment & Verification Flags
+- **Uses Foundry Cheatcodes:** No
+- **Has Echidna Properties:** No
+
+### Internal Calls Tree
+- None
+
+### External Calls / Value Transfers
+- `IStabilityPool.HIGH_LEVEL_CALL, dest:stabilityPool(IStabilityPool), function:provideToSP, arguments:['_amount', '_frontEndTag']  `
+
+### Control Flow Graph (CFG)
+```mermaid
+flowchart TD
+    Node_0["0: NodeType.ENTRYPOINT - "]
+    Node_0 --> Node_1
+    Node_1["1: NodeType.EXPRESSION - stabilityPool.provideToSP(_amount,_frontEndTag)"]
+```
+
+### Source Mapping
+Declared in: `certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Proxy/StabilityPoolScript.sol` on lines **19** to **21**
+
+```solidity
+    function provideToSP(uint _amount, address _frontEndTag) external {
+        stabilityPool.provideToSP(_amount, _frontEndTag);
+    }
+
+```

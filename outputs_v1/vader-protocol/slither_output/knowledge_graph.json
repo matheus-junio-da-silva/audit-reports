@@ -1,0 +1,4974 @@
+{
+  "contracts": {
+    "Attack": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "inited",
+          "type": "bool",
+          "visibility": "private"
+        },
+        {
+          "name": "VADER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "USDV",
+          "type": "address",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "init": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "inited"
+          ],
+          "writes": [
+            "USDV",
+            "VADER",
+            "inited"
+          ],
+          "is_env_free": true
+        },
+        "attackUSDV": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "USDV",
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "DAO": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "inited",
+          "type": "bool",
+          "visibility": "private"
+        },
+        {
+          "name": "proposalCount",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "VADER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "USDV",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "VAULT",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "coolOffPeriod",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "mapPID_grant",
+          "type": "mapping(uint256 => DAO.GrantDetails)",
+          "visibility": "public"
+        },
+        {
+          "name": "mapPID_address",
+          "type": "mapping(uint256 => address)",
+          "visibility": "public"
+        },
+        {
+          "name": "mapPID_type",
+          "type": "mapping(uint256 => string)",
+          "visibility": "public"
+        },
+        {
+          "name": "mapPID_votes",
+          "type": "mapping(uint256 => uint256)",
+          "visibility": "public"
+        },
+        {
+          "name": "mapPID_timeStart",
+          "type": "mapping(uint256 => uint256)",
+          "visibility": "public"
+        },
+        {
+          "name": "mapPID_finalising",
+          "type": "mapping(uint256 => bool)",
+          "visibility": "public"
+        },
+        {
+          "name": "mapPID_finalised",
+          "type": "mapping(uint256 => bool)",
+          "visibility": "public"
+        },
+        {
+          "name": "mapPIDMember_votes",
+          "type": "mapping(uint256 => mapping(address => uint256))",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "init": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "inited"
+          ],
+          "writes": [
+            "USDV",
+            "VADER",
+            "VAULT",
+            "coolOffPeriod",
+            "inited"
+          ],
+          "is_env_free": true
+        },
+        "newGrantProposal": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "proposalCount"
+          ],
+          "writes": [
+            "mapPID_grant",
+            "mapPID_type",
+            "proposalCount"
+          ],
+          "is_env_free": false
+        },
+        "newAddressProposal": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "proposalCount"
+          ],
+          "writes": [
+            "mapPID_address",
+            "mapPID_type",
+            "proposalCount"
+          ],
+          "is_env_free": false
+        },
+        "voteProposal": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "mapPID_finalising",
+            "mapPID_type",
+            "mapPID_votes"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_finalise": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "coolOffPeriod",
+            "mapPID_type"
+          ],
+          "writes": [
+            "mapPID_finalising",
+            "mapPID_timeStart"
+          ],
+          "is_env_free": false
+        },
+        "cancelProposal": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VAULT",
+            "mapPID_finalising",
+            "mapPID_type",
+            "mapPID_votes"
+          ],
+          "writes": [
+            "mapPID_votes"
+          ],
+          "is_env_free": false
+        },
+        "finaliseProposal": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "coolOffPeriod",
+            "mapPID_finalising",
+            "mapPID_timeStart",
+            "mapPID_type"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "completeProposal": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "VAULT",
+            "mapPID_type",
+            "mapPID_votes"
+          ],
+          "writes": [
+            "mapPID_finalised",
+            "mapPID_finalising",
+            "mapPID_votes"
+          ],
+          "is_env_free": false
+        },
+        "grantFunds": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "USDV",
+            "VAULT",
+            "mapPID_grant"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "moveUtils": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "VADER",
+            "mapPID_address"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "moveRewardAddress": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "VADER",
+            "mapPID_address"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "countMemberVotes": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "VAULT",
+            "mapPIDMember_votes",
+            "mapPID_votes"
+          ],
+          "writes": [
+            "mapPIDMember_votes",
+            "mapPID_votes"
+          ],
+          "is_env_free": false
+        },
+        "hasMajority": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VAULT",
+            "mapPID_votes"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "hasQuorum": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VAULT",
+            "mapPID_votes"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "hasMinority": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VAULT",
+            "mapPID_votes"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isEqual": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Factory": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "inited",
+          "type": "bool",
+          "visibility": "private"
+        },
+        {
+          "name": "VADER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "USDV",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "POOLS",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "arraySynths",
+          "type": "address[]",
+          "visibility": "public"
+        },
+        {
+          "name": "getSynth",
+          "type": "mapping(address => address)",
+          "visibility": "public"
+        },
+        {
+          "name": "isSynth",
+          "type": "mapping(address => bool)",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "init": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "inited"
+          ],
+          "writes": [
+            "POOLS",
+            "inited"
+          ],
+          "is_env_free": true
+        },
+        "deploySynth": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyPOOLS"
+          ],
+          "reads": [
+            "getSynth"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "mintSynth": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyPOOLS"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_addSynth": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "arraySynths"
+          ],
+          "writes": [
+            "arraySynths",
+            "getSynth",
+            "isSynth"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "Pools": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "inited",
+          "type": "bool",
+          "visibility": "private"
+        },
+        {
+          "name": "pooledVADER",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "pooledUSDV",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "VADER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "USDV",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "ROUTER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "FACTORY",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "_isMember",
+          "type": "mapping(address => bool)",
+          "visibility": "internal"
+        },
+        {
+          "name": "_isAsset",
+          "type": "mapping(address => bool)",
+          "visibility": "internal"
+        },
+        {
+          "name": "_isAnchor",
+          "type": "mapping(address => bool)",
+          "visibility": "internal"
+        },
+        {
+          "name": "mapToken_Units",
+          "type": "mapping(address => uint256)",
+          "visibility": "public"
+        },
+        {
+          "name": "mapTokenMember_Units",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "public"
+        },
+        {
+          "name": "mapToken_baseAmount",
+          "type": "mapping(address => uint256)",
+          "visibility": "public"
+        },
+        {
+          "name": "mapToken_tokenAmount",
+          "type": "mapping(address => uint256)",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "init": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "inited"
+          ],
+          "writes": [
+            "FACTORY",
+            "ROUTER",
+            "USDV",
+            "VADER",
+            "inited"
+          ],
+          "is_env_free": true
+        },
+        "addLiquidity": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "USDV",
+            "VADER",
+            "mapTokenMember_Units",
+            "mapToken_Units",
+            "mapToken_baseAmount",
+            "mapToken_tokenAmount"
+          ],
+          "writes": [
+            "_isAnchor",
+            "_isAsset",
+            "mapTokenMember_Units",
+            "mapToken_Units",
+            "mapToken_baseAmount",
+            "mapToken_tokenAmount"
+          ],
+          "is_env_free": true
+        },
+        "removeLiquidity": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "removeLiquidityDirectly": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_removeLiquidity": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "USDV",
+            "VADER",
+            "mapTokenMember_Units",
+            "mapToken_Units",
+            "mapToken_baseAmount",
+            "mapToken_tokenAmount"
+          ],
+          "writes": [
+            "mapTokenMember_Units",
+            "mapToken_Units",
+            "mapToken_baseAmount",
+            "mapToken_tokenAmount"
+          ],
+          "is_env_free": true
+        },
+        "swap": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapToken_baseAmount",
+            "mapToken_tokenAmount"
+          ],
+          "writes": [
+            "mapToken_baseAmount",
+            "mapToken_tokenAmount"
+          ],
+          "is_env_free": true
+        },
+        "sync": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "USDV",
+            "VADER",
+            "mapToken_baseAmount",
+            "mapToken_tokenAmount"
+          ],
+          "writes": [
+            "mapToken_baseAmount",
+            "mapToken_tokenAmount"
+          ],
+          "is_env_free": true
+        },
+        "deploySynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "FACTORY",
+            "USDV",
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mintSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "FACTORY",
+            "mapTokenMember_Units",
+            "mapToken_Units",
+            "mapToken_baseAmount",
+            "mapToken_tokenAmount"
+          ],
+          "writes": [
+            "mapTokenMember_Units",
+            "mapToken_Units",
+            "mapToken_baseAmount"
+          ],
+          "is_env_free": true
+        },
+        "burnSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapTokenMember_Units",
+            "mapToken_Units",
+            "mapToken_baseAmount",
+            "mapToken_tokenAmount"
+          ],
+          "writes": [
+            "mapTokenMember_Units",
+            "mapToken_Units",
+            "mapToken_baseAmount"
+          ],
+          "is_env_free": true
+        },
+        "syncSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapTokenMember_Units",
+            "mapToken_Units"
+          ],
+          "writes": [
+            "mapTokenMember_Units",
+            "mapToken_Units"
+          ],
+          "is_env_free": true
+        },
+        "lockUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapTokenMember_Units"
+          ],
+          "writes": [
+            "mapTokenMember_Units"
+          ],
+          "is_env_free": false
+        },
+        "unlockUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapTokenMember_Units"
+          ],
+          "writes": [
+            "mapTokenMember_Units"
+          ],
+          "is_env_free": false
+        },
+        "getAddedAmount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "USDV",
+            "VADER",
+            "mapToken_tokenAmount",
+            "pooledUSDV",
+            "pooledVADER"
+          ],
+          "writes": [
+            "pooledUSDV",
+            "pooledVADER"
+          ],
+          "is_env_free": true
+        },
+        "transferOut": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "USDV",
+            "VADER",
+            "pooledUSDV",
+            "pooledVADER"
+          ],
+          "writes": [
+            "pooledUSDV",
+            "pooledVADER"
+          ],
+          "is_env_free": true
+        },
+        "isMember": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_isMember"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isAsset": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_isAsset"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isAnchor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_isAnchor"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getPoolAmounts": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getBaseAmount": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "mapToken_baseAmount"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getTokenAmount": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "mapToken_tokenAmount"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapToken_Units"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapTokenMember_Units"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSynth": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "FACTORY"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isSynth": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "FACTORY"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "UTILS": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Router": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "inited",
+          "type": "bool",
+          "visibility": "private"
+        },
+        {
+          "name": "one",
+          "type": "uint256",
+          "visibility": "internal"
+        },
+        {
+          "name": "rewardReductionFactor",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "timeForFullProtection",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "curatedPoolLimit",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "curatedPoolCount",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "_isCurated",
+          "type": "mapping(address => bool)",
+          "visibility": "private"
+        },
+        {
+          "name": "VADER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "USDV",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "POOLS",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "anchorLimit",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "insidePriceLimit",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "outsidePriceLimit",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "arrayAnchors",
+          "type": "address[]",
+          "visibility": "public"
+        },
+        {
+          "name": "arrayPrices",
+          "type": "uint256[]",
+          "visibility": "public"
+        },
+        {
+          "name": "repayDelay",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "mapMemberToken_depositBase",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "public"
+        },
+        {
+          "name": "mapMemberToken_depositToken",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "public"
+        },
+        {
+          "name": "mapMemberToken_lastDeposited",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "public"
+        },
+        {
+          "name": "mapMember_Collateral",
+          "type": "mapping(address => Router.CollateralDetails)",
+          "visibility": "private"
+        },
+        {
+          "name": "mapCollateralDebt_Collateral",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        },
+        {
+          "name": "mapCollateralDebt_Debt",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        },
+        {
+          "name": "mapCollateralDebt_interestPaid",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        },
+        {
+          "name": "mapCollateralAsset_NextEra",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "init": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "inited"
+          ],
+          "writes": [
+            "POOLS",
+            "USDV",
+            "VADER",
+            "anchorLimit",
+            "curatedPoolLimit",
+            "inited",
+            "insidePriceLimit",
+            "outsidePriceLimit",
+            "rewardReductionFactor",
+            "timeForFullProtection"
+          ],
+          "is_env_free": true
+        },
+        "setParams": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [],
+          "writes": [
+            "curatedPoolLimit",
+            "rewardReductionFactor",
+            "timeForFullProtection"
+          ],
+          "is_env_free": false
+        },
+        "setAnchorParams": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [],
+          "writes": [
+            "anchorLimit",
+            "insidePriceLimit",
+            "outsidePriceLimit"
+          ],
+          "is_env_free": false
+        },
+        "addLiquidity": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "removeLiquidity": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "swap": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "swapWithLimit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "swapWithSynths": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "swapWithSynthsWithLimit": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "USDV",
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_handlePoolReward": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "rewardReductionFactor"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "addDepositData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "mapMemberToken_depositBase",
+            "mapMemberToken_depositToken"
+          ],
+          "writes": [
+            "mapMemberToken_depositBase",
+            "mapMemberToken_depositToken",
+            "mapMemberToken_lastDeposited"
+          ],
+          "is_env_free": false
+        },
+        "removeDepositData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "mapMemberToken_depositBase",
+            "mapMemberToken_depositToken"
+          ],
+          "writes": [
+            "mapMemberToken_depositBase",
+            "mapMemberToken_depositToken"
+          ],
+          "is_env_free": true
+        },
+        "getILProtection": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER",
+            "timeForFullProtection"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "curatePool": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "curatedPoolCount",
+            "curatedPoolLimit"
+          ],
+          "writes": [
+            "_isCurated",
+            "curatedPoolCount"
+          ],
+          "is_env_free": false
+        },
+        "replacePool": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [
+            "_isCurated"
+          ],
+          "is_env_free": false
+        },
+        "listAnchor": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "anchorLimit",
+            "arrayAnchors",
+            "arrayPrices",
+            "one"
+          ],
+          "writes": [
+            "_isCurated",
+            "arrayAnchors",
+            "arrayPrices"
+          ],
+          "is_env_free": true
+        },
+        "replaceAnchor": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "arrayAnchors",
+            "insidePriceLimit",
+            "outsidePriceLimit"
+          ],
+          "writes": [
+            "_isCurated",
+            "arrayAnchors"
+          ],
+          "is_env_free": true
+        },
+        "updateAnchorPrice": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "arrayAnchors",
+            "one"
+          ],
+          "writes": [
+            "arrayPrices"
+          ],
+          "is_env_free": true
+        },
+        "_handleAnchorPriceUpdate": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getAnchorPrice": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "arrayPrices",
+            "one"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getVADERAmount": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "one"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getUSDVAmount": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "one"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "borrow": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "borrowForMember": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "USDV",
+            "VADER",
+            "mapCollateralDebt_Collateral",
+            "mapCollateralDebt_Debt"
+          ],
+          "writes": [
+            "mapCollateralDebt_Collateral",
+            "mapCollateralDebt_Debt"
+          ],
+          "is_env_free": false
+        },
+        "repay": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "repayForMember": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "USDV",
+            "VADER",
+            "mapCollateralDebt_Collateral",
+            "mapCollateralDebt_Debt",
+            "mapCollateralDebt_interestPaid"
+          ],
+          "writes": [
+            "mapCollateralDebt_Collateral",
+            "mapCollateralDebt_Debt",
+            "mapCollateralDebt_interestPaid"
+          ],
+          "is_env_free": false
+        },
+        "payInterest": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "VADER",
+            "mapCollateralAsset_NextEra",
+            "mapCollateralDebt_interestPaid"
+          ],
+          "writes": [
+            "mapCollateralAsset_NextEra",
+            "mapCollateralDebt_interestPaid"
+          ],
+          "is_env_free": false
+        },
+        "checkLiquidate": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_handleTransferIn": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_handleTransferOut": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_getFunds": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_sendFunds": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_addDebtToMember": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "mapMember_Collateral"
+          ],
+          "writes": [
+            "mapMember_Collateral"
+          ],
+          "is_env_free": true
+        },
+        "_removeDebtFromMember": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "mapMember_Collateral"
+          ],
+          "writes": [
+            "mapMember_Collateral"
+          ],
+          "is_env_free": true
+        },
+        "_removeCollateral": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "mapCollateralDebt_Collateral"
+          ],
+          "writes": [
+            "mapCollateralDebt_Collateral"
+          ],
+          "is_env_free": true
+        },
+        "isBase": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "USDV",
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "reserveVADER": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "reserveUSDV": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "USDV"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "moveTokenToPools": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "USDV",
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "UTILS": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "DAO": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "emitting": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isCurated": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_isCurated"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isPool": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberBaseDeposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapMemberToken_depositBase"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberTokenDeposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapMemberToken_depositToken"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberLastDeposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapMemberToken_lastDeposited"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberCollateral": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapMember_Collateral"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberDebt": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "mapMember_Collateral"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSystemCollateral": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "mapCollateralDebt_Collateral"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSystemDebt": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "mapCollateralDebt_Debt"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSystemInterestPaid": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "mapCollateralDebt_interestPaid"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getNextEraTime": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "mapCollateralAsset_NextEra"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "slitherConstructorVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "one",
+            "repayDelay"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "Synth": {
+      "inheritance": [
+        "iERC20"
+      ],
+      "state_variables": [
+        {
+          "name": "FACTORY",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "TOKEN",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "symbol",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "decimals",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "totalSupply",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "_balances",
+          "type": "mapping(address => uint256)",
+          "visibility": "private"
+        },
+        {
+          "name": "_allowances",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        }
+      ],
+      "functions": {
+        "name": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "symbol": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "decimals": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "totalSupply": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transfer": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "allowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "approve": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferFrom": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferTo": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "burn": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "burnFrom": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "FACTORY",
+            "TOKEN",
+            "name",
+            "symbol"
+          ],
+          "is_env_free": false
+        },
+        "_approve": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_allowances"
+          ],
+          "is_env_free": true
+        },
+        "_transfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [
+            "_balances"
+          ],
+          "is_env_free": true
+        },
+        "mint": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyFACTORY"
+          ],
+          "reads": [
+            "_balances",
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "totalSupply"
+          ],
+          "is_env_free": false
+        },
+        "_burn": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "slitherConstructorVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "decimals"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "Token1": {
+      "inheritance": [
+        "iERC20"
+      ],
+      "state_variables": [
+        {
+          "name": "name",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "symbol",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "decimals",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "totalSupply",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "_balances",
+          "type": "mapping(address => uint256)",
+          "visibility": "private"
+        },
+        {
+          "name": "_allowances",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        }
+      ],
+      "functions": {
+        "name": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "symbol": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "decimals": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "totalSupply": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transfer": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "allowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "approve": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferFrom": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferTo": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "burn": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "burnFrom": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "name",
+            "symbol"
+          ],
+          "is_env_free": false
+        },
+        "_approve": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_allowances"
+          ],
+          "is_env_free": true
+        },
+        "_transfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [
+            "_balances"
+          ],
+          "is_env_free": true
+        },
+        "_mint": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "_burn": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "slitherConstructorVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "decimals"
+          ],
+          "writes": [
+            "decimals",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "Token2": {
+      "inheritance": [
+        "iERC20"
+      ],
+      "state_variables": [
+        {
+          "name": "name",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "symbol",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "decimals",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "totalSupply",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "_balances",
+          "type": "mapping(address => uint256)",
+          "visibility": "private"
+        },
+        {
+          "name": "_allowances",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        }
+      ],
+      "functions": {
+        "name": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "symbol": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "decimals": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "totalSupply": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transfer": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "allowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "approve": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferFrom": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferTo": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "burn": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "burnFrom": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "name",
+            "symbol"
+          ],
+          "is_env_free": false
+        },
+        "_approve": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_allowances"
+          ],
+          "is_env_free": true
+        },
+        "_transfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [
+            "_balances"
+          ],
+          "is_env_free": true
+        },
+        "_mint": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "_burn": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "slitherConstructorVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "decimals"
+          ],
+          "writes": [
+            "decimals",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "USDV": {
+      "inheritance": [
+        "iERC20"
+      ],
+      "state_variables": [
+        {
+          "name": "name",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "symbol",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "decimals",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "totalSupply",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "_balances",
+          "type": "mapping(address => uint256)",
+          "visibility": "private"
+        },
+        {
+          "name": "_allowances",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        },
+        {
+          "name": "inited",
+          "type": "bool",
+          "visibility": "private"
+        },
+        {
+          "name": "nextEraTime",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "blockDelay",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "VADER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "VAULT",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "ROUTER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "lastBlock",
+          "type": "mapping(address => uint256)",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "name": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "symbol": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "decimals": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "totalSupply": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transfer": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "allowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "approve": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferFrom": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferTo": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "burn": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "burnFrom": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "isMature": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "blockDelay",
+            "lastBlock"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "decimals",
+            "name",
+            "symbol",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "init": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "VADER",
+            "inited"
+          ],
+          "writes": [
+            "ROUTER",
+            "VADER",
+            "VAULT",
+            "inited",
+            "nextEraTime"
+          ],
+          "is_env_free": false
+        },
+        "_approve": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_allowances"
+          ],
+          "is_env_free": true
+        },
+        "_transfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [
+            "_balances"
+          ],
+          "is_env_free": false
+        },
+        "_mint": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "_burn": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "setParams": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [],
+          "writes": [
+            "blockDelay"
+          ],
+          "is_env_free": false
+        },
+        "_checkIncentives": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [
+            "ROUTER",
+            "VADER",
+            "VAULT",
+            "nextEraTime"
+          ],
+          "writes": [
+            "nextEraTime"
+          ],
+          "is_env_free": false
+        },
+        "convert": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "convertForMember": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_convert": {
+          "visibility": "internal",
+          "modifiers": [
+            "flashProof"
+          ],
+          "reads": [
+            "ROUTER",
+            "VADER"
+          ],
+          "writes": [
+            "lastBlock"
+          ],
+          "is_env_free": false
+        },
+        "redeem": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "redeemForMember": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [
+            "lastBlock"
+          ],
+          "is_env_free": false
+        },
+        "getFunds": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "DAO": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "emitting": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "minting": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Utils": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "one",
+          "type": "uint256",
+          "visibility": "private"
+        },
+        {
+          "name": "_10k",
+          "type": "uint256",
+          "visibility": "private"
+        },
+        {
+          "name": "_year",
+          "type": "uint256",
+          "visibility": "private"
+        },
+        {
+          "name": "inited",
+          "type": "bool",
+          "visibility": "private"
+        },
+        {
+          "name": "VADER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "USDV",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "ROUTER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "POOLS",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "FACTORY",
+          "type": "address",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "init": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "inited"
+          ],
+          "writes": [
+            "FACTORY",
+            "POOLS",
+            "ROUTER",
+            "USDV",
+            "VADER",
+            "inited"
+          ],
+          "is_env_free": true
+        },
+        "getFeeOnTransfer": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "assetChecks": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "USDV",
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isBase": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "USDV",
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isPool": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcValueInBase": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcValueInToken": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcValueOfTokenInToken": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSwapValueInBase": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSwapValueInToken": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "requirePriceBounds": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "_10k",
+            "one"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getRewardShare": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "ROUTER",
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getReducedShare": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getProtection": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "ROUTER"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getCoverage": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "ROUTER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getCollateralValueInBase": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "FACTORY",
+            "POOLS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getDebtValueInCollateral": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "ROUTER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getInterestOwed": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "FACTORY",
+            "_year"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getInterestPayment": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "ROUTER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getDebtLoading": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "ROUTER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcPart": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcShare": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSwapOutput": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSwapFee": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSwapSlip": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcLiquidityUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "one"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSlipAdustment": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "one"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSynthUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcAsymmetricShare": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcCoverage": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "sortArray": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "slitherConstructorVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_10k",
+            "_year",
+            "one"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "Vader": {
+      "inheritance": [
+        "iERC20"
+      ],
+      "state_variables": [
+        {
+          "name": "name",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "symbol",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "decimals",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "totalSupply",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "_balances",
+          "type": "mapping(address => uint256)",
+          "visibility": "private"
+        },
+        {
+          "name": "_allowances",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        },
+        {
+          "name": "inited",
+          "type": "bool",
+          "visibility": "private"
+        },
+        {
+          "name": "emitting",
+          "type": "bool",
+          "visibility": "public"
+        },
+        {
+          "name": "minting",
+          "type": "bool",
+          "visibility": "public"
+        },
+        {
+          "name": "_1m",
+          "type": "uint256",
+          "visibility": "internal"
+        },
+        {
+          "name": "baseline",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "emissionCurve",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "maxSupply",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "secondsPerEra",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "currentEra",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "nextEraTime",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "feeOnTransfer",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "VETHER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "USDV",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "UTILS",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "burnAddress",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "rewardAddress",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "DAO",
+          "type": "address",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "name": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "symbol": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "decimals": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "totalSupply": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transfer": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "allowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "approve": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferFrom": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferTo": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "burn": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "burnFrom": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "isMature": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "USDV"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_1m",
+            "decimals",
+            "secondsPerEra"
+          ],
+          "writes": [
+            "DAO",
+            "_1m",
+            "baseline",
+            "burnAddress",
+            "currentEra",
+            "decimals",
+            "emissionCurve",
+            "maxSupply",
+            "name",
+            "nextEraTime",
+            "secondsPerEra",
+            "symbol",
+            "totalSupply"
+          ],
+          "is_env_free": false
+        },
+        "init": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "inited"
+          ],
+          "writes": [
+            "USDV",
+            "UTILS",
+            "VETHER",
+            "inited",
+            "rewardAddress"
+          ],
+          "is_env_free": true
+        },
+        "_approve": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_allowances"
+          ],
+          "is_env_free": true
+        },
+        "_transfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "UTILS",
+            "_balances",
+            "feeOnTransfer"
+          ],
+          "writes": [
+            "_balances"
+          ],
+          "is_env_free": false
+        },
+        "_mint": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "maxSupply",
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "_burn": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "flipEmissions": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [
+            "emitting"
+          ],
+          "writes": [
+            "emitting"
+          ],
+          "is_env_free": false
+        },
+        "flipMinting": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [
+            "minting"
+          ],
+          "writes": [
+            "minting"
+          ],
+          "is_env_free": false
+        },
+        "setParams": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [],
+          "writes": [
+            "emissionCurve",
+            "secondsPerEra"
+          ],
+          "is_env_free": false
+        },
+        "setRewardAddress": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [],
+          "writes": [
+            "rewardAddress"
+          ],
+          "is_env_free": false
+        },
+        "changeUTILS": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [],
+          "writes": [
+            "UTILS"
+          ],
+          "is_env_free": false
+        },
+        "changeDAO": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [],
+          "writes": [
+            "DAO"
+          ],
+          "is_env_free": false
+        },
+        "purgeDAO": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [],
+          "writes": [
+            "DAO"
+          ],
+          "is_env_free": false
+        },
+        "_checkEmission": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [
+            "UTILS",
+            "currentEra",
+            "emitting",
+            "feeOnTransfer",
+            "maxSupply",
+            "nextEraTime",
+            "rewardAddress",
+            "secondsPerEra",
+            "totalSupply"
+          ],
+          "writes": [
+            "currentEra",
+            "feeOnTransfer",
+            "nextEraTime"
+          ],
+          "is_env_free": false
+        },
+        "getDailyEmission": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "baseline",
+            "emissionCurve",
+            "maxSupply",
+            "totalSupply"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "upgrade": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "VETHER",
+            "burnAddress"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "redeem": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "redeemToMember": {
+          "visibility": "public",
+          "modifiers": [
+            "flashProof"
+          ],
+          "reads": [
+            "USDV",
+            "minting"
+          ],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Vault": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "inited",
+          "type": "bool",
+          "visibility": "private"
+        },
+        {
+          "name": "erasToEarn",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "minGrantTime",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "lastGranted",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "VADER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "USDV",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "ROUTER",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "POOLS",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "FACTORY",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "minimumDepositTime",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "totalWeight",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "mapMember_weight",
+          "type": "mapping(address => uint256)",
+          "visibility": "private"
+        },
+        {
+          "name": "mapMemberSynth_deposit",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        },
+        {
+          "name": "mapMemberSynth_lastTime",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "init": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "inited"
+          ],
+          "writes": [
+            "FACTORY",
+            "POOLS",
+            "ROUTER",
+            "USDV",
+            "VADER",
+            "erasToEarn",
+            "inited",
+            "minGrantTime",
+            "minimumDepositTime"
+          ],
+          "is_env_free": true
+        },
+        "setParams": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [],
+          "writes": [
+            "erasToEarn",
+            "minGrantTime",
+            "minimumDepositTime"
+          ],
+          "is_env_free": false
+        },
+        "grant": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyDAO"
+          ],
+          "reads": [
+            "USDV",
+            "lastGranted",
+            "minGrantTime"
+          ],
+          "writes": [
+            "lastGranted"
+          ],
+          "is_env_free": false
+        },
+        "deposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "depositForMember": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "FACTORY"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_deposit": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "ROUTER",
+            "mapMemberSynth_deposit",
+            "mapMember_weight",
+            "totalWeight"
+          ],
+          "writes": [
+            "mapMemberSynth_deposit",
+            "mapMemberSynth_lastTime",
+            "mapMember_weight",
+            "totalWeight"
+          ],
+          "is_env_free": false
+        },
+        "harvest": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "ROUTER",
+            "USDV",
+            "VADER",
+            "mapMemberSynth_deposit",
+            "mapMember_weight",
+            "totalWeight"
+          ],
+          "writes": [
+            "mapMemberSynth_deposit",
+            "mapMemberSynth_lastTime",
+            "mapMember_weight",
+            "totalWeight"
+          ],
+          "is_env_free": false
+        },
+        "calcCurrentReward": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "VADER",
+            "mapMemberSynth_lastTime"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "calcReward": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "POOLS",
+            "ROUTER",
+            "erasToEarn",
+            "mapMember_weight",
+            "totalWeight"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdraw": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_processWithdraw": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "mapMemberSynth_deposit",
+            "mapMemberSynth_lastTime",
+            "mapMember_weight",
+            "minimumDepositTime",
+            "totalWeight"
+          ],
+          "writes": [
+            "mapMemberSynth_deposit",
+            "mapMember_weight",
+            "totalWeight"
+          ],
+          "is_env_free": false
+        },
+        "getFunds": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "sendFunds": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "reserveUSDV": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "USDV"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "reserveVADER": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberDeposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapMemberSynth_deposit"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberWeight": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapMember_weight"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberLastTime": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "mapMemberSynth_lastTime"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "DAO": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "UTILS": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "VADER"
+          ],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Vether": {
+      "inheritance": [
+        "iVETHER"
+      ],
+      "state_variables": [
+        {
+          "name": "name",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "symbol",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "decimals",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "totalSupply",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "totalFees",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "mapAddress_Excluded",
+          "type": "mapping(address => bool)",
+          "visibility": "public"
+        },
+        {
+          "name": "_balances",
+          "type": "mapping(address => uint256)",
+          "visibility": "private"
+        },
+        {
+          "name": "_allowances",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "private"
+        }
+      ],
+      "functions": {
+        "name": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "symbol": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "decimals": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "totalSupply": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transfer": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "allowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "approve": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferFrom": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "name",
+            "symbol"
+          ],
+          "is_env_free": false
+        },
+        "increaseAllowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "decreaseAllowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_approve": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_allowances"
+          ],
+          "is_env_free": true
+        },
+        "_transfer": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "mapAddress_Excluded",
+            "totalFees"
+          ],
+          "writes": [
+            "_balances",
+            "totalFees"
+          ],
+          "is_env_free": true
+        },
+        "_getFee": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [
+            "mapAddress_Excluded"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "addExcluded": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "mapAddress_Excluded"
+          ],
+          "is_env_free": true
+        },
+        "slitherConstructorVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "decimals"
+          ],
+          "writes": [
+            "decimals",
+            "totalSupply"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "iFACTORY": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "deploySynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mintSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "iPOOLS": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "pooledVADER": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "pooledUSDV": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "addLiquidity": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "removeLiquidity": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "sync": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "swap": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "deploySynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mintSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "burnSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "syncSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "lockUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "unlockUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isMember": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isAsset": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isAnchor": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getPoolAmounts": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getBaseAmount": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getTokenAmount": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isSynth": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "iROUTER": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "setParams": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "addLiquidity": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "removeLiquidity": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "swap": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "swapWithLimit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "swapWithSynths": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "swapWithSynthsWithLimit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getILProtection": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "curatePool": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "listAnchor": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "replacePool": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "updateAnchorPrice": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getAnchorPrice": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getVADERAmount": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getUSDVAmount": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isCurated": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "reserveUSDV": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "reserveVADER": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberBaseDeposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberTokenDeposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberLastDeposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberCollateral": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberDebt": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSystemCollateral": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSystemDebt": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSystemInterestPaid": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "iSYNTH": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "mint": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "TOKEN": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "iUSDV": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "ROUTER": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isMature": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setParams": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "convert": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "convertForMember": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "redeem": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "redeemForMember": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "iUTILS": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "getFeeOnTransfer": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "assetChecks": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isBase": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcValueInBase": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcValueInToken": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcValueOfTokenInToken": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSwapValueInBase": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSwapValueInToken": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "requirePriceBounds": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getRewardShare": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getReducedShare": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getProtection": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getCoverage": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getCollateralValueInBase": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getDebtValueInCollateral": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getInterestOwed": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getInterestPayment": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getDebtLoading": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcPart": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcShare": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSwapOutput": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSwapFee": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSwapSlip": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcLiquidityUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSlipAdustment": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcSynthUnits": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcAsymmetricShare": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcCoverage": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "sortArray": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "iVADER": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "UTILS": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "DAO": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "emitting": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "minting": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "secondsPerEra": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "flipEmissions": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "flipMinting": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setParams": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setRewardAddress": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "changeUTILS": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "changeDAO": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "purgeDAO": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "upgrade": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "redeem": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "redeemToMember": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "iVAULT": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "setParams": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "grant": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "deposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "depositForMember": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "harvest": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcCurrentReward": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calcReward": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdraw": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "totalWeight": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "reserveUSDV": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "reserveVADER": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberDeposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberWeight": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMemberLastTime": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "console": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "CONSOLE_ADDRESS",
+          "type": "address",
+          "visibility": "internal"
+        }
+      ],
+      "functions": {
+        "_sendLogPayloadImplementation": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "CONSOLE_ADDRESS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_castToPure": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_sendLogPayload": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "log": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logInt": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logUint": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logString": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBool": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logAddress": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes1": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes2": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes3": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes4": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes5": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes6": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes7": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes8": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes9": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes10": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes11": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes12": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes13": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes14": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes15": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes16": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes17": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes18": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes19": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes20": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes21": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes22": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes23": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes24": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes25": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes26": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes27": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes28": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes29": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes30": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes31": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "logBytes32": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "slitherConstructorConstantVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "CONSOLE_ADDRESS"
+          ],
+          "is_env_free": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+# Context: Synth._approve
+
+**Contract:** `Synth` (Inherits: iERC20)
+**Signature:** `_approve(address,address,uint256)`
+**Method Selector ID:** `Internal (No Method ID)`
+**Visibility:** `internal`
+**Environment-Free:** `Yes`
+**Modifiers:** None
+
+### State Variables Interaction
+- **Reads:** None
+- **Writes:** _allowances
+
+### Assertion Checks & Business Requirements
+- require/assert: `require(bool,string)(owner != address(0),sender)`
+- require/assert: `require(bool,string)(spender != address(0),spender)`
+
+### Environment & Verification Flags
+- **Uses Foundry Cheatcodes:** No
+- **Has Echidna Properties:** No
+
+### Internal Calls Tree
+- None
+
+### External Calls / Value Transfers
+- `TMP_616(None) = SOLIDITY_CALL require(bool,string)(TMP_615,sender)`
+
+### Control Flow Graph (CFG)
+```mermaid
+flowchart TD
+    Node_0["0: NodeType.ENTRYPOINT - "]
+    Node_0 --> Node_1
+    Node_1["1: NodeType.EXPRESSION - require(bool,string)(owner != address(0),sender)"]
+    Node_1 --> Node_2
+    Node_2["2: NodeType.EXPRESSION - require(bool,string)(spender != address(0),spender)"]
+    Node_2 --> Node_3
+    Node_3["3: NodeType.EXPRESSION - _allowances(owner)(spender) = amount"]
+    Node_3 --> Node_4
+    Node_4["4: NodeType.EXPRESSION - Approval(owner,spender,amount)"]
+```
+
+### Source Mapping
+Declared in: `contracts/Synth.sol` on lines **56** to **61**
+
+```solidity
+    function _approve(address owner, address spender, uint amount) internal virtual {
+        require(owner != address(0), "sender");
+        require(spender != address(0), "spender");
+        _allowances[owner][spender] = amount;
+        emit Approval(owner, spender, amount);
+    }
+
+```

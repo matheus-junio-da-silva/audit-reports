@@ -1,0 +1,537 @@
+{
+  "absolutePath": "contracts/interfaces/IPriceOracle.sol",
+  "exportedSymbols": {
+    "IPriceOracle": [
+      18261
+    ]
+  },
+  "id": 18262,
+  "license": "UNLICENSED",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 18217,
+      "literals": [
+        "solidity",
+        "0.7",
+        ".6"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "40:22:49"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "fullyImplemented": false,
+      "id": 18261,
+      "linearizedBaseContracts": [
+        18261
+      ],
+      "name": "IPriceOracle",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18218,
+            "nodeType": "StructuredDocumentation",
+            "src": "96:230:49",
+            "text": " @notice emitted when chainlink price feed for a token is updated\n @param token address of token for which price feed is updated\n @param priceOracle address of the updated price feed for the token"
+          },
+          "id": 18224,
+          "name": "ChainlinkFeedUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18223,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18220,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "token",
+                "nodeType": "VariableDeclaration",
+                "scope": 18224,
+                "src": "359:21:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18219,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "359:7:49",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18222,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "priceOracle",
+                "nodeType": "VariableDeclaration",
+                "scope": 18224,
+                "src": "382:27:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18221,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "382:7:49",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "358:52:49"
+          },
+          "src": "332:79:49"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18225,
+            "nodeType": "StructuredDocumentation",
+            "src": "419:384:49",
+            "text": " @notice emitted when uniswap price feed for a token pair is updated\n @param token1 address of numerator address in price feed\n @param token2 address of denominator address in price feed\n @param feedId unique id for the token pair irrespective of the order of tokens\n @param pool address of the pool from which price feed can be queried"
+          },
+          "id": 18235,
+          "name": "UniswapFeedUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18234,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18227,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "token1",
+                "nodeType": "VariableDeclaration",
+                "scope": 18235,
+                "src": "834:22:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18226,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "834:7:49",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18229,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "token2",
+                "nodeType": "VariableDeclaration",
+                "scope": 18235,
+                "src": "858:22:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18228,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "858:7:49",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18231,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "feedId",
+                "nodeType": "VariableDeclaration",
+                "scope": 18235,
+                "src": "882:14:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 18230,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "882:7:49",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18233,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "pool",
+                "nodeType": "VariableDeclaration",
+                "scope": 18235,
+                "src": "898:20:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18232,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "898:7:49",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "833:86:49"
+          },
+          "src": "809:111:49"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18236,
+            "nodeType": "StructuredDocumentation",
+            "src": "928:212:49",
+            "text": " @notice emitted when price averaging window for uniswap price feeds is updated\n @param uniswapPriceAveragingPeriod period during which uniswap prices are averaged over to avoid attacks"
+          },
+          "id": 18240,
+          "name": "UniswapPriceAveragingPeriodUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18239,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18238,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "uniswapPriceAveragingPeriod",
+                "nodeType": "VariableDeclaration",
+                "scope": 18240,
+                "src": "1187:34:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 18237,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1187:6:49",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1186:36:49"
+          },
+          "src": "1146:77:49"
+        },
+        {
+          "functionSelector": "10603c11",
+          "id": 18251,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getLatestPrice",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18245,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18242,
+                "mutability": "mutable",
+                "name": "num",
+                "nodeType": "VariableDeclaration",
+                "scope": 18251,
+                "src": "1255:11:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18241,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1255:7:49",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18244,
+                "mutability": "mutable",
+                "name": "den",
+                "nodeType": "VariableDeclaration",
+                "scope": 18251,
+                "src": "1268:11:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18243,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1268:7:49",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1254:26:49"
+          },
+          "returnParameters": {
+            "id": 18250,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18247,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18251,
+                "src": "1304:7:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18246,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1304:7:49",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18249,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18251,
+                "src": "1313:7:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18248,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1313:7:49",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1303:18:49"
+          },
+          "scope": 18261,
+          "src": "1231:91:49",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "633defbd",
+          "id": 18260,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "doesFeedExist",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18256,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18253,
+                "mutability": "mutable",
+                "name": "token1",
+                "nodeType": "VariableDeclaration",
+                "scope": 18260,
+                "src": "1353:14:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18252,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1353:7:49",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18255,
+                "mutability": "mutable",
+                "name": "token2",
+                "nodeType": "VariableDeclaration",
+                "scope": 18260,
+                "src": "1369:14:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18254,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1369:7:49",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1352:32:49"
+          },
+          "returnParameters": {
+            "id": 18259,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18258,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18260,
+                "src": "1408:4:49",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 18257,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1408:4:49",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1407:6:49"
+          },
+          "scope": 18261,
+          "src": "1330:84:49",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 18262,
+      "src": "66:1351:49"
+    }
+  ],
+  "src": "40:1379:49"
+}

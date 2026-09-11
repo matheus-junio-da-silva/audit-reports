@@ -1,0 +1,79 @@
+{
+  "contract": "FeePoolV0",
+  "source_file": "projects/mochi-core/contracts/feePool/FeePoolV0.sol",
+  "compiler": "0.8.7",
+  "priority": "High",
+  "evidence": {
+    "changecrvVoterRewardPool_gov": "FeePoolV0.sol:40-43 (require(msg.sender == engine.governance(), \"!gov\"))",
+    "changeTreasuryRatio_gov": "FeePoolV0.sol:45-48 (require(msg.sender == engine.governance(), \"!gov\"))",
+    "changevMochiRatio_gov": "FeePoolV0.sol:50-53 (require(msg.sender == engine.governance(), \"!gov\"))",
+    "distributeMochi_permissionless_by_design": "FeePoolV0.sol:58-62 comment: open arb, caller not rewarded (flashbot)",
+    "sendToTreasury_permissionless": "FeePoolV0.sol:97-100 no auth; sends to engine.treasury()",
+    "updateReserve_permissionless": "FeePoolV0.sol:32-38 no auth"
+  },
+  "checklist_matrix": {
+    "S4.1.G1": "not_applicable",
+    "S4.1.G2": "not_applicable",
+    "S4.1.G3": "not_applicable",
+    "S4.1.G4": "not_applicable",
+    "S4.1.G5": "not_applicable",
+    "S4.1.G6": "automated - three gov-gated ratio/pool setters",
+    "S4.1.G7": "manual_model_required - fee-pool solvency requires engine.usdm()/mochi() linking",
+    "S4.1.G8": "not_applicable",
+    "S4.1.G9": "not_applicable",
+    "S4.1.G10": "not_applicable",
+    "S4.1.G11": "not_applicable",
+    "S4.2.G1": "automated - non-gov rejected on gov setters",
+    "S4.2.G3": "not_applicable",
+    "S4.2.G4": "not_applicable"
+  },
+  "rules": [
+    {
+      "id": "RC-FEE-001",
+      "item": "S4.1.G6",
+      "statement": "changecrvVoterRewardPool must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    },
+    {
+      "id": "RC-FEE-002",
+      "item": "S4.1.G6",
+      "statement": "changeTreasuryRatio must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    },
+    {
+      "id": "RC-FEE-003",
+      "item": "S4.1.G6",
+      "statement": "changevMochiRatio must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    },
+    {
+      "id": "RC-FEE-004",
+      "item": "S4.1.G6",
+      "statement": "authorized path reachable: governance caller can change treasuryRatio",
+      "feasibility": "manual_model_required",
+      "pattern": "satisfy_witness",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    }
+  ],
+  "conf": {
+    "files": [
+      "projects/mochi-core/contracts/feePool/FeePoolV0.sol"
+    ],
+    "solc": "0.8.7",
+    "notes": "distributeMochi/sendToTreasury/updateReserve are intentionally permissionless (H-02/H-12 are execution-order issues, not authorization); documented not_applicable"
+  },
+  "notes": "all admin setter rules (changecrvVoterRewardPool/changeTreasuryRatio/changevMochiRatio) are gated by engine().governance() (FeePoolV0.sol:57-77) - 1-hop linked authority; CVL cannot correlate engine() address with an ambient instance (M ochiProfileV0 ATTEMPT-2 fals-dofindings); reclassified manual_model_required. distributeMochi/sendToTreasury/updateReserve are permissionless by design (not AC findings; S4.1.G6 applies to admin setter surface only).",
+  "terminal_results": {
+    "all": "manual_model_required (distributeMochi H-12 documented-not-submitted)"
+  }
+}

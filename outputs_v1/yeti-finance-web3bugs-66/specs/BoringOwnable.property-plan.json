@@ -1,0 +1,80 @@
+{
+  "contract": "BoringOwnable",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/YETI/BoringCrypto/BoringOwnable.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "priority": {"level": "High", "score": 18, "reason": "ownership primitive used by AssetWrappers/TeamAllocation-era contracts"},
+  "authority_model": {
+    "kind": "two-step ownership",
+    "predicate_nominate": "e.msg.sender == owner()",
+    "predicate_claim": "e.msg.sender == pendingOwner()",
+    "evidence": [
+      "transferOwnership(address,bool,bool) public onlyOwner (BoringOwnable.sol:27-31)",
+      "direct branch transfers immediately; else sets pendingOwner (BoringOwnable.sol:33-43)",
+      "claimOwnership() public requires msg.sender == _pendingOwner (BoringOwnable.sol:47-51)",
+      "owner and pendingOwner are public storage getters (BoringOwnable.sol:9-10)",
+      "constructor sets owner = msg.sender (BoringOwnable.sol:18)"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-011",
+      "id": "S4.1.G11",
+      "status": "applicable",
+      "target": "transferOwnership(address,bool,bool)",
+      "claim": "a caller that is not the current owner cannot nominate or transfer ownership",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "transferOwnership(address,bool,bool)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "owner-caller witness",
+      "source_evidence": ["BoringOwnable.sol:27-31 (onlyOwner)", "BoringOwnable.sol:60-63"]
+    },
+    {
+      "ontology_id": "CAC-AC-011",
+      "id": "S4.1.G11",
+      "status": "applicable",
+      "target": "transferOwnership(address,bool,bool)",
+      "claim": "nomination (direct=false) must not change the current owner",
+      "property_kind": "before_after_frame_rule",
+      "symbols": ["owner()", "pendingOwner()", "transferOwnership(address,bool,bool)"],
+      "hypotheses": ["e.msg.sender == owner()"],
+      "reachability_check": "nominated pendingOwner can later claim",
+      "source_evidence": ["BoringOwnable.sol:41-43"]
+    },
+    {
+      "ontology_id": "CAC-AC-011",
+      "id": "S4.1.G11",
+      "status": "applicable",
+      "target": "claimOwnership()",
+      "claim": "a caller that is not the nominated pending owner cannot claim ownership",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["pendingOwner()", "claimOwnership()"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "nominated-caller witness",
+      "source_evidence": ["BoringOwnable.sol:47-51"]
+    },
+    {
+      "ontology_id": "CAC-AC-011",
+      "id": "S4.1.G11",
+      "status": "applicable",
+      "target": "claimOwnership()",
+      "claim": "the nominated pending owner can complete the transfer",
+      "property_kind": "authorized_witness",
+      "symbols": ["pendingOwner()", "claimOwnership()"],
+      "hypotheses": ["pendingOwner() != 0", "e.msg.sender == pendingOwner()"],
+      "reachability_check": "claim path reachable after nomination",
+      "source_evidence": ["BoringOwnable.sol:49-55"]
+    },
+    {
+      "ontology_id": "CAC-AC-011",
+      "id": "S4.1.G11",
+      "status": "applicable",
+      "target": "any unrelated method",
+      "claim": "no method other than transferOwnership/claimOwnership may change owner",
+      "property_kind": "scoped_parametric_frame_rule",
+      "symbols": ["owner()", "currentContract"],
+      "hypotheses": ["f.contract == currentContract", "excluded selectors justified (only these two mutate owner)"],
+      "reachability_check": "witness: claimOwnership by pendingOwner changes owner",
+      "source_evidence": ["BoringOwnable.sol:33-55 (owner written only in transferOwnership/claimOwnership)"]
+    }
+  ]
+}

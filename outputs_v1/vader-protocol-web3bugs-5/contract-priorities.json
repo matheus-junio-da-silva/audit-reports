@@ -1,0 +1,970 @@
+{
+  "schema_version": "1.1",
+  "ontology": {
+    "id": "cac-access-control",
+    "version": "1.0.0"
+  },
+  "selection_rule": "Generate CVL for High and Medium; review Low; skip only explicit structural exclusions.",
+  "contracts": [
+    {
+      "contract": "Router",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Router.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "init",
+        "setParams",
+        "setAnchorParams",
+        "addLiquidity",
+        "removeLiquidity",
+        "swap",
+        "swapWithLimit",
+        "swapWithSynths",
+        "swapWithSynthsWithLimit",
+        "curatePool",
+        "replacePool",
+        "listAnchor",
+        "replaceAnchor",
+        "updateAnchorPrice",
+        "borrow",
+        "borrowForMember",
+        "repay",
+        "repayForMember",
+        "checkLiquidate"
+      ],
+      "critical_functions": [
+        "init",
+        "setAnchorParams",
+        "setParams"
+      ],
+      "asset_functions": [
+        "borrow",
+        "borrowForMember",
+        "checkLiquidate",
+        "repay",
+        "repayForMember",
+        "swap",
+        "swapWithLimit",
+        "swapWithSynths",
+        "swapWithSynthsWithLimit"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "borrow",
+        "borrowForMember",
+        "checkLiquidate",
+        "init",
+        "repay",
+        "repayForMember",
+        "swap",
+        "swapWithLimit",
+        "swapWithSynths",
+        "swapWithSynthsWithLimit"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "mapCollateralAsset_NextEra",
+        "mapCollateralDebt_Collateral",
+        "mapCollateralDebt_Debt",
+        "mapCollateralDebt_interestPaid",
+        "mapMemberToken_depositBase",
+        "mapMemberToken_depositToken",
+        "mapMemberToken_lastDeposited",
+        "mapMember_Collateral",
+        "repayDelay"
+      ],
+      "modifiers": [
+        "onlyDAO"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "CollateralDetails",
+        "DebtDetails",
+        "iERC20",
+        "iPOOLS",
+        "iSYNTH",
+        "iUTILS",
+        "iVADER",
+        "onlyDAO"
+      ],
+      "score": 40,
+      "priority": "High",
+      "reasons": [
+        "19 mutable entry points",
+        "critical lifecycle/configuration functions (+9)",
+        "asset or accounting functions (+12)",
+        "critical surface without explicit modifier (+6)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "Vader",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Vader.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "init",
+        "transfer",
+        "approve",
+        "transferFrom",
+        "transferTo",
+        "burn",
+        "burnFrom",
+        "flipEmissions",
+        "flipMinting",
+        "setParams",
+        "setRewardAddress",
+        "changeUTILS",
+        "changeDAO",
+        "purgeDAO",
+        "upgrade",
+        "redeem",
+        "redeemToMember"
+      ],
+      "critical_functions": [
+        "init",
+        "setParams",
+        "upgrade"
+      ],
+      "asset_functions": [
+        "burn",
+        "burnFrom",
+        "flipMinting",
+        "redeem",
+        "redeemToMember",
+        "transfer",
+        "transferFrom",
+        "transferTo"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "burn",
+        "burnFrom",
+        "init",
+        "redeem",
+        "transfer",
+        "transferFrom",
+        "transferTo",
+        "upgrade"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "_allowances",
+        "_balances",
+        "burnAddress",
+        "feeOnTransfer",
+        "maxSupply",
+        "minting",
+        "totalSupply"
+      ],
+      "modifiers": [
+        "flashProof",
+        "onlyDAO"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "flashProof",
+        "iERC20",
+        "iROUTER",
+        "iUSDV",
+        "iUTILS",
+        "onlyDAO"
+      ],
+      "score": 40,
+      "priority": "High",
+      "reasons": [
+        "17 mutable entry points",
+        "critical lifecycle/configuration functions (+9)",
+        "asset or accounting functions (+12)",
+        "critical surface without explicit modifier (+6)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "USDV",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/USDV.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "init",
+        "transfer",
+        "approve",
+        "transferFrom",
+        "transferTo",
+        "burn",
+        "burnFrom",
+        "setParams",
+        "convert",
+        "convertForMember",
+        "redeem",
+        "redeemForMember"
+      ],
+      "critical_functions": [
+        "init",
+        "setParams"
+      ],
+      "asset_functions": [
+        "burn",
+        "burnFrom",
+        "redeem",
+        "redeemForMember",
+        "transfer",
+        "transferFrom",
+        "transferTo"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "burn",
+        "burnFrom",
+        "init",
+        "redeem",
+        "redeemForMember",
+        "transfer",
+        "transferFrom",
+        "transferTo"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "VAULT",
+        "_allowances",
+        "_balances",
+        "totalSupply"
+      ],
+      "modifiers": [
+        "onlyDAO"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "flashProof",
+        "iERC20",
+        "iROUTER",
+        "iVADER",
+        "onlyDAO"
+      ],
+      "score": 37,
+      "priority": "High",
+      "reasons": [
+        "12 mutable entry points",
+        "critical lifecycle/configuration functions (+6)",
+        "asset or accounting functions (+12)",
+        "critical surface without explicit modifier (+6)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "Vault",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Vault.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "init",
+        "setParams",
+        "grant",
+        "deposit",
+        "depositForMember",
+        "harvest",
+        "withdraw"
+      ],
+      "critical_functions": [
+        "grant",
+        "init",
+        "setParams"
+      ],
+      "asset_functions": [
+        "deposit",
+        "depositForMember",
+        "harvest",
+        "withdraw"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "deposit",
+        "depositForMember",
+        "harvest",
+        "init",
+        "withdraw"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "mapMemberSynth_deposit",
+        "minimumDepositTime"
+      ],
+      "modifiers": [
+        "onlyDAO"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "iERC20",
+        "iFACTORY",
+        "iPOOLS",
+        "iROUTER",
+        "iSYNTH",
+        "iUTILS",
+        "iVADER",
+        "onlyDAO"
+      ],
+      "score": 36,
+      "priority": "High",
+      "reasons": [
+        "7 mutable entry points",
+        "critical lifecycle/configuration functions (+9)",
+        "asset or accounting functions (+8)",
+        "critical surface without explicit modifier (+6)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "Synth",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Synth.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "transfer",
+        "approve",
+        "transferFrom",
+        "transferTo",
+        "mint",
+        "burn",
+        "burnFrom"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "burn",
+        "burnFrom",
+        "mint",
+        "transfer",
+        "transferFrom",
+        "transferTo"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "burn",
+        "burnFrom",
+        "transfer",
+        "transferFrom",
+        "transferTo"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "_allowances",
+        "_balances",
+        "totalSupply"
+      ],
+      "modifiers": [
+        "onlyFACTORY"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "iERC20",
+        "onlyFACTORY"
+      ],
+      "score": 30,
+      "priority": "High",
+      "reasons": [
+        "7 mutable entry points",
+        "asset or accounting functions (+12)",
+        "critical surface without explicit modifier (+6)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+3)"
+      ]
+    },
+    {
+      "contract": "Pools",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Pools.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "init",
+        "addLiquidity",
+        "removeLiquidity",
+        "removeLiquidityDirectly",
+        "swap",
+        "sync",
+        "deploySynth",
+        "mintSynth",
+        "burnSynth",
+        "syncSynth",
+        "lockUnits",
+        "unlockUnits"
+      ],
+      "critical_functions": [
+        "init"
+      ],
+      "asset_functions": [
+        "burnSynth",
+        "mintSynth",
+        "swap"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "burnSynth",
+        "init",
+        "mintSynth",
+        "swap"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "iERC20",
+        "iFACTORY",
+        "iUTILS",
+        "iVADER"
+      ],
+      "score": 25,
+      "priority": "High",
+      "reasons": [
+        "12 mutable entry points",
+        "critical lifecycle/configuration functions (+3)",
+        "asset or accounting functions (+6)",
+        "critical surface without explicit modifier (+6)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "Token1",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Token1.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "transfer",
+        "approve",
+        "transferFrom",
+        "transferTo",
+        "burn",
+        "burnFrom"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "burn",
+        "burnFrom",
+        "transfer",
+        "transferFrom",
+        "transferTo"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "burn",
+        "burnFrom",
+        "transfer",
+        "transferFrom",
+        "transferTo"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "_allowances",
+        "_balances",
+        "totalSupply"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "iERC20"
+      ],
+      "score": 25,
+      "priority": "High",
+      "reasons": [
+        "6 mutable entry points",
+        "asset or accounting functions (+10)",
+        "critical surface without explicit modifier (+6)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+1)"
+      ]
+    },
+    {
+      "contract": "Token2",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Token2.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "transfer",
+        "approve",
+        "transferFrom",
+        "transferTo",
+        "burn",
+        "burnFrom"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "burn",
+        "burnFrom",
+        "transfer",
+        "transferFrom",
+        "transferTo"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "burn",
+        "burnFrom",
+        "transfer",
+        "transferFrom",
+        "transferTo"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "_allowances",
+        "_balances",
+        "totalSupply"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "iERC20"
+      ],
+      "score": 25,
+      "priority": "High",
+      "reasons": [
+        "6 mutable entry points",
+        "asset or accounting functions (+10)",
+        "critical surface without explicit modifier (+6)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+1)"
+      ]
+    },
+    {
+      "contract": "Vether",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Vether.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "transfer",
+        "approve",
+        "increaseAllowance",
+        "decreaseAllowance",
+        "transferFrom",
+        "addExcluded"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "decreaseAllowance",
+        "increaseAllowance",
+        "transfer",
+        "transferFrom"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "decreaseAllowance",
+        "increaseAllowance",
+        "transfer",
+        "transferFrom"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "_allowances",
+        "_balances",
+        "totalSupply"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "iVETHER"
+      ],
+      "score": 23,
+      "priority": "High",
+      "reasons": [
+        "6 mutable entry points",
+        "asset or accounting functions (+8)",
+        "critical surface without explicit modifier (+6)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+1)"
+      ]
+    },
+    {
+      "contract": "DAO",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/DAO.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "init",
+        "newGrantProposal",
+        "newAddressProposal",
+        "voteProposal",
+        "cancelProposal",
+        "finaliseProposal"
+      ],
+      "critical_functions": [
+        "init",
+        "newGrantProposal"
+      ],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "init",
+        "newGrantProposal"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "VAULT"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "GrantDetails",
+        "iERC20",
+        "iVADER",
+        "iVAULT"
+      ],
+      "score": 22,
+      "priority": "High",
+      "reasons": [
+        "6 mutable entry points",
+        "critical lifecycle/configuration functions (+6)",
+        "critical surface without explicit modifier (+4)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "Factory",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Factory.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "init",
+        "deploySynth",
+        "mintSynth"
+      ],
+      "critical_functions": [
+        "init"
+      ],
+      "asset_functions": [
+        "mintSynth"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "init"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [
+        "onlyPOOLS"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "Synth",
+        "onlyPOOLS"
+      ],
+      "score": 13,
+      "priority": "High",
+      "reasons": [
+        "3 mutable entry points",
+        "critical lifecycle/configuration functions (+3)",
+        "asset or accounting functions (+2)",
+        "critical surface without explicit modifier (+2)",
+        "access modifiers (+1 supporting)",
+        "protocol dependency centrality (+2)"
+      ]
+    },
+    {
+      "contract": "Utils",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Utils.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "init",
+        "assetChecks"
+      ],
+      "critical_functions": [
+        "init"
+      ],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "init"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "iFACTORY",
+        "iPOOLS",
+        "iROUTER",
+        "iSYNTH",
+        "iVADER"
+      ],
+      "score": 11,
+      "priority": "Medium",
+      "reasons": [
+        "2 mutable entry points",
+        "critical lifecycle/configuration functions (+3)",
+        "critical surface without explicit modifier (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "Attack",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/Attack.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": true,
+      "mutable_entrypoints": [
+        "init",
+        "attackUSDV"
+      ],
+      "critical_functions": [
+        "init"
+      ],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "init"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "iERC20",
+        "iUSDV"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "test/mock contract excluded by default"
+      ]
+    },
+    {
+      "contract": "iERC20",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/interfaces/iERC20.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "iFACTORY",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/interfaces/iFACTORY.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "iPOOLS",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/interfaces/iPOOLS.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "iROUTER",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/interfaces/iROUTER.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "iSYNTH",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/interfaces/iSYNTH.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "iUSDV",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/interfaces/iUSDV.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "iUTILS",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/interfaces/iUTILS.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "iVADER",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/interfaces/iVADER.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "iVAULT",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/interfaces/iVAULT.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "iVETHER",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/5/vader-protocol/contracts/interfaces/iVETHER.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    }
+  ]
+}

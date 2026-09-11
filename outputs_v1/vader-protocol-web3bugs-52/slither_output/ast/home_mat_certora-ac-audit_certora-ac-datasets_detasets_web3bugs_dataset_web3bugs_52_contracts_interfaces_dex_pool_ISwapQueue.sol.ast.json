@@ -1,0 +1,284 @@
+{
+  "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/interfaces/dex/pool/ISwapQueue.sol",
+  "exportedSymbols": {
+    "ISwapQueue": [
+      21
+    ]
+  },
+  "id": 22,
+  "license": "Unlicense",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "=",
+        "0.8",
+        ".9"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "41:23:0"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "canonicalName": "ISwapQueue",
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "fullyImplemented": true,
+      "id": 21,
+      "linearizedBaseContracts": [
+        21
+      ],
+      "name": "ISwapQueue",
+      "nameLocation": "78:10:0",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "canonicalName": "ISwapQueue.Node",
+          "id": 8,
+          "members": [
+            {
+              "constant": false,
+              "id": 3,
+              "mutability": "mutable",
+              "name": "value",
+              "nameLocation": "170:5:0",
+              "nodeType": "VariableDeclaration",
+              "scope": 8,
+              "src": "162:13:0",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              },
+              "typeName": {
+                "id": 2,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "162:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 5,
+              "mutability": "mutable",
+              "name": "previous",
+              "nameLocation": "194:8:0",
+              "nodeType": "VariableDeclaration",
+              "scope": 8,
+              "src": "186:16:0",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              },
+              "typeName": {
+                "id": 4,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "186:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 7,
+              "mutability": "mutable",
+              "name": "next",
+              "nameLocation": "221:4:0",
+              "nodeType": "VariableDeclaration",
+              "scope": 8,
+              "src": "213:12:0",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              },
+              "typeName": {
+                "id": 6,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "213:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "name": "Node",
+          "nameLocation": "146:4:0",
+          "nodeType": "StructDefinition",
+          "scope": 21,
+          "src": "139:94:0",
+          "visibility": "public"
+        },
+        {
+          "canonicalName": "ISwapQueue.Queue",
+          "id": 20,
+          "members": [
+            {
+              "constant": false,
+              "id": 13,
+              "mutability": "mutable",
+              "name": "linkedList",
+              "nameLocation": "290:10:0",
+              "nodeType": "VariableDeclaration",
+              "scope": 20,
+              "src": "265:35:0",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Node_$8_storage_$",
+                "typeString": "mapping(uint256 => struct ISwapQueue.Node)"
+              },
+              "typeName": {
+                "id": 12,
+                "keyType": {
+                  "id": 9,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "273:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "nodeType": "Mapping",
+                "src": "265:24:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Node_$8_storage_$",
+                  "typeString": "mapping(uint256 => struct ISwapQueue.Node)"
+                },
+                "valueType": {
+                  "id": 11,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 10,
+                    "name": "Node",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 8,
+                    "src": "284:4:0"
+                  },
+                  "referencedDeclaration": 8,
+                  "src": "284:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Node_$8_storage_ptr",
+                    "typeString": "struct ISwapQueue.Node"
+                  }
+                }
+              },
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 15,
+              "mutability": "mutable",
+              "name": "start",
+              "nameLocation": "319:5:0",
+              "nodeType": "VariableDeclaration",
+              "scope": 20,
+              "src": "311:13:0",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              },
+              "typeName": {
+                "id": 14,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "311:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 17,
+              "mutability": "mutable",
+              "name": "end",
+              "nameLocation": "343:3:0",
+              "nodeType": "VariableDeclaration",
+              "scope": 20,
+              "src": "335:11:0",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              },
+              "typeName": {
+                "id": 16,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "335:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "visibility": "internal"
+            },
+            {
+              "constant": false,
+              "id": 19,
+              "mutability": "mutable",
+              "name": "size",
+              "nameLocation": "365:4:0",
+              "nodeType": "VariableDeclaration",
+              "scope": 20,
+              "src": "357:12:0",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              },
+              "typeName": {
+                "id": 18,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "357:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "name": "Queue",
+          "nameLocation": "248:5:0",
+          "nodeType": "StructDefinition",
+          "scope": 21,
+          "src": "241:136:0",
+          "visibility": "public"
+        }
+      ],
+      "scope": 22,
+      "src": "68:397:0",
+      "usedErrors": []
+    }
+  ],
+  "src": "41:426:0"
+}

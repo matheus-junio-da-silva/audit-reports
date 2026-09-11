@@ -1,0 +1,103 @@
+{
+  "contract": "Vader",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/tokens/Vader.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "owner_and_dao",
+    "predicates": [
+      "e.msg.sender == owner()",
+      "e.msg.sender == owner() && converter != address(0)"
+    ],
+    "evidence": [
+      "Vader.sol:125-132 createEmission onlyOwner",
+      "Vader.sol:148-186 setComponents onlyOwner",
+      "Vader.sol:272-284 _onlyDAO require(converter != 0 && owner() == msg.sender)"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "createEmission(address,uint256)",
+      "claim": "a caller other than the owner cannot mint emission",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "createEmission(address,uint256)"],
+      "hypotheses": ["totalSupply() + amount <= maxSupply for authorized path"],
+      "reachability_check": "owner can emit while supply cap allows",
+      "source_evidence": ["Vader.sol:125-132 createEmission onlyOwner"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "setComponents(...)",
+      "claim": "a caller other than the owner cannot set protocol components",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setComponents(...)"],
+      "hypotheses": [],
+      "reachability_check": "owner can set components once",
+      "source_evidence": ["Vader.sol:148-186 setComponents onlyOwner"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "claimGrant(address,uint256)",
+      "claim": "a caller other than the DAO (owner with components initialized) cannot claim grants",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "claimGrant(address,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "DAO caller can claim grant from held allocation",
+      "source_evidence": ["Vader.sol:200-204 claimGrant onlyDAO", "Vader.sol:272-284 _onlyDAO"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "adjustMaxSupply(uint256)",
+      "claim": "a caller other than the DAO cannot adjust the maximum supply",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "adjustMaxSupply(uint256)"],
+      "hypotheses": ["_maxSupply >= totalSupply() for authorized path"],
+      "reachability_check": "DAO caller can raise supply cap",
+      "source_evidence": ["Vader.sol:217-224 adjustMaxSupply onlyDAO"]
+    },
+    {
+      "ontology_id": "CAC-AC-007",
+      "id": "S4.1.G10",
+      "status": "applicable",
+      "target": "setComponents(...)",
+      "claim": "components can only be initialized once",
+      "property_kind": "init_once_rule",
+      "symbols": ["setComponents(...)", "converter()"],
+      "hypotheses": [],
+      "reachability_check": "owner succeeds once with non-zero components",
+      "source_evidence": ["Vader.sol:161-164 setComponents require(converter == address(0))"]
+    },
+    {
+      "ontology_id": "CAC-AC-003",
+      "id": "S4.1.G4",
+      "status": "not_applicable",
+      "target": "burn / debitFrom",
+      "claim": "no public/external debit-from entry point exists; the token inherits OZ ERC20 burn (self-burn) without burnFrom",
+      "property_kind": "not_applicable",
+      "symbols": ["burn(...)"],
+      "hypotheses": [],
+      "reachability_check": "n/a",
+      "source_evidence": ["Vader.sol:1-347 no burnFrom/debitFrom external entry point"]
+    },
+    {
+      "ontology_id": "CAC-AC-008",
+      "id": "S4.1.G11",
+      "status": "not_applicable",
+      "target": "transferOwnership",
+      "claim": "token uses one-step OZ Ownable transferOwnership; no two-step nomination exists in this contract",
+      "property_kind": "not_applicable",
+      "symbols": ["transferOwnership(address)"],
+      "hypotheses": [],
+      "reachability_check": "n/a",
+      "source_evidence": ["Vader.sol:31 inherits OZ Ownable; no pendingOwner/acceptOwner"]
+    }
+  ]
+}

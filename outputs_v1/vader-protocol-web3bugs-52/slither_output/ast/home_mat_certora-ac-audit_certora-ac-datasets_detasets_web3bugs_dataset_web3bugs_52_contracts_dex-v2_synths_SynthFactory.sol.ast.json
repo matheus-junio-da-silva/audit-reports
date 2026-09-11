@@ -1,0 +1,1081 @@
+{
+  "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/dex-v2/synths/SynthFactory.sol",
+  "exportedSymbols": {
+    "Context": [
+      1150
+    ],
+    "ERC20": [
+      923
+    ],
+    "IERC20": [
+      1120
+    ],
+    "IERC20Extended": [
+      969
+    ],
+    "IERC20Metadata": [
+      1175
+    ],
+    "ISynth": [
+      941
+    ],
+    "ISynthFactory": [
+      223
+    ],
+    "Ownable": [
+      336
+    ],
+    "ProtocolConstants": [
+      1042
+    ],
+    "Synth": [
+      199
+    ],
+    "SynthFactory": [
+      86
+    ]
+  },
+  "id": 87,
+  "license": "Unlicense",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "=",
+        "0.8",
+        ".9"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "41:23:6"
+    },
+    {
+      "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/dex-v2/synths/Synth.sol",
+      "file": "./Synth.sol",
+      "id": 2,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 87,
+      "sourceUnit": 200,
+      "src": "68:21:6",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/interfaces/dex-v2/synth/ISynthFactory.sol",
+      "file": "../../interfaces/dex-v2/synth/ISynthFactory.sol",
+      "id": 3,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 87,
+      "sourceUnit": 224,
+      "src": "93:57:6",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "baseName": {
+            "id": 4,
+            "name": "ISynthFactory",
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 223,
+            "src": "179:13:6"
+          },
+          "id": 5,
+          "nodeType": "InheritanceSpecifier",
+          "src": "179:13:6"
+        },
+        {
+          "baseName": {
+            "id": 6,
+            "name": "ProtocolConstants",
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 1042,
+            "src": "194:17:6"
+          },
+          "id": 7,
+          "nodeType": "InheritanceSpecifier",
+          "src": "194:17:6"
+        },
+        {
+          "baseName": {
+            "id": 8,
+            "name": "Ownable",
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 336,
+            "src": "213:7:6"
+          },
+          "id": 9,
+          "nodeType": "InheritanceSpecifier",
+          "src": "213:7:6"
+        }
+      ],
+      "canonicalName": "SynthFactory",
+      "contractDependencies": [
+        199
+      ],
+      "contractKind": "contract",
+      "fullyImplemented": true,
+      "id": 86,
+      "linearizedBaseContracts": [
+        86,
+        336,
+        1150,
+        1042,
+        223
+      ],
+      "name": "SynthFactory",
+      "nameLocation": "163:12:6",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "baseFunctions": [
+            213
+          ],
+          "constant": false,
+          "functionSelector": "9f087dd6",
+          "id": 16,
+          "mutability": "mutable",
+          "name": "synths",
+          "nameLocation": "270:6:6",
+          "nodeType": "VariableDeclaration",
+          "overrides": {
+            "id": 15,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "261:8:6"
+          },
+          "scope": 86,
+          "src": "228:48:6",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_mapping$_t_contract$_IERC20_$1120_$_t_contract$_ISynth_$941_$",
+            "typeString": "mapping(contract IERC20 => contract ISynth)"
+          },
+          "typeName": {
+            "id": 14,
+            "keyType": {
+              "id": 11,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 10,
+                "name": "IERC20",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 1120,
+                "src": "236:6:6"
+              },
+              "referencedDeclaration": 1120,
+              "src": "236:6:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IERC20_$1120",
+                "typeString": "contract IERC20"
+              }
+            },
+            "nodeType": "Mapping",
+            "src": "228:25:6",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_contract$_IERC20_$1120_$_t_contract$_ISynth_$941_$",
+              "typeString": "mapping(contract IERC20 => contract ISynth)"
+            },
+            "valueType": {
+              "id": 13,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 12,
+                "name": "ISynth",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 941,
+                "src": "246:6:6"
+              },
+              "referencedDeclaration": 941,
+              "src": "246:6:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ISynth_$941",
+                "typeString": "contract ISynth"
+              }
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "body": {
+            "id": 32,
+            "nodeType": "Block",
+            "src": "312:169:6",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "id": 24,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 22,
+                        "name": "_pool",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 18,
+                        "src": "345:5:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "id": 23,
+                        "name": "_ZERO_ADDRESS",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 977,
+                        "src": "354:13:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "src": "345:22:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "53796e7468466163746f72793a3a636f6e7374727563746f723a204d6973636f6e66696775726174696f6e",
+                      "id": 25,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "382:45:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_b296d051205eb0c3b5def13fbe5aaa2eab8a323bc506ee891e6182a8fd06492c",
+                        "typeString": "literal_string \"SynthFactory::constructor: Misconfiguration\""
+                      },
+                      "value": "SynthFactory::constructor: Misconfiguration"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_b296d051205eb0c3b5def13fbe5aaa2eab8a323bc506ee891e6182a8fd06492c",
+                        "typeString": "literal_string \"SynthFactory::constructor: Misconfiguration\""
+                      }
+                    ],
+                    "id": 21,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "323:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 26,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "323:115:6",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 27,
+                "nodeType": "ExpressionStatement",
+                "src": "323:115:6"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 29,
+                      "name": "_pool",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 18,
+                      "src": "467:5:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 28,
+                    "name": "transferOwnership",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 315,
+                    "src": "449:17:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 30,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "449:24:6",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 31,
+                "nodeType": "ExpressionStatement",
+                "src": "449:24:6"
+              }
+            ]
+          },
+          "id": 33,
+          "implemented": true,
+          "kind": "constructor",
+          "modifiers": [],
+          "name": "",
+          "nameLocation": "-1:-1:-1",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 19,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18,
+                "mutability": "mutable",
+                "name": "_pool",
+                "nameLocation": "305:5:6",
+                "nodeType": "VariableDeclaration",
+                "scope": 33,
+                "src": "297:13:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "297:7:6",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "296:15:6"
+          },
+          "returnParameters": {
+            "id": 20,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "312:0:6"
+          },
+          "scope": 86,
+          "src": "285:196:6",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "public"
+        },
+        {
+          "baseFunctions": [
+            222
+          ],
+          "body": {
+            "id": 84,
+            "nodeType": "Block",
+            "src": "618:312:6",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_contract$_ISynth_$941",
+                        "typeString": "contract ISynth"
+                      },
+                      "id": 54,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "baseExpression": {
+                          "id": 46,
+                          "name": "synths",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16,
+                          "src": "651:6:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_contract$_IERC20_$1120_$_t_contract$_ISynth_$941_$",
+                            "typeString": "mapping(contract IERC20 => contract ISynth)"
+                          }
+                        },
+                        "id": 50,
+                        "indexExpression": {
+                          "arguments": [
+                            {
+                              "id": 48,
+                              "name": "token",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 36,
+                              "src": "665:5:6",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_IERC20Extended_$969",
+                                "typeString": "contract IERC20Extended"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_IERC20Extended_$969",
+                                "typeString": "contract IERC20Extended"
+                              }
+                            ],
+                            "id": 47,
+                            "name": "IERC20",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1120,
+                            "src": "658:6:6",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_IERC20_$1120_$",
+                              "typeString": "type(contract IERC20)"
+                            }
+                          },
+                          "id": 49,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "658:13:6",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_IERC20_$1120",
+                            "typeString": "contract IERC20"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "651:21:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ISynth_$941",
+                          "typeString": "contract ISynth"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "arguments": [
+                          {
+                            "id": 52,
+                            "name": "_ZERO_ADDRESS",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 977,
+                            "src": "683:13:6",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 51,
+                          "name": "ISynth",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 941,
+                          "src": "676:6:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_ISynth_$941_$",
+                            "typeString": "type(contract ISynth)"
+                          }
+                        },
+                        "id": 53,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "676:21:6",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ISynth_$941",
+                          "typeString": "contract ISynth"
+                        }
+                      },
+                      "src": "651:46:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "53796e7468466163746f72793a3a63726561746553796e74683a20416c72656164792043726561746564",
+                      "id": 55,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "712:44:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_3fe652b19e1f3b0e431a9a5ebb42dfac096c8cbf60c6d99c2be0b75198ddb721",
+                        "typeString": "literal_string \"SynthFactory::createSynth: Already Created\""
+                      },
+                      "value": "SynthFactory::createSynth: Already Created"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_3fe652b19e1f3b0e431a9a5ebb42dfac096c8cbf60c6d99c2be0b75198ddb721",
+                        "typeString": "literal_string \"SynthFactory::createSynth: Already Created\""
+                      }
+                    ],
+                    "id": 45,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "629:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 56,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "629:138:6",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 57,
+                "nodeType": "ExpressionStatement",
+                "src": "629:138:6"
+              },
+              {
+                "assignments": [
+                  60
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 60,
+                    "mutability": "mutable",
+                    "name": "synth",
+                    "nameLocation": "786:5:6",
+                    "nodeType": "VariableDeclaration",
+                    "scope": 84,
+                    "src": "780:11:6",
+                    "stateVariable": false,
+                    "storageLocation": "default",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Synth_$199",
+                      "typeString": "contract Synth"
+                    },
+                    "typeName": {
+                      "id": 59,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 58,
+                        "name": "Synth",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 199,
+                        "src": "780:5:6"
+                      },
+                      "referencedDeclaration": 199,
+                      "src": "780:5:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Synth_$199",
+                        "typeString": "contract Synth"
+                      }
+                    },
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 66,
+                "initialValue": {
+                  "arguments": [
+                    {
+                      "id": 64,
+                      "name": "token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 36,
+                      "src": "804:5:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC20Extended_$969",
+                        "typeString": "contract IERC20Extended"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_contract$_IERC20Extended_$969",
+                        "typeString": "contract IERC20Extended"
+                      }
+                    ],
+                    "id": 63,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "NewExpression",
+                    "src": "794:9:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_creation_nonpayable$_t_contract$_IERC20Extended_$969_$returns$_t_contract$_Synth_$199_$",
+                      "typeString": "function (contract IERC20Extended) returns (contract Synth)"
+                    },
+                    "typeName": {
+                      "id": 62,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 61,
+                        "name": "Synth",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 199,
+                        "src": "798:5:6"
+                      },
+                      "referencedDeclaration": 199,
+                      "src": "798:5:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Synth_$199",
+                        "typeString": "contract Synth"
+                      }
+                    }
+                  },
+                  "id": 65,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "794:16:6",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_Synth_$199",
+                    "typeString": "contract Synth"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "780:30:6"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "arguments": [],
+                      "expression": {
+                        "argumentTypes": [],
+                        "id": 70,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 264,
+                        "src": "847:5:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
+                          "typeString": "function () view returns (address)"
+                        }
+                      },
+                      "id": 71,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "847:7:6",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "expression": {
+                      "id": 67,
+                      "name": "synth",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 60,
+                      "src": "823:5:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_Synth_$199",
+                        "typeString": "contract Synth"
+                      }
+                    },
+                    "id": 69,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "transferOwnership",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 315,
+                    "src": "823:23:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address) external"
+                    }
+                  },
+                  "id": 72,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "823:32:6",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 73,
+                "nodeType": "ExpressionStatement",
+                "src": "823:32:6"
+              },
+              {
+                "expression": {
+                  "id": 80,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "baseExpression": {
+                      "id": 74,
+                      "name": "synths",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 16,
+                      "src": "868:6:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_contract$_IERC20_$1120_$_t_contract$_ISynth_$941_$",
+                        "typeString": "mapping(contract IERC20 => contract ISynth)"
+                      }
+                    },
+                    "id": 78,
+                    "indexExpression": {
+                      "arguments": [
+                        {
+                          "id": 76,
+                          "name": "token",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 36,
+                          "src": "882:5:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_IERC20Extended_$969",
+                            "typeString": "contract IERC20Extended"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_contract$_IERC20Extended_$969",
+                            "typeString": "contract IERC20Extended"
+                          }
+                        ],
+                        "id": 75,
+                        "name": "IERC20",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1120,
+                        "src": "875:6:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_IERC20_$1120_$",
+                          "typeString": "type(contract IERC20)"
+                        }
+                      },
+                      "id": 77,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "875:13:6",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC20_$1120",
+                        "typeString": "contract IERC20"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "868:21:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISynth_$941",
+                      "typeString": "contract ISynth"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "id": 79,
+                    "name": "synth",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 60,
+                    "src": "892:5:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_Synth_$199",
+                      "typeString": "contract Synth"
+                    }
+                  },
+                  "src": "868:29:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISynth_$941",
+                    "typeString": "contract ISynth"
+                  }
+                },
+                "id": 81,
+                "nodeType": "ExpressionStatement",
+                "src": "868:29:6"
+              },
+              {
+                "expression": {
+                  "id": 82,
+                  "name": "synth",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 60,
+                  "src": "917:5:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_Synth_$199",
+                    "typeString": "contract Synth"
+                  }
+                },
+                "functionReturnParameters": 44,
+                "id": 83,
+                "nodeType": "Return",
+                "src": "910:12:6"
+              }
+            ]
+          },
+          "functionSelector": "cf62480d",
+          "id": 85,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 40,
+              "kind": "modifierInvocation",
+              "modifierName": {
+                "id": 39,
+                "name": "onlyOwner",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 255,
+                "src": "577:9:6"
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "577:9:6"
+            }
+          ],
+          "name": "createSynth",
+          "nameLocation": "498:11:6",
+          "nodeType": "FunctionDefinition",
+          "overrides": {
+            "id": 38,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "559:8:6"
+          },
+          "parameters": {
+            "id": 37,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 36,
+                "mutability": "mutable",
+                "name": "token",
+                "nameLocation": "525:5:6",
+                "nodeType": "VariableDeclaration",
+                "scope": 85,
+                "src": "510:20:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IERC20Extended_$969",
+                  "typeString": "contract IERC20Extended"
+                },
+                "typeName": {
+                  "id": 35,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 34,
+                    "name": "IERC20Extended",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 969,
+                    "src": "510:14:6"
+                  },
+                  "referencedDeclaration": 969,
+                  "src": "510:14:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20Extended_$969",
+                    "typeString": "contract IERC20Extended"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "509:22:6"
+          },
+          "returnParameters": {
+            "id": 44,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 43,
+                "mutability": "mutable",
+                "name": "",
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "VariableDeclaration",
+                "scope": 85,
+                "src": "605:6:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_ISynth_$941",
+                  "typeString": "contract ISynth"
+                },
+                "typeName": {
+                  "id": 42,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 41,
+                    "name": "ISynth",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 941,
+                    "src": "605:6:6"
+                  },
+                  "referencedDeclaration": 941,
+                  "src": "605:6:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISynth_$941",
+                    "typeString": "contract ISynth"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "604:8:6"
+          },
+          "scope": 86,
+          "src": "489:441:6",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 87,
+      "src": "154:779:6",
+      "usedErrors": []
+    }
+  ],
+  "src": "41:894:6"
+}

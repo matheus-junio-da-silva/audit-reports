@@ -1,0 +1,161 @@
+{
+  "contract": "StrategyRegistry",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/61/contracts/yield/StrategyRegistry.sol",
+  "coverage_status": "FULL",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "owner",
+    "owner_predicate": "e.msg.sender == owner()",
+    "evidence": [
+      "OwnableUpgradeable.owner() getter (OZ 3.4.2) -> StrategyRegistry.sol:9",
+      "onlyOwner modifier on updateMaxStrategies/addStrategy/removeStrategy/updateStrategy -> StrategyRegistry.sol:46,68,82,97",
+      "registry(address) public mapping getter -> StrategyRegistry.sol:25"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "addStrategy(address)",
+      "claim": "a caller other than the pre-state owner cannot add a strategy to the whitelist",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "addStrategy(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can add a strategy for some input",
+      "source_evidence": ["StrategyRegistry.sol:68 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "removeStrategy(uint256)",
+      "claim": "a caller other than the pre-state owner cannot remove a strategy",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "removeStrategy(uint256)"],
+      "hypotheses": [],
+      "reachability_check": "owner path depends on array indexing; not asserted",
+      "source_evidence": ["StrategyRegistry.sol:82 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateStrategy(uint256,address,address)",
+      "claim": "a caller other than the pre-state owner cannot update a strategy",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updateStrategy(uint256,address,address)"],
+      "hypotheses": [],
+      "reachability_check": "owner path depends on array contents; not asserted",
+      "source_evidence": ["StrategyRegistry.sol:97 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateMaxStrategies(uint256)",
+      "claim": "a caller other than the pre-state owner cannot update the max strategies bound",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updateMaxStrategies(uint256)"],
+      "hypotheses": [],
+      "reachability_check": "owner can update the bound for a nonzero input",
+      "source_evidence": ["StrategyRegistry.sol:46 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-007",
+      "id": "S4.1.G10",
+      "status": "applicable",
+      "target": "initialize(address,uint256)",
+      "claim": "after one successful initialization every later initialize call reverts",
+      "property_kind": "revert_implication_rule",
+      "symbols": ["initialize(address,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "initialize succeeds from a fresh uninitialized state with nonzero maxStrategies",
+      "source_evidence": ["StrategyRegistry.sol:33 (modifier initializer)"]
+    },
+    {
+      "ontology_id": "CAC-AC-008",
+      "id": "S4.1.G11",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "one-step OZ OwnableUpgradeable transferOwnership; no pending-owner lifecycle",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["OwnableUpgradeable.sol:69 one-step transfer"]
+    },
+    {
+      "ontology_id": "CAC-AC-010",
+      "id": "S4.2.G4",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "strategy whitelist is a boolean registry, not an allowance/delegation; addStrategy enforces a cap (maxStrategies) but the bound is config subject to owner",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["StrategyRegistry.sol strategy limit is an owner-controlled count, not a user allowance"]
+    },
+    {
+      "ontology_id": "CAC-AC-002",
+      "id": "S4.1.G2",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no RBAC role system",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["StrategyRegistry.sol ownership-based only"]
+    },
+    {
+      "ontology_id": "CAC-AC-003",
+      "id": "S4.1.G4",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no user assets / allowance accounting",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["StrategyRegistry.sol stores no fungible assets"]
+    },
+    {
+      "ontology_id": "CAC-AC-004",
+      "id": "S4.1.G7",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no asset custody / admin drain surface",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["StrategyRegistry.sol has no withdraw/sweep/rescue"]
+    },
+    {
+      "ontology_id": "CAC-AC-005",
+      "id": "S4.1.G8",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no timelock lifecycle",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["StrategyRegistry.sol has no schedule/execute"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no trust-sensitive callback entry point",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["StrategyRegistry.sol defines no callback"]
+    }
+  ]
+}

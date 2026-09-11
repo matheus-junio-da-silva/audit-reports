@@ -1,0 +1,75 @@
+# Context: MochiVault.flashLoan
+
+**Contract:** `MochiVault` (Inherits: IERC3156FlashLender, IMochiVault, Initializable)
+**Signature:** `flashLoan(IERC3156FlashBorrower,address,uint256,bytes) returns (bool)`
+**Method Selector ID:** `0x5cffe9de`
+**Visibility:** `external`
+**Environment-Free:** `No (reads EVM state context)`
+**Modifiers:** None
+
+### State Variables Interaction
+- **Reads:** CALLBACK_SUCCESS, asset, engine
+- **Writes:** None
+
+### Assertion Checks & Business Requirements
+- require/assert: `require(bool,string)(_token == address(asset),!supported)`
+- require/assert: `require(bool,string)(_receiver.onFlashLoan(msg.sender,_token,_amount,fee,_data) == CALLBACK_SUCCESS,!callback)`
+
+### Environment & Verification Flags
+- **Uses Foundry Cheatcodes:** No
+- **Has Echidna Properties:** No
+
+### Internal Calls Tree
+- None
+
+### External Calls / Value Transfers
+- `IERC3156FlashBorrower.TMP_230(bytes32) = HIGH_LEVEL_CALL, dest:_receiver(IERC3156FlashBorrower), function:onFlashLoan, arguments:['msg.sender', '_token', '_amount', 'fee', '_data']  `
+- `IMochiEngine.TMP_237(address) = HIGH_LEVEL_CALL, dest:engine(IMochiEngine), function:treasury, arguments:[]  `
+- `CheapERC20.LIBRARY_CALL, dest:CheapERC20, function:CheapERC20.cheapTransferFrom(IERC20,address,address,uint256), arguments:['asset', 'TMP_233', 'TMP_234', '_amount'] `
+- `CheapERC20.LIBRARY_CALL, dest:CheapERC20, function:CheapERC20.cheapTransfer(IERC20,address,uint256), arguments:['asset', 'TMP_228', '_amount'] `
+- `CheapERC20.LIBRARY_CALL, dest:CheapERC20, function:CheapERC20.cheapTransferFrom(IERC20,address,address,uint256), arguments:['asset', 'TMP_236', 'TMP_237', 'fee'] `
+
+### Control Flow Graph (CFG)
+```mermaid
+flowchart TD
+    Node_0["0: NodeType.ENTRYPOINT - "]
+    Node_0 --> Node_1
+    Node_1["1: NodeType.EXPRESSION - require(bool,string)(_token == address(asset),!supported)"]
+    Node_1 --> Node_2
+    Node_2["2: NodeType.VARIABLE - fee = flashFee(_token,_amount)"]
+    Node_2 --> Node_3
+    Node_3["3: NodeType.EXPRESSION - asset.cheapTransfer(address(_receiver),_amount)"]
+    Node_3 --> Node_4
+    Node_4["4: NodeType.EXPRESSION - require(bool,string)(_receiver.onFlashLoan(msg.sender,_token,_amount,fee,_data) == CALLBACK_SUCCESS,!callback)"]
+    Node_4 --> Node_5
+    Node_5["5: NodeType.EXPRESSION - asset.cheapTransferFrom(address(_receiver),address(this),_amount)"]
+    Node_5 --> Node_6
+    Node_6["6: NodeType.EXPRESSION - asset.cheapTransferFrom(address(_receiver),engine.treasury(),fee)"]
+    Node_6 --> Node_7
+    Node_7["7: NodeType.RETURN - true"]
+```
+
+### Source Mapping
+Declared in: `certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/vault/MochiVault.sol` on lines **356** to **373**
+
+```solidity
+    function flashLoan(
+        IERC3156FlashBorrower _receiver,
+        address _token,
+        uint256 _amount,
+        bytes calldata _data
+    ) external override returns (bool) {
+        require(_token == address(asset), "!supported");
+        uint256 fee = flashFee(_token, _amount);
+        asset.cheapTransfer(address(_receiver), _amount);
+        require(
+            _receiver.onFlashLoan(msg.sender, _token, _amount, fee, _data) ==
+                CALLBACK_SUCCESS,
+            "!callback"
+        );
+        asset.cheapTransferFrom(address(_receiver), address(this), _amount);
+        asset.cheapTransferFrom(address(_receiver), engine.treasury(), fee);
+        return true;
+    }
+
+```

@@ -1,0 +1,256 @@
+{
+  "absolutePath": "contracts/Proxy.sol",
+  "exportedSymbols": {
+    "Address": [
+      3710
+    ],
+    "Proxy": [
+      2308
+    ],
+    "SublimeProxy": [
+      15314
+    ],
+    "TransparentUpgradeableProxy": [
+      2513
+    ],
+    "UpgradeableProxy": [
+      2620
+    ]
+  },
+  "id": 15315,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 15295,
+      "literals": [
+        "solidity",
+        "0.7",
+        ".6"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "33:22:41"
+    },
+    {
+      "absolutePath": "@openzeppelin/contracts/proxy/TransparentUpgradeableProxy.sol",
+      "file": "@openzeppelin/contracts/proxy/TransparentUpgradeableProxy.sol",
+      "id": 15296,
+      "nodeType": "ImportDirective",
+      "scope": 15315,
+      "sourceUnit": 2514,
+      "src": "59:71:41",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "baseName": {
+            "id": 15297,
+            "name": "TransparentUpgradeableProxy",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 2513,
+            "src": "159:27:41",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_TransparentUpgradeableProxy_$2513",
+              "typeString": "contract TransparentUpgradeableProxy"
+            }
+          },
+          "id": 15298,
+          "nodeType": "InheritanceSpecifier",
+          "src": "159:27:41"
+        }
+      ],
+      "contractDependencies": [
+        2308,
+        2513,
+        2620
+      ],
+      "contractKind": "contract",
+      "fullyImplemented": true,
+      "id": 15314,
+      "linearizedBaseContracts": [
+        15314,
+        2513,
+        2620,
+        2308
+      ],
+      "name": "SublimeProxy",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "body": {
+            "id": 15312,
+            "nodeType": "Block",
+            "src": "345:2:41",
+            "statements": []
+          },
+          "id": 15313,
+          "implemented": true,
+          "kind": "constructor",
+          "modifiers": [
+            {
+              "arguments": [
+                {
+                  "id": 15307,
+                  "name": "logic",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 15300,
+                  "src": "325:5:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                {
+                  "id": 15308,
+                  "name": "admin",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 15302,
+                  "src": "332:5:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                {
+                  "id": 15309,
+                  "name": "data",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 15304,
+                  "src": "339:4:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes memory"
+                  }
+                }
+              ],
+              "id": 15310,
+              "modifierName": {
+                "id": 15306,
+                "name": "TransparentUpgradeableProxy",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 2513,
+                "src": "297:27:41",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_contract$_TransparentUpgradeableProxy_$2513_$",
+                  "typeString": "type(contract TransparentUpgradeableProxy)"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "297:47:41"
+            }
+          ],
+          "name": "",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 15305,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 15300,
+                "mutability": "mutable",
+                "name": "logic",
+                "nodeType": "VariableDeclaration",
+                "scope": 15313,
+                "src": "216:13:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 15299,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "216:7:41",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15302,
+                "mutability": "mutable",
+                "name": "admin",
+                "nodeType": "VariableDeclaration",
+                "scope": 15313,
+                "src": "240:13:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 15301,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "240:7:41",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 15304,
+                "mutability": "mutable",
+                "name": "data",
+                "nodeType": "VariableDeclaration",
+                "scope": 15313,
+                "src": "264:17:41",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_memory_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 15303,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "264:5:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "205:83:41"
+          },
+          "returnParameters": {
+            "id": 15311,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "345:0:41"
+          },
+          "scope": 15314,
+          "src": "194:153:41",
+          "stateMutability": "payable",
+          "virtual": false,
+          "visibility": "public"
+        }
+      ],
+      "scope": 15315,
+      "src": "134:216:41"
+    }
+  ],
+  "src": "33:319:41"
+}

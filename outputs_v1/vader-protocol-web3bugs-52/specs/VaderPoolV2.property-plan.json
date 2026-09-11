@@ -1,0 +1,103 @@
+{
+  "contract": "VaderPoolV2",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/dex-v2/pool/VaderPoolV2.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "router_and_owner",
+    "predicates": [
+      "e.msg.sender == router()",
+      "e.msg.sender == owner()"
+    ],
+    "evidence": [
+      "BasePoolV2.sol:585-590 onlyRouter: require(msg.sender == router)",
+      "BasePoolV2.sol:598-601 onlyRouter modifier",
+      "@openzeppelin Ownable onlyOwner on initialize/toggleQueue/setTokenSupport/setFungibleTokenSupport"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "mint(address,uint256,uint256,address,address)",
+      "claim": "a caller other than the pre-state router cannot successfully mint",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["router()", "mint(address,uint256,uint256,address,address)"],
+      "hypotheses": [],
+      "reachability_check": "router caller can complete mint for some supported pair (BasePoolV2 mint reachable; only body math gated)",
+      "source_evidence": ["BasePoolV2.sol:168-180 mint nonReentrant onlyRouter supportedToken"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "burn(uint256,address)",
+      "claim": "a caller other than the pre-state router cannot successfully burn a position",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["router()", "burn(uint256,address)"],
+      "hypotheses": [],
+      "reachability_check": "router caller can burn a transferred position (body gated by ownership check)",
+      "source_evidence": ["VaderPoolV2.sol:236-247 burn onlyRouter"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "mintSynth(address,uint256,address,address)",
+      "claim": "mintSynth lacks the router restriction evidenced on the analogous liquidity mint; a non-router caller can complete it",
+      "property_kind": "missing_authorization_probe",
+      "symbols": ["synthFactory()", "supported(address)", "router()", "mintSynth(address,uint256,address,address)"],
+      "hypotheses": ["synthFactory() != address(0)", "supported(foreignAsset)"],
+      "reachability_check": "counterexample expected showing non-router success; source shows no router check on mintSynth",
+      "source_evidence": ["VaderPoolV2.sol:126-167 mintSynth external nonReentrant supportedToken (no onlyRouter)", "VaderPoolV2.sol:272-283 mint requires router; asymmetry is the protected intent evidence"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "mintFungible(address,uint256,uint256,address,address)",
+      "claim": "mintFungible lacks the router restriction evidenced on liquidity mint; a non-router caller can complete it",
+      "property_kind": "missing_authorization_probe",
+      "symbols": ["wrapper()", "supported(address)", "router()", "mintFungible(address,uint256,uint256,address,address)"],
+      "hypotheses": ["wrapper() != address(0)", "supported(foreignAsset)"],
+      "reachability_check": "counterexample expected showing non-router success; source shows no router check on mintFungible",
+      "source_evidence": ["VaderPoolV2.sol:284-335 mintFungible external nonReentrant (no onlyRouter)", "VaderPoolV2.sol:272-283 mint requires router; asymmetry is the protected intent evidence"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "toggleQueue()",
+      "claim": "a caller other than the owner cannot toggle the queue",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "toggleQueue()"],
+      "hypotheses": [],
+      "reachability_check": "owner can toggle",
+      "source_evidence": ["VaderPoolV2.sol:401-405 toggleQueue onlyOwner"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "setTokenSupport(address,bool)",
+      "claim": "a caller other than the owner cannot change token support",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setTokenSupport(address,bool)"],
+      "hypotheses": [],
+      "reachability_check": "owner can set support to a non-identical state",
+      "source_evidence": ["VaderPoolV2.sol:413-423 setTokenSupport onlyOwner"]
+    },
+    {
+      "ontology_id": "CAC-AC-007",
+      "id": "S4.1.G10",
+      "status": "applicable",
+      "target": "initialize(address,address,address)",
+      "claim": "after one successful initialize, any later initialize reverts",
+      "property_kind": "init_once_rule",
+      "symbols": ["initialize(address,address,address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can complete initialize once from the fresh state",
+      "source_evidence": ["VaderPoolV2.sol:89-113 initialize onlyOwner, requires wrapper == address(0)"]
+    }
+  ]
+}

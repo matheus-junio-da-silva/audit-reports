@@ -1,0 +1,40 @@
+{
+  "contract": "Controllable",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/common/Controllable.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "coverage_status": "FULL",
+  "authority_model": {
+    "kind": "ownership",
+    "predicate": "e.msg.sender == owner()",
+    "evidence": [
+      "Controllable.sol:9 contract Controllable is Ownable",
+      "Controllable.sol:35 setController external onlyOwner",
+      "Controllable.sol:10 address public controller"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6/S4.2.G1",
+      "status": "applicable",
+      "target": "setController(address)",
+      "claim": "only the pre-state owner may change the controller address; controller is the protocol authority hub written once per lifecycle",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setController(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can set a non-zero controller",
+      "source_evidence": ["Controllable.sol:35-40"]
+    }
+  ],
+  "not_applicable": [
+    {"id": "S4.1.G2", "reason": "no role system", "evidence": "ownership only"},
+    {"id": "S4.1.G4", "reason": "no asset debit surface", "evidence": "no ERC20 logic"},
+    {"id": "S4.1.G7", "reason": "no privileged asset withdrawal", "evidence": "no transfer functions"},
+    {"id": "S4.1.G8", "reason": "no timelock", "evidence": "no delay state"},
+    {"id": "S4.1.G9", "reason": "whitelisting handled in Whitelist.sol base contract", "evidence": "not present here"},
+    {"id": "S4.1.G10", "reason": "constructor-validated, no init function", "evidence": "no initialize()"},
+    {"id": "S4.1.G11", "reason": "inherits OZ one-step ownership transfer unchanged", "evidence": "Ownable"},
+    {"id": "S4.2.G3", "reason": "no callback surface", "evidence": "no callback"},
+    {"id": "S4.2.G4", "reason": "no allowance state", "evidence": "no allowance mapping"}
+  ]
+}

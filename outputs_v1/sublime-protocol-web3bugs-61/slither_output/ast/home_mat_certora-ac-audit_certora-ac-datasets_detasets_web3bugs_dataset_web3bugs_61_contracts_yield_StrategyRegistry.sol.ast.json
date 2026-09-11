@@ -1,0 +1,3161 @@
+{
+  "absolutePath": "contracts/yield/StrategyRegistry.sol",
+  "exportedSymbols": {
+    "AddressUpgradeable": [
+      1514
+    ],
+    "ContextUpgradeable": [
+      1559
+    ],
+    "IStrategyRegistry": [
+      18684
+    ],
+    "Initializable": [
+      597
+    ],
+    "OwnableUpgradeable": [
+      176
+    ],
+    "SafeMath": [
+      2256
+    ],
+    "StrategyRegistry": [
+      24283
+    ]
+  },
+  "id": 24284,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 24025,
+      "literals": [
+        "solidity",
+        "0.7",
+        ".6"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "33:22:73"
+    },
+    {
+      "absolutePath": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+      "file": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+      "id": 24026,
+      "nodeType": "ImportDirective",
+      "scope": 24284,
+      "sourceUnit": 177,
+      "src": "59:75:73",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "@openzeppelin/contracts/math/SafeMath.sol",
+      "file": "@openzeppelin/contracts/math/SafeMath.sol",
+      "id": 24027,
+      "nodeType": "ImportDirective",
+      "scope": 24284,
+      "sourceUnit": 2257,
+      "src": "136:51:73",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "contracts/interfaces/IStrategyRegistry.sol",
+      "file": "../interfaces/IStrategyRegistry.sol",
+      "id": 24028,
+      "nodeType": "ImportDirective",
+      "scope": 24284,
+      "sourceUnit": 18685,
+      "src": "191:45:73",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "baseName": {
+            "id": 24029,
+            "name": "Initializable",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 597,
+            "src": "269:13:73",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_Initializable_$597",
+              "typeString": "contract Initializable"
+            }
+          },
+          "id": 24030,
+          "nodeType": "InheritanceSpecifier",
+          "src": "269:13:73"
+        },
+        {
+          "baseName": {
+            "id": 24031,
+            "name": "OwnableUpgradeable",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 176,
+            "src": "284:18:73",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_OwnableUpgradeable_$176",
+              "typeString": "contract OwnableUpgradeable"
+            }
+          },
+          "id": 24032,
+          "nodeType": "InheritanceSpecifier",
+          "src": "284:18:73"
+        },
+        {
+          "baseName": {
+            "id": 24033,
+            "name": "IStrategyRegistry",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 18684,
+            "src": "304:17:73",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IStrategyRegistry_$18684",
+              "typeString": "contract IStrategyRegistry"
+            }
+          },
+          "id": 24034,
+          "nodeType": "InheritanceSpecifier",
+          "src": "304:17:73"
+        }
+      ],
+      "contractDependencies": [
+        176,
+        597,
+        1559,
+        18684
+      ],
+      "contractKind": "contract",
+      "fullyImplemented": true,
+      "id": 24283,
+      "linearizedBaseContracts": [
+        24283,
+        18684,
+        176,
+        1559,
+        597
+      ],
+      "name": "StrategyRegistry",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "id": 24037,
+          "libraryName": {
+            "id": 24035,
+            "name": "SafeMath",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 2256,
+            "src": "335:8:73",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_SafeMath_$2256",
+              "typeString": "library SafeMath"
+            }
+          },
+          "nodeType": "UsingForDirective",
+          "src": "329:27:73",
+          "typeName": {
+            "id": 24036,
+            "name": "uint256",
+            "nodeType": "ElementaryTypeName",
+            "src": "348:7:73",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            }
+          }
+        },
+        {
+          "constant": false,
+          "documentation": {
+            "id": 24038,
+            "nodeType": "StructuredDocumentation",
+            "src": "364:60:73",
+            "text": " @notice list of whitelisted strategies*"
+          },
+          "functionSelector": "d574ea3d",
+          "id": 24041,
+          "mutability": "mutable",
+          "name": "strategies",
+          "nodeType": "VariableDeclaration",
+          "scope": 24283,
+          "src": "430:27:73",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_array$_t_address_$dyn_storage",
+            "typeString": "address[]"
+          },
+          "typeName": {
+            "baseType": {
+              "id": 24039,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "430:7:73",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "id": 24040,
+            "nodeType": "ArrayTypeName",
+            "src": "430:9:73",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+              "typeString": "address[]"
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "constant": false,
+          "documentation": {
+            "id": 24042,
+            "nodeType": "StructuredDocumentation",
+            "src": "464:150:73",
+            "text": " @notice max strategies allowed to be whitelisted\n @dev this limit ensures that strategies array is not too big to iterate*"
+          },
+          "functionSelector": "c79c21b7",
+          "id": 24044,
+          "mutability": "mutable",
+          "name": "maxStrategies",
+          "nodeType": "VariableDeclaration",
+          "scope": 24283,
+          "src": "620:28:73",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_uint256",
+            "typeString": "uint256"
+          },
+          "typeName": {
+            "id": 24043,
+            "name": "uint256",
+            "nodeType": "ElementaryTypeName",
+            "src": "620:7:73",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "baseFunctions": [
+            18655
+          ],
+          "constant": false,
+          "documentation": {
+            "id": 24045,
+            "nodeType": "StructuredDocumentation",
+            "src": "657:80:73",
+            "text": " @notice registry which maps whitelisted strategies to true*"
+          },
+          "functionSelector": "038defd7",
+          "id": 24050,
+          "mutability": "mutable",
+          "name": "registry",
+          "nodeType": "VariableDeclaration",
+          "overrides": {
+            "id": 24049,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "775:8:73"
+          },
+          "scope": 24283,
+          "src": "743:49:73",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+            "typeString": "mapping(address => bool)"
+          },
+          "typeName": {
+            "id": 24048,
+            "keyType": {
+              "id": 24046,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "751:7:73",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "nodeType": "Mapping",
+            "src": "743:24:73",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+              "typeString": "mapping(address => bool)"
+            },
+            "valueType": {
+              "id": 24047,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "762:4:73",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "body": {
+            "id": 24080,
+            "nodeType": "Block",
+            "src": "1118:226:73",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 24063,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 24061,
+                        "name": "_maxStrategies",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 24055,
+                        "src": "1137:14:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "hexValue": "30",
+                        "id": 24062,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1155:1:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      },
+                      "src": "1137:19:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "537472617465677952656769737472793a3a696e697469616c697a65206d6178537472617465676965732063616e6e6f74206265207a65726f",
+                      "id": 24064,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1158:59:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_f9e83056ddc0d8ff08a42abc27cbf1d5d1e747b5401591d306e70f96f7837ec6",
+                        "typeString": "literal_string \"StrategyRegistry::initialize maxStrategies cannot be zero\""
+                      },
+                      "value": "StrategyRegistry::initialize maxStrategies cannot be zero"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_f9e83056ddc0d8ff08a42abc27cbf1d5d1e747b5401591d306e70f96f7837ec6",
+                        "typeString": "literal_string \"StrategyRegistry::initialize maxStrategies cannot be zero\""
+                      }
+                    ],
+                    "id": 24060,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "1129:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 24065,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1129:89:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24066,
+                "nodeType": "ExpressionStatement",
+                "src": "1129:89:73"
+              },
+              {
+                "expression": {
+                  "arguments": [],
+                  "expression": {
+                    "argumentTypes": [],
+                    "id": 24067,
+                    "name": "__Ownable_init",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 75,
+                    "src": "1229:14:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                      "typeString": "function ()"
+                    }
+                  },
+                  "id": 24068,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1229:16:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24069,
+                "nodeType": "ExpressionStatement",
+                "src": "1229:16:73"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 24073,
+                      "name": "_owner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24053,
+                      "src": "1280:6:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "expression": {
+                      "id": 24070,
+                      "name": "super",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": -25,
+                      "src": "1256:5:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_super$_StrategyRegistry_$24283",
+                        "typeString": "contract super StrategyRegistry"
+                      }
+                    },
+                    "id": 24072,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "transferOwnership",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 171,
+                    "src": "1256:23:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 24074,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1256:31:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24075,
+                "nodeType": "ExpressionStatement",
+                "src": "1256:31:73"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 24077,
+                      "name": "_maxStrategies",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24055,
+                      "src": "1321:14:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    ],
+                    "id": 24076,
+                    "name": "_updateMaxStrategies",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 24115,
+                    "src": "1300:20:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
+                      "typeString": "function (uint256)"
+                    }
+                  },
+                  "id": 24078,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1300:36:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24079,
+                "nodeType": "ExpressionStatement",
+                "src": "1300:36:73"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 24051,
+            "nodeType": "StructuredDocumentation",
+            "src": "801:230:73",
+            "text": " @notice used to initialize the paramters of strategy registry\n @dev can only be called once\n @param _owner address of the owner\n @param _maxStrategies maximum number of strategies allowed*"
+          },
+          "functionSelector": "cd6dc687",
+          "id": 24081,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 24058,
+              "modifierName": {
+                "id": 24057,
+                "name": "initializer",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 580,
+                "src": "1106:11:73",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_modifier$__$",
+                  "typeString": "modifier ()"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "1106:11:73"
+            }
+          ],
+          "name": "initialize",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 24056,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 24053,
+                "mutability": "mutable",
+                "name": "_owner",
+                "nodeType": "VariableDeclaration",
+                "scope": 24081,
+                "src": "1057:14:73",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 24052,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1057:7:73",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 24055,
+                "mutability": "mutable",
+                "name": "_maxStrategies",
+                "nodeType": "VariableDeclaration",
+                "scope": 24081,
+                "src": "1073:22:73",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 24054,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1073:7:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1056:40:73"
+          },
+          "returnParameters": {
+            "id": 24059,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1118:0:73"
+          },
+          "scope": 24283,
+          "src": "1037:307:73",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 24093,
+            "nodeType": "Block",
+            "src": "1603:55:73",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 24090,
+                      "name": "_maxStrategies",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24084,
+                      "src": "1635:14:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    ],
+                    "id": 24089,
+                    "name": "_updateMaxStrategies",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 24115,
+                    "src": "1614:20:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
+                      "typeString": "function (uint256)"
+                    }
+                  },
+                  "id": 24091,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1614:36:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24092,
+                "nodeType": "ExpressionStatement",
+                "src": "1614:36:73"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 24082,
+            "nodeType": "StructuredDocumentation",
+            "src": "1352:173:73",
+            "text": " @notice used to update max strategies allowed\n @dev only owner can invoke\n @param _maxStrategies updated number of max strategies allowed*"
+          },
+          "functionSelector": "f50d4984",
+          "id": 24094,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 24087,
+              "modifierName": {
+                "id": 24086,
+                "name": "onlyOwner",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 121,
+                "src": "1593:9:73",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_modifier$__$",
+                  "typeString": "modifier ()"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "1593:9:73"
+            }
+          ],
+          "name": "updateMaxStrategies",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 24085,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 24084,
+                "mutability": "mutable",
+                "name": "_maxStrategies",
+                "nodeType": "VariableDeclaration",
+                "scope": 24094,
+                "src": "1560:22:73",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 24083,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1560:7:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1559:24:73"
+          },
+          "returnParameters": {
+            "id": 24088,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1603:0:73"
+          },
+          "scope": 24283,
+          "src": "1531:127:73",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 24114,
+            "nodeType": "Block",
+            "src": "1729:206:73",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 24102,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 24100,
+                        "name": "_maxStrategies",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 24096,
+                        "src": "1748:14:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "hexValue": "30",
+                        "id": 24101,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1766:1:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      },
+                      "src": "1748:19:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "537472617465677952656769737472793a3a7570646174654d6178537472617465676965732073686f756c64206265206d6f7265207468616e207a65726f",
+                      "id": 24103,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1769:64:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_894fad4daa8bb2468cb1bd9a1fa1692661c08222a45a7e7c174d8d5c5d180fdd",
+                        "typeString": "literal_string \"StrategyRegistry::updateMaxStrategies should be more than zero\""
+                      },
+                      "value": "StrategyRegistry::updateMaxStrategies should be more than zero"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_894fad4daa8bb2468cb1bd9a1fa1692661c08222a45a7e7c174d8d5c5d180fdd",
+                        "typeString": "literal_string \"StrategyRegistry::updateMaxStrategies should be more than zero\""
+                      }
+                    ],
+                    "id": 24099,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "1740:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 24104,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1740:94:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24105,
+                "nodeType": "ExpressionStatement",
+                "src": "1740:94:73"
+              },
+              {
+                "expression": {
+                  "id": 24108,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "id": 24106,
+                    "name": "maxStrategies",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 24044,
+                    "src": "1845:13:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "id": 24107,
+                    "name": "_maxStrategies",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 24096,
+                    "src": "1861:14:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "src": "1845:30:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "id": 24109,
+                "nodeType": "ExpressionStatement",
+                "src": "1845:30:73"
+              },
+              {
+                "eventCall": {
+                  "arguments": [
+                    {
+                      "id": 24111,
+                      "name": "_maxStrategies",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24096,
+                      "src": "1912:14:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    ],
+                    "id": 24110,
+                    "name": "MaxStrategiesUpdated",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 18648,
+                    "src": "1891:20:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                      "typeString": "function (uint256)"
+                    }
+                  },
+                  "id": 24112,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1891:36:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24113,
+                "nodeType": "EmitStatement",
+                "src": "1886:41:73"
+              }
+            ]
+          },
+          "id": 24115,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "_updateMaxStrategies",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 24097,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 24096,
+                "mutability": "mutable",
+                "name": "_maxStrategies",
+                "nodeType": "VariableDeclaration",
+                "scope": 24115,
+                "src": "1696:22:73",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 24095,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1696:7:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1695:24:73"
+          },
+          "returnParameters": {
+            "id": 24098,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1729:0:73"
+          },
+          "scope": 24283,
+          "src": "1666:269:73",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "internal"
+        },
+        {
+          "baseFunctions": [
+            18661
+          ],
+          "body": {
+            "id": 24125,
+            "nodeType": "Block",
+            "src": "2141:36:73",
+            "statements": [
+              {
+                "expression": {
+                  "id": 24123,
+                  "name": "strategies",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 24041,
+                  "src": "2159:10:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                    "typeString": "address[] storage ref"
+                  }
+                },
+                "functionReturnParameters": 24122,
+                "id": 24124,
+                "nodeType": "Return",
+                "src": "2152:17:73"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 24116,
+            "nodeType": "StructuredDocumentation",
+            "src": "1943:117:73",
+            "text": " @notice used to get whitelisted strategies list\n @return array of whitelisted strategies*"
+          },
+          "functionSelector": "b49a60bb",
+          "id": 24126,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getStrategies",
+          "nodeType": "FunctionDefinition",
+          "overrides": {
+            "id": 24118,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "2105:8:73"
+          },
+          "parameters": {
+            "id": 24117,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "2088:2:73"
+          },
+          "returnParameters": {
+            "id": 24122,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 24121,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 24126,
+                "src": "2123:16:73",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                  "typeString": "address[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 24119,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2123:7:73",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 24120,
+                  "nodeType": "ArrayTypeName",
+                  "src": "2123:9:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                    "typeString": "address[]"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2122:18:73"
+          },
+          "scope": 24283,
+          "src": "2066:111:73",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "baseFunctions": [
+            18667
+          ],
+          "body": {
+            "id": 24180,
+            "nodeType": "Block",
+            "src": "2441:454:73",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 24142,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "arguments": [
+                          {
+                            "hexValue": "31",
+                            "id": 24139,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "2482:1:73",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_1_by_1",
+                              "typeString": "int_const 1"
+                            },
+                            "value": "1"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_rational_1_by_1",
+                              "typeString": "int_const 1"
+                            }
+                          ],
+                          "expression": {
+                            "expression": {
+                              "id": 24136,
+                              "name": "strategies",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 24041,
+                              "src": "2460:10:73",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                "typeString": "address[] storage ref"
+                              }
+                            },
+                            "id": 24137,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "length",
+                            "nodeType": "MemberAccess",
+                            "src": "2460:17:73",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "id": 24138,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "add",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2083,
+                          "src": "2460:21:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
+                            "typeString": "function (uint256,uint256) pure returns (uint256)"
+                          }
+                        },
+                        "id": 24140,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2460:24:73",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "<=",
+                      "rightExpression": {
+                        "id": 24141,
+                        "name": "maxStrategies",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 24044,
+                        "src": "2488:13:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "2460:41:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "537472617465677952656769737472793a3a6164645374726174656779202d2043616e277420616464206d6f72652073747261746567696573",
+                      "id": 24143,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2503:59:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_9afd99b5198630bbdd5eb6a7d47edfeb6d117c7a29b37ff5d21fbf2dce169f7d",
+                        "typeString": "literal_string \"StrategyRegistry::addStrategy - Can't add more strategies\""
+                      },
+                      "value": "StrategyRegistry::addStrategy - Can't add more strategies"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_9afd99b5198630bbdd5eb6a7d47edfeb6d117c7a29b37ff5d21fbf2dce169f7d",
+                        "typeString": "literal_string \"StrategyRegistry::addStrategy - Can't add more strategies\""
+                      }
+                    ],
+                    "id": 24135,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "2452:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 24144,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2452:111:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24145,
+                "nodeType": "ExpressionStatement",
+                "src": "2452:111:73"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 24150,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "!",
+                      "prefix": true,
+                      "src": "2582:20:73",
+                      "subExpression": {
+                        "baseExpression": {
+                          "id": 24147,
+                          "name": "registry",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 24050,
+                          "src": "2583:8:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                            "typeString": "mapping(address => bool)"
+                          }
+                        },
+                        "id": 24149,
+                        "indexExpression": {
+                          "id": 24148,
+                          "name": "_strategy",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 24129,
+                          "src": "2592:9:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "2583:19:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "537472617465677952656769737472793a3a6164645374726174656779202d20537472617465677920616c726561647920657869737473",
+                      "id": 24151,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2604:57:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_355b536105c4b77086790238c90b08d7be808324346d48b125c5bf2d6044f296",
+                        "typeString": "literal_string \"StrategyRegistry::addStrategy - Strategy already exists\""
+                      },
+                      "value": "StrategyRegistry::addStrategy - Strategy already exists"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_355b536105c4b77086790238c90b08d7be808324346d48b125c5bf2d6044f296",
+                        "typeString": "literal_string \"StrategyRegistry::addStrategy - Strategy already exists\""
+                      }
+                    ],
+                    "id": 24146,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "2574:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 24152,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2574:88:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24153,
+                "nodeType": "ExpressionStatement",
+                "src": "2574:88:73"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "id": 24160,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 24155,
+                        "name": "_strategy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 24129,
+                        "src": "2681:9:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "arguments": [
+                          {
+                            "hexValue": "30",
+                            "id": 24158,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "2702:1:73",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            }
+                          ],
+                          "id": 24157,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "2694:7:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": {
+                            "id": 24156,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "2694:7:73",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 24159,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2694:10:73",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      "src": "2681:23:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "537472617465677952656769737472793a3a6164645374726174656779202d205f73747261746567792063616e6e6f742062652061646472657373283029",
+                      "id": 24161,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2706:64:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_300399edd7cd4c54efb99edfdf2739b4c5ee8b9957d17ff7a50fa2004c8026ad",
+                        "typeString": "literal_string \"StrategyRegistry::addStrategy - _strategy cannot be address(0)\""
+                      },
+                      "value": "StrategyRegistry::addStrategy - _strategy cannot be address(0)"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_300399edd7cd4c54efb99edfdf2739b4c5ee8b9957d17ff7a50fa2004c8026ad",
+                        "typeString": "literal_string \"StrategyRegistry::addStrategy - _strategy cannot be address(0)\""
+                      }
+                    ],
+                    "id": 24154,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "2673:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 24162,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2673:98:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24163,
+                "nodeType": "ExpressionStatement",
+                "src": "2673:98:73"
+              },
+              {
+                "expression": {
+                  "id": 24168,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "baseExpression": {
+                      "id": 24164,
+                      "name": "registry",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24050,
+                      "src": "2782:8:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                        "typeString": "mapping(address => bool)"
+                      }
+                    },
+                    "id": 24166,
+                    "indexExpression": {
+                      "id": 24165,
+                      "name": "_strategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24129,
+                      "src": "2791:9:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "2782:19:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "hexValue": "74727565",
+                    "id": 24167,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "2804:4:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "src": "2782:26:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "id": 24169,
+                "nodeType": "ExpressionStatement",
+                "src": "2782:26:73"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 24173,
+                      "name": "_strategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24129,
+                      "src": "2835:9:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "expression": {
+                      "id": 24170,
+                      "name": "strategies",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24041,
+                      "src": "2819:10:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                        "typeString": "address[] storage ref"
+                      }
+                    },
+                    "id": 24172,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "push",
+                    "nodeType": "MemberAccess",
+                    "src": "2819:15:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 24174,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2819:26:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24175,
+                "nodeType": "ExpressionStatement",
+                "src": "2819:26:73"
+              },
+              {
+                "eventCall": {
+                  "arguments": [
+                    {
+                      "id": 24177,
+                      "name": "_strategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24129,
+                      "src": "2877:9:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 24176,
+                    "name": "StrategyAdded",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 18638,
+                    "src": "2863:13:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 24178,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2863:24:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24179,
+                "nodeType": "EmitStatement",
+                "src": "2858:29:73"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 24127,
+            "nodeType": "StructuredDocumentation",
+            "src": "2185:182:73",
+            "text": " @dev Add strategies to invest in. Please ensure that number of strategies are less than maxStrategies.\n @param _strategy address of the strategy contract*"
+          },
+          "functionSelector": "223e5479",
+          "id": 24181,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 24133,
+              "modifierName": {
+                "id": 24132,
+                "name": "onlyOwner",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 121,
+                "src": "2431:9:73",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_modifier$__$",
+                  "typeString": "modifier ()"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "2431:9:73"
+            }
+          ],
+          "name": "addStrategy",
+          "nodeType": "FunctionDefinition",
+          "overrides": {
+            "id": 24131,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "2422:8:73"
+          },
+          "parameters": {
+            "id": 24130,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 24129,
+                "mutability": "mutable",
+                "name": "_strategy",
+                "nodeType": "VariableDeclaration",
+                "scope": 24181,
+                "src": "2394:17:73",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 24128,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2394:7:73",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2393:19:73"
+          },
+          "returnParameters": {
+            "id": 24134,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "2441:0:73"
+          },
+          "scope": 24283,
+          "src": "2373:522:73",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "baseFunctions": [
+            18673
+          ],
+          "body": {
+            "id": 24224,
+            "nodeType": "Block",
+            "src": "3103:308:73",
+            "statements": [
+              {
+                "assignments": [
+                  24191
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 24191,
+                    "mutability": "mutable",
+                    "name": "_strategy",
+                    "nodeType": "VariableDeclaration",
+                    "scope": 24224,
+                    "src": "3114:17:73",
+                    "stateVariable": false,
+                    "storageLocation": "default",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "typeName": {
+                      "id": 24190,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "3114:7:73",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 24195,
+                "initialValue": {
+                  "baseExpression": {
+                    "id": 24192,
+                    "name": "strategies",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 24041,
+                    "src": "3134:10:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                      "typeString": "address[] storage ref"
+                    }
+                  },
+                  "id": 24194,
+                  "indexExpression": {
+                    "id": 24193,
+                    "name": "_strategyIndex",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 24184,
+                    "src": "3145:14:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "isConstant": false,
+                  "isLValue": true,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "nodeType": "IndexAccess",
+                  "src": "3134:26:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "3114:46:73"
+              },
+              {
+                "expression": {
+                  "id": 24207,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "baseExpression": {
+                      "id": 24196,
+                      "name": "strategies",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24041,
+                      "src": "3171:10:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                        "typeString": "address[] storage ref"
+                      }
+                    },
+                    "id": 24198,
+                    "indexExpression": {
+                      "id": 24197,
+                      "name": "_strategyIndex",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24184,
+                      "src": "3182:14:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "3171:26:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "baseExpression": {
+                      "id": 24199,
+                      "name": "strategies",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24041,
+                      "src": "3200:10:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                        "typeString": "address[] storage ref"
+                      }
+                    },
+                    "id": 24206,
+                    "indexExpression": {
+                      "arguments": [
+                        {
+                          "hexValue": "31",
+                          "id": 24203,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "3233:1:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_1_by_1",
+                            "typeString": "int_const 1"
+                          },
+                          "value": "1"
+                        },
+                        {
+                          "hexValue": "537472617465677952656769737472793a3a72656d6f76655374726174656779202d204e6f2073747261746567696573206578697374",
+                          "id": 24204,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "string",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "3236:56:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_stringliteral_ddcbb12396d0e04c1700311589a2ff06b4e663798139ec9bce3769b58f5d88a5",
+                            "typeString": "literal_string \"StrategyRegistry::removeStrategy - No strategies exist\""
+                          },
+                          "value": "StrategyRegistry::removeStrategy - No strategies exist"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_rational_1_by_1",
+                            "typeString": "int_const 1"
+                          },
+                          {
+                            "typeIdentifier": "t_stringliteral_ddcbb12396d0e04c1700311589a2ff06b4e663798139ec9bce3769b58f5d88a5",
+                            "typeString": "literal_string \"StrategyRegistry::removeStrategy - No strategies exist\""
+                          }
+                        ],
+                        "expression": {
+                          "expression": {
+                            "id": 24200,
+                            "name": "strategies",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 24041,
+                            "src": "3211:10:73",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                              "typeString": "address[] storage ref"
+                            }
+                          },
+                          "id": 24201,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "src": "3211:17:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 24202,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sub",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 2207,
+                        "src": "3211:21:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$_t_string_memory_ptr_$returns$_t_uint256_$bound_to$_t_uint256_$",
+                          "typeString": "function (uint256,uint256,string memory) pure returns (uint256)"
+                        }
+                      },
+                      "id": 24205,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "3211:82:73",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "3200:94:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "src": "3171:123:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "id": 24208,
+                "nodeType": "ExpressionStatement",
+                "src": "3171:123:73"
+              },
+              {
+                "expression": {
+                  "arguments": [],
+                  "expression": {
+                    "argumentTypes": [],
+                    "expression": {
+                      "id": 24209,
+                      "name": "strategies",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24041,
+                      "src": "3305:10:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                        "typeString": "address[] storage ref"
+                      }
+                    },
+                    "id": 24211,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "pop",
+                    "nodeType": "MemberAccess",
+                    "src": "3305:14:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_arraypop_nonpayable$__$returns$__$",
+                      "typeString": "function ()"
+                    }
+                  },
+                  "id": 24212,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "3305:16:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24213,
+                "nodeType": "ExpressionStatement",
+                "src": "3305:16:73"
+              },
+              {
+                "expression": {
+                  "id": 24218,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "baseExpression": {
+                      "id": 24214,
+                      "name": "registry",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24050,
+                      "src": "3332:8:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                        "typeString": "mapping(address => bool)"
+                      }
+                    },
+                    "id": 24216,
+                    "indexExpression": {
+                      "id": 24215,
+                      "name": "_strategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24191,
+                      "src": "3341:9:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "3332:19:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "hexValue": "66616c7365",
+                    "id": 24217,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "3354:5:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "false"
+                  },
+                  "src": "3332:27:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "id": 24219,
+                "nodeType": "ExpressionStatement",
+                "src": "3332:27:73"
+              },
+              {
+                "eventCall": {
+                  "arguments": [
+                    {
+                      "id": 24221,
+                      "name": "_strategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24191,
+                      "src": "3393:9:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 24220,
+                    "name": "StrategyRemoved",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 18643,
+                    "src": "3377:15:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 24222,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "3377:26:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24223,
+                "nodeType": "EmitStatement",
+                "src": "3372:31:73"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 24182,
+            "nodeType": "StructuredDocumentation",
+            "src": "2903:118:73",
+            "text": " @dev Remove strategy to invest in.\n @param _strategyIndex Index of the strategy to remove*"
+          },
+          "functionSelector": "c0cbbca6",
+          "id": 24225,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 24188,
+              "modifierName": {
+                "id": 24187,
+                "name": "onlyOwner",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 121,
+                "src": "3093:9:73",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_modifier$__$",
+                  "typeString": "modifier ()"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "3093:9:73"
+            }
+          ],
+          "name": "removeStrategy",
+          "nodeType": "FunctionDefinition",
+          "overrides": {
+            "id": 24186,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "3084:8:73"
+          },
+          "parameters": {
+            "id": 24185,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 24184,
+                "mutability": "mutable",
+                "name": "_strategyIndex",
+                "nodeType": "VariableDeclaration",
+                "scope": 24225,
+                "src": "3051:22:73",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 24183,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3051:7:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3050:24:73"
+          },
+          "returnParameters": {
+            "id": 24189,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "3103:0:73"
+          },
+          "scope": 24283,
+          "src": "3027:384:73",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "baseFunctions": [
+            18683
+          ],
+          "body": {
+            "id": 24281,
+            "nodeType": "Block",
+            "src": "3801:526:73",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "id": 24243,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "baseExpression": {
+                          "id": 24239,
+                          "name": "strategies",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 24041,
+                          "src": "3834:10:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                            "typeString": "address[] storage ref"
+                          }
+                        },
+                        "id": 24241,
+                        "indexExpression": {
+                          "id": 24240,
+                          "name": "_strategyIndex",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 24228,
+                          "src": "3845:14:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "3834:26:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "id": 24242,
+                        "name": "_oldStrategy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 24230,
+                        "src": "3864:12:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "src": "3834:42:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "537472617465677952656769737472793a3a7570646174655374726174656779202d20696e64657820746f2075706461746520616e64207374726174656779206164647265737320646f6e2774206d61746368",
+                      "id": 24244,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "3891:85:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_45bc6de108aca192925153bdf4b1055d3d12b9759df6e0ee8a23e4492a4e178b",
+                        "typeString": "literal_string \"StrategyRegistry::updateStrategy - index to update and strategy address don't match\""
+                      },
+                      "value": "StrategyRegistry::updateStrategy - index to update and strategy address don't match"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_45bc6de108aca192925153bdf4b1055d3d12b9759df6e0ee8a23e4492a4e178b",
+                        "typeString": "literal_string \"StrategyRegistry::updateStrategy - index to update and strategy address don't match\""
+                      }
+                    ],
+                    "id": 24238,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "3812:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 24245,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "3812:175:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24246,
+                "nodeType": "ExpressionStatement",
+                "src": "3812:175:73"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 24251,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "UnaryOperation",
+                      "operator": "!",
+                      "prefix": true,
+                      "src": "4006:23:73",
+                      "subExpression": {
+                        "baseExpression": {
+                          "id": 24248,
+                          "name": "registry",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 24050,
+                          "src": "4007:8:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                            "typeString": "mapping(address => bool)"
+                          }
+                        },
+                        "id": 24250,
+                        "indexExpression": {
+                          "id": 24249,
+                          "name": "_newStrategy",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 24232,
+                          "src": "4016:12:73",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "4007:22:73",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "537472617465677952656769737472793a3a7570646174655374726174656779202d204e657720737472617465677920616c726561647920657869737473",
+                      "id": 24252,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "4031:64:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_ff98a4a714392c326885d7cf3b21877249d10cdbc66748f29bf9be3c7a5143d5",
+                        "typeString": "literal_string \"StrategyRegistry::updateStrategy - New strategy already exists\""
+                      },
+                      "value": "StrategyRegistry::updateStrategy - New strategy already exists"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_ff98a4a714392c326885d7cf3b21877249d10cdbc66748f29bf9be3c7a5143d5",
+                        "typeString": "literal_string \"StrategyRegistry::updateStrategy - New strategy already exists\""
+                      }
+                    ],
+                    "id": 24247,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "3998:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 24253,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "3998:98:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24254,
+                "nodeType": "ExpressionStatement",
+                "src": "3998:98:73"
+              },
+              {
+                "expression": {
+                  "id": 24259,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "baseExpression": {
+                      "id": 24255,
+                      "name": "strategies",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24041,
+                      "src": "4107:10:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                        "typeString": "address[] storage ref"
+                      }
+                    },
+                    "id": 24257,
+                    "indexExpression": {
+                      "id": 24256,
+                      "name": "_strategyIndex",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24228,
+                      "src": "4118:14:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "4107:26:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "id": 24258,
+                    "name": "_newStrategy",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 24232,
+                    "src": "4136:12:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "src": "4107:41:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "id": 24260,
+                "nodeType": "ExpressionStatement",
+                "src": "4107:41:73"
+              },
+              {
+                "expression": {
+                  "id": 24265,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "baseExpression": {
+                      "id": 24261,
+                      "name": "registry",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24050,
+                      "src": "4161:8:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                        "typeString": "mapping(address => bool)"
+                      }
+                    },
+                    "id": 24263,
+                    "indexExpression": {
+                      "id": 24262,
+                      "name": "_oldStrategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24230,
+                      "src": "4170:12:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "4161:22:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "hexValue": "66616c7365",
+                    "id": 24264,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "4186:5:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "false"
+                  },
+                  "src": "4161:30:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "id": 24266,
+                "nodeType": "ExpressionStatement",
+                "src": "4161:30:73"
+              },
+              {
+                "eventCall": {
+                  "arguments": [
+                    {
+                      "id": 24268,
+                      "name": "_oldStrategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24230,
+                      "src": "4223:12:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 24267,
+                    "name": "StrategyRemoved",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 18643,
+                    "src": "4207:15:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 24269,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "4207:29:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24270,
+                "nodeType": "EmitStatement",
+                "src": "4202:34:73"
+              },
+              {
+                "expression": {
+                  "id": 24275,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "baseExpression": {
+                      "id": 24271,
+                      "name": "registry",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24050,
+                      "src": "4247:8:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                        "typeString": "mapping(address => bool)"
+                      }
+                    },
+                    "id": 24273,
+                    "indexExpression": {
+                      "id": 24272,
+                      "name": "_newStrategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24232,
+                      "src": "4256:12:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "4247:22:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "hexValue": "74727565",
+                    "id": 24274,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "4272:4:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "src": "4247:29:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "id": 24276,
+                "nodeType": "ExpressionStatement",
+                "src": "4247:29:73"
+              },
+              {
+                "eventCall": {
+                  "arguments": [
+                    {
+                      "id": 24278,
+                      "name": "_newStrategy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 24232,
+                      "src": "4306:12:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 24277,
+                    "name": "StrategyAdded",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 18638,
+                    "src": "4292:13:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 24279,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "4292:27:73",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 24280,
+                "nodeType": "EmitStatement",
+                "src": "4287:32:73"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 24226,
+            "nodeType": "StructuredDocumentation",
+            "src": "3419:222:73",
+            "text": " @dev Update strategy to invest in.\n @param _strategyIndex Index of the strategy to remove\n @param _oldStrategy Strategy that is to be removed\n @param _newStrategy Updated strategy*"
+          },
+          "functionSelector": "76ba717b",
+          "id": 24282,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 24236,
+              "modifierName": {
+                "id": 24235,
+                "name": "onlyOwner",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 121,
+                "src": "3791:9:73",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_modifier$__$",
+                  "typeString": "modifier ()"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "3791:9:73"
+            }
+          ],
+          "name": "updateStrategy",
+          "nodeType": "FunctionDefinition",
+          "overrides": {
+            "id": 24234,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "3782:8:73"
+          },
+          "parameters": {
+            "id": 24233,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 24228,
+                "mutability": "mutable",
+                "name": "_strategyIndex",
+                "nodeType": "VariableDeclaration",
+                "scope": 24282,
+                "src": "3681:22:73",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 24227,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3681:7:73",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 24230,
+                "mutability": "mutable",
+                "name": "_oldStrategy",
+                "nodeType": "VariableDeclaration",
+                "scope": 24282,
+                "src": "3714:20:73",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 24229,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3714:7:73",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 24232,
+                "mutability": "mutable",
+                "name": "_newStrategy",
+                "nodeType": "VariableDeclaration",
+                "scope": 24282,
+                "src": "3745:20:73",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 24231,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3745:7:73",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3670:102:73"
+          },
+          "returnParameters": {
+            "id": 24237,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "3801:0:73"
+          },
+          "scope": 24283,
+          "src": "3647:680:73",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 24284,
+      "src": "240:4090:73"
+    }
+  ],
+  "src": "33:4299:73"
+}

@@ -1,0 +1,57 @@
+{
+  "contract": "MochiNFT",
+  "source_file": "projects/mochi-core/contracts/vault/MochiNft.sol",
+  "compiler": "0.8.7",
+  "priority": "High",
+  "evidence": {
+    "setDescriptor_gov": "MochiNft.sol:20-23 (require(msg.sender == engine.governance(), \"!governance\"))",
+    "mint_vault_only": "MochiNft.sol:25-37 (require(msg.sender == address(engine.vaultFactory().getVault(_asset)), \"!vault\")) -> multi-hop linked"
+  },
+  "checklist_matrix": {
+    "S4.1.G1": "not_applicable",
+    "S4.1.G2": "not_applicable",
+    "S4.1.G3": "not_applicable",
+    "S4.1.G4": "not_applicable - NFT ownership standard ERC721",
+    "S4.1.G5": "not_applicable",
+    "S4.1.G6": "automated for setDescriptor (linked gov); manual for mint (vaultFactory().getVault multi-hop)",
+    "S4.1.G7": "not_applicable",
+    "S4.1.G8": "not_applicable",
+    "S4.1.G9": "not_applicable",
+    "S4.1.G10": "not_applicable",
+    "S4.1.G11": "not_applicable",
+    "S4.2.G1": "automated - non-gov rejected on setDescriptor",
+    "S4.2.G3": "not_applicable",
+    "S4.2.G4": "not_applicable"
+  },
+  "rules": [
+    {
+      "id": "RC-NFT-001",
+      "item": "S4.1.G6",
+      "statement": "setDescriptor must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    },
+    {
+      "id": "RC-NFT-002",
+      "item": "S4.1.G6",
+      "statement": "authorized path reachable: governance caller can set the descriptor",
+      "feasibility": "manual_model_required",
+      "pattern": "satisfy_witness",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    }
+  ],
+  "conf": {
+    "files": [
+      "projects/mochi-core/contracts/vault/MochiNft.sol"
+    ],
+    "solc": "0.8.7",
+    "notes": "mint restricted to address(engine.vaultFactory().getVault(_asset)) - multi-hop, marked manual_model_required"
+  },
+  "notes": "setDescriptor is engine().governance() 1-hop linked; mint() requires msg.sender == engine.vaultFactory().getVault(_asset) (multi-hop) - manual_model_required for both.",
+  "terminal_results": {
+    "all": "manual_model_required"
+  }
+}

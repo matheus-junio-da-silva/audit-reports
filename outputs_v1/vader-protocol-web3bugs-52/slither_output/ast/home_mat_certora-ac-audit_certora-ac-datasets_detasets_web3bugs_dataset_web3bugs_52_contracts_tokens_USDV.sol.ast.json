@@ -1,0 +1,948 @@
+{
+  "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/tokens/USDV.sol",
+  "exportedSymbols": {
+    "Context": [
+      922
+    ],
+    "ERC20": [
+      777
+    ],
+    "IERC20": [
+      1000
+    ],
+    "IERC20Metadata": [
+      1025
+    ],
+    "IUSDV": [
+      819
+    ],
+    "IVaderReserve": [
+      813
+    ],
+    "Ownable": [
+      190
+    ],
+    "ProtocolConstants": [
+      892
+    ],
+    "USDV": [
+      77
+    ]
+  },
+  "id": 78,
+  "license": "Unlicense",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "=",
+        "0.8",
+        ".9"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "41:23:8"
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/node_modules/@openzeppelin/contracts/access/Ownable.sol",
+      "file": "@openzeppelin/contracts/access/Ownable.sol",
+      "id": 2,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 78,
+      "sourceUnit": 191,
+      "src": "68:52:8",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "file": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "id": 3,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 78,
+      "sourceUnit": 778,
+      "src": "122:55:8",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/shared/ProtocolConstants.sol",
+      "file": "../shared/ProtocolConstants.sol",
+      "id": 4,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 78,
+      "sourceUnit": 893,
+      "src": "181:41:8",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/interfaces/tokens/IUSDV.sol",
+      "file": "../interfaces/tokens/IUSDV.sol",
+      "id": 5,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 78,
+      "sourceUnit": 820,
+      "src": "226:40:8",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/interfaces/reserve/IVaderReserve.sol",
+      "file": "../interfaces/reserve/IVaderReserve.sol",
+      "id": 6,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 78,
+      "sourceUnit": 814,
+      "src": "268:49:8",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "baseName": {
+            "id": 7,
+            "name": "IUSDV",
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 819,
+            "src": "346:5:8"
+          },
+          "id": 8,
+          "nodeType": "InheritanceSpecifier",
+          "src": "346:5:8"
+        },
+        {
+          "baseName": {
+            "id": 9,
+            "name": "ProtocolConstants",
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 892,
+            "src": "353:17:8"
+          },
+          "id": 10,
+          "nodeType": "InheritanceSpecifier",
+          "src": "353:17:8"
+        },
+        {
+          "baseName": {
+            "id": 11,
+            "name": "ERC20",
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 777,
+            "src": "372:5:8"
+          },
+          "id": 12,
+          "nodeType": "InheritanceSpecifier",
+          "src": "372:5:8"
+        },
+        {
+          "baseName": {
+            "id": 13,
+            "name": "Ownable",
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 190,
+            "src": "379:7:8"
+          },
+          "id": 14,
+          "nodeType": "InheritanceSpecifier",
+          "src": "379:7:8"
+        }
+      ],
+      "canonicalName": "USDV",
+      "contractDependencies": [],
+      "contractKind": "contract",
+      "fullyImplemented": true,
+      "id": 77,
+      "linearizedBaseContracts": [
+        77,
+        190,
+        777,
+        1025,
+        1000,
+        922,
+        892,
+        819
+      ],
+      "name": "USDV",
+      "nameLocation": "338:4:8",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "constant": false,
+          "functionSelector": "1f494b64",
+          "id": 17,
+          "mutability": "immutable",
+          "name": "vader",
+          "nameLocation": "469:5:8",
+          "nodeType": "VariableDeclaration",
+          "scope": 77,
+          "src": "445:29:8",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_contract$_IERC20_$1000",
+            "typeString": "contract IERC20"
+          },
+          "typeName": {
+            "id": 16,
+            "nodeType": "UserDefinedTypeName",
+            "pathNode": {
+              "id": 15,
+              "name": "IERC20",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 1000,
+              "src": "445:6:8"
+            },
+            "referencedDeclaration": 1000,
+            "src": "445:6:8",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IERC20_$1000",
+              "typeString": "contract IERC20"
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "constant": false,
+          "functionSelector": "cd3293de",
+          "id": 20,
+          "mutability": "immutable",
+          "name": "reserve",
+          "nameLocation": "512:7:8",
+          "nodeType": "VariableDeclaration",
+          "scope": 77,
+          "src": "481:38:8",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_contract$_IVaderReserve_$813",
+            "typeString": "contract IVaderReserve"
+          },
+          "typeName": {
+            "id": 19,
+            "nodeType": "UserDefinedTypeName",
+            "pathNode": {
+              "id": 18,
+              "name": "IVaderReserve",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 813,
+              "src": "481:13:8"
+            },
+            "referencedDeclaration": 813,
+            "src": "481:13:8",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IVaderReserve_$813",
+              "typeString": "contract IVaderReserve"
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "body": {
+            "id": 50,
+            "nodeType": "Block",
+            "src": "667:201:8",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_contract$_IVaderReserve_$813",
+                        "typeString": "contract IVaderReserve"
+                      },
+                      "id": 38,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 34,
+                        "name": "_reserve",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 26,
+                        "src": "700:8:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IVaderReserve_$813",
+                          "typeString": "contract IVaderReserve"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "arguments": [
+                          {
+                            "id": 36,
+                            "name": "_ZERO_ADDRESS",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 827,
+                            "src": "726:13:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 35,
+                          "name": "IVaderReserve",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 813,
+                          "src": "712:13:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IVaderReserve_$813_$",
+                            "typeString": "type(contract IVaderReserve)"
+                          }
+                        },
+                        "id": 37,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "712:28:8",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IVaderReserve_$813",
+                          "typeString": "contract IVaderReserve"
+                        }
+                      },
+                      "src": "700:40:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "555344563a3a636f6e7374727563746f723a20496e636f727265637420417267756d656e7473",
+                      "id": 39,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "755:40:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_9887c8907d60e73d07162456cb77c7f9f7700d98e12b1abe08dbdbb6c8450450",
+                        "typeString": "literal_string \"USDV::constructor: Incorrect Arguments\""
+                      },
+                      "value": "USDV::constructor: Incorrect Arguments"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_9887c8907d60e73d07162456cb77c7f9f7700d98e12b1abe08dbdbb6c8450450",
+                        "typeString": "literal_string \"USDV::constructor: Incorrect Arguments\""
+                      }
+                    ],
+                    "id": 33,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "678:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 40,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "678:128:8",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 41,
+                "nodeType": "ExpressionStatement",
+                "src": "678:128:8"
+              },
+              {
+                "expression": {
+                  "id": 44,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "id": 42,
+                    "name": "vader",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 17,
+                    "src": "817:5:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$1000",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "id": 43,
+                    "name": "_vader",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 23,
+                    "src": "825:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$1000",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "src": "817:14:8",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$1000",
+                    "typeString": "contract IERC20"
+                  }
+                },
+                "id": 45,
+                "nodeType": "ExpressionStatement",
+                "src": "817:14:8"
+              },
+              {
+                "expression": {
+                  "id": 48,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "id": 46,
+                    "name": "reserve",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 20,
+                    "src": "842:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVaderReserve_$813",
+                      "typeString": "contract IVaderReserve"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "id": 47,
+                    "name": "_reserve",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 26,
+                    "src": "852:8:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVaderReserve_$813",
+                      "typeString": "contract IVaderReserve"
+                    }
+                  },
+                  "src": "842:18:8",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVaderReserve_$813",
+                    "typeString": "contract IVaderReserve"
+                  }
+                },
+                "id": 49,
+                "nodeType": "ExpressionStatement",
+                "src": "842:18:8"
+              }
+            ]
+          },
+          "id": 51,
+          "implemented": true,
+          "kind": "constructor",
+          "modifiers": [
+            {
+              "arguments": [
+                {
+                  "hexValue": "566164657220555344",
+                  "id": 29,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "kind": "string",
+                  "lValueRequested": false,
+                  "nodeType": "Literal",
+                  "src": "641:11:8",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_stringliteral_bbf6f993377c9b0327bee1d01d0ed6f32c35d16c23d59714fdba3d83d440d210",
+                    "typeString": "literal_string \"Vader USD\""
+                  },
+                  "value": "Vader USD"
+                },
+                {
+                  "hexValue": "55534456",
+                  "id": 30,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "kind": "string",
+                  "lValueRequested": false,
+                  "nodeType": "Literal",
+                  "src": "654:6:8",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_stringliteral_4371d3da6710290edbd694e560df6d9d2d4417c9a819b6b5e62e07a9462aff24",
+                    "typeString": "literal_string \"USDV\""
+                  },
+                  "value": "USDV"
+                }
+              ],
+              "id": 31,
+              "kind": "baseConstructorSpecifier",
+              "modifierName": {
+                "id": 28,
+                "name": "ERC20",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 777,
+                "src": "635:5:8"
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "635:26:8"
+            }
+          ],
+          "name": "",
+          "nameLocation": "-1:-1:-1",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 27,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 23,
+                "mutability": "mutable",
+                "name": "_vader",
+                "nameLocation": "594:6:8",
+                "nodeType": "VariableDeclaration",
+                "scope": 51,
+                "src": "587:13:8",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IERC20_$1000",
+                  "typeString": "contract IERC20"
+                },
+                "typeName": {
+                  "id": 22,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 21,
+                    "name": "IERC20",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1000,
+                    "src": "587:6:8"
+                  },
+                  "referencedDeclaration": 1000,
+                  "src": "587:6:8",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC20_$1000",
+                    "typeString": "contract IERC20"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 26,
+                "mutability": "mutable",
+                "name": "_reserve",
+                "nameLocation": "616:8:8",
+                "nodeType": "VariableDeclaration",
+                "scope": 51,
+                "src": "602:22:8",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IVaderReserve_$813",
+                  "typeString": "contract IVaderReserve"
+                },
+                "typeName": {
+                  "id": 25,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 24,
+                    "name": "IVaderReserve",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 813,
+                    "src": "602:13:8"
+                  },
+                  "referencedDeclaration": 813,
+                  "src": "602:13:8",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVaderReserve_$813",
+                    "typeString": "contract IVaderReserve"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "586:39:8"
+          },
+          "returnParameters": {
+            "id": 32,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "667:0:8"
+          },
+          "scope": 77,
+          "src": "575:293:8",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "public"
+        },
+        {
+          "baseFunctions": [
+            818
+          ],
+          "body": {
+            "id": 75,
+            "nodeType": "Block",
+            "src": "1019:176:8",
+            "statements": [
+              {
+                "assignments": [
+                  56
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 56,
+                    "mutability": "mutable",
+                    "name": "balance",
+                    "nameLocation": "1095:7:8",
+                    "nodeType": "VariableDeclaration",
+                    "scope": 75,
+                    "src": "1087:15:8",
+                    "stateVariable": false,
+                    "storageLocation": "default",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "typeName": {
+                      "id": 55,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1087:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 64,
+                "initialValue": {
+                  "arguments": [
+                    {
+                      "arguments": [
+                        {
+                          "id": 61,
+                          "name": "this",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": -28,
+                          "src": "1129:4:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_USDV_$77",
+                            "typeString": "contract USDV"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_contract$_USDV_$77",
+                            "typeString": "contract USDV"
+                          }
+                        ],
+                        "id": 60,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1121:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": {
+                          "id": 59,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1121:7:8",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 62,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1121:13:8",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "expression": {
+                      "id": 57,
+                      "name": "vader",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17,
+                      "src": "1105:5:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC20_$1000",
+                        "typeString": "contract IERC20"
+                      }
+                    },
+                    "id": 58,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "balanceOf",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 957,
+                    "src": "1105:15:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
+                      "typeString": "function (address) view external returns (uint256)"
+                    }
+                  },
+                  "id": 63,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1105:30:8",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "1087:48:8"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "arguments": [
+                        {
+                          "id": 70,
+                          "name": "reserve",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 20,
+                          "src": "1169:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_IVaderReserve_$813",
+                            "typeString": "contract IVaderReserve"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_contract$_IVaderReserve_$813",
+                            "typeString": "contract IVaderReserve"
+                          }
+                        ],
+                        "id": 69,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1161:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": {
+                          "id": 68,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1161:7:8",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 71,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1161:16:8",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    {
+                      "id": 72,
+                      "name": "balance",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 56,
+                      "src": "1179:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    ],
+                    "expression": {
+                      "id": 65,
+                      "name": "vader",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17,
+                      "src": "1146:5:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC20_$1000",
+                        "typeString": "contract IERC20"
+                      }
+                    },
+                    "id": 67,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "transfer",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 967,
+                    "src": "1146:14:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
+                      "typeString": "function (address,uint256) external returns (bool)"
+                    }
+                  },
+                  "id": 73,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1146:41:8",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "id": 74,
+                "nodeType": "ExpressionStatement",
+                "src": "1146:41:8"
+              }
+            ]
+          },
+          "functionSelector": "6bfa1dba",
+          "id": 76,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "distributeEmission",
+          "nameLocation": "980:18:8",
+          "nodeType": "FunctionDefinition",
+          "overrides": {
+            "id": 53,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "1010:8:8"
+          },
+          "parameters": {
+            "id": 52,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "998:2:8"
+          },
+          "returnParameters": {
+            "id": 54,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1019:0:8"
+          },
+          "scope": 77,
+          "src": "971:224:8",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 78,
+      "src": "329:1077:8",
+      "usedErrors": []
+    }
+  ],
+  "src": "41:1367:8"
+}

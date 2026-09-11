@@ -1,0 +1,692 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Proxy/StabilityPoolScript.sol",
+  "exportedSymbols": {
+    "StabilityPoolScript": [
+      55
+    ]
+  },
+  "id": 56,
+  "license": "UNLICENSED",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "0.6",
+        ".11"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "42:23:3"
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Dependencies/CheckContract.sol",
+      "file": "../Dependencies/CheckContract.sol",
+      "id": 2,
+      "nodeType": "ImportDirective",
+      "scope": 56,
+      "sourceUnit": 87,
+      "src": "69:43:3",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/IStabilityPool.sol",
+      "file": "../Interfaces/IStabilityPool.sol",
+      "id": 3,
+      "nodeType": "ImportDirective",
+      "scope": 56,
+      "sourceUnit": 357,
+      "src": "114:42:3",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "arguments": null,
+          "baseName": {
+            "contractScope": null,
+            "id": 4,
+            "name": "CheckContract",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 86,
+            "src": "194:13:3",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_CheckContract_$86",
+              "typeString": "contract CheckContract"
+            }
+          },
+          "id": 5,
+          "nodeType": "InheritanceSpecifier",
+          "src": "194:13:3"
+        }
+      ],
+      "contractDependencies": [
+        86
+      ],
+      "contractKind": "contract",
+      "documentation": null,
+      "fullyImplemented": true,
+      "id": 55,
+      "linearizedBaseContracts": [
+        55,
+        86
+      ],
+      "name": "StabilityPoolScript",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "constant": true,
+          "functionSelector": "a3f4df7e",
+          "id": 8,
+          "mutability": "constant",
+          "name": "NAME",
+          "nodeType": "VariableDeclaration",
+          "overrides": null,
+          "scope": 55,
+          "src": "215:52:3",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bytes32",
+            "typeString": "bytes32"
+          },
+          "typeName": {
+            "id": 6,
+            "name": "bytes32",
+            "nodeType": "ElementaryTypeName",
+            "src": "215:7:3",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            }
+          },
+          "value": {
+            "argumentTypes": null,
+            "hexValue": "53746162696c697479506f6f6c536372697074",
+            "id": 7,
+            "isConstant": false,
+            "isLValue": false,
+            "isPure": true,
+            "kind": "string",
+            "lValueRequested": false,
+            "nodeType": "Literal",
+            "src": "246:21:3",
+            "subdenomination": null,
+            "typeDescriptions": {
+              "typeIdentifier": "t_stringliteral_59f438a5a031e17c52e4c97c481dab5b87cc0a9a170ae8e80e5e38a4e7b96e34",
+              "typeString": "literal_string \"StabilityPoolScript\""
+            },
+            "value": "StabilityPoolScript"
+          },
+          "visibility": "public"
+        },
+        {
+          "constant": false,
+          "id": 10,
+          "mutability": "immutable",
+          "name": "stabilityPool",
+          "nodeType": "VariableDeclaration",
+          "overrides": null,
+          "scope": 55,
+          "src": "276:38:3",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_contract$_IStabilityPool_$356",
+            "typeString": "contract IStabilityPool"
+          },
+          "typeName": {
+            "contractScope": null,
+            "id": 9,
+            "name": "IStabilityPool",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 356,
+            "src": "276:14:3",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IStabilityPool_$356",
+              "typeString": "contract IStabilityPool"
+            }
+          },
+          "value": null,
+          "visibility": "internal"
+        },
+        {
+          "body": {
+            "id": 26,
+            "nodeType": "Block",
+            "src": "373:98:3",
+            "statements": [
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 18,
+                          "name": "_stabilityPool",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 12,
+                          "src": "406:14:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_IStabilityPool_$356",
+                            "typeString": "contract IStabilityPool"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_contract$_IStabilityPool_$356",
+                            "typeString": "contract IStabilityPool"
+                          }
+                        ],
+                        "id": 17,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "398:7:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": {
+                          "id": 16,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "398:7:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": null,
+                            "typeString": null
+                          }
+                        }
+                      },
+                      "id": 19,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "398:23:3",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 15,
+                    "name": "checkContract",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 85,
+                    "src": "384:13:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_view$_t_address_$returns$__$",
+                      "typeString": "function (address) view"
+                    }
+                  },
+                  "id": 20,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "384:38:3",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 21,
+                "nodeType": "ExpressionStatement",
+                "src": "384:38:3"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "id": 24,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "argumentTypes": null,
+                    "id": 22,
+                    "name": "stabilityPool",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 10,
+                    "src": "433:13:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IStabilityPool_$356",
+                      "typeString": "contract IStabilityPool"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "argumentTypes": null,
+                    "id": 23,
+                    "name": "_stabilityPool",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 12,
+                    "src": "449:14:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IStabilityPool_$356",
+                      "typeString": "contract IStabilityPool"
+                    }
+                  },
+                  "src": "433:30:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IStabilityPool_$356",
+                    "typeString": "contract IStabilityPool"
+                  }
+                },
+                "id": 25,
+                "nodeType": "ExpressionStatement",
+                "src": "433:30:3"
+              }
+            ]
+          },
+          "documentation": null,
+          "id": 27,
+          "implemented": true,
+          "kind": "constructor",
+          "modifiers": [],
+          "name": "",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 13,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 12,
+                "mutability": "mutable",
+                "name": "_stabilityPool",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 27,
+                "src": "335:29:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IStabilityPool_$356",
+                  "typeString": "contract IStabilityPool"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 11,
+                  "name": "IStabilityPool",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 356,
+                  "src": "335:14:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IStabilityPool_$356",
+                    "typeString": "contract IStabilityPool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "334:31:3"
+          },
+          "returnParameters": {
+            "id": 14,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "373:0:3"
+          },
+          "scope": 55,
+          "src": "323:148:3",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "public"
+        },
+        {
+          "body": {
+            "id": 41,
+            "nodeType": "Block",
+            "src": "545:67:3",
+            "statements": [
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "id": 37,
+                      "name": "_amount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 29,
+                      "src": "582:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    {
+                      "argumentTypes": null,
+                      "id": 38,
+                      "name": "_frontEndTag",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 31,
+                      "src": "591:12:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 34,
+                      "name": "stabilityPool",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "556:13:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IStabilityPool_$356",
+                        "typeString": "contract IStabilityPool"
+                      }
+                    },
+                    "id": 36,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "provideToSP",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 255,
+                    "src": "556:25:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$_t_address_$returns$__$",
+                      "typeString": "function (uint256,address) external"
+                    }
+                  },
+                  "id": 39,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "556:48:3",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 40,
+                "nodeType": "ExpressionStatement",
+                "src": "556:48:3"
+              }
+            ]
+          },
+          "documentation": null,
+          "functionSelector": "5f788d65",
+          "id": 42,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "provideToSP",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 32,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 29,
+                "mutability": "mutable",
+                "name": "_amount",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 42,
+                "src": "500:12:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 28,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "500:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 31,
+                "mutability": "mutable",
+                "name": "_frontEndTag",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 42,
+                "src": "514:20:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 30,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "514:7:3",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "499:36:3"
+          },
+          "returnParameters": {
+            "id": 33,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "545:0:3"
+          },
+          "scope": 55,
+          "src": "479:133:3",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 53,
+            "nodeType": "Block",
+            "src": "667:56:3",
+            "statements": [
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "id": 50,
+                      "name": "_amount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 44,
+                      "src": "707:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 47,
+                      "name": "stabilityPool",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "678:13:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IStabilityPool_$356",
+                        "typeString": "contract IStabilityPool"
+                      }
+                    },
+                    "id": 49,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "withdrawFromSP",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 260,
+                    "src": "678:28:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
+                      "typeString": "function (uint256) external"
+                    }
+                  },
+                  "id": 51,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "678:37:3",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 52,
+                "nodeType": "ExpressionStatement",
+                "src": "678:37:3"
+              }
+            ]
+          },
+          "documentation": null,
+          "functionSelector": "2e54bf95",
+          "id": 54,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "withdrawFromSP",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 45,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 44,
+                "mutability": "mutable",
+                "name": "_amount",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 54,
+                "src": "644:12:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 43,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "644:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "643:14:3"
+          },
+          "returnParameters": {
+            "id": 46,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "667:0:3"
+          },
+          "scope": 55,
+          "src": "620:103:3",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 56,
+      "src": "162:564:3"
+    }
+  ],
+  "src": "42:686:3"
+}

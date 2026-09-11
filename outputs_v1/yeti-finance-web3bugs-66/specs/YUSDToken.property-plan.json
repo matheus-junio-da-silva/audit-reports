@@ -1,0 +1,84 @@
+{
+  "contract": "YUSDToken",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/YUSDToken.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "priority": {"level": "High", "score": 30, "reason": "system stablecoin minted/burned by protocol actors"},
+  "authority_model": {
+    "kind": "immutable-configured-callers + ERC20 allowance",
+    "predicate_mint": "e.msg.sender == borrowerOperationsAddress (immutable, internal)",
+    "predicate_burn": "e.msg.sender in {BorrowerOperations, TroveManager, StabilityPool, TroveManagerRedemptions} (immutable, internal)",
+    "predicate_pool_ops": "sendToPool only StabilityPool; returnFromPool only TroveManagerLiquidations/StabilityPool",
+    "predicate_allowance": "ERC20 allowance semantics with allowance(owner,spender) public getter",
+    "evidence": [
+      "mint: _requireCallerIsBorrowerOperations (YUSDToken.sol:113-115)",
+      "burn: _requireCallerIsBOorTroveMorSP (YUSDToken.sol:118-120)",
+      "sendToPool: _requireCallerIsStabilityPool (YUSDToken.sol:123-125)",
+      "returnFromPool: _requireCallerIsTMLorSP (YUSDToken.sol:128-130)",
+      "transferFrom decrements allowance (YUSDToken.sol:158-163)",
+      "decreaseAllowance: _allowances[msg.sender][spender].sub(...) (YUSDToken.sol:171-173)",
+      "allowance(owner,spender) external view getter (YUSDToken.sol:149)"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-004",
+      "id": "S4.1.G4",
+      "status": "applicable",
+      "target": "transferFrom(address,address,uint256)",
+      "claim": "transferFrom must revert when allowance(from,msg.sender) < amount (debit ownership)",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["allowance(address,address)", "transferFrom(address,address,uint256)"],
+      "hypotheses": ["from != 0 (ERC20 zero-address sender check)", "e.msg.sender != from"],
+      "reachability_check": "sufficient-allowance witness satisfies !reverted",
+      "source_evidence": ["YUSDToken.sol:158-163"]
+    },
+    {
+      "ontology_id": "CAC-AC-004",
+      "id": "S4.1.G4",
+      "status": "applicable",
+      "target": "decreaseAllowance(address,uint256)",
+      "claim": "decreaseAllowance must revert when subtracting more than the current allowance",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["allowance(address,address)", "decreaseAllowance(address,uint256)"],
+      "hypotheses": ["current allowance < subtractedValue"],
+      "reachability_check": "non-decreasing path witness (subtract <= allowance) succeeds",
+      "source_evidence": ["YUSDToken.sol:171-173"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "manual_model_required",
+      "target": "mint(address,uint256)",
+      "claim": "mint restricted to BorrowerOperations",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["borrowerOperationsAddress (internal immutable, no getter)"],
+      "hypotheses": [],
+      "reachability_check": "needs getter/harness for immutable authority",
+      "source_evidence": ["YUSDToken.sol:113-115", "YUSDToken.sol:279-281"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "manual_model_required",
+      "target": "burn(address,uint256)",
+      "claim": "burn restricted to BorrowerOperations/TroveManager/StabilityPool/TroveManagerRedemptions",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["immutable authority fields"],
+      "hypotheses": [],
+      "reachability_check": "needs getter/harness",
+      "source_evidence": ["YUSDToken.sol:118-120", "YUSDToken.sol:283-291"]
+    },
+    {
+      "ontology_id": "CAC-AC-011",
+      "id": "S4.1.G11",
+      "status": "not_applicable",
+      "target": "owner transfer",
+      "claim": "YUSDToken has no ownership model; authority is immutable constructor-set callers",
+      "property_kind": "evidence_note",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "n/a",
+      "source_evidence": ["YUSDToken.sol:58-62 (internal immutable authority fields)"]
+    }
+  ]
+}

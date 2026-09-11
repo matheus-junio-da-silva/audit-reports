@@ -1,0 +1,43 @@
+# Context: TroveManager.setTroveStatus
+
+**Contract:** `TroveManager` (Inherits: ReentrancyGuard, ITroveManager, TroveManagerBase, CheckContract, Ownable, LiquityBase, YetiCustomBase, BaseMath, ILiquityBase)
+**Signature:** `setTroveStatus(address,uint256)`
+**Method Selector ID:** `0x5d6b480f`
+**Visibility:** `external`
+**Environment-Free:** `No (reads EVM state context)`
+**Modifiers:** None
+
+### State Variables Interaction
+- **Reads:** Troves
+- **Writes:** Troves
+
+### Environment & Verification Flags
+- **Uses Foundry Cheatcodes:** No
+- **Has Echidna Properties:** No
+
+### Internal Calls Tree
+- None
+
+### External Calls / Value Transfers
+- None
+
+### Control Flow Graph (CFG)
+```mermaid
+flowchart TD
+    Node_0["0: NodeType.ENTRYPOINT - "]
+    Node_0 --> Node_1
+    Node_1["1: NodeType.EXPRESSION - _requireCallerIsBorrowerOperations()"]
+    Node_1 --> Node_2
+    Node_2["2: NodeType.EXPRESSION - Troves(_borrower).status = TroveManagerBase.Status(_num)"]
+```
+
+### Source Mapping
+Declared in: `certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/TroveManager.sol` on lines **928** to **931**
+
+```solidity
+    function setTroveStatus(address _borrower, uint _num) external override {
+        _requireCallerIsBorrowerOperations();
+        Troves[_borrower].status = Status(_num);
+    }
+
+```

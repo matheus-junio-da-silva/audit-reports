@@ -1,0 +1,7807 @@
+{
+  "contracts": {
+    "IUniswapV3Factory": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "owner": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "feeAmountTickSpacing": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getPool": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "createPool": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setOwner": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "enableFeeAmount": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Migrations": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "owner",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "last_completed_migration",
+          "type": "uint256",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "setCompleted": {
+          "visibility": "public",
+          "modifiers": [
+            "restricted"
+          ],
+          "reads": [],
+          "writes": [
+            "last_completed_migration"
+          ],
+          "is_env_free": false
+        },
+        "slitherConstructorVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "owner"
+          ],
+          "is_env_free": false
+        }
+      }
+    },
+    "FluxAggregator": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "version",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "decimals",
+          "type": "uint8",
+          "visibility": "public"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "visibility": "public"
+        },
+        {
+          "name": "value",
+          "type": "int256",
+          "visibility": "public"
+        },
+        {
+          "name": "latestRoundId",
+          "type": "uint80",
+          "visibility": "internal"
+        }
+      ],
+      "functions": {
+        "setValue": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "value"
+          ],
+          "is_env_free": true
+        },
+        "getRoundData": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "value"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "latestRoundData": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "value"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "slitherConstructorVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "latestRoundId",
+            "value",
+            "version"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "GovernanceTester": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "gov",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "value",
+          "type": "uint256",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "gov",
+            "value"
+          ],
+          "is_env_free": true
+        },
+        "update": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyGov"
+          ],
+          "reads": [
+            "gov"
+          ],
+          "writes": [
+            "value"
+          ],
+          "is_env_free": false
+        }
+      }
+    },
+    "AggregatorV3Interface": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "decimals": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "description": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "version": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getRoundData": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "latestRoundData": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "SafeMathUpgradeable": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "tryAdd": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "trySub": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "tryMul": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "tryDiv": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "tryMod": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "add": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "sub": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mul": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "div": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mod": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "AddressUpgradeable": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "isContract": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "sendValue": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "functionCall": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "functionCallWithValue": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "functionStaticCall": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_verifyCallResult": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "ECDSA": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "recover": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "toEthSignedMessageHash": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "SafeMath": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "tryAdd": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "trySub": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "tryMul": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "tryDiv": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "tryMod": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "add": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "sub": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mul": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "div": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mod": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "SafeERC20": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "safeTransfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "safeTransferFrom": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "safeApprove": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "safeIncreaseAllowance": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "safeDecreaseAllowance": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "callOptionalReturn": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Address": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "isContract": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "sendValue": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "functionCall": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "functionCallWithValue": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "functionStaticCall": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "functionDelegateCall": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_verifyCallResult": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "IUniswapV3Pool": {
+      "inheritance": [
+        "IUniswapV3PoolEvents",
+        "IUniswapV3PoolOwnerActions",
+        "IUniswapV3PoolActions",
+        "IUniswapV3PoolDerivedState",
+        "IUniswapV3PoolState",
+        "IUniswapV3PoolImmutables"
+      ],
+      "state_variables": [],
+      "functions": {
+        "setFeeProtocol": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "collectProtocol": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mint": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "collect": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "burn": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "swap": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "flash": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "increaseObservationCardinalityNext": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "observe": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "snapshotCumulativesInside": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "slot0": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "feeGrowthGlobal0X128": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "feeGrowthGlobal1X128": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "protocolFees": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "liquidity": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "ticks": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "tickBitmap": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "positions": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "observations": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "factory": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "token0": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "token1": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "fee": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "tickSpacing": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "maxLiquidityPerTick": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "FullMath": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "mulDiv": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mulDivRoundingUp": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "LowGasSafeMath": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "add": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "sub": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mul": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "TickMath": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "MIN_TICK",
+          "type": "int24",
+          "visibility": "internal"
+        },
+        {
+          "name": "MAX_TICK",
+          "type": "int24",
+          "visibility": "internal"
+        },
+        {
+          "name": "MIN_SQRT_RATIO",
+          "type": "uint160",
+          "visibility": "internal"
+        },
+        {
+          "name": "MAX_SQRT_RATIO",
+          "type": "uint160",
+          "visibility": "internal"
+        }
+      ],
+      "functions": {
+        "getSqrtRatioAtTick": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "MAX_TICK"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getTickAtSqrtRatio": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "MAX_SQRT_RATIO",
+            "MIN_SQRT_RATIO"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "slitherConstructorConstantVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "MIN_TICK"
+          ],
+          "writes": [
+            "MAX_SQRT_RATIO",
+            "MAX_TICK",
+            "MIN_SQRT_RATIO",
+            "MIN_TICK"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "OracleLibrary": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "consult": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getQuoteAtTick": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "PoolAddress": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "POOL_INIT_CODE_HASH",
+          "type": "bytes32",
+          "visibility": "internal"
+        }
+      ],
+      "functions": {
+        "getPoolKey": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "computeAddress": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "POOL_INIT_CODE_HASH"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "slitherConstructorConstantVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "POOL_INIT_CODE_HASH"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "CreditLine": {
+      "inheritance": [
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "Initializable",
+        "ReentrancyGuard"
+      ],
+      "state_variables": [
+        {
+          "name": "creditLineCounter",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "YEAR_IN_SECONDS",
+          "type": "uint256",
+          "visibility": "internal"
+        },
+        {
+          "name": "collateralShareInStrategy",
+          "type": "mapping(uint256 => mapping(address => uint256))",
+          "visibility": "public"
+        },
+        {
+          "name": "creditLineVariables",
+          "type": "mapping(uint256 => CreditLine.CreditLineVariables)",
+          "visibility": "public"
+        },
+        {
+          "name": "creditLineConstants",
+          "type": "mapping(uint256 => CreditLine.CreditLineConstants)",
+          "visibility": "public"
+        },
+        {
+          "name": "savingsAccount",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "priceOracle",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "strategyRegistry",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "defaultStrategy",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "protocolFeeFraction",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "protocolFeeCollector",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "liquidatorRewardFraction",
+          "type": "uint256",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "constructor": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_NOT_ENTERED"
+          ],
+          "writes": [
+            "_status"
+          ],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "updateDefaultStrategy": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateDefaultStrategy": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "defaultStrategy"
+          ],
+          "is_env_free": true
+        },
+        "updatePriceOracle": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updatePriceOracle": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "priceOracle"
+          ],
+          "is_env_free": true
+        },
+        "updateSavingsAccount": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateSavingsAccount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "savingsAccount"
+          ],
+          "is_env_free": true
+        },
+        "updateProtocolFeeFraction": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateProtocolFeeFraction": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "protocolFeeFraction"
+          ],
+          "is_env_free": true
+        },
+        "updateProtocolFeeCollector": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateProtocolFeeCollector": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "protocolFeeCollector"
+          ],
+          "is_env_free": true
+        },
+        "updateStrategyRegistry": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateStrategyRegistry": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "strategyRegistry"
+          ],
+          "is_env_free": true
+        },
+        "updateLiquidatorRewardFraction": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateLiquidatorRewardFraction": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "liquidatorRewardFraction"
+          ],
+          "is_env_free": true
+        },
+        "calculateInterest": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "YEAR_IN_SECONDS"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calculateInterestAccrued": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "creditLineConstants",
+            "creditLineVariables"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "calculateCurrentDebt": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "creditLineVariables"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "calculateBorrowableAmount": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "creditLineConstants",
+            "creditLineVariables",
+            "priceOracle"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "updateinterestAccruedTillLastPrincipalUpdate": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "creditLineVariables"
+          ],
+          "writes": [
+            "creditLineVariables"
+          ],
+          "is_env_free": false
+        },
+        "_depositCollateralFromSavingsAccount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "collateralShareInStrategy",
+            "creditLineConstants",
+            "savingsAccount",
+            "strategyRegistry"
+          ],
+          "writes": [
+            "collateralShareInStrategy"
+          ],
+          "is_env_free": true
+        },
+        "request": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "priceOracle"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_createRequest": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "creditLineConstants",
+            "creditLineCounter",
+            "creditLineVariables"
+          ],
+          "writes": [
+            "creditLineConstants",
+            "creditLineCounter",
+            "creditLineVariables"
+          ],
+          "is_env_free": true
+        },
+        "accept": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "creditLineConstants",
+            "creditLineVariables"
+          ],
+          "writes": [
+            "creditLineVariables"
+          ],
+          "is_env_free": false
+        },
+        "depositCollateral": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant",
+            "ifCreditLineExists"
+          ],
+          "reads": [
+            "creditLineVariables"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_depositCollateral": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "collateralShareInStrategy",
+            "creditLineConstants",
+            "savingsAccount"
+          ],
+          "writes": [
+            "collateralShareInStrategy"
+          ],
+          "is_env_free": false
+        },
+        "_withdrawBorrowAmount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "savingsAccount",
+            "strategyRegistry"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "borrow": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant",
+            "onlyCreditLineBorrower"
+          ],
+          "reads": [
+            "creditLineConstants",
+            "creditLineVariables",
+            "protocolFeeCollector",
+            "protocolFeeFraction"
+          ],
+          "writes": [
+            "creditLineVariables"
+          ],
+          "is_env_free": false
+        },
+        "_repayFromSavingsAccount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "savingsAccount",
+            "strategyRegistry"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_repay": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "creditLineConstants",
+            "defaultStrategy",
+            "savingsAccount"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "repay": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "creditLineConstants",
+            "creditLineVariables"
+          ],
+          "writes": [
+            "creditLineVariables"
+          ],
+          "is_env_free": false
+        },
+        "_resetCreditLine": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "creditLineVariables"
+          ],
+          "writes": [
+            "creditLineVariables"
+          ],
+          "is_env_free": true
+        },
+        "close": {
+          "visibility": "external",
+          "modifiers": [
+            "ifCreditLineExists"
+          ],
+          "reads": [
+            "creditLineConstants",
+            "creditLineVariables"
+          ],
+          "writes": [
+            "creditLineVariables"
+          ],
+          "is_env_free": false
+        },
+        "calculateCurrentCollateralRatio": {
+          "visibility": "public",
+          "modifiers": [
+            "ifCreditLineExists"
+          ],
+          "reads": [
+            "creditLineConstants",
+            "priceOracle"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "calculateTotalCollateralTokens": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "collateralShareInStrategy",
+            "creditLineConstants",
+            "strategyRegistry"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdrawCollateral": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant",
+            "onlyCreditLineBorrower"
+          ],
+          "reads": [
+            "creditLineConstants"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "withdrawableCollateral": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "creditLineConstants",
+            "priceOracle"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_transferCollateral": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "collateralShareInStrategy",
+            "savingsAccount",
+            "strategyRegistry"
+          ],
+          "writes": [
+            "collateralShareInStrategy"
+          ],
+          "is_env_free": false
+        },
+        "liquidate": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "creditLineConstants",
+            "creditLineVariables"
+          ],
+          "writes": [
+            "creditLineVariables"
+          ],
+          "is_env_free": false
+        },
+        "borrowTokensToLiquidate": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "creditLineConstants"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_borrowTokensToLiquidate": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "liquidatorRewardFraction",
+            "priceOracle"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "receive": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "savingsAccount"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "slitherConstructorConstantVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "YEAR_IN_SECONDS"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "Extension": {
+      "inheritance": [
+        "IExtension",
+        "Initializable"
+      ],
+      "state_variables": [
+        {
+          "name": "extensions",
+          "type": "mapping(address => Extension.ExtensionVariables)",
+          "visibility": "public"
+        },
+        {
+          "name": "poolFactory",
+          "type": "IPoolFactory",
+          "visibility": "internal"
+        },
+        {
+          "name": "votingPassRatio",
+          "type": "uint256",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "initializePoolExtension": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "extensions",
+            "poolFactory"
+          ],
+          "writes": [
+            "extensions"
+          ],
+          "is_env_free": false
+        },
+        "closePoolExtension": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "extensions"
+          ],
+          "writes": [
+            "extensions"
+          ],
+          "is_env_free": false
+        },
+        "removeVotes": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "extensions"
+          ],
+          "writes": [
+            "extensions"
+          ],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "requestExtension": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyBorrower"
+          ],
+          "reads": [
+            "extensions",
+            "poolFactory"
+          ],
+          "writes": [
+            "extensions"
+          ],
+          "is_env_free": false
+        },
+        "voteOnExtension": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "extensions",
+            "votingPassRatio"
+          ],
+          "writes": [
+            "extensions"
+          ],
+          "is_env_free": false
+        },
+        "grantExtension": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "extensions",
+            "poolFactory"
+          ],
+          "writes": [
+            "extensions"
+          ],
+          "is_env_free": false
+        },
+        "updateVotingPassRatio": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateVotingPassRatio": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "votingPassRatio"
+          ],
+          "is_env_free": true
+        },
+        "updatePoolFactory": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updatePoolFactory": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "poolFactory"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "Pool": {
+      "inheritance": [
+        "ReentrancyGuard",
+        "IPool",
+        "ERC20PausableUpgradeable",
+        "PausableUpgradeable",
+        "ERC20Upgradeable",
+        "IERC20Upgradeable",
+        "ContextUpgradeable",
+        "Initializable"
+      ],
+      "state_variables": [
+        {
+          "name": "poolFactory",
+          "type": "address",
+          "visibility": "internal"
+        },
+        {
+          "name": "lenders",
+          "type": "mapping(address => Pool.LendingDetails)",
+          "visibility": "public"
+        },
+        {
+          "name": "poolConstants",
+          "type": "Pool.PoolConstants",
+          "visibility": "public"
+        },
+        {
+          "name": "poolVariables",
+          "type": "Pool.PoolVariables",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_NOT_ENTERED"
+          ],
+          "writes": [
+            "_status"
+          ],
+          "is_env_free": true
+        },
+        "getLoanStatus": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "poolVariables"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "depositCollateral": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "addCollateralInMarginCall": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "lenders",
+            "poolConstants",
+            "poolVariables"
+          ],
+          "writes": [
+            "lenders",
+            "poolVariables"
+          ],
+          "is_env_free": false
+        },
+        "withdrawBorrowedAmount": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyBorrower",
+            "nonReentrant"
+          ],
+          "reads": [
+            "poolConstants",
+            "poolFactory",
+            "poolVariables"
+          ],
+          "writes": [
+            "poolConstants",
+            "poolVariables"
+          ],
+          "is_env_free": false
+        },
+        "borrower": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "poolConstants"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getMarginCallEndTime": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "lenders",
+            "poolFactory"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getBalanceDetails": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "totalSupply": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "closeLoan": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant",
+            "onlyRepaymentImpl"
+          ],
+          "reads": [
+            "poolConstants",
+            "poolFactory",
+            "poolVariables"
+          ],
+          "writes": [
+            "poolVariables"
+          ],
+          "is_env_free": false
+        },
+        "__ERC20Pausable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__ERC20Pausable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_beforeTokenTransfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "lenders",
+            "poolConstants",
+            "poolFactory"
+          ],
+          "writes": [
+            "lenders"
+          ],
+          "is_env_free": false
+        },
+        "__Pausable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Pausable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_paused"
+          ],
+          "is_env_free": true
+        },
+        "paused": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_paused"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_pause": {
+          "visibility": "internal",
+          "modifiers": [
+            "whenNotPaused"
+          ],
+          "reads": [],
+          "writes": [
+            "_paused"
+          ],
+          "is_env_free": false
+        },
+        "_unpause": {
+          "visibility": "internal",
+          "modifiers": [
+            "whenPaused"
+          ],
+          "reads": [],
+          "writes": [
+            "_paused"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__ERC20_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__ERC20_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_decimals",
+            "_name",
+            "_symbol"
+          ],
+          "is_env_free": true
+        },
+        "name": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_name"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "symbol": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_symbol"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "decimals": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_decimals"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transfer": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "allowance": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "approve": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transferFrom": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "increaseAllowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "decreaseAllowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_transfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [
+            "_balances"
+          ],
+          "is_env_free": false
+        },
+        "_mint": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "is_env_free": false
+        },
+        "_burn": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "is_env_free": false
+        },
+        "_approve": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_allowances"
+          ],
+          "is_env_free": true
+        },
+        "_setupDecimals": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_decimals"
+          ],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [
+            "poolConstants"
+          ],
+          "writes": [
+            "poolConstants",
+            "poolFactory"
+          ],
+          "is_env_free": false
+        },
+        "_initialDeposit": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "poolConstants"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_depositCollateral": {
+          "visibility": "internal",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "poolConstants",
+            "poolVariables"
+          ],
+          "writes": [
+            "poolVariables"
+          ],
+          "is_env_free": false
+        },
+        "_deposit": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "poolFactory"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_withdrawAllCollateral": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "poolConstants",
+            "poolFactory",
+            "poolVariables"
+          ],
+          "writes": [
+            "poolVariables"
+          ],
+          "is_env_free": true
+        },
+        "lend": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "poolConstants",
+            "poolFactory",
+            "poolVariables"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_calculatePenaltyTime": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "poolConstants"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "cancelPool": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "poolConstants",
+            "poolFactory",
+            "poolVariables"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_cancelPool": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "poolConstants",
+            "poolVariables"
+          ],
+          "writes": [
+            "poolVariables"
+          ],
+          "is_env_free": false
+        },
+        "liquidateCancelPenalty": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "poolConstants",
+            "poolFactory",
+            "poolVariables"
+          ],
+          "writes": [
+            "poolVariables"
+          ],
+          "is_env_free": false
+        },
+        "terminatePool": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "poolFactory",
+            "poolVariables"
+          ],
+          "writes": [
+            "poolVariables"
+          ],
+          "is_env_free": false
+        },
+        "withdrawLiquidity": {
+          "visibility": "external",
+          "modifiers": [
+            "isLender",
+            "nonReentrant"
+          ],
+          "reads": [
+            "poolConstants",
+            "poolVariables"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "requestMarginCall": {
+          "visibility": "external",
+          "modifiers": [
+            "isLender"
+          ],
+          "reads": [
+            "lenders",
+            "poolConstants",
+            "poolFactory",
+            "poolVariables"
+          ],
+          "writes": [
+            "lenders"
+          ],
+          "is_env_free": false
+        },
+        "interestToPay": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "poolConstants",
+            "poolFactory"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "calculateCollateralRatio": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "poolConstants"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getCurrentCollateralRatio": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "lenders",
+            "poolVariables"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "liquidatePool": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "poolConstants",
+            "poolFactory",
+            "poolVariables"
+          ],
+          "writes": [
+            "poolVariables"
+          ],
+          "is_env_free": false
+        },
+        "_withdraw": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "poolFactory"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_canLenderBeLiquidated": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "lenders",
+            "poolConstants",
+            "poolVariables"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateLenderSharesDuringLiquidation": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "lenders",
+            "poolVariables"
+          ],
+          "writes": [
+            "poolVariables"
+          ],
+          "is_env_free": true
+        },
+        "_liquidateForLender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "poolConstants",
+            "poolFactory"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "liquidateForLender": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "lenders",
+            "poolConstants"
+          ],
+          "writes": [
+            "lenders"
+          ],
+          "is_env_free": false
+        },
+        "correspondingBorrowTokens": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "poolConstants"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "interestPerSecond": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "poolConstants"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "interestPerPeriod": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "poolConstants"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "calculateCurrentPeriod": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "poolConstants"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "calculateRepaymentWithdrawable": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "lenders",
+            "poolFactory"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdrawRepayment": {
+          "visibility": "external",
+          "modifiers": [
+            "isLender",
+            "nonReentrant"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_withdrawRepayment": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "lenders",
+            "poolConstants"
+          ],
+          "writes": [
+            "lenders"
+          ],
+          "is_env_free": true
+        },
+        "receive": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getEquivalentTokens": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "poolFactory"
+          ],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "PoolFactory": {
+      "inheritance": [
+        "IPoolFactory",
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "Initializable"
+      ],
+      "state_variables": [
+        {
+          "name": "poolInitFuncSelector",
+          "type": "bytes4",
+          "visibility": "public"
+        },
+        {
+          "name": "poolImpl",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "userRegistry",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "strategyRegistry",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "extension",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "repaymentImpl",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "priceOracle",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "savingsAccount",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "collectionPeriod",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "loanWithdrawalDuration",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "marginCallDuration",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "minBorrowFraction",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "liquidatorRewardFraction",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "poolCancelPenaltyMultiple",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "noStrategyAddress",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "protocolFeeFraction",
+          "type": "uint256",
+          "visibility": "internal"
+        },
+        {
+          "name": "protocolFeeCollector",
+          "type": "address",
+          "visibility": "internal"
+        },
+        {
+          "name": "isBorrowToken",
+          "type": "mapping(address => bool)",
+          "visibility": "internal"
+        },
+        {
+          "name": "isCollateralToken",
+          "type": "mapping(address => bool)",
+          "visibility": "internal"
+        },
+        {
+          "name": "poolRegistry",
+          "type": "mapping(address => bool)",
+          "visibility": "public"
+        },
+        {
+          "name": "poolSizeLimit",
+          "type": "PoolFactory.Limits",
+          "visibility": "internal"
+        },
+        {
+          "name": "idealCollateralRatioLimit",
+          "type": "PoolFactory.Limits",
+          "visibility": "internal"
+        },
+        {
+          "name": "borrowRateLimit",
+          "type": "PoolFactory.Limits",
+          "visibility": "internal"
+        },
+        {
+          "name": "repaymentIntervalLimit",
+          "type": "PoolFactory.Limits",
+          "visibility": "internal"
+        },
+        {
+          "name": "noOfRepaymentIntervalsLimit",
+          "type": "PoolFactory.Limits",
+          "visibility": "internal"
+        }
+      ],
+      "functions": {
+        "savingsAccount": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "poolRegistry": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "priceOracle": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "extension": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "repaymentImpl": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "userRegistry": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "collectionPeriod": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "loanWithdrawalDuration": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "marginCallDuration": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "minBorrowFraction": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "liquidatorRewardFraction": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "poolCancelPenaltyMultiple": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getProtocolFeeData": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "protocolFeeCollector",
+            "protocolFeeFraction"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "noStrategyAddress": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "setImplementations": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "createPool": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyBorrower"
+          ],
+          "reads": [
+            "borrowRateLimit",
+            "idealCollateralRatioLimit",
+            "isBorrowToken",
+            "isCollateralToken",
+            "noOfRepaymentIntervalsLimit",
+            "poolSizeLimit",
+            "priceOracle",
+            "repaymentIntervalLimit",
+            "strategyRegistry"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_createPool": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "poolImpl"
+          ],
+          "writes": [
+            "poolRegistry"
+          ],
+          "is_env_free": false
+        },
+        "_encodePoolInitCall": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "collectionPeriod",
+            "loanWithdrawalDuration",
+            "poolInitFuncSelector"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_deploy": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isWithinLimits": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "updateSupportedBorrowTokens": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateSupportedBorrowTokens": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "isBorrowToken"
+          ],
+          "is_env_free": true
+        },
+        "updateSupportedCollateralTokens": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateSupportedCollateralTokens": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "isCollateralToken"
+          ],
+          "is_env_free": true
+        },
+        "updatepoolInitFuncSelector": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updatepoolInitFuncSelector": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "poolInitFuncSelector"
+          ],
+          "is_env_free": true
+        },
+        "updatePoolLogic": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updatePoolLogic": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "poolImpl"
+          ],
+          "is_env_free": true
+        },
+        "updateUserRegistry": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateUserRegistry": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "userRegistry"
+          ],
+          "is_env_free": true
+        },
+        "updateStrategyRegistry": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateStrategyRegistry": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "strategyRegistry"
+          ],
+          "is_env_free": true
+        },
+        "updateRepaymentImpl": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateRepaymentImpl": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "repaymentImpl"
+          ],
+          "is_env_free": true
+        },
+        "updateNoStrategy": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateNoStrategy": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "noStrategyAddress"
+          ],
+          "is_env_free": true
+        },
+        "updatePriceoracle": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updatePriceoracle": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "priceOracle"
+          ],
+          "is_env_free": true
+        },
+        "updatedExtension": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updatedExtension": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "extension"
+          ],
+          "is_env_free": true
+        },
+        "updateSavingsAccount": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateSavingsAccount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "savingsAccount"
+          ],
+          "is_env_free": true
+        },
+        "updateCollectionPeriod": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateCollectionPeriod": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "collectionPeriod"
+          ],
+          "is_env_free": true
+        },
+        "updateLoanWithdrawalDuration": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateLoanWithdrawalDuration": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "loanWithdrawalDuration"
+          ],
+          "is_env_free": true
+        },
+        "updateMarginCallDuration": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateMarginCallDuration": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "marginCallDuration"
+          ],
+          "is_env_free": true
+        },
+        "updateMinBorrowFraction": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateMinBorrowFraction": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "minBorrowFraction"
+          ],
+          "is_env_free": true
+        },
+        "updateLiquidatorRewardFraction": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateLiquidatorRewardFraction": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "liquidatorRewardFraction"
+          ],
+          "is_env_free": true
+        },
+        "updatePoolCancelPenaltyMultiple": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updatePoolCancelPenaltyMultiple": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "poolCancelPenaltyMultiple"
+          ],
+          "is_env_free": true
+        },
+        "updateProtocolFeeFraction": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateProtocolFeeFraction": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "protocolFeeFraction"
+          ],
+          "is_env_free": true
+        },
+        "updateProtocolFeeCollector": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateProtocolFeeCollector": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "protocolFeeCollector"
+          ],
+          "is_env_free": true
+        },
+        "updatePoolSizeLimit": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "poolSizeLimit"
+          ],
+          "is_env_free": false
+        },
+        "updateidealCollateralRatioLimit": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "idealCollateralRatioLimit"
+          ],
+          "is_env_free": false
+        },
+        "updateBorrowRateLimit": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "borrowRateLimit"
+          ],
+          "is_env_free": false
+        },
+        "updateRepaymentIntervalLimit": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "repaymentIntervalLimit"
+          ],
+          "is_env_free": false
+        },
+        "updateNoOfRepaymentIntervalsLimit": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "noOfRepaymentIntervalsLimit"
+          ],
+          "is_env_free": false
+        }
+      }
+    },
+    "Repayments": {
+      "inheritance": [
+        "ReentrancyGuard",
+        "IRepayment",
+        "Initializable"
+      ],
+      "state_variables": [
+        {
+          "name": "MAX_INT",
+          "type": "uint256",
+          "visibility": "internal"
+        },
+        {
+          "name": "YEAR_IN_SECONDS",
+          "type": "uint256",
+          "visibility": "internal"
+        },
+        {
+          "name": "poolFactory",
+          "type": "IPoolFactory",
+          "visibility": "internal"
+        },
+        {
+          "name": "gracePenaltyRate",
+          "type": "uint256",
+          "visibility": "internal"
+        },
+        {
+          "name": "gracePeriodFraction",
+          "type": "uint256",
+          "visibility": "internal"
+        },
+        {
+          "name": "repayVariables",
+          "type": "mapping(address => Repayments.RepaymentVariables)",
+          "visibility": "public"
+        },
+        {
+          "name": "repayConstants",
+          "type": "mapping(address => Repayments.RepaymentConstants)",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_NOT_ENTERED"
+          ],
+          "writes": [
+            "_status"
+          ],
+          "is_env_free": true
+        },
+        "initializeRepayment": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyValidPool"
+          ],
+          "reads": [
+            "gracePenaltyRate",
+            "gracePeriodFraction",
+            "repayConstants"
+          ],
+          "writes": [
+            "repayConstants"
+          ],
+          "is_env_free": false
+        },
+        "getTotalRepaidAmount": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "repayVariables"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getInterestCalculationVars": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "repayVariables"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getCurrentLoanInterval": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "repayConstants"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "instalmentDeadlineExtended": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "poolFactory",
+            "repayVariables"
+          ],
+          "writes": [
+            "repayVariables"
+          ],
+          "is_env_free": false
+        },
+        "didBorrowerDefault": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "repayConstants"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getGracePeriodFraction": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "gracePeriodFraction"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getNextInstalmentDeadline": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "repayConstants",
+            "repayVariables"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "updatePoolFactory": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updatePoolFactory": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "poolFactory"
+          ],
+          "is_env_free": true
+        },
+        "updateGracePeriodFraction": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateGracePeriodFraction": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "gracePeriodFraction"
+          ],
+          "is_env_free": true
+        },
+        "updateGracePenaltyRate": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateGracePenaltyRate": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "gracePenaltyRate"
+          ],
+          "is_env_free": true
+        },
+        "getInterestPerSecond": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "YEAR_IN_SECONDS",
+            "repayConstants"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getInstalmentsCompleted": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "repayConstants",
+            "repayVariables"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getInterestDueTillInstalmentDeadline": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "repayConstants",
+            "repayVariables"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getCurrentInstalmentInterval": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isGracePenaltyApplicable": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "repayConstants"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getInterestLeft": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "repayConstants",
+            "repayVariables"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getInterestOverdue": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "repayConstants",
+            "repayVariables"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "repay": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant",
+            "isPoolInitialized"
+          ],
+          "reads": [
+            "repayConstants"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_repayExtension": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "repayConstants",
+            "repayVariables"
+          ],
+          "writes": [
+            "repayVariables"
+          ],
+          "is_env_free": true
+        },
+        "_repayGracePenalty": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "repayConstants"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_repayInterest": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "repayConstants",
+            "repayVariables"
+          ],
+          "writes": [
+            "repayVariables"
+          ],
+          "is_env_free": true
+        },
+        "_updateRepaidAmount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "repayVariables"
+          ],
+          "writes": [
+            "repayVariables"
+          ],
+          "is_env_free": true
+        },
+        "_repay": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "repayPrincipal": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant",
+            "isPoolInitialized"
+          ],
+          "reads": [
+            "MAX_INT",
+            "repayConstants",
+            "repayVariables"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_transferTokens": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "slitherConstructorConstantVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "MAX_INT",
+            "YEAR_IN_SECONDS"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "PriceOracle": {
+      "inheritance": [
+        "IPriceOracle",
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "Initializable"
+      ],
+      "state_variables": [
+        {
+          "name": "uniswapPriceAveragingPeriod",
+          "type": "uint32",
+          "visibility": "internal"
+        },
+        {
+          "name": "chainlinkFeedAddresses",
+          "type": "mapping(address => PriceOracle.PriceData)",
+          "visibility": "public"
+        },
+        {
+          "name": "decimals",
+          "type": "mapping(address => uint256)",
+          "visibility": "internal"
+        },
+        {
+          "name": "uniswapPools",
+          "type": "mapping(bytes32 => address)",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "getLatestPrice": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "doesFeedExist": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "chainlinkFeedAddresses",
+            "uniswapPools"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getChainlinkLatestPrice": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "chainlinkFeedAddresses",
+            "decimals"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getDecimals": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getUniswapLatestPrice": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "uniswapPools",
+            "uniswapPriceAveragingPeriod"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getUniswapPoolTokenId": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setChainlinkFeedAddress": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "chainlinkFeedAddresses",
+            "decimals"
+          ],
+          "is_env_free": false
+        },
+        "setUniswapFeedAddress": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "uniswapPools"
+          ],
+          "is_env_free": false
+        },
+        "setUniswapPriceAveragingPeriod": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "uniswapPriceAveragingPeriod"
+          ],
+          "is_env_free": false
+        }
+      }
+    },
+    "SublimeProxy": {
+      "inheritance": [
+        "TransparentUpgradeableProxy",
+        "UpgradeableProxy",
+        "Proxy"
+      ],
+      "state_variables": [],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "admin": {
+          "visibility": "external",
+          "modifiers": [
+            "ifAdmin"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "implementation": {
+          "visibility": "external",
+          "modifiers": [
+            "ifAdmin"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "changeAdmin": {
+          "visibility": "external",
+          "modifiers": [
+            "ifAdmin"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "upgradeTo": {
+          "visibility": "external",
+          "modifiers": [
+            "ifAdmin"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "upgradeToAndCall": {
+          "visibility": "external",
+          "modifiers": [
+            "ifAdmin"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_admin": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_ADMIN_SLOT"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_setAdmin": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [
+            "_ADMIN_SLOT"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_beforeFallback": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_implementation": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_upgradeTo": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_setImplementation": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [
+            "_IMPLEMENTATION_SLOT"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_delegate": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_fallback": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "fallback": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "receive": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        }
+      }
+    },
+    "SavingsAccount": {
+      "inheritance": [
+        "ReentrancyGuard",
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "Initializable",
+        "ISavingsAccount"
+      ],
+      "state_variables": [
+        {
+          "name": "strategyRegistry",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "creditLine",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "balanceInShares",
+          "type": "mapping(address => mapping(address => mapping(address => uint256)))",
+          "visibility": "public"
+        },
+        {
+          "name": "allowance",
+          "type": "mapping(address => mapping(address => mapping(address => uint256)))",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_NOT_ENTERED"
+          ],
+          "writes": [
+            "_status"
+          ],
+          "is_env_free": true
+        },
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "deposit": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "balanceInShares"
+          ],
+          "writes": [
+            "balanceInShares"
+          ],
+          "is_env_free": false
+        },
+        "switchStrategy": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "balanceInShares",
+            "strategyRegistry"
+          ],
+          "writes": [
+            "balanceInShares"
+          ],
+          "is_env_free": false
+        },
+        "withdraw": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "balanceInShares"
+          ],
+          "writes": [
+            "balanceInShares"
+          ],
+          "is_env_free": false
+        },
+        "withdrawAll": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "balanceInShares"
+          ],
+          "writes": [
+            "balanceInShares"
+          ],
+          "is_env_free": false
+        },
+        "approve": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "allowance"
+          ],
+          "is_env_free": false
+        },
+        "increaseAllowance": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "allowance"
+          ],
+          "writes": [
+            "allowance"
+          ],
+          "is_env_free": false
+        },
+        "decreaseAllowance": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "allowance"
+          ],
+          "writes": [
+            "allowance"
+          ],
+          "is_env_free": false
+        },
+        "transfer": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "balanceInShares"
+          ],
+          "writes": [
+            "balanceInShares"
+          ],
+          "is_env_free": false
+        },
+        "transferFrom": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "allowance",
+            "balanceInShares"
+          ],
+          "writes": [
+            "allowance",
+            "balanceInShares"
+          ],
+          "is_env_free": false
+        },
+        "balanceInShares": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "increaseAllowanceToCreditLine": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyCreditLine"
+          ],
+          "reads": [
+            "allowance"
+          ],
+          "writes": [
+            "allowance"
+          ],
+          "is_env_free": false
+        },
+        "withdrawFrom": {
+          "visibility": "external",
+          "modifiers": [
+            "nonReentrant"
+          ],
+          "reads": [
+            "allowance",
+            "balanceInShares"
+          ],
+          "writes": [
+            "allowance",
+            "balanceInShares"
+          ],
+          "is_env_free": false
+        },
+        "getTotalTokens": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "balanceInShares",
+            "strategyRegistry"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "updateCreditLine": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateCreditLine": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "creditLine"
+          ],
+          "is_env_free": true
+        },
+        "updateStrategyRegistry": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateStrategyRegistry": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "strategyRegistry"
+          ],
+          "is_env_free": true
+        },
+        "_deposit": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_depositToYield": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "strategyRegistry"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_withdraw": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_transfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "receive": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "SavingsAccountUtil": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "depositFromSavingsAccount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "directDeposit": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "directSavingsAccountDeposit": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "savingsAccountTransfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdrawFromSavingsAccount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transferTokens": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        }
+      }
+    },
+    "Verification": {
+      "inheritance": [
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "IVerification",
+        "Initializable"
+      ],
+      "state_variables": [
+        {
+          "name": "activationDelay",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "verifiers",
+          "type": "mapping(address => bool)",
+          "visibility": "public"
+        },
+        {
+          "name": "masterAddresses",
+          "type": "mapping(address => mapping(address => uint256))",
+          "visibility": "public"
+        },
+        {
+          "name": "linkedAddresses",
+          "type": "mapping(address => Verification.LinkedAddress)",
+          "visibility": "public"
+        },
+        {
+          "name": "pendingLinkAddresses",
+          "type": "mapping(address => mapping(address => bool))",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "isUser": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "linkedAddresses",
+            "masterAddresses"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "registerMasterAddress": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyVerifier"
+          ],
+          "reads": [
+            "activationDelay",
+            "masterAddresses"
+          ],
+          "writes": [
+            "masterAddresses"
+          ],
+          "is_env_free": false
+        },
+        "unregisterMasterAddress": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "masterAddresses"
+          ],
+          "writes": [
+            "masterAddresses"
+          ],
+          "is_env_free": false
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "updateActivationDelay": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateActivationDelay": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "activationDelay"
+          ],
+          "is_env_free": true
+        },
+        "addVerifier": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "verifiers"
+          ],
+          "writes": [
+            "verifiers"
+          ],
+          "is_env_free": false
+        },
+        "removeVerifier": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "verifiers"
+          ],
+          "writes": [
+            "verifiers"
+          ],
+          "is_env_free": false
+        },
+        "_linkAddress": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "activationDelay"
+          ],
+          "writes": [
+            "linkedAddresses"
+          ],
+          "is_env_free": false
+        },
+        "requestAddressLinking": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "linkedAddresses"
+          ],
+          "writes": [
+            "pendingLinkAddresses"
+          ],
+          "is_env_free": false
+        },
+        "cancelAddressLinkingRequest": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "pendingLinkAddresses"
+          ],
+          "writes": [
+            "pendingLinkAddresses"
+          ],
+          "is_env_free": false
+        },
+        "linkAddress": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "linkedAddresses",
+            "pendingLinkAddresses"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "unlinkAddress": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "linkedAddresses"
+          ],
+          "writes": [
+            "linkedAddresses"
+          ],
+          "is_env_free": false
+        }
+      }
+    },
+    "AdminVerifier": {
+      "inheritance": [
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "IVerifier",
+        "Initializable"
+      ],
+      "state_variables": [
+        {
+          "name": "verification",
+          "type": "IVerification",
+          "visibility": "public"
+        },
+        {
+          "name": "userData",
+          "type": "mapping(address => string)",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "registerUser": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "userData",
+            "verification"
+          ],
+          "writes": [
+            "userData"
+          ],
+          "is_env_free": false
+        },
+        "unregisterUser": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "userData",
+            "verification"
+          ],
+          "writes": [
+            "userData"
+          ],
+          "is_env_free": false
+        },
+        "updateVerification": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateVerification": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "verification"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "AaveLendingPool": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "deposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdraw": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getReserveData": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getAddressesProvider": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "DataTypes": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {}
+    },
+    "ICEther": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "mint": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "repayBorrow": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "repayBorrowBehalf": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "liquidateBorrow": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "ICToken": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "underlying": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mint": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "redeem": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "liquidateBorrow": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "repayBorrow": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "repayBorrowBehalf": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOfUnderlying": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "exchangeRateCurrent": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "exchangeRateStored": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "supplyRatePerBlock": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "redeemUnderlying": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "ILendingPoolAddressesProvider": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "getMarketId": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setMarketId": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setAddress": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setAddressAsProxy": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getAddress": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getLendingPool": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setLendingPoolImpl": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getLendingPoolConfigurator": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setLendingPoolConfiguratorImpl": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getLendingPoolCollateralManager": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setLendingPoolCollateralManager": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getPoolAdmin": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setPoolAdmin": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getEmergencyAdmin": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setEmergencyAdmin": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getPriceOracle": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setPriceOracle": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getLendingRateOracle": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setLendingRateOracle": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "IProtocolDataProvider": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "ADDRESSES_PROVIDER": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getAllReservesTokens": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getAllATokens": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getReserveConfigurationData": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getReserveData": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getUserReserveData": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getReserveTokensAddresses": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "IScaledBalanceToken": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "scaledBalanceOf": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "IWETHGateway": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "depositETH": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdrawETH": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getWETHAddress": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getAWETHAddress": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getLendingPoolAddress": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "IyVault": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "earn": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "depositAll": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "deposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "depositETH": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdrawAll": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdrawAllETH": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "harvest": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdraw": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdrawETH": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getPricePerFullShare": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setMin": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "min": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Token": {
+      "inheritance": [
+        "Ownable",
+        "ERC20",
+        "IERC20",
+        "Context"
+      ],
+      "state_variables": [],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "name": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_name"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "symbol": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_symbol"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "decimals": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_decimals"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "totalSupply": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transfer": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "allowance": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "approve": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transferFrom": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "increaseAllowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "decreaseAllowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_transfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [
+            "_balances"
+          ],
+          "is_env_free": true
+        },
+        "_mint": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "_burn": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "_approve": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_allowances"
+          ],
+          "is_env_free": true
+        },
+        "_setupDecimals": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_decimals"
+          ],
+          "is_env_free": true
+        },
+        "_beforeTokenTransfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "mint": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        }
+      }
+    },
+    "IStrategy": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "want": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "deposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdraw": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdrawAll": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Converter": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "convert": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "OneSplitAudit": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "swap": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getExpectedReturn": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Controller": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "governance",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "strategist",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "onesplit",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "rewards",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "vaults",
+          "type": "mapping(address => address)",
+          "visibility": "public"
+        },
+        {
+          "name": "strategies",
+          "type": "mapping(address => address)",
+          "visibility": "public"
+        },
+        {
+          "name": "converters",
+          "type": "mapping(address => mapping(address => address))",
+          "visibility": "public"
+        },
+        {
+          "name": "approvedStrategies",
+          "type": "mapping(address => mapping(address => bool))",
+          "visibility": "public"
+        },
+        {
+          "name": "split",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "max",
+          "type": "uint256",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "governance",
+            "onesplit",
+            "rewards",
+            "strategist"
+          ],
+          "is_env_free": false
+        },
+        "setRewards": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "rewards"
+          ],
+          "is_env_free": false
+        },
+        "setStrategist": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "strategist"
+          ],
+          "is_env_free": false
+        },
+        "setSplit": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "split"
+          ],
+          "is_env_free": false
+        },
+        "setOneSplit": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "onesplit"
+          ],
+          "is_env_free": false
+        },
+        "setGovernance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "governance"
+          ],
+          "is_env_free": false
+        },
+        "setVault": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance",
+            "strategist",
+            "vaults"
+          ],
+          "writes": [
+            "vaults"
+          ],
+          "is_env_free": false
+        },
+        "approveStrategy": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "approvedStrategies"
+          ],
+          "is_env_free": false
+        },
+        "revokeStrategy": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "approvedStrategies"
+          ],
+          "is_env_free": false
+        },
+        "setConverter": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance",
+            "strategist"
+          ],
+          "writes": [
+            "converters"
+          ],
+          "is_env_free": false
+        },
+        "setStrategy": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "approvedStrategies",
+            "governance",
+            "strategies",
+            "strategist"
+          ],
+          "writes": [
+            "strategies"
+          ],
+          "is_env_free": false
+        },
+        "earn": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "converters",
+            "strategies"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "strategies"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdrawAll": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance",
+            "strategies",
+            "strategist"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "inCaseTokensGetStuck": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance",
+            "strategist"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "inCaseStrategyTokenGetStuck": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance",
+            "strategist"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getExpectedReturn": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "onesplit"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "yearn": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance",
+            "max",
+            "onesplit",
+            "rewards",
+            "split",
+            "strategist"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "withdraw": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "strategies",
+            "vaults"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "slitherConstructorVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "split"
+          ],
+          "is_env_free": true
+        },
+        "slitherConstructorConstantVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "max"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "IController": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "vaults": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "strategies": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "rewards": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "approveStrategy": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setStrategy": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdraw": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "earn": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "Strategy": {
+      "inheritance": [],
+      "state_variables": [
+        {
+          "name": "want",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "governance",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "controller",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "strategist",
+          "type": "address",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "controller",
+            "governance",
+            "want"
+          ],
+          "is_env_free": false
+        },
+        "_approveAll": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "deposit": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "want"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdraw": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "controller",
+            "want"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "withdrawAll": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "controller",
+            "want"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "balanceOf": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "want"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setGovernance": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "governance"
+          ],
+          "is_env_free": false
+        },
+        "setController": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "controller"
+          ],
+          "is_env_free": false
+        }
+      }
+    },
+    "WETH": {
+      "inheritance": [],
+      "state_variables": [],
+      "functions": {
+        "deposit": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "withdraw": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "yVault": {
+      "inheritance": [
+        "ERC20Detailed",
+        "ERC20",
+        "Context"
+      ],
+      "state_variables": [
+        {
+          "name": "token",
+          "type": "ERC20",
+          "visibility": "public"
+        },
+        {
+          "name": "min",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "max",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "governance",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "controller",
+          "type": "address",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "controller",
+            "governance",
+            "token"
+          ],
+          "is_env_free": false
+        },
+        "name": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_name"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "symbol": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_symbol"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "decimals": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_decimals"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "totalSupply": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_totalSupply"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "balanceOf": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "transfer": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "allowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "approve": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "transferFrom": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "increaseAllowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "decreaseAllowance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_transfer": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances"
+          ],
+          "writes": [
+            "_balances"
+          ],
+          "is_env_free": true
+        },
+        "_mint": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "_burn": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "writes": [
+            "_balances",
+            "_totalSupply"
+          ],
+          "is_env_free": true
+        },
+        "_approve": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "_allowances"
+          ],
+          "is_env_free": true
+        },
+        "_burnFrom": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_allowances"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "balance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "controller",
+            "token"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "setMin": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "min"
+          ],
+          "is_env_free": false
+        },
+        "setGovernance": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "governance"
+          ],
+          "is_env_free": false
+        },
+        "setController": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "governance"
+          ],
+          "writes": [
+            "controller"
+          ],
+          "is_env_free": false
+        },
+        "available": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "max",
+            "min",
+            "token"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "earn": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "controller",
+            "token"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "depositAll": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "token"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "deposit": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "token"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "depositETH": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "token"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "withdrawAll": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "withdrawAllETH": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "harvest": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "controller",
+            "token"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "withdraw": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "controller",
+            "token"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "withdrawETH": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "controller",
+            "token"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getPricePerFullShare": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "receive": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "token"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "slitherConstructorVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "min"
+          ],
+          "is_env_free": true
+        },
+        "slitherConstructorConstantVariables": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "max"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "AaveYield": {
+      "inheritance": [
+        "ReentrancyGuard",
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "Initializable",
+        "IYield"
+      ],
+      "state_variables": [
+        {
+          "name": "wethGateway",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "protocolDataProvider",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "lendingPoolAddressesProvider",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "savingsAccount",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "referralCode",
+          "type": "uint16",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_NOT_ENTERED"
+          ],
+          "writes": [
+            "_status"
+          ],
+          "is_env_free": true
+        },
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "liquidityToken": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "protocolDataProvider",
+            "wethGateway"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "lockTokens": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "unlockTokens": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [
+            "savingsAccount"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "unlockShares": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [
+            "savingsAccount"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getTokensForShares": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "protocolDataProvider"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSharesForTokens": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "updateSavingsAccount": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateSavingsAccount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "savingsAccount"
+          ],
+          "is_env_free": true
+        },
+        "updateAaveAddresses": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateAaveAddresses": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "lendingPoolAddressesProvider",
+            "protocolDataProvider",
+            "wethGateway"
+          ],
+          "is_env_free": true
+        },
+        "updateReferralCode": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "referralCode"
+          ],
+          "is_env_free": false
+        },
+        "emergencyWithdraw": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_depositETH": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "lendingPoolAddressesProvider",
+            "referralCode",
+            "wethGateway"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_depositERC20": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "lendingPoolAddressesProvider",
+            "referralCode"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_withdrawETH": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "wethGateway"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_withdrawERC": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "lendingPoolAddressesProvider"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "receive": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "CompoundYield": {
+      "inheritance": [
+        "ReentrancyGuard",
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "Initializable",
+        "IYield"
+      ],
+      "state_variables": [
+        {
+          "name": "savingsAccount",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "liquidityToken",
+          "type": "mapping(address => address)",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_NOT_ENTERED"
+          ],
+          "writes": [
+            "_status"
+          ],
+          "is_env_free": true
+        },
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "liquidityToken": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "lockTokens": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [
+            "liquidityToken"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "unlockTokens": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [
+            "liquidityToken",
+            "savingsAccount"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "unlockShares": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [
+            "savingsAccount"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getTokensForShares": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "liquidityToken"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSharesForTokens": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "updateSavingsAccount": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateSavingsAccount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "savingsAccount"
+          ],
+          "is_env_free": true
+        },
+        "updateProtocolAddresses": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "liquidityToken"
+          ],
+          "is_env_free": false
+        },
+        "emergencyWithdraw": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "liquidityToken"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_depositETH": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_depositERC20": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_withdrawETH": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_withdrawERC": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "receive": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "NoYield": {
+      "inheritance": [
+        "ReentrancyGuard",
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "Initializable",
+        "IYield"
+      ],
+      "state_variables": [
+        {
+          "name": "savingsAccount",
+          "type": "address",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_NOT_ENTERED"
+          ],
+          "writes": [
+            "_status"
+          ],
+          "is_env_free": true
+        },
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "liquidityToken": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "lockTokens": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "unlockTokens": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "unlockShares": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getTokensForShares": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSharesForTokens": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "updateSavingsAccount": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateSavingsAccount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "savingsAccount"
+          ],
+          "is_env_free": true
+        },
+        "emergencyWithdraw": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_unlockTokens": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "savingsAccount"
+          ],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    },
+    "StrategyRegistry": {
+      "inheritance": [
+        "IStrategyRegistry",
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "Initializable"
+      ],
+      "state_variables": [
+        {
+          "name": "strategies",
+          "type": "address[]",
+          "visibility": "public"
+        },
+        {
+          "name": "maxStrategies",
+          "type": "uint256",
+          "visibility": "public"
+        },
+        {
+          "name": "registry",
+          "type": "mapping(address => bool)",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "registry": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getStrategies": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [
+            "strategies"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "addStrategy": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "maxStrategies",
+            "registry",
+            "strategies"
+          ],
+          "writes": [
+            "registry",
+            "strategies"
+          ],
+          "is_env_free": false
+        },
+        "removeStrategy": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "strategies"
+          ],
+          "writes": [
+            "registry",
+            "strategies"
+          ],
+          "is_env_free": false
+        },
+        "updateStrategy": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "registry",
+            "strategies"
+          ],
+          "writes": [
+            "registry",
+            "strategies"
+          ],
+          "is_env_free": false
+        },
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "updateMaxStrategies": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateMaxStrategies": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "maxStrategies"
+          ],
+          "is_env_free": true
+        }
+      }
+    },
+    "YearnYield": {
+      "inheritance": [
+        "ReentrancyGuard",
+        "OwnableUpgradeable",
+        "ContextUpgradeable",
+        "Initializable",
+        "IYield"
+      ],
+      "state_variables": [
+        {
+          "name": "savingsAccount",
+          "type": "address",
+          "visibility": "public"
+        },
+        {
+          "name": "liquidityToken",
+          "type": "mapping(address => address)",
+          "visibility": "public"
+        }
+      ],
+      "functions": {
+        "constructor": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [
+            "_NOT_ENTERED"
+          ],
+          "writes": [
+            "_status"
+          ],
+          "is_env_free": true
+        },
+        "__Ownable_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "__Ownable_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "owner": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "renounceOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "transferOwnership": {
+          "visibility": "public",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [
+            "_owner"
+          ],
+          "writes": [
+            "_owner"
+          ],
+          "is_env_free": false
+        },
+        "__Context_init": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "__Context_init_unchained": {
+          "visibility": "internal",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_msgSender": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_msgData": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_isConstructor": {
+          "visibility": "private",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "liquidityToken": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "lockTokens": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [
+            "liquidityToken"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "unlockTokens": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [
+            "liquidityToken",
+            "savingsAccount"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "unlockShares": {
+          "visibility": "external",
+          "modifiers": [
+            "onlySavingsAccount",
+            "nonReentrant"
+          ],
+          "reads": [
+            "savingsAccount"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "getTokensForShares": {
+          "visibility": "public",
+          "modifiers": [],
+          "reads": [
+            "liquidityToken"
+          ],
+          "writes": [],
+          "is_env_free": true
+        },
+        "getSharesForTokens": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "initialize": {
+          "visibility": "external",
+          "modifiers": [
+            "initializer"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "updateSavingsAccount": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_updateSavingsAccount": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [
+            "savingsAccount"
+          ],
+          "is_env_free": true
+        },
+        "updateProtocolAddresses": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner"
+          ],
+          "reads": [],
+          "writes": [
+            "liquidityToken"
+          ],
+          "is_env_free": false
+        },
+        "emergencyWithdraw": {
+          "visibility": "external",
+          "modifiers": [
+            "onlyOwner",
+            "nonReentrant"
+          ],
+          "reads": [
+            "liquidityToken"
+          ],
+          "writes": [],
+          "is_env_free": false
+        },
+        "_depositETH": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_depositERC20": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_withdrawETH": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "_withdrawERC": {
+          "visibility": "internal",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        },
+        "receive": {
+          "visibility": "external",
+          "modifiers": [],
+          "reads": [],
+          "writes": [],
+          "is_env_free": true
+        }
+      }
+    }
+  }
+}

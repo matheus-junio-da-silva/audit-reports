@@ -1,0 +1,741 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/IPriceCurve.sol",
+  "exportedSymbols": {
+    "IPriceCurve": [
+      6371
+    ]
+  },
+  "id": 6372,
+  "license": "UNLICENSED",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 6313,
+      "literals": [
+        "solidity",
+        "0.6",
+        ".11"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "42:23:19"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "documentation": null,
+      "fullyImplemented": false,
+      "id": 6371,
+      "linearizedBaseContracts": [
+        6371
+      ],
+      "name": "IPriceCurve",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "81d3c435",
+          "id": 6318,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "setAddresses",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 6316,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 6315,
+                "mutability": "mutable",
+                "name": "_whitelistAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6318,
+                "src": "120:25:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 6314,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "120:7:19",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "119:27:19"
+          },
+          "returnParameters": {
+            "id": 6317,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "155:0:19"
+          },
+          "scope": 6371,
+          "src": "98:58:19",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "97498845",
+          "id": 6323,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "setDecayTime",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 6321,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 6320,
+                "mutability": "mutable",
+                "name": "_decayTime",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6323,
+                "src": "186:15:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6319,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "186:4:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "185:17:19"
+          },
+          "returnParameters": {
+            "id": 6322,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "211:0:19"
+          },
+          "scope": 6371,
+          "src": "164:48:19",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": {
+            "id": 6324,
+            "nodeType": "StructuredDocumentation",
+            "src": "220:214:19",
+            "text": " Returns fee based on inputted collateral VC balance and total VC balance of system. \n fee is in terms of percentage * 1e18. \n If the fee were 1%, this would be 0.01 * 1e18 = 1e16"
+          },
+          "functionSelector": "73ddaef4",
+          "id": 6337,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getFee",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 6333,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 6326,
+                "mutability": "mutable",
+                "name": "_collateralVCInput",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6337,
+                "src": "456:26:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6325,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "456:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6328,
+                "mutability": "mutable",
+                "name": "_collateralVCBalancePost",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6337,
+                "src": "484:32:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6327,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "484:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6330,
+                "mutability": "mutable",
+                "name": "_totalVCBalancePre",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6337,
+                "src": "518:26:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6329,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "518:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6332,
+                "mutability": "mutable",
+                "name": "_totalVCBalancePost",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6337,
+                "src": "546:27:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6331,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "546:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "455:119:19"
+          },
+          "returnParameters": {
+            "id": 6336,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 6335,
+                "mutability": "mutable",
+                "name": "fee",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6337,
+                "src": "598:11:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6334,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "598:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "597:13:19"
+          },
+          "scope": 6371,
+          "src": "440:171:19",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "e98f6176",
+          "id": 6350,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getFeeAndUpdate",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 6346,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 6339,
+                "mutability": "mutable",
+                "name": "_collateralVCInput",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6350,
+                "src": "719:26:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6338,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "719:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6341,
+                "mutability": "mutable",
+                "name": "_totalCollateralVCBalance",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6350,
+                "src": "747:33:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6340,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "747:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6343,
+                "mutability": "mutable",
+                "name": "_totalVCBalancePre",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6350,
+                "src": "782:26:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6342,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "782:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6345,
+                "mutability": "mutable",
+                "name": "_totalVCBalancePost",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6350,
+                "src": "810:27:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6344,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "810:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "718:120:19"
+          },
+          "returnParameters": {
+            "id": 6349,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 6348,
+                "mutability": "mutable",
+                "name": "fee",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6350,
+                "src": "857:11:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6347,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "857:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "856:13:19"
+          },
+          "scope": 6371,
+          "src": "694:176:19",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "2c3609a0",
+          "id": 6357,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "setFeeCapAndTime",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 6355,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 6352,
+                "mutability": "mutable",
+                "name": "_lastFeePercent",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6357,
+                "src": "1040:23:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6351,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1040:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6354,
+                "mutability": "mutable",
+                "name": "_lastFeeTime",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6357,
+                "src": "1065:20:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6353,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1065:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "1039:47:19"
+          },
+          "returnParameters": {
+            "id": 6356,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1095:0:19"
+          },
+          "scope": 6371,
+          "src": "1014:82:19",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "f2cfd551",
+          "id": 6364,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getFeeCapAndTime",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 6358,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1269:2:19"
+          },
+          "returnParameters": {
+            "id": 6363,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 6360,
+                "mutability": "mutable",
+                "name": "_lastFeePercent",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6364,
+                "src": "1295:23:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6359,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1295:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6362,
+                "mutability": "mutable",
+                "name": "_lastFeeTime",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6364,
+                "src": "1320:20:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6361,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1320:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "1294:47:19"
+          },
+          "scope": 6371,
+          "src": "1244:98:19",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": {
+            "id": 6365,
+            "nodeType": "StructuredDocumentation",
+            "src": "1350:219:19",
+            "text": " Returns fee based on decay since last fee calculation, which we take to be \n a reasonable fee amount. If it has decayed a certain amount since then, we let\n the new fee amount slide. "
+          },
+          "functionSelector": "d26e6aa4",
+          "id": 6370,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "calculateDecayedFee",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 6366,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1603:2:19"
+          },
+          "returnParameters": {
+            "id": 6369,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 6368,
+                "mutability": "mutable",
+                "name": "fee",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 6370,
+                "src": "1629:11:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6367,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1629:7:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "1628:13:19"
+          },
+          "scope": 6371,
+          "src": "1575:67:19",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 6372,
+      "src": "69:1576:19"
+    }
+  ],
+  "src": "42:1607:19"
+}

@@ -1,0 +1,243 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IERC3156FlashBorrower.sol",
+  "exportedSymbols": {
+    "IERC3156FlashBorrower": [
+      1999
+    ]
+  },
+  "id": 2000,
+  "license": "AGPL-3.0",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1982,
+      "literals": [
+        "solidity",
+        "^",
+        "0.8",
+        ".0"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "40:23:3"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "fullyImplemented": false,
+      "id": 1999,
+      "linearizedBaseContracts": [
+        1999
+      ],
+      "name": "IERC3156FlashBorrower",
+      "nameLocation": "77:21:3",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "documentation": {
+            "id": 1983,
+            "nodeType": "StructuredDocumentation",
+            "src": "106:413:3",
+            "text": " @dev Receive a flash loan.\n @param initiator The initiator of the loan.\n @param token The loan currency.\n @param amount The amount of tokens lent.\n @param fee The additional amount of tokens to repay.\n @param data Arbitrary data structure, intended to contain user-defined parameters.\n @return The keccak256 hash of \"ERC3156FlashBorrower.onFlashLoan\""
+          },
+          "functionSelector": "23e30c8b",
+          "id": 1998,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "onFlashLoan",
+          "nameLocation": "534:11:3",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 1994,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 1985,
+                "mutability": "mutable",
+                "name": "initiator",
+                "nameLocation": "564:9:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 1998,
+                "src": "556:17:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1984,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "556:7:3",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1987,
+                "mutability": "mutable",
+                "name": "token",
+                "nameLocation": "592:5:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 1998,
+                "src": "584:13:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 1986,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "584:7:3",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1989,
+                "mutability": "mutable",
+                "name": "amount",
+                "nameLocation": "616:6:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 1998,
+                "src": "608:14:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1988,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "608:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1991,
+                "mutability": "mutable",
+                "name": "fee",
+                "nameLocation": "641:3:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 1998,
+                "src": "633:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1990,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "633:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1993,
+                "mutability": "mutable",
+                "name": "data",
+                "nameLocation": "670:4:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 1998,
+                "src": "655:19:3",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_calldata_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 1992,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "655:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "545:136:3"
+          },
+          "returnParameters": {
+            "id": 1997,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 1996,
+                "mutability": "mutable",
+                "name": "",
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "VariableDeclaration",
+                "scope": 1998,
+                "src": "700:7:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 1995,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "700:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "699:9:3"
+          },
+          "scope": 1999,
+          "src": "525:184:3",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 2000,
+      "src": "67:645:3",
+      "usedErrors": []
+    }
+  ],
+  "src": "40:674:3"
+}

@@ -1,0 +1,67 @@
+{
+  "contract": "MochiVaultFactory",
+  "source_file": "projects/mochi-core/contracts/vault/MochiVaultFactory.sol",
+  "compiler": "0.8.7",
+  "priority": "High",
+  "evidence": {
+    "updateTemplate_gov": "MochiVaultFactory.sol:21-24 (require(msg.sender == engine.governance(), \"!gov\"))",
+    "deployVault_permissionless": "MochiVaultFactory.sol:26-37 (no auth; M-12 ground truth: anyone can deploy a vault)",
+    "beacon_call": "MochiVaultFactory.sol:23 (address(beacon).call(abi.encode(_newTemplate)))"
+  },
+  "checklist_matrix": {
+    "S4.1.G1": "not_applicable",
+    "S4.1.G2": "not_applicable",
+    "S4.1.G3": "not_applicable",
+    "S4.1.G4": "not_applicable",
+    "S4.1.G5": "not_applicable",
+    "S4.1.G6": "automated - updateTemplate is governance-only",
+    "S4.1.G7": "not_applicable",
+    "S4.1.G8": "not_applicable",
+    "S4.1.G9": "not_applicable",
+    "S4.1.G10": "not_applicable",
+    "S4.1.G11": "not_applicable",
+    "S4.2.G1": "automated - non-gov rejected on updateTemplate",
+    "S4.2.G3": "not_applicable",
+    "S4.2.G4": "not_applicable"
+  },
+  "rules": [
+    {
+      "id": "RC-VFAC-001",
+      "item": "S4.1.G6",
+      "statement": "updateTemplate must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    },
+    {
+      "id": "RC-VFAC-002",
+      "item": "S4.1.G6",
+      "statement": "authorized path reachable: governance caller can update the template",
+      "feasibility": "manual_model_required",
+      "pattern": "satisfy_witness",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    },
+    {
+      "id": "RC-VFAC-003",
+      "item": "S4.1.G6",
+      "target_function": "deployVault(address)",
+      "statement": "deployVault permissionless gate probe (ground truth M-12)",
+      "feasibility": "probe_violation_expected",
+      "expected": "VIOLATION (confirmed M-12)",
+      "evidence": "M-12 probe: deployVault(address) (MochiVaultFactory.sol:26-37) has no require gate"
+    }
+  ],
+  "conf": {
+    "files": [
+      "projects/mochi-core/contracts/vault/MochiVaultFactory.sol"
+    ],
+    "solc": "0.8.7",
+    "notes": "deployVault intentionally permissionless (M-12 is a deployment-inventory concern, not authorization); beacon low-level call modeled as unknown external call"
+  },
+  "terminal_results": {
+    "deployVault_permissionless_probe": "VIOLATION (M-12 CONFIRMED)",
+    "updateTemplate-linked (2 rules)": "manual_model_required"
+  }
+}

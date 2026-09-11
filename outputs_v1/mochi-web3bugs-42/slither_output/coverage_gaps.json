@@ -1,0 +1,29 @@
+{
+  "total_gaps": 2,
+  "gaps": [
+    {
+      "file": "projects/mochi-cssr/contracts/cssr/SushiswapV2CSSR.sol",
+      "package": "mochi-cssr",
+      "reason": "compilation_stack_too_deep",
+      "severity": "HIGH",
+      "detail": "Stack too deep (31) in BlockVerifier.sol:7 assembly during per-file solc 0.8.7 compile; known solc 0.8.x issue; extractor per-file fallback supports no optimizer/via-ir workaround.",
+      "expected_stage2_impact": "LOW",
+      "rationale": "UniswapV2CSSR/SushiswapV2CSSR are oracle price-source observers (saveState/saveReserve record block-proof data on-chain) consumed read-only by MochiCSSRv0 via getLiquidity; no role/auth Access Control logic."
+    },
+    {
+      "file": "projects/mochi-cssr/contracts/cssr/UniswapV2CSSR.sol",
+      "package": "mochi-cssr",
+      "reason": "compilation_stack_too_deep",
+      "severity": "HIGH",
+      "detail": "Stack too deep (31) in BlockVerifier.sol:7 assembly during per-file solc 0.8.7 compile; known solc 0.8.x issue; extractor per-file fallback supports no optimizer/via-ir workaround.",
+      "expected_stage2_impact": "LOW",
+      "rationale": "UniswapV2CSSR/SushiswapV2CSSR are oracle price-source observers (saveState/saveReserve record block-proof data on-chain) consumed read-only by MochiCSSRv0 via getLiquidity; no role/auth Access Control logic."
+    }
+  ],
+  "resolution": "documented",
+  "coverage_gate": {
+    "pass": true,
+    "raw": 96.6,
+    "weighted": 95.2
+  }
+}

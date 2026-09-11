@@ -1,0 +1,403 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/interfaces/IAllocation.sol",
+  "exportedSymbols": {
+    "IAllocation": [
+      30
+    ]
+  },
+  "id": 31,
+  "license": "AGPLv3",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        ">=",
+        "0.6",
+        ".0",
+        "<",
+        "0.7",
+        ".0"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "36:31:1"
+    },
+    {
+      "id": 2,
+      "literals": [
+        "experimental",
+        "ABIEncoderV2"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "69:33:1"
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/common/StructDefinitions.sol",
+      "file": "../common/StructDefinitions.sol",
+      "id": 3,
+      "nodeType": "ImportDirective",
+      "scope": 31,
+      "sourceUnit": 112,
+      "src": "106:41:1",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "documentation": null,
+      "fullyImplemented": false,
+      "id": 30,
+      "linearizedBaseContracts": [
+        30
+      ],
+      "name": "IAllocation",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "3b2691c2",
+          "id": 12,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "calcSystemTargetDelta",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 8,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 5,
+                "mutability": "mutable",
+                "name": "sysState",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 12,
+                "src": "211:29:1",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_SystemState_$60_calldata_ptr",
+                  "typeString": "struct SystemState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 4,
+                  "name": "SystemState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 60,
+                  "src": "211:11:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SystemState_$60_storage_ptr",
+                    "typeString": "struct SystemState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7,
+                "mutability": "mutable",
+                "name": "expState",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 12,
+                "src": "242:31:1",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ExposureState_$74_calldata_ptr",
+                  "typeString": "struct ExposureState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 6,
+                  "name": "ExposureState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 74,
+                  "src": "242:13:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ExposureState_$74_storage_ptr",
+                    "typeString": "struct ExposureState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "210:64:1"
+          },
+          "returnParameters": {
+            "id": 11,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 10,
+                "mutability": "mutable",
+                "name": "allState",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 12,
+                "src": "325:31:1",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_AllocationState_$88_memory_ptr",
+                  "typeString": "struct AllocationState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 9,
+                  "name": "AllocationState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 88,
+                  "src": "325:15:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_AllocationState_$88_storage_ptr",
+                    "typeString": "struct AllocationState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "324:33:1"
+          },
+          "scope": 30,
+          "src": "180:178:1",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "3320592b",
+          "id": 21,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "calcVaultTargetDelta",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 17,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 14,
+                "mutability": "mutable",
+                "name": "sysState",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 21,
+                "src": "396:29:1",
+                "stateVariable": false,
+                "storageLocation": "calldata",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_SystemState_$60_calldata_ptr",
+                  "typeString": "struct SystemState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 13,
+                  "name": "SystemState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 60,
+                  "src": "396:11:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SystemState_$60_storage_ptr",
+                    "typeString": "struct SystemState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 16,
+                "mutability": "mutable",
+                "name": "onlySwapOut",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 21,
+                "src": "427:16:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 15,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "427:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "395:49:1"
+          },
+          "returnParameters": {
+            "id": 20,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 19,
+                "mutability": "mutable",
+                "name": "stableState",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 21,
+                "src": "495:44:1",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_StablecoinAllocationState_$111_memory_ptr",
+                  "typeString": "struct StablecoinAllocationState"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 18,
+                  "name": "StablecoinAllocationState",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 111,
+                  "src": "495:25:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_StablecoinAllocationState_$111_storage_ptr",
+                    "typeString": "struct StablecoinAllocationState"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "494:46:1"
+          },
+          "scope": 30,
+          "src": "366:175:1",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "d90e7af3",
+          "id": 29,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "calcStrategyPercent",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 24,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 23,
+                "mutability": "mutable",
+                "name": "utilisationRatio",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 29,
+                "src": "578:24:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 22,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "578:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "577:26:1"
+          },
+          "returnParameters": {
+            "id": 28,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 27,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 29,
+                "src": "627:16:1",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                  "typeString": "uint256[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 25,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "627:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 26,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "627:9:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                    "typeString": "uint256[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "626:18:1"
+          },
+          "scope": 30,
+          "src": "549:96:1",
+          "stateMutability": "pure",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 31,
+      "src": "151:497:1"
+    }
+  ],
+  "src": "36:614:1"
+}

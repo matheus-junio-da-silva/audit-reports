@@ -1,0 +1,163 @@
+{
+  "contract": "Verification",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/61/contracts/Verification/Verification.sol",
+  "coverage_status": "FULL",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "owner_and_verifier",
+    "owner_predicate": "e.msg.sender == owner()",
+    "verifier_predicate": "verifiers[e.msg.sender] == true",
+    "evidence": [
+      "OwnableUpgradeable.owner() getter (OZ 3.4.2, _owner private) -> source Verification.sol:9, OwnableUpgradeable.sol:41",
+      "onlyVerifier modifier requires verifiers[msg.sender] -> Verification.sol:39-42",
+      "onlyOwner modifier (OZ) on addVerifier/removeVerifier/updateActivationDelay -> Verification.sol:56,68,78",
+      "verifiers(address) public mapping getter -> Verification.sol:21"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "addVerifier(address)",
+      "claim": "a caller other than the pre-state owner cannot add a verifier",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "addVerifier(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can add a verifier for some input",
+      "source_evidence": ["Verification.sol:68 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "removeVerifier(address)",
+      "claim": "a caller other than the pre-state owner cannot remove a verifier",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "removeVerifier(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can remove a verifier for some input",
+      "source_evidence": ["Verification.sol:78 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateActivationDelay(uint256)",
+      "claim": "a caller other than the pre-state owner cannot update the activation delay",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updateActivationDelay(uint256)"],
+      "hypotheses": [],
+      "reachability_check": "owner can update the delay for some input",
+      "source_evidence": ["Verification.sol:56 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "registerMasterAddress(address,bool)",
+      "claim": "a caller who is not a registered verifier cannot register a master address",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["verifiers(address)", "registerMasterAddress(address,bool)"],
+      "hypotheses": ["with verifiers[msg.sender]==false the onlyVerifier require at line 40 fires first"],
+      "reachability_check": "a registered verifier can register an unregistered master address",
+      "source_evidence": ["Verification.sol:39-42 (modifier onlyVerifier), 89-98"]
+    },
+    {
+      "ontology_id": "CAC-AC-007",
+      "id": "S4.1.G10",
+      "status": "applicable",
+      "target": "initialize(address,uint256)",
+      "claim": "after one successful initialization every later initialize call reverts",
+      "property_kind": "revert_implication_rule",
+      "symbols": ["initialize(address,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "initialize succeeds from a fresh uninitialized state",
+      "source_evidence": ["Verification.sol:48 (modifier initializer, OZ Initializable)"]
+    },
+    {
+      "ontology_id": "CAC-AC-008",
+      "id": "S4.1.G11",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "protocol uses OZ OwnableUpgradeable one-step transferOwnership without a pending-owner lifecycle; ontology CAC-AC-008 insufficient_evidence: intentionally documented one-step transfer",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["OwnableUpgradeable.sol:69 transferOwnership one-step"]
+    },
+    {
+      "ontology_id": "CAC-AC-002",
+      "id": "S4.1.G2",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no RBAC role system (AccessControl) present; uses ownership + verifier mapping instead",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["Verification.sol uses OwnableUpgradeable + verifiers mapping, no roles"]
+    },
+    {
+      "ontology_id": "CAC-AC-003",
+      "id": "S4.1.G4",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "Verification holds no user assets / no debit-from-allowance accounting",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["Verification.sol stores no fungible asset accounting"]
+    },
+    {
+      "ontology_id": "CAC-AC-004",
+      "id": "S4.1.G7",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "Verification manages no asset custody / no admin drain surface",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["Verification.sol has no withdraw/rescue/sweep over protocol assets"]
+    },
+    {
+      "ontology_id": "CAC-AC-005",
+      "id": "S4.1.G8",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no schedule/execute governance lifecycle with ready timestamps",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["Verification.sol has no timelock schedule/execute"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "Verification defines no trust-sensitive external callback (registerMasterAddress is an externally callable entry, not a callback)",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["Verification.sol has no onXxx callback entry point"]
+    },
+    {
+      "ontology_id": "CAC-AC-010",
+      "id": "S4.2.G4",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no ERC20 allowance/delegation policy in this contract",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["Verification.sol holds no allowances/approvals"]
+    }
+  ]
+}

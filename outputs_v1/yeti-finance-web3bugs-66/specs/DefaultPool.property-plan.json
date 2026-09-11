@@ -1,0 +1,79 @@
+{
+  "contract": "DefaultPool",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/DefaultPool.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "priority": {"level": "High", "score": 27, "reason": "under-collateralization custody pool"},
+  "authority_model": {
+    "kind": "owner + configured-protocol-callers",
+    "predicate_owner": "e.msg.sender == owner()",
+    "predicate_configured": "e.msg.sender in {ActivePool, TroveManager, Whitelist} (internal, no public getter)",
+    "evidence": [
+      "setAddresses onlyOwner + _renounceOwnership (DefaultPool.sol:46,51,61)",
+      "increase/decreaseYUSDDebt: _requireCallerIsTroveManager (DefaultPool.sol:166-167,173-174)",
+      "receiveCollateral: _requireCallerIsActivePool (DefaultPool.sol:205-209)",
+      "addCollateralType: _requireCallerIsWhitelist (DefaultPool.sol:215-216)"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "setAddresses(address,address,address,address)",
+      "claim": "a caller other than the pre-state owner cannot configure the pool",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setAddresses(address,address,address,address)"],
+      "hypotheses": ["e.msg.sender != 0", "owner() != 0"],
+      "reachability_check": "owner-equal caller completes setAddresses pre-init",
+      "source_evidence": ["DefaultPool.sol:46-61"]
+    },
+    {
+      "ontology_id": "CAC-AC-010",
+      "id": "S4.1.G10",
+      "status": "applicable",
+      "target": "setAddresses(...)",
+      "claim": "after one successful setAddresses a second call must revert",
+      "property_kind": "before_double_call_implication_rule",
+      "symbols": ["owner()", "setAddresses(...)"],
+      "hypotheses": ["e1.msg.sender == owner(), e1.msg.sender != 0", "e2.msg.sender != 0"],
+      "reachability_check": "successful first setAddresses exists",
+      "source_evidence": ["DefaultPool.sol:46-61"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "manual_model_required",
+      "target": "receiveCollateral(address[],uint256[])",
+      "claim": "only the ActivePool may credit collateral into the default pool",
+      "property_kind": "callback_caller_verification",
+      "symbols": ["activePoolAddress (internal)"],
+      "hypotheses": [],
+      "reachability_check": "needs getter/harness",
+      "source_evidence": ["DefaultPool.sol:205-209", "DefaultPool.sol:181-185"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "manual_model_required",
+      "target": "increaseYUSDDebt(uint256)",
+      "claim": "only TroveManager may increase default-pool debt",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["troveManagerAddress (internal)"],
+      "hypotheses": [],
+      "reachability_check": "needs getter/harness",
+      "source_evidence": ["DefaultPool.sol:166-167", "DefaultPool.sol:187-191"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "manual_model_required",
+      "target": "addCollateralType(address)",
+      "claim": "only Whitelist may register a new collateral type",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["whitelistAddress (internal)"],
+      "hypotheses": [],
+      "reachability_check": "needs getter/harness",
+      "source_evidence": ["DefaultPool.sol:215-216", "DefaultPool.sol:193-197"]
+    }
+  ]
+}

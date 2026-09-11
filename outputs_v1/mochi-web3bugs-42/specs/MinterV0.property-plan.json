@@ -1,0 +1,70 @@
+{
+  "contract": "MinterV0",
+  "source_file": "projects/mochi-core/contracts/minter/UsdmMinter.sol",
+  "compiler": "0.8.7",
+  "priority": "High",
+  "evidence": {
+    "onlyGov_modifier": "UsdmMinter.sol:23-26 (require(msg.sender == engine.governance(), \"!gov\"))",
+    "onlyPermission_modifier": "UsdmMinter.sol:18-21 (require(hasPermission(msg.sender), \"!permission\"))",
+    "addMinter": "UsdmMinter.sol:28-30 (external onlyGov)",
+    "removeMinter": "UsdmMinter.sol:32-34 (external onlyGov)",
+    "mint": "UsdmMinter.sol:36-41 (external onlyPermission)",
+    "isVault_multi_hop": "UsdmMinter.sol:48-54 (engine.vaultFactory().getVault(IMochiVault(_vault).asset()) == _vault -> multi-hop linked)"
+  },
+  "checklist_matrix": {
+    "S4.1.G1": "not_applicable",
+    "S4.1.G2": "not_applicable - no role manager; governance+minter registry",
+    "S4.1.G3": "not_applicable",
+    "S4.1.G4": "not_applicable",
+    "S4.1.G5": "not_applicable",
+    "S4.1.G6": "automated for addMinter/removeMinter (linked gov); manual for mint (isVault multi-hop)",
+    "S4.1.G7": "not_applicable",
+    "S4.1.G8": "not_applicable",
+    "S4.1.G9": "not_applicable - minter registry is not a whitelist gate on restricted actions (mint inner gate)",
+    "S4.1.G10": "not_applicable",
+    "S4.1.G11": "not_applicable",
+    "S4.2.G1": "automated - non-gov rejected on addMinter/removeMinter",
+    "S4.2.G3": "not_applicable",
+    "S4.2.G4": "not_applicable"
+  },
+  "rules": [
+    {
+      "id": "RC-MIN-001",
+      "item": "S4.1.G6",
+      "statement": "addMinter must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    },
+    {
+      "id": "RC-MIN-002",
+      "item": "S4.1.G6",
+      "statement": "removeMinter must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    },
+    {
+      "id": "RC-MIN-003",
+      "item": "S4.1.G6",
+      "statement": "authorized path reachable: governance caller can add a minter",
+      "feasibility": "manual_model_required",
+      "pattern": "satisfy_witness",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    }
+  ],
+  "conf": {
+    "files": [
+      "projects/mochi-core/contracts/minter/UsdmMinter.sol"
+    ],
+    "solc": "0.8.7",
+    "notes": "mint authorization (hasPermission) requires modeling isVault via engine.vaultFactory().getVault(...) -> manual_model_required; gov rules linked single-hop"
+  },
+  "notes": "addMinter/removeMinter (exec gates) are engine().governance() 1-hop linked; mint() requires IMochiEngine ownerOf checks (multi-hop: engine.nft().ownerOf(engine.vaultFactory().getVault(asset))) - manual_model_required for both groups.",
+  "terminal_results": {
+    "all": "manual_model_required"
+  }
+}

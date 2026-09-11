@@ -1,0 +1,86 @@
+{
+  "project": "sublime-protocol-web3bugs-61",
+  "total_source_files": 44,
+  "extracted_files": 44,
+  "coverage_percentage": 100.0,
+  "extractor_raw_coverage": 90.2,
+  "extractor_weighted_coverage": 94.6,
+  "coverage_note": "Extractor raw/weighted are computed via contract-name-to-filename heuristic (46/51 contracts). All 44 project .sol source files are present in ast_manifest.json (verified by absolute-path cross-reference), so true source-file coverage is 44/44 = 100%. The 5 contracts reported 'not extracted' (SublimeProxy, IStrategy, Converter, OneSplitAudit, WETH) are heuristic false negatives: their defining source files (Proxy.sol, IStrategyRegistry.sol, mocks/yVault/yVault.sol) ARE extracted. No implementation/core contract source is missing.",
+  "gaps": {
+    "SublimeProxy.sol": {
+      "reason": "heuristic_false_negative",
+      "severity": "NONE",
+      "mitigation": "partial_extracted",
+      "missing_dependencies": [],
+      "expected_stage2_impact": "NONE",
+      "detail": "Contract SublimeProxy is defined in contracts/Proxy.sol which IS in the AST manifest. Coverage tool name-match failed because contract name != filename."
+    },
+    "IStrategy.sol": {
+      "reason": "heuristic_false_negative",
+      "severity": "NONE",
+      "mitigation": "interface_extracted",
+      "missing_dependencies": [],
+      "expected_stage2_impact": "NONE",
+      "detail": "IStrategy defined in contracts/interfaces/IStrategyRegistry.sol which IS extracted."
+    },
+    "Converter.sol": {
+      "reason": "heuristic_false_negative",
+      "severity": "NONE",
+      "mitigation": "partial_extracted",
+      "missing_dependencies": [],
+      "expected_stage2_impact": "NONE",
+      "detail": "Converter (mock) defined in contracts/mocks/yVault/yVault.sol which IS extracted."
+    },
+    "OneSplitAudit.sol": {
+      "reason": "heuristic_false_negative",
+      "severity": "NONE",
+      "mitigation": "partial_extracted",
+      "missing_dependencies": [],
+      "expected_stage2_impact": "NONE",
+      "detail": "OneSplitAudit (mock) defined in contracts/mocks/yVault/yVault.sol which IS extracted."
+    },
+    "WETH.sol": {
+      "reason": "heuristic_false_negative",
+      "severity": "NONE",
+      "mitigation": "partial_extracted",
+      "missing_dependencies": [],
+      "expected_stage2_impact": "NONE",
+      "detail": "WETH (mock) defined in contracts/mocks/yVault/yVault.sol which IS extracted."
+    }
+  },
+  "dependency_resolution": {
+    "packages_resolved": [
+      {
+        "name": "@chainlink/contracts",
+        "method": "npm"
+      },
+      {
+        "name": "@openzeppelin/contracts",
+        "method": "npm"
+      },
+      {
+        "name": "@openzeppelin/contracts-upgradeable",
+        "method": "npm"
+      },
+      {
+        "name": "@uniswap/v3-periphery",
+        "method": "npm + version pin to 1.1.1"
+      }
+    ],
+    "packages_unresolvable": [],
+    "incomplete_project_refs": [],
+    "brownie_remappings": []
+  },
+  "solc_resolution": {
+    "versions_installed": [
+      "0.7.6"
+    ],
+    "pragmas_satisfied": [
+      "0.7.6",
+      "^0.7.6"
+    ],
+    "pragmas_unsatisfiable": [],
+    "version_mismatches": []
+  },
+  "pre_flight_verdict": "READY"
+}

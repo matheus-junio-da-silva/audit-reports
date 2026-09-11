@@ -1,0 +1,2033 @@
+{
+  "absolutePath": "contracts/interfaces/IPoolFactory.sol",
+  "exportedSymbols": {
+    "IPoolFactory": [
+      18215
+    ]
+  },
+  "id": 18216,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 18020,
+      "literals": [
+        "solidity",
+        "0.7",
+        ".6"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "33:22:48"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "fullyImplemented": false,
+      "id": 18215,
+      "linearizedBaseContracts": [
+        18215
+      ],
+      "name": "IPoolFactory",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18021,
+            "nodeType": "StructuredDocumentation",
+            "src": "89:176:48",
+            "text": " @notice emitted when a Pool is created\n @param pool the address of the Pool\n @param borrower the address of the borrower who created the pool"
+          },
+          "id": 18027,
+          "name": "PoolCreated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18026,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18023,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "pool",
+                "nodeType": "VariableDeclaration",
+                "scope": 18027,
+                "src": "289:20:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18022,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "289:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18025,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "borrower",
+                "nodeType": "VariableDeclaration",
+                "scope": 18027,
+                "src": "311:24:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18024,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "311:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "288:48:48"
+          },
+          "src": "271:66:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18028,
+            "nodeType": "StructuredDocumentation",
+            "src": "345:188:48",
+            "text": " @notice emitted when the init function definition Pool.sol logic is updated\n @param updatedSelector the new init function definition for the Pool logic contract"
+          },
+          "id": 18032,
+          "name": "PoolInitSelectorUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18031,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18030,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "updatedSelector",
+                "nodeType": "VariableDeclaration",
+                "scope": 18032,
+                "src": "569:22:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes4",
+                  "typeString": "bytes4"
+                },
+                "typeName": {
+                  "id": 18029,
+                  "name": "bytes4",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "569:6:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "568:24:48"
+          },
+          "src": "539:54:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18033,
+            "nodeType": "StructuredDocumentation",
+            "src": "601:146:48",
+            "text": " @notice emitted when the Pool.sol logic is updated\n @param updatedPoolLogic the address of the new Pool logic contract"
+          },
+          "id": 18037,
+          "name": "PoolLogicUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18036,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18035,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "updatedPoolLogic",
+                "nodeType": "VariableDeclaration",
+                "scope": 18037,
+                "src": "776:32:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18034,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "776:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "775:34:48"
+          },
+          "src": "753:57:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18038,
+            "nodeType": "StructuredDocumentation",
+            "src": "818:159:48",
+            "text": " @notice emitted when the user registry is updated\n @param updatedBorrowerRegistry address of the contract storing the user registry"
+          },
+          "id": 18042,
+          "name": "UserRegistryUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18041,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18040,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "updatedBorrowerRegistry",
+                "nodeType": "VariableDeclaration",
+                "scope": 18042,
+                "src": "1009:39:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18039,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1009:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1008:41:48"
+          },
+          "src": "983:67:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18043,
+            "nodeType": "StructuredDocumentation",
+            "src": "1058:175:48",
+            "text": " @notice emitted when the strategy registry is updated\n @param updatedStrategyRegistry address of the contract storing the updated strategy registry"
+          },
+          "id": 18047,
+          "name": "StrategyRegistryUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18046,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18045,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "updatedStrategyRegistry",
+                "nodeType": "VariableDeclaration",
+                "scope": 18047,
+                "src": "1269:39:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18044,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1269:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1268:41:48"
+          },
+          "src": "1239:71:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18048,
+            "nodeType": "StructuredDocumentation",
+            "src": "1318:175:48",
+            "text": " @notice emitted when the Repayments.sol logic is updated\n @param updatedRepaymentImpl the address of the new implementation of the Repayments logic"
+          },
+          "id": 18052,
+          "name": "RepaymentImplUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18051,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18050,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "updatedRepaymentImpl",
+                "nodeType": "VariableDeclaration",
+                "scope": 18052,
+                "src": "1526:36:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18049,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1526:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1525:38:48"
+          },
+          "src": "1499:65:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18053,
+            "nodeType": "StructuredDocumentation",
+            "src": "1572:159:48",
+            "text": " @notice emitted when the PriceOracle.sol is updated\n @param updatedPriceOracle address of the new implementation of the PriceOracle"
+          },
+          "id": 18057,
+          "name": "PriceOracleUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18056,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18055,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "updatedPriceOracle",
+                "nodeType": "VariableDeclaration",
+                "scope": 18057,
+                "src": "1762:34:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18054,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1762:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1761:36:48"
+          },
+          "src": "1737:61:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18058,
+            "nodeType": "StructuredDocumentation",
+            "src": "1806:153:48",
+            "text": " @notice emitted when the Extension.sol is updated\n @param updatedExtension address of the new implementation of the Extension"
+          },
+          "id": 18062,
+          "name": "ExtensionImplUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18061,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18060,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "updatedExtension",
+                "nodeType": "VariableDeclaration",
+                "scope": 18062,
+                "src": "1992:32:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18059,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1992:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1991:34:48"
+          },
+          "src": "1965:61:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18063,
+            "nodeType": "StructuredDocumentation",
+            "src": "2034:161:48",
+            "text": " @notice emitted when the SavingsAccount.sol is updated\n @param savingsAccount address of the new implementation of the SavingsAccount"
+          },
+          "id": 18067,
+          "name": "SavingsAccountUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18066,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18065,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "savingsAccount",
+                "nodeType": "VariableDeclaration",
+                "scope": 18067,
+                "src": "2229:30:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18064,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2229:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2228:32:48"
+          },
+          "src": "2201:60:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18068,
+            "nodeType": "StructuredDocumentation",
+            "src": "2269:182:48",
+            "text": " @notice emitted when the collection period parameter for Pools is updated\n @param updatedCollectionPeriod the new value of the collection period for Pools"
+          },
+          "id": 18072,
+          "name": "CollectionPeriodUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18071,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18070,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "updatedCollectionPeriod",
+                "nodeType": "VariableDeclaration",
+                "scope": 18072,
+                "src": "2487:31:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18069,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2487:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2486:33:48"
+          },
+          "src": "2457:63:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18073,
+            "nodeType": "StructuredDocumentation",
+            "src": "2528:191:48",
+            "text": " @notice emitted when the loan withdrawal parameter for Pools is updated\n @param updatedLoanWithdrawalDuration the new value of the loan withdrawal period for Pools"
+          },
+          "id": 18077,
+          "name": "LoanWithdrawalDurationUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18076,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18075,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "updatedLoanWithdrawalDuration",
+                "nodeType": "VariableDeclaration",
+                "scope": 18077,
+                "src": "2761:37:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18074,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2761:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2760:39:48"
+          },
+          "src": "2725:75:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18078,
+            "nodeType": "StructuredDocumentation",
+            "src": "2808:181:48",
+            "text": " @notice emitted when the marginCallDuration variable is updated\n @param updatedMarginCallDuration Duration (in seconds) for which a margin call is active"
+          },
+          "id": 18082,
+          "name": "MarginCallDurationUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18081,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18080,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "updatedMarginCallDuration",
+                "nodeType": "VariableDeclaration",
+                "scope": 18082,
+                "src": "3027:33:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18079,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3027:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3026:35:48"
+          },
+          "src": "2995:67:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18083,
+            "nodeType": "StructuredDocumentation",
+            "src": "3070:152:48",
+            "text": " @notice emitted when miBorrowFraction variable is updated\n @param updatedMinBorrowFraction Updated value of miBorrowFraction"
+          },
+          "id": 18087,
+          "name": "MinBorrowFractionUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18086,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18085,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "updatedMinBorrowFraction",
+                "nodeType": "VariableDeclaration",
+                "scope": 18087,
+                "src": "3259:32:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18084,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3259:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3258:34:48"
+          },
+          "src": "3228:65:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18088,
+            "nodeType": "StructuredDocumentation",
+            "src": "3301:175:48",
+            "text": " @notice emitted when liquidatorRewardFraction variable is updated\n @param updatedLiquidatorRewardFraction updated value of liquidatorRewardFraction"
+          },
+          "id": 18092,
+          "name": "LiquidatorRewardFractionUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18091,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18090,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "updatedLiquidatorRewardFraction",
+                "nodeType": "VariableDeclaration",
+                "scope": 18092,
+                "src": "3520:39:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18089,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3520:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3519:41:48"
+          },
+          "src": "3482:79:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18093,
+            "nodeType": "StructuredDocumentation",
+            "src": "3569:178:48",
+            "text": " @notice emitted when poolCancelPenaltyMultiple variable is updated\n @param updatedPoolCancelPenaltyMultiple updated value of poolCancelPenaltyMultiple"
+          },
+          "id": 18097,
+          "name": "PoolCancelPenaltyMultipleUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18096,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18095,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "updatedPoolCancelPenaltyMultiple",
+                "nodeType": "VariableDeclaration",
+                "scope": 18097,
+                "src": "3792:40:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18094,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3792:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3791:42:48"
+          },
+          "src": "3753:81:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18098,
+            "nodeType": "StructuredDocumentation",
+            "src": "3842:159:48",
+            "text": " @notice emitted when fee that protocol changes for pools is updated\n @param updatedProtocolFee updated value of protocolFeeFraction"
+          },
+          "id": 18102,
+          "name": "ProtocolFeeFractionUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18101,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18100,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "updatedProtocolFee",
+                "nodeType": "VariableDeclaration",
+                "scope": 18102,
+                "src": "4040:26:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18099,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "4040:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "4039:28:48"
+          },
+          "src": "4007:61:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18103,
+            "nodeType": "StructuredDocumentation",
+            "src": "4076:192:48",
+            "text": " @notice emitted when address which receives fee that protocol changes for pools is updated\n @param updatedProtocolFeeCollector updated value of protocolFeeCollector"
+          },
+          "id": 18107,
+          "name": "ProtocolFeeCollectorUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18106,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18105,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "updatedProtocolFeeCollector",
+                "nodeType": "VariableDeclaration",
+                "scope": 18107,
+                "src": "4308:35:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18104,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "4308:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "4307:37:48"
+          },
+          "src": "4274:71:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18108,
+            "nodeType": "StructuredDocumentation",
+            "src": "4353:391:48",
+            "text": " @notice emitted when threhsolds for one of the parameters (poolSizeLimit, collateralRatioLimit, borrowRateLimit, repaymentIntervalLimit, noOfRepaymentIntervalsLimit) is updated\n @param limitType specifies the parameter whose limits are being updated\n @param max maximum threshold value for limitType\n @param min minimum threshold value for limitType"
+          },
+          "id": 18116,
+          "name": "LimitsUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18115,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18110,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "limitType",
+                "nodeType": "VariableDeclaration",
+                "scope": 18116,
+                "src": "4770:24:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_memory_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 18109,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "4770:6:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18112,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "max",
+                "nodeType": "VariableDeclaration",
+                "scope": 18116,
+                "src": "4796:11:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18111,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "4796:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18114,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "min",
+                "nodeType": "VariableDeclaration",
+                "scope": 18116,
+                "src": "4809:11:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18113,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "4809:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "4769:52:48"
+          },
+          "src": "4750:72:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18117,
+            "nodeType": "StructuredDocumentation",
+            "src": "4830:263:48",
+            "text": " @notice emitted when the list of supported borrow assets is updated\n @param borrowToken address of the borrow asset\n @param isSupported true if borrowToken is a valid borrow asset, false if borrowToken is an invalid borrow asset"
+          },
+          "id": 18123,
+          "name": "BorrowTokenUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18122,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18119,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "borrowToken",
+                "nodeType": "VariableDeclaration",
+                "scope": 18123,
+                "src": "5124:27:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18118,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "5124:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18121,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "isSupported",
+                "nodeType": "VariableDeclaration",
+                "scope": 18123,
+                "src": "5153:16:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 18120,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "5153:4:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "5123:47:48"
+          },
+          "src": "5099:72:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18124,
+            "nodeType": "StructuredDocumentation",
+            "src": "5179:291:48",
+            "text": " @notice emitted when the list of supported collateral assets is updated\n @param collateralToken address of the collateral asset\n @param isSupported true if collateralToken is a valid collateral asset, false if collateralToken is an invalid collateral asset"
+          },
+          "id": 18130,
+          "name": "CollateralTokenUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18129,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18126,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "collateralToken",
+                "nodeType": "VariableDeclaration",
+                "scope": 18130,
+                "src": "5505:31:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18125,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "5505:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18128,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "isSupported",
+                "nodeType": "VariableDeclaration",
+                "scope": 18130,
+                "src": "5538:16:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 18127,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "5538:4:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "5504:51:48"
+          },
+          "src": "5476:80:48"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18131,
+            "nodeType": "StructuredDocumentation",
+            "src": "5564:138:48",
+            "text": " @notice emitted when no strategy address in the pool is updated\n @param noStrategy address of noYield contract"
+          },
+          "id": 18135,
+          "name": "NoStrategyUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18134,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18133,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "noStrategy",
+                "nodeType": "VariableDeclaration",
+                "scope": 18135,
+                "src": "5732:18:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18132,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "5732:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "5731:20:48"
+          },
+          "src": "5708:44:48"
+        },
+        {
+          "functionSelector": "ecced623",
+          "id": 18140,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "savingsAccount",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18136,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "5783:2:48"
+          },
+          "returnParameters": {
+            "id": 18139,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18138,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18140,
+                "src": "5809:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18137,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "5809:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "5808:9:48"
+          },
+          "scope": 18215,
+          "src": "5760:58:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "8da5cb5b",
+          "id": 18145,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "owner",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18141,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "5840:2:48"
+          },
+          "returnParameters": {
+            "id": 18144,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18143,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18145,
+                "src": "5866:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18142,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "5866:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "5865:9:48"
+          },
+          "scope": 18215,
+          "src": "5826:49:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "edf7ae21",
+          "id": 18152,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "poolRegistry",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18148,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18147,
+                "mutability": "mutable",
+                "name": "pool",
+                "nodeType": "VariableDeclaration",
+                "scope": 18152,
+                "src": "5905:12:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18146,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "5905:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "5904:14:48"
+          },
+          "returnParameters": {
+            "id": 18151,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18150,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18152,
+                "src": "5942:4:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 18149,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "5942:4:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "5941:6:48"
+          },
+          "scope": 18215,
+          "src": "5883:65:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "2630c12f",
+          "id": 18157,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "priceOracle",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18153,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "5976:2:48"
+          },
+          "returnParameters": {
+            "id": 18156,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18155,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18157,
+                "src": "6002:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18154,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6002:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6001:9:48"
+          },
+          "scope": 18215,
+          "src": "5956:55:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "2d5537b0",
+          "id": 18162,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "extension",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18158,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6037:2:48"
+          },
+          "returnParameters": {
+            "id": 18161,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18160,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18162,
+                "src": "6063:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18159,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6063:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6062:9:48"
+          },
+          "scope": 18215,
+          "src": "6019:53:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "171e1085",
+          "id": 18167,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "repaymentImpl",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18163,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6102:2:48"
+          },
+          "returnParameters": {
+            "id": 18166,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18165,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18167,
+                "src": "6128:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18164,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6128:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6127:9:48"
+          },
+          "scope": 18215,
+          "src": "6080:57:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "5c7460d6",
+          "id": 18172,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "userRegistry",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18168,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6166:2:48"
+          },
+          "returnParameters": {
+            "id": 18171,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18170,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18172,
+                "src": "6192:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18169,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6192:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6191:9:48"
+          },
+          "scope": 18215,
+          "src": "6145:56:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "0971976e",
+          "id": 18177,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "collectionPeriod",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18173,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6234:2:48"
+          },
+          "returnParameters": {
+            "id": 18176,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18175,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18177,
+                "src": "6260:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18174,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6260:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6259:9:48"
+          },
+          "scope": 18215,
+          "src": "6209:60:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "2ecbf843",
+          "id": 18182,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "loanWithdrawalDuration",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18178,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6308:2:48"
+          },
+          "returnParameters": {
+            "id": 18181,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18180,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18182,
+                "src": "6334:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18179,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6334:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6333:9:48"
+          },
+          "scope": 18215,
+          "src": "6277:66:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "9b9842c1",
+          "id": 18187,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "marginCallDuration",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18183,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6378:2:48"
+          },
+          "returnParameters": {
+            "id": 18186,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18185,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18187,
+                "src": "6404:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18184,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6404:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6403:9:48"
+          },
+          "scope": 18215,
+          "src": "6351:62:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "c2bb7c8d",
+          "id": 18192,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "minBorrowFraction",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18188,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6447:2:48"
+          },
+          "returnParameters": {
+            "id": 18191,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18190,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18192,
+                "src": "6473:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18189,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6473:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6472:9:48"
+          },
+          "scope": 18215,
+          "src": "6421:61:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "acca944f",
+          "id": 18197,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "liquidatorRewardFraction",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18193,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6523:2:48"
+          },
+          "returnParameters": {
+            "id": 18196,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18195,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18197,
+                "src": "6549:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18194,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6549:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6548:9:48"
+          },
+          "scope": 18215,
+          "src": "6490:68:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "816a1121",
+          "id": 18202,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "poolCancelPenaltyMultiple",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18198,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6600:2:48"
+          },
+          "returnParameters": {
+            "id": 18201,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18200,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18202,
+                "src": "6626:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18199,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6626:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6625:9:48"
+          },
+          "scope": 18215,
+          "src": "6566:69:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "7bad5207",
+          "id": 18209,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "getProtocolFeeData",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18203,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6670:2:48"
+          },
+          "returnParameters": {
+            "id": 18208,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18205,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18209,
+                "src": "6696:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18204,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6696:7:48",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18207,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18209,
+                "src": "6705:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18206,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6705:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6695:18:48"
+          },
+          "scope": 18215,
+          "src": "6643:71:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "fdc19bb7",
+          "id": 18214,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "noStrategyAddress",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18210,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "6748:2:48"
+          },
+          "returnParameters": {
+            "id": 18213,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18212,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18214,
+                "src": "6774:7:48",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18211,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "6774:7:48",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "6773:9:48"
+          },
+          "scope": 18215,
+          "src": "6722:61:48",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 18216,
+      "src": "59:6727:48"
+    }
+  ],
+  "src": "33:6755:48"
+}

@@ -1,0 +1,92 @@
+Running Certora smoke test with /home/mat/.local/bin/certoraRun and solc /home/mat/.solc-select/artifacts/solc-0.6.8/solc-0.6.8
+Compiling ../../../tmp/cac-certora-smoke.PXm65w/CertoraSmokeTest.sol...
+Compiling ../../../tmp/cac-certora-smoke.PXm65w/CertoraSmokeTest.sol to expose internal function information and local variables...
+
+Connecting to server...
+
+[32mJob submitted to server[0m
+
+Manage your jobs at https://prover.certora.com
+Follow your job and see verification results at https://prover.certora.com/output/7143902/c854706f3eda4721bbb7e18473102395
+Output:
+processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -processing \processing |processing /processing -[INFO]: s5cmd: cp s3://certora-prod/uploadFiles/7143902/c854706f3eda4721bbb7e18473102395.zip /home/appuser/code/job.zip
+[INFO]: s5cmd: cp s3://tac-optimizer-artifacts/8.19.0/tac_optimizer-8.19.0 /home/appuser/bin/tac_optimizer
+[INFO]: s5cmd: cp s3://prover-artifacts/8.19.0/emv-8.19.0.jar /home/appuser/bin/emv.jar
+[INFO]: inputs download time :: 0.7956 seconds
+[INFO]: tac optimizer ready on PATH at /home/appuser/bin/tac_optimizer
+[INFO]: s5cmd stderr: ERROR "sync s3://certora-prod/outputs/7143902/cache/3bd4e4f8dc4535cfb2ba8ce5f371aecd0342c85133a6d7e7fa2b6e796ecec657-optimisticFalse-iterNone-None--certora-cli-8.19.0/* /home/appuser/code/cache": no object found
+[INFO]: cache download time :: 0.0576 seconds
+[INFO]: Command: java -Xmx31999m -XX:+UseParallelGC -XX:MaxHeapFreeRatio=10 -XX:MinHeapFreeRatio=5 -XX:G1PeriodicGCInterval=15 -XX:NewRatio=5 -XX:+CrashOnOutOfMemoryError -XX:ErrorFile=/home/appuser/code/java_error/java_error%p.log -DoutputUrl=s3://certora-prod/outputs/7143902/output_c854706f3eda4721bbb7e18473102395/ -DjobId=c854706f3eda4721bbb7e18473102395 -DuserId=7143902 -jar /home/appuser/bin/emv.jar -cache 3bd4e4f8dc4535cfb2ba8ce5f371aecd0342c85133a6d7e7fa2b6e796ecec657-optimisticFalse-iterNone-None--certora-cli-8.19.0 -ruleSanityChecks basic -userGlobalTimeout 7200 -globalTimeout 7500
+Start Thu Aug 27 14:25:48 GMT 2026
+Start Thu Aug 27 14:25:48 GMT 2026
+The scene contains 20 contracts:
+CertoraSmokeTest : 0xce4604a0000000000000000000000001,
+ecrecover : 0x1,
+sha256 : 0x2,
+ripemd160 : 0x3,
+identity : 0x4,
+bigmod : 0x5,
+bn256Add : 0x6,
+bn256ScalarMul : 0x7,
+bn256Pairing : 0x8,
+Precompiled244 : 0xf4,
+Precompiled245 : 0xf5,
+Precompiled246 : 0xf6,
+Precompiled247 : 0xf7,
+Precompiled248 : 0xf8,
+Precompiled249 : 0xf9,
+Precompiled250 : 0xfa,
+Precompiled251 : 0xfb,
+Precompiled252 : 0xfc,
+Precompiled253 : 0xfd,
+Precompiled254 : 0xfe
+Running initial transformations
+Has CVL checks.
+Checking CVL tmp/cac-certora-smoke.PXm65w/CertoraSmokeTest.spec for contract CertoraSmokeTest
+Unrolling loops 1 time, unwinding condition is asserted
+Checking rule identity_returns_input (1 out of 2)...
+Checking rule envfreeFuncsStaticCheck (2 out of 2)...
+Result for envfreeFuncsStaticCheck: envfreeFuncsStaticCheck: identity(uint256): SUCCESS
+Starting to run on rule identity_returns_input
+Total time for identity_returns_input: 0 seconds ; Split time: 0 seconds ; Number of problems: 1 ; Solver time : 0 seconds
+Verified: identity_returns_input
+identity_returns_input: Properties successfully verified on all inputs
+Starting to run on rule identity_returns_input-rule_not_vacuous
+Total time for identity_returns_input-rule_not_vacuous: 0 seconds ; Split time: 0 seconds ; Number of problems: 1 ; Solver time : 0 seconds
+Violated: identity_returns_input-rule_not_vacuous
+identity_returns_input-rule_not_vacuous: A property is violated
+Result for identity_returns_input: identity_returns_input: SUCCESS
+Results for envfreeFuncsStaticCheck:
+*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+|Rule name                               |Verified     |Time (sec)|Description                                                 |Local vars                                        |
+|----------------------------------------|-------------|----------|------------------------------------------------------------|--------------------------------------------------|
+|identity(uint256)                       |Not violated |0         |                                                            |no local variables                                |
+|                                        |(unsat)      |          |                                                            |                                                  |
+*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+Results for all:
+*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+|Rule name                               |Verified     |Time (sec)|Description                                                 |Local vars                                        |
+|----------------------------------------|-------------|----------|------------------------------------------------------------|--------------------------------------------------|
+|envfreeFuncsStaticCheck                 |Not violated |0         |                                                            |no local variables                                |
+|                                        |(unsat)      |          |                                                            |                                                  |
+|identity_returns_input                  |Not violated |0         |                                                            |no local variables                                |
+|                                        |(unsat)      |          |                                                            |                                                  |
+|rule_not_vacuous                        |Not violated |0         |Assert message: sanity check for rule identity_returns_i... |CertoraSmokeTest=1                                |
+|                                        |(sat)        |          |                                                            |result=0                                          |
+|                                        |             |          |                                                            |value=0                                           |
+*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*
+Failures summary:
+Failed on rule_not_vacuous:
+Assert message: sanity check for rule identity_returns_i...
+sanity check (vacuity of rule) for rule identity_returns_input
+Done 0m
+Done 0m
+Event reporter: all events were sent without errors
+[INFO]: Live-mirror upload summary: 20 uploads, 20 unique keys, 0 redundant re-uploads, 1.00 uploads/key.
+[INFO]: s5cmd: cp /home/appuser/code/c854706f3eda4721bbb7e18473102395.tar.gz s3://certora-prod/outputs/7143902/output_c854706f3eda4721bbb7e18473102395/c854706f3eda4721bbb7e18473102395.tar.gz
+[INFO]: s5cmd transferred 27 file(s)
+[INFO]: Cache upload took 0.1850 seconds
+[INFO]: Timings :: prover=7.3567 seconds, exit_code=0, timed_out=False
+
+Finished verification request
+[32mNo errors found by Prover![0m

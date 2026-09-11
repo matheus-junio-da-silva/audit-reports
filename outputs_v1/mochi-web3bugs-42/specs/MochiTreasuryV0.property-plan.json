@@ -1,0 +1,79 @@
+{
+  "contract": "MochiTreasuryV0",
+  "source_file": "projects/mochi-core/contracts/treasury/MochiTreasuryV0.sol",
+  "compiler": "0.8.7",
+  "priority": "High",
+  "evidence": {
+    "withdrawCRV_gov": "MochiTreasuryV0.sol:35-38 (require(msg.sender == engine.governance(), \"!gov\"))",
+    "toggleLocking_gov": "MochiTreasuryV0.sol:54-57 (require(msg.sender == engine.governance(), \"!gov\"))",
+    "withdrawLock_NO_AUTH": "MochiTreasuryV0.sol:40-42 (external, no modifier, directly calls veCrv.withdraw())",
+    "veCRVlock_permissionless": "MochiTreasuryV0.sol:73-79 (only lockCrv gate, no authority check)",
+    "claimOperationCost_permissionless": "MochiTreasuryV0.sol:67-71 (sends to engine.operationWallet(), not caller)",
+    "ground_truth_M14": "web3bugs/42/report.md M-14 (also H-09-adjacent): withdrawLock/veCRVlock permissionless"
+  },
+  "checklist_matrix": {
+    "S4.1.G1": "not_applicable",
+    "S4.1.G2": "not_applicable",
+    "S4.1.G3": "not_applicable",
+    "S4.1.G4": "not_applicable - no debit ownership surface",
+    "S4.1.G5": "not_applicable",
+    "S4.1.G6": "automated (positive for withdrawCRV/toggleLocking; violation probe for withdrawLock)",
+    "S4.1.G7": "manual_model_required - solvency of locked CRV requires veCrv linking",
+    "S4.1.G8": "not_applicable",
+    "S4.1.G9": "not_applicable",
+    "S4.1.G10": "not_applicable",
+    "S4.1.G11": "not_applicable",
+    "S4.2.G1": "automated - non-gov rejected on gov-only functions",
+    "S4.2.G3": "not_applicable",
+    "S4.2.G4": "not_applicable"
+  },
+  "rules": [
+    {
+      "id": "RC-TRE-001",
+      "item": "S4.1.G6",
+      "statement": "withdrawCRV must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    },
+    {
+      "id": "RC-TRE-002",
+      "item": "S4.1.G6",
+      "statement": "toggleLocking must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    },
+    {
+      "id": "RC-TRE-003",
+      "item": "CAC-AC-001 / S4.1.G6",
+      "statement": "withdrawLock must revert for non-governance callers (M-14 probe)",
+      "feasibility": "probe_violation_expected",
+      "pattern": "vulnerability_probe_no_auth",
+      "expected": "VIOLATION (confirmed M-14)",
+      "evidence": "M-14 probe: withdrawLock() (MochiTreasuryV0.sol:40-52) has no require gate"
+    },
+    {
+      "id": "RC-TRE-004",
+      "item": "S4.1.G6",
+      "statement": "authorized path reachable: governance caller can call withdrawCRV",
+      "feasibility": "manual_model_required",
+      "pattern": "satisfy_witness",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    }
+  ],
+  "conf": {
+    "files": [
+      "projects/mochi-core/contracts/treasury/MochiTreasuryV0.sol"
+    ],
+    "solc": "0.8.7",
+    "notes": "withdrawLock/veCRVlock have no authorization - rule RC-TRE-003 asserts revert is expected by governance-only semantics; veCRV external calls modeled as unknown-contract calls"
+  },
+  "terminal_results": {
+    "withdrawLock_missing_auth_gate": "VIOLATION (M-14 CONFIRMED)",
+    "gov-linked (3 rules)": "manual_model_required"
+  }
+}

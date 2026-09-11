@@ -1,0 +1,68 @@
+{
+  "contract": "GovernorAlpha",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/governance/GovernorAlpha.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "role_actors",
+    "predicates": [
+      "e.msg.sender == guardian",
+      "e.msg.sender == council",
+      "e.msg.sender == address(timelock)"
+    ],
+    "evidence": [
+      "GovernorAlpha.sol:773-778 _onlyGuardian require(msg.sender == guardian)",
+      "GovernorAlpha.sol:789-794 _onlyCouncil require(msg.sender == council)",
+      "GovernorAlpha.sol:781-786 _onlyTimelock require(msg.sender == address(timelock))"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-002",
+      "id": "S4.1.G2",
+      "status": "applicable",
+      "target": "changeFeeReceiver(address) / changeFeeAmount(uint256) / setTimelock(address) / cancel(uint256) / __acceptAdmin() / __abdicate() / __queueSetTimelockPendingAdmin(address,uint256) / __executeSetTimelockPendingAdmin(address,uint256)",
+      "claim": "only the guardian can change fee receiver/fee amount/timelock, cancel proposals, accept admin, or abdicate",
+      "property_kind": "specific_revert_rules",
+      "symbols": ["guardian()", "council()", "timelock()"],
+      "hypotheses": ["guardian() != callers"],
+      "reachability_check": "guardian actions reachable by guardian; reject probes for non-guardian",
+      "source_evidence": ["GovernorAlpha.sol:331-338 setTimelock onlyGuardian", "GovernorAlpha.sol:534-548 changeFeeReceiver/changeFeeAmount onlyGuardian", "GovernorAlpha.sol:609-630 cancel onlyGuardian", "GovernorAlpha.sol:640-665 __acceptAdmin/__abdicate onlyGuardian"]
+    },
+    {
+      "ontology_id": "CAC-AC-002",
+      "id": "S4.1.G2",
+      "status": "applicable",
+      "target": "veto(uint256,bool)",
+      "claim": "only the council can veto a proposal",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["council()", "veto(uint256,bool)"],
+      "hypotheses": [],
+      "reachability_check": "council can veto an active/pending proposal",
+      "source_evidence": ["GovernorAlpha.sol:562-588 veto onlyCouncil"]
+    },
+    {
+      "ontology_id": "CAC-AC-002",
+      "id": "S4.1.G2",
+      "status": "applicable",
+      "target": "changeCouncil(address)",
+      "claim": "only the governance timelock can change the council",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["timelock()", "changeCouncil(address)"],
+      "hypotheses": [],
+      "reachability_check": "timelock can change council via queued proposal",
+      "source_evidence": ["GovernorAlpha.sol:596-599 changeCouncil onlyTimelock"]
+    },
+    {
+      "ontology_id": "CAC-AC-002",
+      "id": "S4.1.G2",
+      "status": "not_applicable",
+      "target": "propose(...)",
+      "claim": "proposal creation is intentionally permissionless (payable xVader fee) per interface documentation and has no RBAC predicate",
+      "property_kind": "not_applicable",
+      "symbols": ["propose(...)"],
+      "hypotheses": [],
+      "reachability_check": "n/a",
+      "source_evidence": ["GovernorAlpha.sol:340-346 comment 'Allows any to make a proposal by depositing feeAmount xVader'", "GovernorAlpha.sol:351-417 propose no only* modifier; fee via xVader.transferFrom"]
+    }
+  ]
+}

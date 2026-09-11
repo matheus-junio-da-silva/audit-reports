@@ -1,0 +1,50 @@
+{
+  "contract": "NoMochiFeePool",
+  "source_file": "projects/mochi-core/contracts/feePool/NoMochiFeePool.sol",
+  "compiler": "0.8.7",
+  "priority": "Medium",
+  "evidence": {
+    "changeWithdrawer_gov": "NoMochiFeePool.sol:28-31 (require(msg.sender == engine.governance(), \"!gov\"))",
+    "changeWithdrawer": "NoMochiFeePool.sol:28 (line 28: require(msg.sender == engine.governance(), \"!gov\"))",
+    "withdraw_permissionless_to_fixed_withdrawer": "NoMochiFeePool.sol:21-26 (no auth; sends to configured withdrawer)",
+    "updateReserve_noop": "NoMochiFeePool.sol:17-19 (no-op)"
+  },
+  "checklist_matrix": {
+    "S4.1.G1": "not_applicable",
+    "S4.1.G2": "not_applicable",
+    "S4.1.G3": "not_applicable",
+    "S4.1.G4": "not_applicable",
+    "S4.1.G5": "not_applicable",
+    "S4.1.G6": "automated - changeWithdrawer governance-only",
+    "S4.1.G7": "not_applicable",
+    "S4.1.G8": "not_applicable",
+    "S4.1.G9": "not_applicable",
+    "S4.1.G10": "not_applicable",
+    "S4.1.G11": "not_applicable",
+    "S4.2.G1": "automated - non-gov rejected on changeWithdrawer",
+    "S4.2.G3": "not_applicable",
+    "S4.2.G4": "not_applicable"
+  },
+  "rules": [
+    {
+      "id": "RC-NMF-001",
+      "item": "S4.1.G6",
+      "statement": "changeWithdrawer must revert for non-governance callers",
+      "feasibility": "manual_model_required",
+      "pattern": "core_authorization_revert (linked gov)",
+      "expected": "NOT_AUTOMATIC",
+      "evidence": "EMPIRICAL: 1-hop linked authority engine().governance() cannot be correlated by CVL (rule-level vs contract-internal reads diverge -> false positive violations, cf. MochiProfileV0 ATTEMPT-2). Reclassified manual_model_required. Self-contained probes kept and submitted."
+    }
+  ],
+  "conf": {
+    "files": [
+      "projects/mochi-core/contracts/feePool/NoMochiFeePool.sol"
+    ],
+    "solc": "0.8.7",
+    "notes": "withdraw() permissionless but funds always go to the configured withdrawer - not an authorization gap"
+  },
+  "notes": "changeWithdrawer is gated by engine().governance() (NoMochiFeePool.sol) - 1-hop linked authority; manual_model_required (CVL correlation limit). withdraw(_dst,_amount) is intentionally permissionless for the fixed withdrawer.",
+  "terminal_results": {
+    "all": "manual_model_required"
+  }
+}

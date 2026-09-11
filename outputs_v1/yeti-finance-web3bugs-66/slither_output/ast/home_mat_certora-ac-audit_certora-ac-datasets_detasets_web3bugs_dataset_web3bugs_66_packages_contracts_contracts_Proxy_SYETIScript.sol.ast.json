@@ -1,0 +1,453 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Proxy/SYETIScript.sol",
+  "exportedSymbols": {
+    "SYETIScript": [
+      36
+    ]
+  },
+  "id": 37,
+  "license": "UNLICENSED",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "0.6",
+        ".11"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "42:23:2"
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Dependencies/CheckContract.sol",
+      "file": "../Dependencies/CheckContract.sol",
+      "id": 2,
+      "nodeType": "ImportDirective",
+      "scope": 37,
+      "sourceUnit": 68,
+      "src": "69:43:2",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/ISYETI.sol",
+      "file": "../Interfaces/ISYETI.sol",
+      "id": 3,
+      "nodeType": "ImportDirective",
+      "scope": 37,
+      "sourceUnit": 194,
+      "src": "114:34:2",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "arguments": null,
+          "baseName": {
+            "contractScope": null,
+            "id": 4,
+            "name": "CheckContract",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 67,
+            "src": "178:13:2",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_CheckContract_$67",
+              "typeString": "contract CheckContract"
+            }
+          },
+          "id": 5,
+          "nodeType": "InheritanceSpecifier",
+          "src": "178:13:2"
+        }
+      ],
+      "contractDependencies": [
+        67
+      ],
+      "contractKind": "contract",
+      "documentation": null,
+      "fullyImplemented": true,
+      "id": 36,
+      "linearizedBaseContracts": [
+        36,
+        67
+      ],
+      "name": "SYETIScript",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "constant": false,
+          "id": 7,
+          "mutability": "immutable",
+          "name": "SYETI",
+          "nodeType": "VariableDeclaration",
+          "overrides": null,
+          "scope": 36,
+          "src": "199:22:2",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_contract$_ISYETI_$193",
+            "typeString": "contract ISYETI"
+          },
+          "typeName": {
+            "contractScope": null,
+            "id": 6,
+            "name": "ISYETI",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 193,
+            "src": "199:6:2",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ISYETI_$193",
+              "typeString": "contract ISYETI"
+            }
+          },
+          "value": null,
+          "visibility": "internal"
+        },
+        {
+          "body": {
+            "id": 22,
+            "nodeType": "Block",
+            "src": "272:87:2",
+            "statements": [
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "id": 13,
+                      "name": "_sYETIAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9,
+                      "src": "297:13:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 12,
+                    "name": "checkContract",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 66,
+                    "src": "283:13:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_view$_t_address_$returns$__$",
+                      "typeString": "function (address) view"
+                    }
+                  },
+                  "id": 14,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "283:28:2",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 15,
+                "nodeType": "ExpressionStatement",
+                "src": "283:28:2"
+              },
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "id": 20,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "argumentTypes": null,
+                    "id": 16,
+                    "name": "SYETI",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 7,
+                    "src": "322:5:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISYETI_$193",
+                      "typeString": "contract ISYETI"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 18,
+                        "name": "_sYETIAddress",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9,
+                        "src": "337:13:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 17,
+                      "name": "ISYETI",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 193,
+                      "src": "330:6:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_ISYETI_$193_$",
+                        "typeString": "type(contract ISYETI)"
+                      }
+                    },
+                    "id": 19,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "330:21:2",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISYETI_$193",
+                      "typeString": "contract ISYETI"
+                    }
+                  },
+                  "src": "322:29:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISYETI_$193",
+                    "typeString": "contract ISYETI"
+                  }
+                },
+                "id": 21,
+                "nodeType": "ExpressionStatement",
+                "src": "322:29:2"
+              }
+            ]
+          },
+          "documentation": null,
+          "id": 23,
+          "implemented": true,
+          "kind": "constructor",
+          "modifiers": [],
+          "name": "",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 10,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 9,
+                "mutability": "mutable",
+                "name": "_sYETIAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 23,
+                "src": "242:21:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 8,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "242:7:2",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "241:23:2"
+          },
+          "returnParameters": {
+            "id": 11,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "272:0:2"
+          },
+          "scope": 36,
+          "src": "230:129:2",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "public"
+        },
+        {
+          "body": {
+            "id": 34,
+            "nodeType": "Block",
+            "src": "409:42:2",
+            "statements": [
+              {
+                "expression": {
+                  "argumentTypes": null,
+                  "arguments": [
+                    {
+                      "argumentTypes": null,
+                      "id": 31,
+                      "name": "_YETIamount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 25,
+                      "src": "431:11:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 28,
+                      "name": "SYETI",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7,
+                      "src": "420:5:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ISYETI_$193",
+                        "typeString": "contract ISYETI"
+                      }
+                    },
+                    "id": 30,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "mint",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 165,
+                    "src": "420:10:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$_t_bool_$",
+                      "typeString": "function (uint256) external returns (bool)"
+                    }
+                  },
+                  "id": 32,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "420:23:2",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "id": 33,
+                "nodeType": "ExpressionStatement",
+                "src": "420:23:2"
+              }
+            ]
+          },
+          "documentation": null,
+          "functionSelector": "a694fc3a",
+          "id": 35,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "stake",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 26,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 25,
+                "mutability": "mutable",
+                "name": "_YETIamount",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 35,
+                "src": "382:16:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 24,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "382:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "381:18:2"
+          },
+          "returnParameters": {
+            "id": 27,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "409:0:2"
+          },
+          "scope": 36,
+          "src": "367:84:2",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 37,
+      "src": "154:300:2"
+    }
+  ],
+  "src": "42:414:2"
+}

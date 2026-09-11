@@ -1,0 +1,519 @@
+{
+  "absolutePath": "contracts/interfaces/IExtension.sol",
+  "exportedSymbols": {
+    "IExtension": [
+      17886
+    ]
+  },
+  "id": 17887,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 17839,
+      "literals": [
+        "solidity",
+        "0.7",
+        ".6"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "33:22:46"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "fullyImplemented": false,
+      "id": 17886,
+      "linearizedBaseContracts": [
+        17886
+      ],
+      "name": "IExtension",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 17840,
+            "nodeType": "StructuredDocumentation",
+            "src": "87:179:46",
+            "text": " @notice emitted when the Voting Pass Ratio parameter for Pools is updated\n @param votingPassRatio the new value of the voting pass threshold for  Pools"
+          },
+          "id": 17844,
+          "name": "VotingPassRatioUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 17843,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17842,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "votingPassRatio",
+                "nodeType": "VariableDeclaration",
+                "scope": 17844,
+                "src": "301:23:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 17841,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "301:7:46",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "300:25:46"
+          },
+          "src": "272:54:46"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 17845,
+            "nodeType": "StructuredDocumentation",
+            "src": "334:141:46",
+            "text": " @notice emitted when the pool factory is updated in extension\n @param poolFactory updated address of pool factory"
+          },
+          "id": 17849,
+          "name": "PoolFactoryUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 17848,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17847,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "poolFactory",
+                "nodeType": "VariableDeclaration",
+                "scope": 17849,
+                "src": "506:27:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17846,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "506:7:46",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "505:29:46"
+          },
+          "src": "481:54:46"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 17850,
+            "nodeType": "StructuredDocumentation",
+            "src": "543:186:46",
+            "text": " @notice emitted when an extension is requested by a borrower for Pools\n @param extensionVoteEndTime the value of the vote end time for the requested extension"
+          },
+          "id": 17854,
+          "name": "ExtensionRequested",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 17853,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17852,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "extensionVoteEndTime",
+                "nodeType": "VariableDeclaration",
+                "scope": 17854,
+                "src": "760:28:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 17851,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "760:7:46",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "759:30:46"
+          },
+          "src": "735:55:46"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 17855,
+            "nodeType": "StructuredDocumentation",
+            "src": "798:160:46",
+            "text": " @notice emitted when the requested extension for Pools is approved\n @param poolID the address of the pool for which extension passed"
+          },
+          "id": 17859,
+          "name": "ExtensionPassed",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 17858,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17857,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "poolID",
+                "nodeType": "VariableDeclaration",
+                "scope": 17859,
+                "src": "986:14:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17856,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "986:7:46",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "985:16:46"
+          },
+          "src": "964:38:46"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 17860,
+            "nodeType": "StructuredDocumentation",
+            "src": "1010:326:46",
+            "text": " @notice emitted when the lender for Pools has voted on extension request\n @param lender address of the lender who voted\n @param totalExtensionSupport the value of the total extension support for the Pools\n @param lastVoteTime the last time the lender has voted on an extension request"
+          },
+          "id": 17868,
+          "name": "LenderVoted",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 17867,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17862,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "lender",
+                "nodeType": "VariableDeclaration",
+                "scope": 17868,
+                "src": "1360:22:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17861,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1360:7:46",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 17864,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "totalExtensionSupport",
+                "nodeType": "VariableDeclaration",
+                "scope": 17868,
+                "src": "1384:29:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 17863,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1384:7:46",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 17866,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "lastVoteTime",
+                "nodeType": "VariableDeclaration",
+                "scope": 17868,
+                "src": "1415:20:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 17865,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1415:7:46",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1359:77:46"
+          },
+          "src": "1342:95:46"
+        },
+        {
+          "functionSelector": "b5a70cea",
+          "id": 17873,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "initializePoolExtension",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 17871,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17870,
+                "mutability": "mutable",
+                "name": "_repaymentInterval",
+                "nodeType": "VariableDeclaration",
+                "scope": 17873,
+                "src": "1478:26:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 17869,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1478:7:46",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1477:28:46"
+          },
+          "returnParameters": {
+            "id": 17872,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1514:0:46"
+          },
+          "scope": 17886,
+          "src": "1445:70:46",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "47cb7c6c",
+          "id": 17876,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "closePoolExtension",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 17874,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1550:2:46"
+          },
+          "returnParameters": {
+            "id": 17875,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1561:0:46"
+          },
+          "scope": 17886,
+          "src": "1523:39:46",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "722eb6d1",
+          "id": 17885,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "removeVotes",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 17883,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17878,
+                "mutability": "mutable",
+                "name": "_from",
+                "nodeType": "VariableDeclaration",
+                "scope": 17885,
+                "src": "1601:13:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17877,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1601:7:46",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 17880,
+                "mutability": "mutable",
+                "name": "_to",
+                "nodeType": "VariableDeclaration",
+                "scope": 17885,
+                "src": "1625:11:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17879,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1625:7:46",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 17882,
+                "mutability": "mutable",
+                "name": "_amount",
+                "nodeType": "VariableDeclaration",
+                "scope": 17885,
+                "src": "1647:15:46",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 17881,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1647:7:46",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1590:79:46"
+          },
+          "returnParameters": {
+            "id": 17884,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1678:0:46"
+          },
+          "scope": 17886,
+          "src": "1570:109:46",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 17887,
+      "src": "59:1623:46"
+    }
+  ],
+  "src": "33:1651:46"
+}

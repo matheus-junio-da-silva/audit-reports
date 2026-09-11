@@ -1,0 +1,991 @@
+{
+  "absolutePath": "contracts/interfaces/IVerification.sol",
+  "exportedSymbols": {
+    "IVerification": [
+      18773
+    ]
+  },
+  "id": 18774,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 18686,
+      "literals": [
+        "solidity",
+        "0.7",
+        ".6"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "33:22:53"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "fullyImplemented": false,
+      "id": 18773,
+      "linearizedBaseContracts": [
+        18773
+      ],
+      "name": "IVerification",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18687,
+            "nodeType": "StructuredDocumentation",
+            "src": "90:142:53",
+            "text": "@notice Event emitted when a verifier is added as valid by admin\n @param verifier The address of the verifier contract to be added"
+          },
+          "id": 18691,
+          "name": "VerifierAdded",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18690,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18689,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "verifier",
+                "nodeType": "VariableDeclaration",
+                "scope": 18691,
+                "src": "258:24:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18688,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "258:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "257:26:53"
+          },
+          "src": "238:46:53"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18692,
+            "nodeType": "StructuredDocumentation",
+            "src": "292:163:53",
+            "text": "@notice Event emitted when a verifier is to be marked as invalid by admin\n @param verifier The address of the verified contract to be marked as invalid"
+          },
+          "id": 18696,
+          "name": "VerifierRemoved",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18695,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18694,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "verifier",
+                "nodeType": "VariableDeclaration",
+                "scope": 18696,
+                "src": "483:24:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18693,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "483:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "482:26:53"
+          },
+          "src": "461:48:53"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18697,
+            "nodeType": "StructuredDocumentation",
+            "src": "517:341:53",
+            "text": "@notice Event emitted when a master address is verified by a valid verifier\n @param masterAddress The masterAddress which is verifier by the verifier\n @param verifier The verifier which verified the masterAddress\n @param activatesAt Timestamp at which master address is considered active after the cooldown period"
+          },
+          "id": 18705,
+          "name": "UserRegistered",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18704,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18699,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "masterAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18705,
+                "src": "885:29:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18698,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "885:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18701,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "verifier",
+                "nodeType": "VariableDeclaration",
+                "scope": 18705,
+                "src": "916:24:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18700,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "916:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18703,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "activatesAt",
+                "nodeType": "VariableDeclaration",
+                "scope": 18705,
+                "src": "942:19:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18702,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "942:7:53",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "884:78:53"
+          },
+          "src": "864:99:53"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18706,
+            "nodeType": "StructuredDocumentation",
+            "src": "971:322:53",
+            "text": "@notice Event emitted when a master address is marked as invalid/unregisterd by a valid verifier\n @param masterAddress The masterAddress which is unregistered\n @param verifier The verifier which verified the masterAddress\n @param unregisteredBy The msg.sender by which the user was unregistered"
+          },
+          "id": 18714,
+          "name": "UserUnregistered",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18713,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18708,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "masterAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18714,
+                "src": "1322:29:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18707,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1322:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18710,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "verifier",
+                "nodeType": "VariableDeclaration",
+                "scope": 18714,
+                "src": "1353:24:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18709,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1353:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18712,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "unregisteredBy",
+                "nodeType": "VariableDeclaration",
+                "scope": 18714,
+                "src": "1379:30:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18711,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1379:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1321:89:53"
+          },
+          "src": "1299:112:53"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18715,
+            "nodeType": "StructuredDocumentation",
+            "src": "1419:327:53",
+            "text": "@notice Event emitted when an address is linked to masterAddress\n @param linkedAddress The address which is linked to masterAddress\n @param masterAddress The masterAddress to which address is linked\n @param activatesAt Timestamp at which linked address is considered active after the cooldown period"
+          },
+          "id": 18723,
+          "name": "AddressLinked",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18722,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18717,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "linkedAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18723,
+                "src": "1772:29:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18716,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1772:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18719,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "masterAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18723,
+                "src": "1803:29:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18718,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1803:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18721,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "activatesAt",
+                "nodeType": "VariableDeclaration",
+                "scope": 18723,
+                "src": "1834:19:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18720,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1834:7:53",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1771:83:53"
+          },
+          "src": "1752:103:53"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18724,
+            "nodeType": "StructuredDocumentation",
+            "src": "1863:225:53",
+            "text": "@notice Event emitted when an address is unlinked from a masterAddress\n @param linkedAddress The address which is linked to masterAddress\n @param masterAddress The masterAddress to which address was linked"
+          },
+          "id": 18730,
+          "name": "AddressUnlinked",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18729,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18726,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "linkedAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18730,
+                "src": "2116:29:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18725,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2116:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18728,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "masterAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18730,
+                "src": "2147:29:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18727,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2147:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2115:62:53"
+          },
+          "src": "2094:84:53"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18731,
+            "nodeType": "StructuredDocumentation",
+            "src": "2186:258:53",
+            "text": "@notice Event emitted when master address placed a request to link another address to itself\n @param linkedAddress The address which is to be linked to masterAddress\n @param masterAddress The masterAddress to which address is to be linked"
+          },
+          "id": 18737,
+          "name": "AddressLinkingRequested",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18736,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18733,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "linkedAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18737,
+                "src": "2480:29:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18732,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2480:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18735,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "masterAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18737,
+                "src": "2511:29:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18734,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2511:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2479:62:53"
+          },
+          "src": "2450:92:53"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18738,
+            "nodeType": "StructuredDocumentation",
+            "src": "2550:268:53",
+            "text": "@notice Event emitted when master address cancels the request placed to link another address to itself\n @param linkedAddress The address which is to be linked to masterAddress\n @param masterAddress The masterAddress to which address is to be linked"
+          },
+          "id": 18744,
+          "name": "AddressLinkingRequestCancelled",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18743,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18740,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "linkedAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18744,
+                "src": "2861:29:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18739,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2861:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18742,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "masterAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18744,
+                "src": "2892:29:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18741,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2892:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2860:62:53"
+          },
+          "src": "2824:99:53"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 18745,
+            "nodeType": "StructuredDocumentation",
+            "src": "2931:134:53",
+            "text": "@notice Event emitted when activation delay is updated\n @param activationDelay updated value of activationDelay in seconds"
+          },
+          "id": 18749,
+          "name": "ActivationDelayUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 18748,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18747,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "activationDelay",
+                "nodeType": "VariableDeclaration",
+                "scope": 18749,
+                "src": "3100:23:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 18746,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3100:7:53",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3099:25:53"
+          },
+          "src": "3071:54:53"
+        },
+        {
+          "functionSelector": "02d43dc8",
+          "id": 18758,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "isUser",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18754,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18751,
+                "mutability": "mutable",
+                "name": "_user",
+                "nodeType": "VariableDeclaration",
+                "scope": 18758,
+                "src": "3149:13:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18750,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3149:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18753,
+                "mutability": "mutable",
+                "name": "_verifier",
+                "nodeType": "VariableDeclaration",
+                "scope": 18758,
+                "src": "3164:17:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18752,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3164:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3148:34:53"
+          },
+          "returnParameters": {
+            "id": 18757,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18756,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "scope": 18758,
+                "src": "3206:4:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 18755,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3206:4:53",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3205:6:53"
+          },
+          "scope": 18773,
+          "src": "3133:79:53",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "a94413a1",
+          "id": 18765,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "registerMasterAddress",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18763,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18760,
+                "mutability": "mutable",
+                "name": "_masterAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18765,
+                "src": "3251:22:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18759,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3251:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18762,
+                "mutability": "mutable",
+                "name": "_isMasterLinked",
+                "nodeType": "VariableDeclaration",
+                "scope": 18765,
+                "src": "3275:20:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 18761,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3275:4:53",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3250:46:53"
+          },
+          "returnParameters": {
+            "id": 18764,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "3305:0:53"
+          },
+          "scope": 18773,
+          "src": "3220:86:53",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "functionSelector": "b4d59d0e",
+          "id": 18772,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "unregisterMasterAddress",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 18770,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 18767,
+                "mutability": "mutable",
+                "name": "_masterAddress",
+                "nodeType": "VariableDeclaration",
+                "scope": 18772,
+                "src": "3347:22:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18766,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3347:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 18769,
+                "mutability": "mutable",
+                "name": "_verifier",
+                "nodeType": "VariableDeclaration",
+                "scope": 18772,
+                "src": "3371:17:53",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 18768,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3371:7:53",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3346:43:53"
+          },
+          "returnParameters": {
+            "id": 18771,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "3398:0:53"
+          },
+          "scope": 18773,
+          "src": "3314:85:53",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 18774,
+      "src": "59:3343:53"
+    }
+  ],
+  "src": "33:3371:53"
+}

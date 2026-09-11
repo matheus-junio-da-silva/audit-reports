@@ -1,0 +1,68 @@
+{
+  "contract": "StakingRewards",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/staking-rewards/StakingRewards.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "distribution_and_owner",
+    "predicates": [
+      "e.msg.sender == rewardsDistribution()",
+      "e.msg.sender == owner()"
+    ],
+    "evidence": [
+      "RewardsDistributionRecipient.sol:11-14 onlyRewardsDistribution require(msg.sender == rewardsDistribution)",
+      "RewardsDistributionRecipient.sol:16-18 setRewardsDistribution onlyOwner",
+      "StakingRewards.sol:127-150 notifyRewardAmount onlyRewardsDistribution",
+      "StakingRewards.sol:153-169 recoverERC20/setRewardsDuration onlyOwner"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "notifyRewardAmount(uint256)",
+      "claim": "a caller other than the rewards distribution role cannot seed reward rate",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["rewardsDistribution()", "notifyRewardAmount(uint256)"],
+      "hypotheses": [],
+      "reachability_check": "rewards distribution caller can notify capped by balance",
+      "source_evidence": ["StakingRewards.sol:127-150 notifyRewardAmount onlyRewardsDistribution"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "setRewardsDistribution(address)",
+      "claim": "a caller other than the owner cannot change the rewards distribution role",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setRewardsDistribution(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can change the role",
+      "source_evidence": ["RewardsDistributionRecipient.sol:16-18 setRewardsDistribution onlyOwner"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "setRewardsDuration(uint256)",
+      "claim": "a caller other than the owner cannot change the rewards duration",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setRewardsDuration(uint256)"],
+      "hypotheses": [],
+      "reachability_check": "owner can change duration after period end",
+      "source_evidence": ["StakingRewards.sol:162-169 setRewardsDuration onlyOwner"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "recoverERC20(address,uint256)",
+      "claim": "a caller other than the owner cannot sweep recovered tokens",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "recoverERC20(address,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "owner can sweep non-staking tokens",
+      "source_evidence": ["StakingRewards.sol:153-160 recoverERC20 onlyOwner"]
+    }
+  ]
+}

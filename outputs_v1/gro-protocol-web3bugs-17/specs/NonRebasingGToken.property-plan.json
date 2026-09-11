@@ -1,0 +1,76 @@
+{
+  "contract": "NonRebasingGToken",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/tokens/NonRebasingGToken.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "coverage_status": "FULL",
+  "authority_model": {
+    "kind": "hybrid_ownership_allowlist_allowance",
+    "predicate": "per-function: onlyWhitelist (mint/burn/burnAll) | onlyOwner (setController inherited from GToken.sol:34) | allowance semantics in transferFrom (GERC20)",
+    "evidence": [
+      "NonRebasingGToken.sol:75 mint external onlyWhitelist",
+      "NonRebasingGToken.sol:91 burn external onlyWhitelist",
+      "NonRebasingGToken.sol:105 burnAll external onlyWhitelist",
+      "GERC20.sol:157-169 transferFrom (base GERC20, allowance sub at _approve)",
+      "GToken.sol:34 setController external onlyOwner",
+      "GERC20.sol:47-49 private _allowances"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "mint(address,uint256,uint256), burn(address,uint256,uint256), burnAll(address)",
+      "claim": "a non-whitelisted caller reverts on every supply mutation of the GVT non-rebasing token",
+      "property_kind": "parametric_revert_rule",
+      "symbols": ["whitelist(address)", "the 3 exact selectors"],
+      "hypotheses": [],
+      "reachability_check": "supply mutation only reachable via whitelisted actors (Controller.mintGToken/burnGToken)",
+      "source_evidence": ["NonRebasingGToken.sol:75,91,105"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "setController(address) (inherited from GToken)",
+      "claim": "only the pre-state owner may retarget the token's controller",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setController(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner can set a non-zero controller",
+      "source_evidence": ["GToken.sol:34-36"]
+    },
+    {
+      "ontology_id": "CAC-AC-003",
+      "id": "S4.1.G4",
+      "status": "applicable",
+      "target": "transferFrom(address,address,uint256)",
+      "claim": "debit of another account's GVT with insufficient pre-state allowance reverts",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["allowance(address,address)", "transferFrom(address,address,uint256)"],
+      "hypotheses": ["e.msg.sender != sender", "allowance(sender, spender) < amount"],
+      "reachability_check": "authorized-path witness",
+      "source_evidence": ["GERC20.sol:157-169"]
+    },
+    {
+      "ontology_id": "CAC-AC-010",
+      "id": "S4.2.G4",
+      "status": "applicable",
+      "target": "transferFrom(address,address,uint256) allowance consumption",
+      "claim": "a successful transferFrom consumes exactly amount of allowance",
+      "property_kind": "effect_rule",
+      "symbols": ["allowance(address,address)", "transferFrom(address,address,uint256)"],
+      "hypotheses": ["allowance(sender, spender) >= amount"],
+      "reachability_check": "authorized-path witness",
+      "source_evidence": ["GERC20.sol:163-167"]
+    }
+  ],
+  "not_applicable": [
+    {"id": "S4.1.G2", "reason": "no RBAC", "evidence": "flat owner+whitelist"},
+    {"id": "S4.1.G7", "reason": "mint/burn whitelist-restricted via handlers; no local backing model", "evidence": "no reserve accounting in token"},
+    {"id": "S4.1.G8", "reason": "no timelock", "evidence": "no delay state"},
+    {"id": "S4.1.G10", "reason": "no initialize()", "evidence": "no init entry"},
+    {"id": "S4.1.G11", "reason": "inherits OZ one-step ownership transfer", "evidence": "Ownable"},
+    {"id": "S4.2.G3", "reason": "no callback surface", "evidence": "no callback"}
+  ]
+}

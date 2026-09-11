@@ -1,0 +1,153 @@
+{
+  "contract": "Whitelist",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Dependencies/Whitelist.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "priority": {"level": "High", "score": 19, "reason": "allowlist authority for the whole system"},
+  "authority_model": {
+    "kind": "owner",
+    "predicate": "e.msg.sender == owner()",
+    "evidence": [
+      "addCollateral: external onlyOwner (Whitelist.sol:102,110)",
+      "deprecateCollateral: external exists(_collateral) onlyOwner (Whitelist.sol:148)",
+      "undeprecateCollateral: external exists(_collateral) onlyOwner (Whitelist.sol:163)",
+      "changeOracle/changePriceCurve/changeRatio/setDefaultRouter: onlyOwner (Whitelist.sol:177,193,213,229)",
+      "setAddresses: external override onlyOwner + addressesSet once-flag (Whitelist.sol:80,86,87)",
+      "getFeeAndUpdate restricted to borrowerOperationsAddress (Whitelist.sol:334-335)",
+      "Dependencies/Ownable.sol:33 owner() public getter"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "setAddresses(address,address,address,address,address)",
+      "claim": "a non-owner caller cannot bootstrap the whitelist authority model",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setAddresses(address,address,address,address,address)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "owner witness",
+      "source_evidence": ["Whitelist.sol:80-101"]
+    },
+    {
+      "ontology_id": "CAC-AC-010",
+      "id": "S4.1.G10",
+      "status": "applicable",
+      "target": "setAddresses(...)",
+      "claim": "setAddresses succeeds at most once (addressesSet flag)",
+      "property_kind": "before_double_call_implication_rule",
+      "symbols": ["owner()", "setAddresses(...)"],
+      "hypotheses": ["e1.msg.sender == owner(), e1.msg.sender != 0"],
+      "reachability_check": "successful first setAddresses exists for the owner",
+      "source_evidence": ["Whitelist.sol:87"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "addCollateral(address,uint256,address,uint256,address,bool,address)",
+      "claim": "only the owner may add a collateral to the whitelist (allowlist authority)",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "addCollateral(address,uint256,address,uint256,address,bool,address)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "owner witness: addCollateral completes for a fresh collateral",
+      "source_evidence": ["Whitelist.sol:102-146"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "deprecateCollateral(address)",
+      "claim": "only the owner may deprecate a whitelisted collateral",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "deprecateCollateral(address)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "state-dependent (initial whitelist empty); revert guard verified",
+      "source_evidence": ["Whitelist.sol:148-161"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "undeprecateCollateral(address)",
+      "claim": "only the owner may re-activate a deprecated collateral",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "undeprecateCollateral(address)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "state-dependent; revert guard verified",
+      "source_evidence": ["Whitelist.sol:163-175"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "changeOracle(address,address)",
+      "claim": "only the owner may replace a collateral oracle",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "changeOracle(address,address)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "state-dependent; revert guard verified",
+      "source_evidence": ["Whitelist.sol:177-191"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "changePriceCurve(address,address)",
+      "claim": "only the owner may replace a price curve",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "changePriceCurve(address,address)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "state-dependent; revert guard verified",
+      "source_evidence": ["Whitelist.sol:193-211"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "changeRatio(address,uint256)",
+      "claim": "only the owner may adjust a collateral stability ratio",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "changeRatio(address,uint256)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "state-dependent; revert guard verified",
+      "source_evidence": ["Whitelist.sol:213-227"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "setDefaultRouter(address,address)",
+      "claim": "only the owner may set a collateral default router",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "setDefaultRouter(address,address)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "state-dependent; revert guard verified",
+      "source_evidence": ["Whitelist.sol:229-233"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "manual_model_required",
+      "target": "getFeeAndUpdate(address,uint256)",
+      "claim": "fee-and-update surrogate pricing is restricted to BorrowerOperations",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["borrowerOperationsAddress (internal)"],
+      "hypotheses": [],
+      "reachability_check": "needs getter/harness",
+      "source_evidence": ["Whitelist.sol:327-347"]
+    },
+    {
+      "ontology_id": "CAC-AC-011",
+      "id": "S4.1.G11",
+      "status": "not_applicable",
+      "target": "owner transfer",
+      "claim": "no two-step ownership; project Ownable has single-step transferOwnership only",
+      "property_kind": "evidence_note",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "n/a",
+      "source_evidence": ["Dependencies/Ownable.sol:33 (owner()) no pendingOwner declaration"]
+    }
+  ]
+}

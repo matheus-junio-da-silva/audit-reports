@@ -1,0 +1,68 @@
+{
+  "contract": "TeamAllocation",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/TeamAllocation.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "priority": {"level": "Medium", "score": 9, "reason": "team YETI allocation wallet authority"},
+  "authority_model": {
+    "kind": "single-team-wallet authority",
+    "predicate": "e.msg.sender == getTeamWallet()",
+    "evidence": [
+      "onlyTeam modifier: require(msg.sender == teamWallet) (TeamAllocation.sol:57-58)",
+      "setYetiAddress external onlyTeam (TeamAllocation.sol:63)",
+      "sendUnallocatedYETI external onlyTeam (TeamAllocation.sol:81)",
+      "updateTeamAddress external onlyTeam (TeamAllocation.sol:87)",
+      "getTeamWallet() external view returns (address) (TeamAllocation.sol:94)",
+      "constructor sets teamWallet = msg.sender (TeamAllocation.sol:31)"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "setYetiAddress(address)",
+      "claim": "only the current team wallet may set the YETI token address",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["getTeamWallet()", "setYetiAddress(address)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "team-wallet witness",
+      "source_evidence": ["TeamAllocation.sol:63-66"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "sendUnallocatedYETI(address,uint256)",
+      "claim": "only the current team wallet may sweep unallocated YETI",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["getTeamWallet()", "sendUnallocatedYETI(address,uint256)"],
+      "hypotheses": ["e.msg.sender != 0"],
+      "reachability_check": "state-dependent (allocationClaimed flag); revert guard verified",
+      "source_evidence": ["TeamAllocation.sol:81-85"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateTeamAddress(address)",
+      "claim": "only the current team wallet may rotate the authority address",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["getTeamWallet()", "updateTeamAddress(address)"],
+      "hypotheses": ["e.msg.sender != 0", "_newTeamWallet != 0 for witness"],
+      "reachability_check": "team-wallet witness (new wallet non-zero)",
+      "source_evidence": ["TeamAllocation.sol:87-92"]
+    },
+    {
+      "ontology_id": "CAC-AC-011",
+      "id": "S4.1.G11",
+      "status": "not_applicable",
+      "target": "team-wallet rotation",
+      "claim": "single-step authority transfer (updateTeamAddress applies immediately); no pending/nomination state",
+      "property_kind": "evidence_note",
+      "symbols": ["getTeamWallet()", "updateTeamAddress(address)"],
+      "hypotheses": [],
+      "reachability_check": "n/a",
+      "source_evidence": ["TeamAllocation.sol:53 (teamWallet = _newTeamWallet immediately)", "TeamAllocation.sol:87-92"]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "contract": "Whitelist",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/common/Whitelist.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "coverage_status": "FULL",
+  "authority_model": {
+    "kind": "ownership",
+    "predicate": "e.msg.sender == owner()",
+    "evidence": [
+      "Whitelist.sol:12 onlyWhitelist modifier requires whitelist[msg.sender]",
+      "Whitelist.sol:17 addToWhitelist external onlyOwner",
+      "Whitelist.sol:23 removeFromWhitelist external onlyOwner",
+      "Ownable owner() getter (import @openzeppelin/contracts/access/Ownable.sol)"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6/S4.2.G1",
+      "status": "applicable",
+      "target": "addToWhitelist(address)",
+      "claim": "a caller other than the pre-state owner must not be able to add a member to the allowlist",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "addToWhitelist(address)"],
+      "hypotheses": [],
+      "reachability_check": "pre-state owner can successfully whitelist a non-zero user",
+      "source_evidence": ["Whitelist.sol:17"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6/S4.2.G1",
+      "status": "applicable",
+      "target": "removeFromWhitelist(address)",
+      "claim": "a caller other than the pre-state owner must not be able to remove a member from the allowlist",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "removeFromWhitelist(address)"],
+      "hypotheses": [],
+      "reachability_check": "pre-state owner with user already whitelisted can remove the user",
+      "source_evidence": ["Whitelist.sol:23"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6/S4.2.G1",
+      "status": "applicable",
+      "target": "addToWhitelist(address) effect",
+      "claim": "a successful addToWhitelist by the owner sets whitelist[user] == true",
+      "property_kind": "specific_revert_rule_with_effect",
+      "symbols": ["owner()", "addToWhitelist(address)", "whitelist(address)"],
+      "hypotheses": ["user != address(0)"],
+      "reachability_check": "witness: owner call with non-zero user succeeds and toggles membership",
+      "source_evidence": ["Whitelist.sol:17-21"]
+    }
+  ],
+  "not_applicable": [
+    {"id": "S4.1.G2", "reason": "no role system; flat owner+whitelist model", "evidence": "no AccessControl import"},
+    {"id": "S4.1.G4", "reason": "no currency debit surface in this base contract", "evidence": "no ERC20 logic in Whitelist"},
+    {"id": "S4.1.G7", "reason": "no privileged asset-transfer surface", "evidence": "only membership state"},
+    {"id": "S4.1.G8", "reason": "no timelock/schedule state", "evidence": "no delay state variables"},
+    {"id": "S4.1.G10", "reason": "constructor-initialized Ownable, no reentrant init", "evidence": "no initialize() function"},
+    {"id": "S4.1.G11", "reason": "standard OZ one-step transferOwnership is inherited and documented as a wallet-transfer admin function; not the protocol authority model", "evidence": "OnlyOwnable"},
+    {"id": "S4.2.G3", "reason": "no callback surface", "evidence": "no external callback"},
+    {"id": "S4.2.G4", "reason": "no allowance state", "evidence": "no allowance mapping"}
+  ]
+}

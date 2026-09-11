@@ -1,0 +1,69 @@
+{
+  "manifest_version": "1.0.0",
+  "project": "yeti-finance-web3bugs-66",
+  "project_path": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66",
+  "run_id": "20260829T192707.391053686-fcec04042c03",
+  "started_at": "2026-08-29T19:27:07Z",
+  "completed_at": "2026-08-29T21:50:00Z",
+  "total_duration_seconds": 8573,
+  "solc_version": "0.6.11",
+  "preflight_verdict": "READY",
+  "coverage": {
+    "contracts_extracted": 141,
+    "coverage_percentage": 97.9,
+    "weighted_coverage": 88.6,
+    "gate": "PASS"
+  },
+  "stages": [
+    {
+      "stage": 1,
+      "agent": "certora-slither-context",
+      "status": "COMPLETED",
+      "output": "pipeline-output/yeti-finance-web3bugs-66/slither_output/",
+      "feedback": "runs/20260829T192707.391053686-fcec04042c03/feedback-logs/feedback-slither-context-20260829T192707.391053686-fcec04042c03.md"
+    },
+    {
+      "stage": 2,
+      "agent": "certora-access-control",
+      "status": "COMPLETED",
+      "output": "pipeline-output/yeti-finance-web3bugs-66/specs/",
+      "feedback": "runs/20260829T192707.391053686-fcec04042c03/feedback-logs/feedback-certora-access-control-20260829T192707.391053686-fcec04042c03.md",
+      "rules_generated": 35,
+      "certora_runs": 8,
+      "violations": 0
+    },
+    {
+      "stage": 3,
+      "agent": "certora-interpreter",
+      "status": "COMPLETED",
+      "output": "pipeline-output/yeti-finance-web3bugs-66/vulnerability-report.md",
+      "feedback": "runs/20260829T192707.391053686-fcec04042c03/feedback-logs/feedback-certora-interpreter-20260829T192707.391053686-fcec04042c03.md",
+      "confirmed_vulnerabilities": 0,
+      "disproved_counterexamples": 0,
+      "model_errors_unresolved": 0,
+      "indeterminate": 0
+    },
+    {
+      "stage": 4,
+      "agent": "certora-poc-generator",
+      "status": "COMPLETED",
+      "output": "pipeline-output/yeti-finance-web3bugs-66/poc/",
+      "feedback": "runs/20260829T192707.391053686-fcec04042c03/feedback-logs/feedback-certora-poc-generator-20260829T192707.391053686-fcec04042c03.md",
+      "tests_passed": 2,
+      "tests_total": 2
+    }
+  ],
+  "summary": {
+    "rules_verified": 35,
+    "assertion_instantiations_verified": 36,
+    "confirmed_vulnerabilities": 0,
+    "disproved_counterexamples": 0,
+    "model_errors_unresolved": 0,
+    "indeterminate_formal": 0,
+    "non_cvl_items_not_covered": 4,
+    "harness_gated_items": 1,
+    "dataset_h01_status": "verified_absent (guard present; PoC corroborated)",
+    "pipeline_result": "COMPLETED"
+  },
+  "feedback_dir": "runs/20260829T192707.391053686-fcec04042c03/feedback-logs/"
+}

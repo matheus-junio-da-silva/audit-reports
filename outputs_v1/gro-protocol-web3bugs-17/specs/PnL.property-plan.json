@@ -1,0 +1,57 @@
+{
+  "contract": "PnL",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/pnl/PnL.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "coverage_status": "FULL",
+  "authority_model": {
+    "kind": "hybrid_ownership_trusted_caller",
+    "predicate": "per-function: onlyOwner | msg.sender == controller()",
+    "evidence": [
+      "PnL.sol:83 setRebase external onlyOwner",
+      "PnL.sol:90 setPerformanceFee external onlyOwner",
+      "PnL.sol:98 increaseGTokenLastAmount requires msg.sender == controller",
+      "PnL.sol:112 decreaseGTokenLastAmount requires msg.sender == controller",
+      "PnL.sol:154 emergencyPnL requires msg.sender == controller",
+      "PnL.sol:160 recover requires msg.sender == controller",
+      "PnL.sol:245 distributeStrategyGainLoss requires msg.sender == controller",
+      "PnL.sol:282 distributePriceChange requires msg.sender == controller",
+      "Controllable controller() getter"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "owner-only (2): setRebase(bool), setPerformanceFee(uint256)",
+      "claim": "a caller other than the pre-state owner reverts on rebase/fee configuration",
+      "property_kind": "parametric_revert_rule",
+      "symbols": ["owner()", "the 2 exact selectors"],
+      "hypotheses": [],
+      "reachability_check": "owner path proven for setPerformanceFee (no other preconditions)",
+      "source_evidence": ["PnL.sol:83,90"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "controller-only (6): increaseGTokenLastAmount(bool,uint256), decreaseGTokenLastAmount(bool,uint256,uint256), emergencyPnL(), recover(), distributeStrategyGainLoss(uint256,uint256,address), distributePriceChange(uint256)",
+      "claim": "only the pre-state controller may mutate PnL accounting state (assets, emergency, gain/loss distribution)",
+      "property_kind": "parametric_revert_rule",
+      "symbols": ["controller()", "the 6 exact selectors"],
+      "hypotheses": [],
+      "reachability_check": "the trusted caller is the local controller() storage getter; revert rule exercises only the gate (all gates precede external calls)",
+      "source_evidence": ["PnL.sol:98,112,154,160,241,282"]
+    }
+  ],
+  "not_applicable": [
+    {"id": "S4.1.G2", "reason": "no RBAC", "evidence": "flat owner+controller"},
+    {"id": "S4.1.G4", "reason": "no ERC20 debit surface", "evidence": "no transferFrom"},
+    {"id": "S4.1.G7", "reason": "no privileged unconstrained asset withdrawal path; mint is controller-only within PnL and calls gvt.mint via factor", "evidence": "no rescue/sweep functions"},
+    {"id": "S4.1.G8", "reason": "no timelock", "evidence": "no delay state"},
+    {"id": "S4.1.G9", "reason": "no whitelist use in PnL", "evidence": "no onlyWhitelist"},
+    {"id": "S4.1.G10", "reason": "no initialize()", "evidence": "constructor sets snapshots"},
+    {"id": "S4.1.G11", "reason": "inherits OZ one-step ownership transfer", "evidence": "Ownable via Controllable"},
+    {"id": "S4.2.G4", "reason": "no allowance policy", "evidence": "no allowance state"}
+  ]
+}

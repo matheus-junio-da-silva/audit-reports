@@ -1,0 +1,143 @@
+{
+  "contract": "LifeGuard3Pool",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/pools/LifeGuard3Pool.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "coverage_status": "FULL",
+  "authority_model": {
+    "kind": "hybrid_ownership_allowlist_trusted_caller",
+    "predicate": "per-function: onlyOwner | onlyWhitelist | msg.sender == controller() | msg.sender == depositHandler() | msg.sender == withdrawHandler() | msg.sender in {withdrawHandler(), insurance()} | msg.sender in {insurance(), depositHandler()}",
+    "evidence": [
+      "LifeGuard3Pool.sol:76 setDependencies external onlyOwner",
+      "LifeGuard3Pool.sol:102 approveVaults external onlyOwner",
+      "LifeGuard3Pool.sol:117 setInvestToCurveThreshold external onlyOwner",
+      "LifeGuard3Pool.sol:123 investToCurveVault external onlyWhitelist",
+      "LifeGuard3Pool.sol:142 distributeCurveVault requires msg.sender == controller",
+      "LifeGuard3Pool.sol:161 depositStable requires msg.sender in {withdrawHandler, insurance}",
+      "LifeGuard3Pool.sol:197 deposit requires msg.sender == depositHandler",
+      "LifeGuard3Pool.sol:215/235 withdrawSingle requires msg.sender == withdrawHandler",
+      "LifeGuard3Pool.sol:280 invest requires msg.sender in {insurance, depositHandler}",
+      "LifeGuard3Pool.sol:310 investSingle requires msg.sender == depositHandler",
+      "LifeGuard3Pool.sol:40-42 address public insurance/depositHandler/withdrawHandler (local trusted-caller registry)",
+      "Controllable controller() getter"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "owner-only (3): setDependencies, approveVaults, setInvestToCurveThreshold",
+      "claim": "a caller other than the pre-state owner reverts on every owner-only lifeguard function",
+      "property_kind": "parametric_revert_rule",
+      "symbols": ["owner()", "the 3 exact selectors"],
+      "hypotheses": [],
+      "reachability_check": "owner path proven for setInvestToCurveThreshold (only precondition is onlyOwner)",
+      "source_evidence": ["LifeGuard3Pool.sol:76,102,117"]
+    },
+    {
+      "ontology_id": "CAC-AC-006",
+      "id": "S4.1.G9",
+      "status": "applicable",
+      "target": "investToCurveVault()",
+      "claim": "a non-whitelisted caller cannot invest lifeguard assets into the Curve vault",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["whitelist(address)", "investToCurveVault()"],
+      "hypotheses": [],
+      "reachability_check": "revert rule exercises only the whitelist gate",
+      "source_evidence": ["LifeGuard3Pool.sol:123"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "distributeCurveVault(uint256,uint256[3])",
+      "claim": "only the pre-state controller may pull Curve vault assets and redistribute to stable vaults",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["controller()", "distributeCurveVault(uint256,uint256[3])"],
+      "hypotheses": [],
+      "reachability_check": "revert rule exercises only the controller gate",
+      "source_evidence": ["LifeGuard3Pool.sol:142-147"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "depositStable(bool)",
+      "claim": "only pre-state withdrawHandler or insurance may deposit stablecoins into the Curve pool",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["withdrawHandler()", "insurance()", "depositStable(bool)"],
+      "hypotheses": [],
+      "reachability_check": "revert rule exercises only the caller gate",
+      "source_evidence": ["LifeGuard3Pool.sol:161-162"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "deposit()",
+      "claim": "only the pre-state depositHandler may convert lifeguard stablecoin balances into Curve LP",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["depositHandler()", "deposit()"],
+      "hypotheses": [],
+      "reachability_check": "revert rule exercises only the caller gate",
+      "source_evidence": ["LifeGuard3Pool.sol:197-198"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "withdrawSingleByLiquidity(uint256,uint256,address) and withdrawSingleByExchange(uint256,uint256,address)",
+      "claim": "only the pre-state withdrawHandler may withdraw/swaps single assets out of the lifeguard",
+      "property_kind": "parametric_revert_rule",
+      "symbols": ["withdrawHandler()", "the 2 exact selectors"],
+      "hypotheses": [],
+      "reachability_check": "revert rule exercises only the caller gate",
+      "source_evidence": ["LifeGuard3Pool.sol:215-220,235-240"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "invest(uint256,uint256[3])",
+      "claim": "only pre-state insurance or depositHandler may invest into the underlying vaults",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["insurance()", "depositHandler()", "invest(uint256,uint256[3])"],
+      "hypotheses": [],
+      "reachability_check": "revert rule exercises only the caller gate",
+      "source_evidence": ["LifeGuard3Pool.sol:280-285"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "applicable",
+      "target": "investSingle(uint256[3],uint256,uint256)",
+      "claim": "only the pre-state depositHandler may run single-sided tuna deposit swaps",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["depositHandler()", "investSingle(uint256[3],uint256,uint256)"],
+      "hypotheses": [],
+      "reachability_check": "revert rule exercises only the caller gate",
+      "source_evidence": ["LifeGuard3Pool.sol:310-315"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "setInvestToCurveThreshold(uint256) reachability",
+      "claim": "the pre-state owner has a reachable successful path for an owner-only setter",
+      "property_kind": "satisfy_witness",
+      "symbols": ["owner()", "setInvestToCurveThreshold(uint256)"],
+      "hypotheses": [],
+      "reachability_check": "setInvestToCurveThreshold only requires onlyOwner",
+      "source_evidence": ["LifeGuard3Pool.sol:117-120"]
+    }
+  ],
+  "not_applicable": [
+    {"id": "S4.1.G2", "reason": "no RBAC role system", "evidence": "flat owner+whitelist+trusted registry"},
+    {"id": "S4.1.G4", "reason": "no ERC20 debit/allowance surface here", "evidence": "no transferFrom"},
+    {"id": "S4.1.G7", "reason": "privileged withdrawals are handler/controller-restricted, not unilaterally owner-drainable; solvency model requires Buoy3Pool which is not extracted", "evidence": "Buoy3Pool gap; no explicit reserve accounting in this contract"},
+    {"id": "S4.1.G8", "reason": "no timelock/delay", "evidence": "no schedule/execute"},
+    {"id": "S4.1.G10", "reason": "no initialize()", "evidence": "constructor sets approvals"},
+    {"id": "S4.1.G11", "reason": "inherits OZ one-step ownership transfer", "evidence": "Ownable via Controllable"},
+    {"id": "S4.2.G4", "reason": "lifeguard approves vaults/handlers to type(uint256).max by design (internal system wiring); no user-facing allowance policy", "evidence": "LifeGuard3Pool.sol:71,81-88,110-111"}
+  ]
+}

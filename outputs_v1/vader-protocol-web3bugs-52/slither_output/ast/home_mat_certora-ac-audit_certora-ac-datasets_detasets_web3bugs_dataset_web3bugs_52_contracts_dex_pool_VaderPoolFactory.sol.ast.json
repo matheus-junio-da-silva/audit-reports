@@ -1,0 +1,2695 @@
+{
+  "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/dex/pool/VaderPoolFactory.sol",
+  "exportedSymbols": {
+    "Address": [
+      3949
+    ],
+    "BasePool": [
+      1316
+    ],
+    "Context": [
+      3583
+    ],
+    "ERC165": [
+      4247
+    ],
+    "ERC721": [
+      2904
+    ],
+    "GasThrottle": [
+      3283
+    ],
+    "IAggregator": [
+      4255
+    ],
+    "IBasePool": [
+      3437
+    ],
+    "IERC165": [
+      4267
+    ],
+    "IERC20": [
+      1423
+    ],
+    "IERC20Extended": [
+      442
+    ],
+    "IERC20Permit": [
+      3619
+    ],
+    "IERC721": [
+      3553
+    ],
+    "IERC721Metadata": [
+      3994
+    ],
+    "IERC721Receiver": [
+      3967
+    ],
+    "IVaderPool": [
+      1345
+    ],
+    "IVaderPoolFactory": [
+      414
+    ],
+    "Math": [
+      5133
+    ],
+    "Ownable": [
+      1536
+    ],
+    "ProtocolConstants": [
+      515
+    ],
+    "ReentrancyGuard": [
+      1601
+    ],
+    "SafeERC20": [
+      1977
+    ],
+    "SignedMath": [
+      5238
+    ],
+    "Strings": [
+      4223
+    ],
+    "UQ112x112": [
+      3327
+    ],
+    "VaderMath": [
+      3272
+    ],
+    "VaderPool": [
+      374
+    ],
+    "VaderPoolFactory": [
+      207
+    ]
+  },
+  "id": 208,
+  "license": "Unlicense",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 1,
+      "literals": [
+        "solidity",
+        "=",
+        "0.8",
+        ".9"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "41:23:19"
+    },
+    {
+      "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/dex/pool/VaderPool.sol",
+      "file": "./VaderPool.sol",
+      "id": 2,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 208,
+      "sourceUnit": 375,
+      "src": "68:25:19",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/shared/ProtocolConstants.sol",
+      "file": "../../shared/ProtocolConstants.sol",
+      "id": 3,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 208,
+      "sourceUnit": 516,
+      "src": "97:44:19",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/interfaces/shared/IERC20Extended.sol",
+      "file": "../../interfaces/shared/IERC20Extended.sol",
+      "id": 4,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 208,
+      "sourceUnit": 443,
+      "src": "145:52:19",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/52/contracts/interfaces/dex/pool/IVaderPoolFactory.sol",
+      "file": "../../interfaces/dex/pool/IVaderPoolFactory.sol",
+      "id": 5,
+      "nameLocation": "-1:-1:-1",
+      "nodeType": "ImportDirective",
+      "scope": 208,
+      "sourceUnit": 415,
+      "src": "199:57:19",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "baseName": {
+            "id": 6,
+            "name": "IVaderPoolFactory",
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 414,
+            "src": "716:17:19"
+          },
+          "id": 7,
+          "nodeType": "InheritanceSpecifier",
+          "src": "716:17:19"
+        },
+        {
+          "baseName": {
+            "id": 8,
+            "name": "ProtocolConstants",
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 515,
+            "src": "735:17:19"
+          },
+          "id": 9,
+          "nodeType": "InheritanceSpecifier",
+          "src": "735:17:19"
+        },
+        {
+          "baseName": {
+            "id": 10,
+            "name": "Ownable",
+            "nodeType": "IdentifierPath",
+            "referencedDeclaration": 1536,
+            "src": "754:7:19"
+          },
+          "id": 11,
+          "nodeType": "InheritanceSpecifier",
+          "src": "754:7:19"
+        }
+      ],
+      "canonicalName": "VaderPoolFactory",
+      "contractDependencies": [
+        374
+      ],
+      "contractKind": "contract",
+      "fullyImplemented": true,
+      "id": 207,
+      "linearizedBaseContracts": [
+        207,
+        1536,
+        3583,
+        515,
+        414
+      ],
+      "name": "VaderPoolFactory",
+      "nameLocation": "696:16:19",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "constant": false,
+          "functionSelector": "52f69f20",
+          "id": 13,
+          "mutability": "mutable",
+          "name": "queueActive",
+          "nameLocation": "917:11:19",
+          "nodeType": "VariableDeclaration",
+          "scope": 207,
+          "src": "905:23:19",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_bool",
+            "typeString": "bool"
+          },
+          "typeName": {
+            "id": 12,
+            "name": "bool",
+            "nodeType": "ElementaryTypeName",
+            "src": "905:4:19",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "baseFunctions": [
+            402
+          ],
+          "constant": false,
+          "functionSelector": "74d32ad4",
+          "id": 16,
+          "mutability": "mutable",
+          "name": "nativeAsset",
+          "nameLocation": "996:11:19",
+          "nodeType": "VariableDeclaration",
+          "overrides": {
+            "id": 15,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "987:8:19"
+          },
+          "scope": 207,
+          "src": "972:35:19",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_address",
+            "typeString": "address"
+          },
+          "typeName": {
+            "id": 14,
+            "name": "address",
+            "nodeType": "ElementaryTypeName",
+            "src": "972:7:19",
+            "stateMutability": "nonpayable",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "baseFunctions": [
+            397
+          ],
+          "constant": false,
+          "functionSelector": "531aa03e",
+          "id": 24,
+          "mutability": "mutable",
+          "name": "getPool",
+          "nameLocation": "1126:7:19",
+          "nodeType": "VariableDeclaration",
+          "overrides": {
+            "id": 23,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "1117:8:19"
+          },
+          "scope": 207,
+          "src": "1059:74:19",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$_$",
+            "typeString": "mapping(address => mapping(address => contract IVaderPool))"
+          },
+          "typeName": {
+            "id": 22,
+            "keyType": {
+              "id": 17,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "1067:7:19",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "nodeType": "Mapping",
+            "src": "1059:50:19",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$_$",
+              "typeString": "mapping(address => mapping(address => contract IVaderPool))"
+            },
+            "valueType": {
+              "id": 21,
+              "keyType": {
+                "id": 18,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "1086:7:19",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "1078:30:19",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$",
+                "typeString": "mapping(address => contract IVaderPool)"
+              },
+              "valueType": {
+                "id": 20,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 19,
+                  "name": "IVaderPool",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 1345,
+                  "src": "1097:10:19"
+                },
+                "referencedDeclaration": 1345,
+                "src": "1097:10:19",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                  "typeString": "contract IVaderPool"
+                }
+              }
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "constant": false,
+          "functionSelector": "41d1de97",
+          "id": 28,
+          "mutability": "mutable",
+          "name": "allPools",
+          "nameLocation": "1190:8:19",
+          "nodeType": "VariableDeclaration",
+          "scope": 207,
+          "src": "1170:28:19",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_array$_t_contract$_IVaderPool_$1345_$dyn_storage",
+            "typeString": "contract IVaderPool[]"
+          },
+          "typeName": {
+            "baseType": {
+              "id": 26,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 25,
+                "name": "IVaderPool",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 1345,
+                "src": "1170:10:19"
+              },
+              "referencedDeclaration": 1345,
+              "src": "1170:10:19",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                "typeString": "contract IVaderPool"
+              }
+            },
+            "id": 27,
+            "nodeType": "ArrayTypeName",
+            "src": "1170:12:19",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_contract$_IVaderPool_$1345_$dyn_storage_ptr",
+              "typeString": "contract IVaderPool[]"
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "baseFunctions": [
+            387
+          ],
+          "body": {
+            "id": 132,
+            "nodeType": "Block",
+            "src": "1956:1032:19",
+            "statements": [
+              {
+                "assignments": [
+                  40,
+                  42
+                ],
+                "declarations": [
+                  {
+                    "constant": false,
+                    "id": 40,
+                    "mutability": "mutable",
+                    "name": "token0",
+                    "nameLocation": "1976:6:19",
+                    "nodeType": "VariableDeclaration",
+                    "scope": 132,
+                    "src": "1968:14:19",
+                    "stateVariable": false,
+                    "storageLocation": "default",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "typeName": {
+                      "id": 39,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1968:7:19",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "visibility": "internal"
+                  },
+                  {
+                    "constant": false,
+                    "id": 42,
+                    "mutability": "mutable",
+                    "name": "token1",
+                    "nameLocation": "1992:6:19",
+                    "nodeType": "VariableDeclaration",
+                    "scope": 132,
+                    "src": "1984:14:19",
+                    "stateVariable": false,
+                    "storageLocation": "default",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "typeName": {
+                      "id": 41,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1984:7:19",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "visibility": "internal"
+                  }
+                ],
+                "id": 60,
+                "initialValue": {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 45,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 43,
+                      "name": "tokenA",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 30,
+                      "src": "2002:6:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "id": 44,
+                      "name": "nativeAsset",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 16,
+                      "src": "2012:11:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "2002:21:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseExpression": {
+                    "condition": {
+                      "commonType": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "id": 51,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 49,
+                        "name": "tokenB",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 32,
+                        "src": "2071:6:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "id": 50,
+                        "name": "nativeAsset",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 16,
+                        "src": "2081:11:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "src": "2071:21:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "falseExpression": {
+                      "components": [
+                        {
+                          "id": 55,
+                          "name": "_ZERO_ADDRESS",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 450,
+                          "src": "2141:13:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        {
+                          "id": 56,
+                          "name": "_ZERO_ADDRESS",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 450,
+                          "src": "2156:13:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "id": 57,
+                      "isConstant": false,
+                      "isInlineArray": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "TupleExpression",
+                      "src": "2140:30:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$_t_address_$_t_address_$",
+                        "typeString": "tuple(address,address)"
+                      }
+                    },
+                    "id": 58,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "Conditional",
+                    "src": "2071:99:19",
+                    "trueExpression": {
+                      "components": [
+                        {
+                          "id": 52,
+                          "name": "tokenB",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 32,
+                          "src": "2109:6:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        {
+                          "id": 53,
+                          "name": "tokenA",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 30,
+                          "src": "2117:6:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "id": 54,
+                      "isConstant": false,
+                      "isInlineArray": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "TupleExpression",
+                      "src": "2108:16:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_tuple$_t_address_$_t_address_$",
+                        "typeString": "tuple(address,address)"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_address_$_t_address_$",
+                      "typeString": "tuple(address,address)"
+                    }
+                  },
+                  "id": 59,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "nodeType": "Conditional",
+                  "src": "2002:168:19",
+                  "trueExpression": {
+                    "components": [
+                      {
+                        "id": 46,
+                        "name": "tokenA",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 30,
+                        "src": "2040:6:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "id": 47,
+                        "name": "tokenB",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 32,
+                        "src": "2048:6:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "id": 48,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "2039:16:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_address_$_t_address_$",
+                      "typeString": "tuple(address,address)"
+                    }
+                  },
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$_t_address_$_t_address_$",
+                    "typeString": "tuple(address,address)"
+                  }
+                },
+                "nodeType": "VariableDeclarationStatement",
+                "src": "1967:203:19"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "id": 64,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 62,
+                        "name": "token0",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 40,
+                        "src": "2205:6:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "id": 63,
+                        "name": "token1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 42,
+                        "src": "2215:6:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "src": "2205:16:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "5661646572506f6f6c466163746f72793a3a637265617465506f6f6c3a204964656e746963616c20546f6b656e73",
+                      "id": 65,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2236:48:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_be7adb95eb5b4829faa402eb0ec7357ca66732296a71bee05d39785895ffd07b",
+                        "typeString": "literal_string \"VaderPoolFactory::createPool: Identical Tokens\""
+                      },
+                      "value": "VaderPoolFactory::createPool: Identical Tokens"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_be7adb95eb5b4829faa402eb0ec7357ca66732296a71bee05d39785895ffd07b",
+                        "typeString": "literal_string \"VaderPoolFactory::createPool: Identical Tokens\""
+                      }
+                    ],
+                    "id": 61,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "2183:7:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 66,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2183:112:19",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 67,
+                "nodeType": "ExpressionStatement",
+                "src": "2183:112:19"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "id": 71,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 69,
+                        "name": "token1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 42,
+                        "src": "2330:6:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "id": 70,
+                        "name": "_ZERO_ADDRESS",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 450,
+                        "src": "2340:13:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "src": "2330:23:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "5661646572506f6f6c466163746f72793a3a637265617465506f6f6c3a20496e6578697374656e7420546f6b656e",
+                      "id": 72,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2368:48:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_8b06995e83003867daffeec8e246a54d906abbbae6ed1a36e1c23d01188a3063",
+                        "typeString": "literal_string \"VaderPoolFactory::createPool: Inexistent Token\""
+                      },
+                      "value": "VaderPoolFactory::createPool: Inexistent Token"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_8b06995e83003867daffeec8e246a54d906abbbae6ed1a36e1c23d01188a3063",
+                        "typeString": "literal_string \"VaderPoolFactory::createPool: Inexistent Token\""
+                      }
+                    ],
+                    "id": 68,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "2308:7:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 73,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2308:119:19",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 74,
+                "nodeType": "ExpressionStatement",
+                "src": "2308:119:19"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                        "typeString": "contract IVaderPool"
+                      },
+                      "id": 84,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "baseExpression": {
+                          "baseExpression": {
+                            "id": 76,
+                            "name": "getPool",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 24,
+                            "src": "2462:7:19",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$_$",
+                              "typeString": "mapping(address => mapping(address => contract IVaderPool))"
+                            }
+                          },
+                          "id": 78,
+                          "indexExpression": {
+                            "id": 77,
+                            "name": "token0",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 40,
+                            "src": "2470:6:19",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "2462:15:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$",
+                            "typeString": "mapping(address => contract IVaderPool)"
+                          }
+                        },
+                        "id": 80,
+                        "indexExpression": {
+                          "id": 79,
+                          "name": "token1",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 42,
+                          "src": "2478:6:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "2462:23:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                          "typeString": "contract IVaderPool"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "arguments": [
+                          {
+                            "id": 82,
+                            "name": "_ZERO_ADDRESS",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 450,
+                            "src": "2500:13:19",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 81,
+                          "name": "IVaderPool",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1345,
+                          "src": "2489:10:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IVaderPool_$1345_$",
+                            "typeString": "type(contract IVaderPool)"
+                          }
+                        },
+                        "id": 83,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2489:25:19",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                          "typeString": "contract IVaderPool"
+                        }
+                      },
+                      "src": "2462:52:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "5661646572506f6f6c466163746f72793a3a637265617465506f6f6c3a205061697220457869737473",
+                      "id": 85,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2529:43:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_3ec98d34cd826aefcf3b189eb2924c25ea2cccd895f20ea39b790a84305114db",
+                        "typeString": "literal_string \"VaderPoolFactory::createPool: Pair Exists\""
+                      },
+                      "value": "VaderPoolFactory::createPool: Pair Exists"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_3ec98d34cd826aefcf3b189eb2924c25ea2cccd895f20ea39b790a84305114db",
+                        "typeString": "literal_string \"VaderPoolFactory::createPool: Pair Exists\""
+                      }
+                    ],
+                    "id": 75,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "2440:7:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 86,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2440:143:19",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 87,
+                "nodeType": "ExpressionStatement",
+                "src": "2440:143:19"
+              },
+              {
+                "expression": {
+                  "id": 100,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "id": 88,
+                    "name": "pool",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 37,
+                    "src": "2626:4:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                      "typeString": "contract IVaderPool"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "arguments": [
+                      {
+                        "id": 92,
+                        "name": "queueActive",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 13,
+                        "src": "2661:11:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "arguments": [
+                          {
+                            "id": 94,
+                            "name": "token0",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 40,
+                            "src": "2702:6:19",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 93,
+                          "name": "IERC20Extended",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 442,
+                          "src": "2687:14:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IERC20Extended_$442_$",
+                            "typeString": "type(contract IERC20Extended)"
+                          }
+                        },
+                        "id": 95,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2687:22:19",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IERC20Extended_$442",
+                          "typeString": "contract IERC20Extended"
+                        }
+                      },
+                      {
+                        "arguments": [
+                          {
+                            "id": 97,
+                            "name": "token1",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 42,
+                            "src": "2739:6:19",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "id": 96,
+                          "name": "IERC20Extended",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 442,
+                          "src": "2724:14:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_contract$_IERC20Extended_$442_$",
+                            "typeString": "type(contract IERC20Extended)"
+                          }
+                        },
+                        "id": 98,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2724:22:19",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IERC20Extended_$442",
+                          "typeString": "contract IERC20Extended"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_contract$_IERC20Extended_$442",
+                          "typeString": "contract IERC20Extended"
+                        },
+                        {
+                          "typeIdentifier": "t_contract$_IERC20Extended_$442",
+                          "typeString": "contract IERC20Extended"
+                        }
+                      ],
+                      "id": 91,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "2633:13:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_bool_$_t_contract$_IERC20Extended_$442_$_t_contract$_IERC20Extended_$442_$returns$_t_contract$_VaderPool_$374_$",
+                        "typeString": "function (bool,contract IERC20Extended,contract IERC20Extended) returns (contract VaderPool)"
+                      },
+                      "typeName": {
+                        "id": 90,
+                        "nodeType": "UserDefinedTypeName",
+                        "pathNode": {
+                          "id": 89,
+                          "name": "VaderPool",
+                          "nodeType": "IdentifierPath",
+                          "referencedDeclaration": 374,
+                          "src": "2637:9:19"
+                        },
+                        "referencedDeclaration": 374,
+                        "src": "2637:9:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_VaderPool_$374",
+                          "typeString": "contract VaderPool"
+                        }
+                      }
+                    },
+                    "id": 99,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2633:124:19",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_VaderPool_$374",
+                      "typeString": "contract VaderPool"
+                    }
+                  },
+                  "src": "2626:131:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                    "typeString": "contract IVaderPool"
+                  }
+                },
+                "id": 101,
+                "nodeType": "ExpressionStatement",
+                "src": "2626:131:19"
+              },
+              {
+                "expression": {
+                  "id": 108,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "baseExpression": {
+                      "baseExpression": {
+                        "id": 102,
+                        "name": "getPool",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 24,
+                        "src": "2768:7:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$_$",
+                          "typeString": "mapping(address => mapping(address => contract IVaderPool))"
+                        }
+                      },
+                      "id": 105,
+                      "indexExpression": {
+                        "id": 103,
+                        "name": "token0",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 40,
+                        "src": "2776:6:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "2768:15:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$",
+                        "typeString": "mapping(address => contract IVaderPool)"
+                      }
+                    },
+                    "id": 106,
+                    "indexExpression": {
+                      "id": 104,
+                      "name": "token1",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 42,
+                      "src": "2784:6:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "2768:23:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                      "typeString": "contract IVaderPool"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "id": 107,
+                    "name": "pool",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 37,
+                    "src": "2794:4:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                      "typeString": "contract IVaderPool"
+                    }
+                  },
+                  "src": "2768:30:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                    "typeString": "contract IVaderPool"
+                  }
+                },
+                "id": 109,
+                "nodeType": "ExpressionStatement",
+                "src": "2768:30:19"
+              },
+              {
+                "expression": {
+                  "id": 116,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "baseExpression": {
+                      "baseExpression": {
+                        "id": 110,
+                        "name": "getPool",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 24,
+                        "src": "2809:7:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$_$",
+                          "typeString": "mapping(address => mapping(address => contract IVaderPool))"
+                        }
+                      },
+                      "id": 113,
+                      "indexExpression": {
+                        "id": 111,
+                        "name": "token1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 42,
+                        "src": "2817:6:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "2809:15:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$",
+                        "typeString": "mapping(address => contract IVaderPool)"
+                      }
+                    },
+                    "id": 114,
+                    "indexExpression": {
+                      "id": 112,
+                      "name": "token0",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 40,
+                      "src": "2825:6:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "2809:23:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                      "typeString": "contract IVaderPool"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "id": 115,
+                    "name": "pool",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 37,
+                    "src": "2835:4:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                      "typeString": "contract IVaderPool"
+                    }
+                  },
+                  "src": "2809:30:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                    "typeString": "contract IVaderPool"
+                  }
+                },
+                "id": 117,
+                "nodeType": "ExpressionStatement",
+                "src": "2809:30:19"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 121,
+                      "name": "pool",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 37,
+                      "src": "2909:4:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                        "typeString": "contract IVaderPool"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                        "typeString": "contract IVaderPool"
+                      }
+                    ],
+                    "expression": {
+                      "id": 118,
+                      "name": "allPools",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 28,
+                      "src": "2895:8:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_contract$_IVaderPool_$1345_$dyn_storage",
+                        "typeString": "contract IVaderPool[] storage ref"
+                      }
+                    },
+                    "id": 120,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "push",
+                    "nodeType": "MemberAccess",
+                    "src": "2895:13:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_contract$_IVaderPool_$1345_$dyn_storage_ptr_$_t_contract$_IVaderPool_$1345_$returns$__$bound_to$_t_array$_t_contract$_IVaderPool_$1345_$dyn_storage_ptr_$",
+                      "typeString": "function (contract IVaderPool[] storage pointer,contract IVaderPool)"
+                    }
+                  },
+                  "id": 122,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2895:19:19",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 123,
+                "nodeType": "ExpressionStatement",
+                "src": "2895:19:19"
+              },
+              {
+                "eventCall": {
+                  "arguments": [
+                    {
+                      "id": 125,
+                      "name": "token0",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 40,
+                      "src": "2942:6:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    {
+                      "id": 126,
+                      "name": "token1",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 42,
+                      "src": "2950:6:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    {
+                      "id": 127,
+                      "name": "pool",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 37,
+                      "src": "2958:4:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                        "typeString": "contract IVaderPool"
+                      }
+                    },
+                    {
+                      "expression": {
+                        "id": 128,
+                        "name": "allPools",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 28,
+                        "src": "2964:8:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_contract$_IVaderPool_$1345_$dyn_storage",
+                          "typeString": "contract IVaderPool[] storage ref"
+                        }
+                      },
+                      "id": 129,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "src": "2964:15:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      {
+                        "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                        "typeString": "contract IVaderPool"
+                      },
+                      {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    ],
+                    "id": 124,
+                    "name": "PoolCreated",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 413,
+                    "src": "2930:11:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_contract$_IVaderPool_$1345_$_t_uint256_$returns$__$",
+                      "typeString": "function (address,address,contract IVaderPool,uint256)"
+                    }
+                  },
+                  "id": 130,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2930:50:19",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 131,
+                "nodeType": "EmitStatement",
+                "src": "2925:55:19"
+              }
+            ]
+          },
+          "functionSelector": "e3433615",
+          "id": 133,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "createPool",
+          "nameLocation": "1837:10:19",
+          "nodeType": "FunctionDefinition",
+          "overrides": {
+            "id": 34,
+            "nodeType": "OverrideSpecifier",
+            "overrides": [],
+            "src": "1907:8:19"
+          },
+          "parameters": {
+            "id": 33,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 30,
+                "mutability": "mutable",
+                "name": "tokenA",
+                "nameLocation": "1856:6:19",
+                "nodeType": "VariableDeclaration",
+                "scope": 133,
+                "src": "1848:14:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 29,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1848:7:19",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 32,
+                "mutability": "mutable",
+                "name": "tokenB",
+                "nameLocation": "1872:6:19",
+                "nodeType": "VariableDeclaration",
+                "scope": 133,
+                "src": "1864:14:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 31,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1864:7:19",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1847:32:19"
+          },
+          "returnParameters": {
+            "id": 38,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 37,
+                "mutability": "mutable",
+                "name": "pool",
+                "nameLocation": "1945:4:19",
+                "nodeType": "VariableDeclaration",
+                "scope": 133,
+                "src": "1934:15:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                  "typeString": "contract IVaderPool"
+                },
+                "typeName": {
+                  "id": 36,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 35,
+                    "name": "IVaderPool",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1345,
+                    "src": "1934:10:19"
+                  },
+                  "referencedDeclaration": 1345,
+                  "src": "1934:10:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                    "typeString": "contract IVaderPool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1933:17:19"
+          },
+          "scope": 207,
+          "src": "1828:1160:19",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 161,
+            "nodeType": "Block",
+            "src": "3422:245:19",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "id": 149,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 145,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 143,
+                          "name": "_nativeAsset",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 135,
+                          "src": "3455:12:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "id": 144,
+                          "name": "_ZERO_ADDRESS",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 450,
+                          "src": "3471:13:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "3455:29:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "&&",
+                      "rightExpression": {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 148,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 146,
+                          "name": "_dao",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 137,
+                          "src": "3488:4:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "id": 147,
+                          "name": "_ZERO_ADDRESS",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 450,
+                          "src": "3496:13:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "3488:21:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "src": "3455:54:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "5661646572506f6f6c466163746f72793a3a696e697469616c697a653a20496e636f727265637420417267756d656e7473",
+                      "id": 150,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "3524:51:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_3c7721282d73c46801fa73b8084bb91d267e0b392550a80ac86d563ce38e0c00",
+                        "typeString": "literal_string \"VaderPoolFactory::initialize: Incorrect Arguments\""
+                      },
+                      "value": "VaderPoolFactory::initialize: Incorrect Arguments"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_3c7721282d73c46801fa73b8084bb91d267e0b392550a80ac86d563ce38e0c00",
+                        "typeString": "literal_string \"VaderPoolFactory::initialize: Incorrect Arguments\""
+                      }
+                    ],
+                    "id": 142,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "3433:7:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 151,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "3433:153:19",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 152,
+                "nodeType": "ExpressionStatement",
+                "src": "3433:153:19"
+              },
+              {
+                "expression": {
+                  "id": 155,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "id": 153,
+                    "name": "nativeAsset",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 16,
+                    "src": "3599:11:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "id": 154,
+                    "name": "_nativeAsset",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 135,
+                    "src": "3613:12:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "src": "3599:26:19",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "id": 156,
+                "nodeType": "ExpressionStatement",
+                "src": "3599:26:19"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 158,
+                      "name": "_dao",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 137,
+                      "src": "3654:4:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 157,
+                    "name": "transferOwnership",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1515,
+                    "src": "3636:17:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 159,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "3636:23:19",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 160,
+                "nodeType": "ExpressionStatement",
+                "src": "3636:23:19"
+              }
+            ]
+          },
+          "functionSelector": "485cc955",
+          "id": 162,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 140,
+              "kind": "modifierInvocation",
+              "modifierName": {
+                "id": 139,
+                "name": "onlyOwner",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 1455,
+                "src": "3412:9:19"
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "3412:9:19"
+            }
+          ],
+          "name": "initialize",
+          "nameLocation": "3356:10:19",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 138,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 135,
+                "mutability": "mutable",
+                "name": "_nativeAsset",
+                "nameLocation": "3375:12:19",
+                "nodeType": "VariableDeclaration",
+                "scope": 162,
+                "src": "3367:20:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 134,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3367:7:19",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 137,
+                "mutability": "mutable",
+                "name": "_dao",
+                "nameLocation": "3397:4:19",
+                "nodeType": "VariableDeclaration",
+                "scope": 162,
+                "src": "3389:12:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 136,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3389:7:19",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3366:36:19"
+          },
+          "returnParameters": {
+            "id": 141,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "3422:0:19"
+          },
+          "scope": 207,
+          "src": "3347:320:19",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 179,
+            "nodeType": "Block",
+            "src": "3912:56:19",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [],
+                  "expression": {
+                    "argumentTypes": [],
+                    "expression": {
+                      "baseExpression": {
+                        "baseExpression": {
+                          "id": 171,
+                          "name": "getPool",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 24,
+                          "src": "3923:7:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$_$",
+                            "typeString": "mapping(address => mapping(address => contract IVaderPool))"
+                          }
+                        },
+                        "id": 174,
+                        "indexExpression": {
+                          "id": 172,
+                          "name": "token0",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 164,
+                          "src": "3931:6:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "3923:15:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_contract$_IVaderPool_$1345_$",
+                          "typeString": "mapping(address => contract IVaderPool)"
+                        }
+                      },
+                      "id": 175,
+                      "indexExpression": {
+                        "id": 173,
+                        "name": "token1",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 166,
+                        "src": "3939:6:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "3923:23:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IVaderPool_$1345",
+                        "typeString": "contract IVaderPool"
+                      }
+                    },
+                    "id": 176,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "toggleQueue",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 1340,
+                    "src": "3923:35:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_nonpayable$__$returns$__$",
+                      "typeString": "function () external"
+                    }
+                  },
+                  "id": 177,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "3923:37:19",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 178,
+                "nodeType": "ExpressionStatement",
+                "src": "3923:37:19"
+              }
+            ]
+          },
+          "functionSelector": "c7a3414b",
+          "id": 180,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 169,
+              "kind": "modifierInvocation",
+              "modifierName": {
+                "id": 168,
+                "name": "onlyDAO",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 206,
+                "src": "3904:7:19"
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "3904:7:19"
+            }
+          ],
+          "name": "toggleQueue",
+          "nameLocation": "3851:11:19",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 167,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 164,
+                "mutability": "mutable",
+                "name": "token0",
+                "nameLocation": "3871:6:19",
+                "nodeType": "VariableDeclaration",
+                "scope": 180,
+                "src": "3863:14:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 163,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3863:7:19",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 166,
+                "mutability": "mutable",
+                "name": "token1",
+                "nameLocation": "3887:6:19",
+                "nodeType": "VariableDeclaration",
+                "scope": 180,
+                "src": "3879:14:19",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 165,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3879:7:19",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "3862:32:19"
+          },
+          "returnParameters": {
+            "id": 170,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "3912:0:19"
+          },
+          "scope": 207,
+          "src": "3842:126:19",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 197,
+            "nodeType": "Block",
+            "src": "4342:167:19",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "id": 193,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 187,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 185,
+                          "name": "nativeAsset",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 16,
+                          "src": "4375:11:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "id": 186,
+                          "name": "_ZERO_ADDRESS",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 450,
+                          "src": "4390:13:19",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "4375:28:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "&&",
+                      "rightExpression": {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 192,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "id": 188,
+                            "name": "owner",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1464,
+                            "src": "4407:5:19",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
+                              "typeString": "function () view returns (address)"
+                            }
+                          },
+                          "id": 189,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "4407:7:19",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "id": 190,
+                            "name": "_msgSender",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3565,
+                            "src": "4418:10:19",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
+                              "typeString": "function () view returns (address)"
+                            }
+                          },
+                          "id": 191,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "4418:12:19",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "4407:23:19",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "src": "4375:55:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "42617365506f6f6c3a3a5f6f6e6c7944414f3a20496e73756666696369656e742050726976696c65676573",
+                      "id": 194,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "4445:45:19",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_a17ffa72cb3d61af6e0ddcaf23e9bf954e880f245d85928b3dd6afed0a4318d4",
+                        "typeString": "literal_string \"BasePool::_onlyDAO: Insufficient Privileges\""
+                      },
+                      "value": "BasePool::_onlyDAO: Insufficient Privileges"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_a17ffa72cb3d61af6e0ddcaf23e9bf954e880f245d85928b3dd6afed0a4318d4",
+                        "typeString": "literal_string \"BasePool::_onlyDAO: Insufficient Privileges\""
+                      }
+                    ],
+                    "id": 184,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "4353:7:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 195,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "4353:148:19",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 196,
+                "nodeType": "ExpressionStatement",
+                "src": "4353:148:19"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 181,
+            "nodeType": "StructuredDocumentation",
+            "src": "4083:220:19",
+            "text": " @dev Ensures only the DAO is able to invoke a particular function by validating that\n the owner is the msg.sender, equivalent to the DAO address, and that the native asset\n has been set"
+          },
+          "id": 198,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "_onlyDAO",
+          "nameLocation": "4318:8:19",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 182,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "4326:2:19"
+          },
+          "returnParameters": {
+            "id": 183,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "4342:0:19"
+          },
+          "scope": 207,
+          "src": "4309:200:19",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "private"
+        },
+        {
+          "body": {
+            "id": 205,
+            "nodeType": "Block",
+            "src": "4664:41:19",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [],
+                  "expression": {
+                    "argumentTypes": [],
+                    "id": 201,
+                    "name": "_onlyDAO",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 198,
+                    "src": "4675:8:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_view$__$returns$__$",
+                      "typeString": "function () view"
+                    }
+                  },
+                  "id": 202,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "4675:10:19",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 203,
+                "nodeType": "ExpressionStatement",
+                "src": "4675:10:19"
+              },
+              {
+                "id": 204,
+                "nodeType": "PlaceholderStatement",
+                "src": "4696:1:19"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 199,
+            "nodeType": "StructuredDocumentation",
+            "src": "4562:77:19",
+            "text": " @dev Throws if invoked by anyone else other than the DAO"
+          },
+          "id": 206,
+          "name": "onlyDAO",
+          "nameLocation": "4654:7:19",
+          "nodeType": "ModifierDefinition",
+          "parameters": {
+            "id": 200,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "4661:2:19"
+          },
+          "src": "4645:60:19",
+          "virtual": false,
+          "visibility": "internal"
+        }
+      ],
+      "scope": 208,
+      "src": "687:4021:19",
+      "usedErrors": []
+    }
+  ],
+  "src": "41:4669:19"
+}

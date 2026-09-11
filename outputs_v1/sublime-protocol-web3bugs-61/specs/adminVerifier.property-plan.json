@@ -1,0 +1,149 @@
+{
+  "contract": "adminVerifier",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/61/contracts/Verification/adminVerifier.sol",
+  "coverage_status": "FULL",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "authority_model": {
+    "kind": "owner",
+    "owner_predicate": "e.msg.sender == owner()",
+    "evidence": [
+      "OwnableUpgradeable.owner() getter (OZ 3.4.2) -> adminVerifier.sol:4,8",
+      "onlyOwner modifier on registerUser/unregisterUser/updateVerification -> adminVerifier.sol:45,57,69",
+      "initialize transfers ownership to _admin -> adminVerifier.sol:30"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "registerUser(address,string,bool)",
+      "claim": "a caller other than the pre-state owner cannot register a user (onlyOwner guard fires before the external verification.registerMasterAddress call)",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "registerUser(address,string,bool)"],
+      "hypotheses": ["owner guard at line 45 is evaluated before the external call at line 47, so non-owner always reverts regardless of linked-contract behavior"],
+      "reachability_check": "owner registration path requires modeling linked verification.registerMasterAddress; left for manual/interpreter review, not asserted",
+      "source_evidence": ["adminVerifier.sol:41-50 (modifier onlyOwner on registerUser)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "unregisterUser(address)",
+      "claim": "a caller other than the pre-state owner cannot unregister a user",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "unregisterUser(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner path requires linked model; not asserted",
+      "source_evidence": ["adminVerifier.sol:57 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.1.G6",
+      "status": "applicable",
+      "target": "updateVerification(address)",
+      "claim": "a caller other than the pre-state owner cannot update the verification contract",
+      "property_kind": "specific_revert_rule",
+      "symbols": ["owner()", "updateVerification(address)"],
+      "hypotheses": [],
+      "reachability_check": "owner path sets verification state; not asserted",
+      "source_evidence": ["adminVerifier.sol:69 (modifier onlyOwner)"]
+    },
+    {
+      "ontology_id": "CAC-AC-007",
+      "id": "S4.1.G10",
+      "status": "applicable",
+      "target": "initialize(address,address)",
+      "claim": "after one successful initialization every later initialize call reverts",
+      "property_kind": "revert_implication_rule",
+      "symbols": ["initialize(address,address)"],
+      "hypotheses": [],
+      "reachability_check": "initialize succeeds from a fresh uninitialized state",
+      "source_evidence": ["adminVerifier.sol:28 (modifier initializer)"]
+    },
+    {
+      "ontology_id": "CAC-AC-008",
+      "id": "S4.1.G11",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "one-step OZ OwnableUpgradeable transferOwnership; no pending-owner lifecycle",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["OwnableUpgradeable.sol:69 one-step transfer"]
+    },
+    {
+      "ontology_id": "CAC-AC-002",
+      "id": "S4.1.G2",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no RBAC role system; ownership-based only",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["adminVerifier.sol uses OwnableUpgradeable only"]
+    },
+    {
+      "ontology_id": "CAC-AC-003",
+      "id": "S4.1.G4",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no asset debit / allowance accounting",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["adminVerifier.sol stores no fungible assets"]
+    },
+    {
+      "ontology_id": "CAC-AC-004",
+      "id": "S4.1.G7",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no asset custody / admin drain surface",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["adminVerifier.sol has no withdraw/rescue/sweep"]
+    },
+    {
+      "ontology_id": "CAC-AC-005",
+      "id": "S4.1.G8",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no timelock schedule/execute lifecycle",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["adminVerifier.sol has no schedule/execute"]
+    },
+    {
+      "ontology_id": "CAC-AC-009",
+      "id": "S4.2.G3",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no trust-sensitive callback entry point",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["adminVerifier.sol defines no callback"]
+    },
+    {
+      "ontology_id": "CAC-AC-010",
+      "id": "S4.2.G4",
+      "status": "not_applicable",
+      "target": "N/A",
+      "claim": "no allowance/delegation policy",
+      "property_kind": "none",
+      "symbols": [],
+      "hypotheses": [],
+      "reachability_check": "N/A",
+      "source_evidence": ["adminVerifier.sol holds no allowances"]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "project": "sublime-protocol-web3bugs-61",
+  "project_path": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/61",
+  "date": "2026-08-28",
+  "pipeline_version": "1.0",
+  "ontology": {
+    "id": "cac-access-control",
+    "version": "1.0.0",
+    "path": "/home/mat/certora-ac-audit/.agents/skills/certora-access-control/references/access-control-ontology.json"
+  },
+  "stages": {
+    "1_slither_context": {
+      "status": "COMPLETED",
+      "start": "2026-08-28T14:14:00Z",
+      "end": "2026-08-28T14:22:00Z",
+      "duration_seconds": 480,
+      "ast_files_generated": 79,
+      "context_documents_generated": 6,
+      "notes": "44/44 source files (100%), weighted coverage 94.6%, pre-flight READY, 0 solc mismatches"
+    },
+    "2_certora_access_control": {
+      "status": "COMPLETED",
+      "start": "2026-08-28T14:25:00Z",
+      "end": "2026-08-28T16:02:00Z",
+      "duration_seconds": 5820,
+      "contracts_analyzed": 5,
+      "rules_generated": 55,
+      "certoraRun_attempts": 5,
+      "notes": "Preflight PASS; smoke test PASS; contracts: CreditLine, PoolFactory, StrategyRegistry, Verification, adminVerifier"
+    },
+    "3_certora_interpreter": {
+      "status": "COMPLETED",
+      "start": "2026-08-28T16:05:00Z",
+      "end": "2026-08-28T16:17:00Z",
+      "duration_seconds": 720,
+      "confirmed_vulnerabilities": 0,
+      "disproved_counterexamples": 0,
+      "model_errors": 5,
+      "unresolved_model_errors": 5,
+      "indeterminate": 0,
+      "notes": "45 CVL authored rules: 40 verified, 5 model errors (D-4 _isConstructor, initialize_cannot_succeed_twice); 5 envfree + 1 sanity passed"
+    },
+    "4_poc_generator": {
+      "status": "SKIPPED",
+      "start": null,
+      "end": null,
+      "duration_seconds": 0,
+      "pocs_generated": 0,
+      "pocs_passed": 0,
+      "notes": "Skipped: no confirmed vulnerabilities"
+    }
+  },
+  "feedback_logs": {
+    "stage_1": "/home/mat/certora-ac-audit/pipeline-output/sublime-protocol-web3bugs-61/runs/20260828T141226.1787937146964423620-622-3769/feedback-logs/feedback-slither-context-20260828T141226.1787937146964423620-622-3769.md",
+    "stage_2": "/home/mat/certora-ac-audit/pipeline-output/sublime-protocol-web3bugs-61/runs/20260828T141226.1787937146964423620-622-3769/feedback-logs/feedback-certora-access-control-20260828T141226.1787937146964423620-622-3769.md",
+    "stage_3": "/home/mat/certora-ac-audit/pipeline-output/sublime-protocol-web3bugs-61/runs/20260828T141226.1787937146964423620-622-3769/feedback-logs/feedback-certora-interpreter-20260828T141226.1787937146964423620-622-3769.md",
+    "stage_4": "/home/mat/certora-ac-audit/pipeline-output/sublime-protocol-web3bugs-61/runs/20260828T141226.1787937146964423620-622-3769/feedback-logs/feedback-poc-generator-20260828T141226.1787937146964423620-622-3769.md",
+    "orchestrator": "/home/mat/certora-ac-audit/pipeline-output/sublime-protocol-web3bugs-61/runs/20260828T141226.1787937146964423620-622-3769/feedback-logs/feedback-certora-orchestrator-20260828T141226.1787937146964423620-622-3769.md"
+  },
+  "total_duration_seconds": 7020,
+  "final_status": "COMPLETED",
+  "stop_reason": null
+}

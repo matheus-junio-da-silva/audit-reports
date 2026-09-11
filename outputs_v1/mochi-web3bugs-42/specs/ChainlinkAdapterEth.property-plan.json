@@ -1,0 +1,57 @@
+{
+  "contract": "ChainlinkAdapterEth",
+  "source_file": "projects/mochi-cssr/contracts/adapter/ChainlinkAdapter.sol",
+  "compiler": "0.8.7",
+  "priority": "Medium",
+  "evidence": {
+    "onlyGov_modifier": "ChainlinkAdapter.sol:16-19 (require(msg.sender == owned.governance(), \"!gov\"))",
+    "setFeed": "ChainlinkAdapter.sol:33-37 (external onlyGov; loops over _assets/_feeds)",
+    "oracle_paths_permissionless": "ChainlinkAdapter.sol:25-31,43-74 (update/getPrice/getLiquidity no auth by design)"
+  },
+  "checklist_matrix": {
+    "S4.1.G1": "not_applicable",
+    "S4.1.G2": "not_applicable",
+    "S4.1.G3": "not_applicable",
+    "S4.1.G4": "not_applicable",
+    "S4.1.G5": "not_applicable",
+    "S4.1.G6": "automated - setFeed is onlyGov (empty-array frame for loop)",
+    "S4.1.G7": "not_applicable",
+    "S4.1.G8": "not_applicable",
+    "S4.1.G9": "not_applicable",
+    "S4.1.G10": "not_applicable",
+    "S4.1.G11": "not_applicable",
+    "S4.2.G1": "automated - non-gov rejected on setFeed",
+    "S4.2.G3": "not_applicable",
+    "S4.2.G4": "not_applicable"
+  },
+  "rules": [
+    {
+      "id": "RC-CLA-001",
+      "item": "S4.1.G6 / S4.2.G1",
+      "statement": "setFeed must revert for non-governance callers (empty-array frame)",
+      "feasibility": "automated",
+      "pattern": "core_authorization_revert (empty-array, loop-free)",
+      "expected": "VERIFIED"
+    },
+    {
+      "id": "RC-CLA-002",
+      "item": "S4.1.G6",
+      "statement": "authorized path reachable: governance caller can set feeds (empty-array frame)",
+      "feasibility": "automated",
+      "pattern": "satisfy_witness",
+      "expected": "VERIFIED"
+    }
+  ],
+  "conf": {
+    "files": [
+      "projects/mochi-cssr/contracts/adapter/ChainlinkAdapter.sol"
+    ],
+    "solc": "0.8.7",
+    "notes": "loop over parallel calldata arrays sidestepped with empty-array frames"
+  },
+  "verification_status": "manual_model_required",
+  "notes": "// ============================================================\n// file: ChainlinkAdapterEth.spec\n// verified contract: ChainlinkAdapterEth.sol\n// status: manual_model_required (NOT submitted to the prover)\n// reason: every authority-bearing method is guarded by\n//   require(msg.sender == owned.governance(), \"!gov\")\n//   where `owned` is an immutable IGovernanceOwned link. The cssr\n//   bundle contains NO implementing contract of `governance()` (only\n//   the interface, which has no bytecode), so the getter cannot be\n//   resolved to a known declaration in any scene, and CVL offers no\n//   envfree/optional path (verified empirically: `optional` + missing\n//   method aborts the prover with SkipOptionalRules exception).\n//   A governance() model would amount to fabricated authority and is\n//   explicitly out of scope for the automatic pipeline.\n// ChainlinkAdapterEth guards setFeed with require(msg.sender == owned.governance(),'!gov').\n// Verdict: ChainlinkAdapterEth S4.1.G6/S4.2.G1 -> manual_model_required.\n// ============================================================\n\n// no rules derived: all state access is gated behind the unrepresentable link\n",
+  "terminal_results": {
+    "all": "manual_model_required"
+  }
+}

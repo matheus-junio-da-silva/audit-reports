@@ -1,0 +1,1980 @@
+{
+  "absolutePath": "contracts/Verification/adminVerifier.sol",
+  "exportedSymbols": {
+    "AddressUpgradeable": [
+      1514
+    ],
+    "AdminVerifier": [
+      17837
+    ],
+    "ContextUpgradeable": [
+      1559
+    ],
+    "IVerification": [
+      18773
+    ],
+    "IVerifier": [
+      18790
+    ],
+    "Initializable": [
+      597
+    ],
+    "OwnableUpgradeable": [
+      176
+    ]
+  },
+  "id": 17838,
+  "license": "MIT",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 17673,
+      "literals": [
+        "solidity",
+        "0.7",
+        ".6"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "33:22:45"
+    },
+    {
+      "absolutePath": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+      "file": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+      "id": 17674,
+      "nodeType": "ImportDirective",
+      "scope": 17838,
+      "sourceUnit": 177,
+      "src": "59:75:45",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "contracts/interfaces/IVerification.sol",
+      "file": "../interfaces/IVerification.sol",
+      "id": 17675,
+      "nodeType": "ImportDirective",
+      "scope": 17838,
+      "sourceUnit": 18774,
+      "src": "136:41:45",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "absolutePath": "contracts/interfaces/IVerifier.sol",
+      "file": "../interfaces/IVerifier.sol",
+      "id": 17676,
+      "nodeType": "ImportDirective",
+      "scope": 17838,
+      "sourceUnit": 18791,
+      "src": "179:37:45",
+      "symbolAliases": [],
+      "unitAlias": ""
+    },
+    {
+      "abstract": false,
+      "baseContracts": [
+        {
+          "baseName": {
+            "id": 17677,
+            "name": "Initializable",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 597,
+            "src": "246:13:45",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_Initializable_$597",
+              "typeString": "contract Initializable"
+            }
+          },
+          "id": 17678,
+          "nodeType": "InheritanceSpecifier",
+          "src": "246:13:45"
+        },
+        {
+          "baseName": {
+            "id": 17679,
+            "name": "IVerifier",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 18790,
+            "src": "261:9:45",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IVerifier_$18790",
+              "typeString": "contract IVerifier"
+            }
+          },
+          "id": 17680,
+          "nodeType": "InheritanceSpecifier",
+          "src": "261:9:45"
+        },
+        {
+          "baseName": {
+            "id": 17681,
+            "name": "OwnableUpgradeable",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 176,
+            "src": "272:18:45",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_OwnableUpgradeable_$176",
+              "typeString": "contract OwnableUpgradeable"
+            }
+          },
+          "id": 17682,
+          "nodeType": "InheritanceSpecifier",
+          "src": "272:18:45"
+        }
+      ],
+      "contractDependencies": [
+        176,
+        597,
+        1559,
+        18790
+      ],
+      "contractKind": "contract",
+      "fullyImplemented": true,
+      "id": 17837,
+      "linearizedBaseContracts": [
+        17837,
+        176,
+        1559,
+        18790,
+        597
+      ],
+      "name": "AdminVerifier",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "constant": false,
+          "documentation": {
+            "id": 17683,
+            "nodeType": "StructuredDocumentation",
+            "src": "298:70:45",
+            "text": " @notice stores the verification contract instance"
+          },
+          "functionSelector": "4ffe2a8b",
+          "id": 17685,
+          "mutability": "mutable",
+          "name": "verification",
+          "nodeType": "VariableDeclaration",
+          "scope": 17837,
+          "src": "374:33:45",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_contract$_IVerification_$18773",
+            "typeString": "contract IVerification"
+          },
+          "typeName": {
+            "id": 17684,
+            "name": "IVerification",
+            "nodeType": "UserDefinedTypeName",
+            "referencedDeclaration": 18773,
+            "src": "374:13:45",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IVerification_$18773",
+              "typeString": "contract IVerification"
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "constant": false,
+          "documentation": {
+            "id": 17686,
+            "nodeType": "StructuredDocumentation",
+            "src": "416:75:45",
+            "text": " @notice stores the user metadata against their address"
+          },
+          "functionSelector": "c8910913",
+          "id": 17690,
+          "mutability": "mutable",
+          "name": "userData",
+          "nodeType": "VariableDeclaration",
+          "scope": 17837,
+          "src": "497:42:45",
+          "stateVariable": true,
+          "storageLocation": "default",
+          "typeDescriptions": {
+            "typeIdentifier": "t_mapping$_t_address_$_t_string_storage_$",
+            "typeString": "mapping(address => string)"
+          },
+          "typeName": {
+            "id": 17689,
+            "keyType": {
+              "id": 17687,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "505:7:45",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "nodeType": "Mapping",
+            "src": "497:26:45",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_string_storage_$",
+              "typeString": "mapping(address => string)"
+            },
+            "valueType": {
+              "id": 17688,
+              "name": "string",
+              "nodeType": "ElementaryTypeName",
+              "src": "516:6:45",
+              "typeDescriptions": {
+                "typeIdentifier": "t_string_storage_ptr",
+                "typeString": "string"
+              }
+            }
+          },
+          "visibility": "public"
+        },
+        {
+          "anonymous": false,
+          "documentation": {
+            "id": 17691,
+            "nodeType": "StructuredDocumentation",
+            "src": "548:155:45",
+            "text": " @notice emitted when verification contract address is updated\n @param verification address of the updated verification contract"
+          },
+          "id": 17695,
+          "name": "VerificationUpdated",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 17694,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17693,
+                "indexed": true,
+                "mutability": "mutable",
+                "name": "verification",
+                "nodeType": "VariableDeclaration",
+                "scope": 17695,
+                "src": "735:28:45",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17692,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "735:7:45",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "734:30:45"
+          },
+          "src": "709:56:45"
+        },
+        {
+          "body": {
+            "id": 17720,
+            "nodeType": "Block",
+            "src": "1163:128:45",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [],
+                  "expression": {
+                    "argumentTypes": [],
+                    "expression": {
+                      "id": 17705,
+                      "name": "super",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": -25,
+                      "src": "1174:5:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_super$_AdminVerifier_$17837",
+                        "typeString": "contract super AdminVerifier"
+                      }
+                    },
+                    "id": 17707,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "__Ownable_init",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 75,
+                    "src": "1174:20:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
+                      "typeString": "function ()"
+                    }
+                  },
+                  "id": 17708,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1174:22:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17709,
+                "nodeType": "ExpressionStatement",
+                "src": "1174:22:45"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 17713,
+                      "name": "_admin",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17698,
+                      "src": "1231:6:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "expression": {
+                      "id": 17710,
+                      "name": "super",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": -25,
+                      "src": "1207:5:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_super$_AdminVerifier_$17837",
+                        "typeString": "contract super AdminVerifier"
+                      }
+                    },
+                    "id": 17712,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "transferOwnership",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 171,
+                    "src": "1207:23:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 17714,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1207:31:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17715,
+                "nodeType": "ExpressionStatement",
+                "src": "1207:31:45"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 17717,
+                      "name": "_verification",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17700,
+                      "src": "1269:13:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 17716,
+                    "name": "_updateVerification",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 17836,
+                    "src": "1249:19:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 17718,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1249:34:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17719,
+                "nodeType": "ExpressionStatement",
+                "src": "1249:34:45"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 17696,
+            "nodeType": "StructuredDocumentation",
+            "src": "773:304:45",
+            "text": "@notice Initializes the variables of the contract\n @dev Contract follows proxy pattern and this function is used to initialize the variables for the contract in the proxy\n @param _admin Admin of the verification contract who can add verifiers and remove masterAddresses deemed invalid"
+          },
+          "functionSelector": "485cc955",
+          "id": 17721,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 17703,
+              "modifierName": {
+                "id": 17702,
+                "name": "initializer",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 580,
+                "src": "1151:11:45",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_modifier$__$",
+                  "typeString": "modifier ()"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "1151:11:45"
+            }
+          ],
+          "name": "initialize",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 17701,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17698,
+                "mutability": "mutable",
+                "name": "_admin",
+                "nodeType": "VariableDeclaration",
+                "scope": 17721,
+                "src": "1103:14:45",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17697,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1103:7:45",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 17700,
+                "mutability": "mutable",
+                "name": "_verification",
+                "nodeType": "VariableDeclaration",
+                "scope": 17721,
+                "src": "1119:21:45",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17699,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1119:7:45",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1102:39:45"
+          },
+          "returnParameters": {
+            "id": 17704,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1163:0:45"
+          },
+          "scope": 17837,
+          "src": "1083:208:45",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 17765,
+            "nodeType": "Block",
+            "src": "1720:257:45",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 17742,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "baseExpression": {
+                                "id": 17736,
+                                "name": "userData",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 17690,
+                                "src": "1745:8:45",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_address_$_t_string_storage_$",
+                                  "typeString": "mapping(address => string storage ref)"
+                                }
+                              },
+                              "id": 17738,
+                              "indexExpression": {
+                                "id": 17737,
+                                "name": "_user",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 17724,
+                                "src": "1754:5:45",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "1745:15:45",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage",
+                                "typeString": "string storage ref"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_string_storage",
+                                "typeString": "string storage ref"
+                              }
+                            ],
+                            "id": 17735,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1739:5:45",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                              "typeString": "type(bytes storage pointer)"
+                            },
+                            "typeName": {
+                              "id": 17734,
+                              "name": "bytes",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "1739:5:45",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 17739,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1739:22:45",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_storage_ptr",
+                            "typeString": "bytes storage pointer"
+                          }
+                        },
+                        "id": 17740,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "src": "1739:29:45",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "hexValue": "30",
+                        "id": 17741,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1772:1:45",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      },
+                      "src": "1739:34:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "5573657220616c726561647920657869737473",
+                      "id": 17743,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1775:21:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_72a6a651fb4cd9ff87b3ff041092e509401f47f92bb4122586fcb66064d104bd",
+                        "typeString": "literal_string \"User already exists\""
+                      },
+                      "value": "User already exists"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_72a6a651fb4cd9ff87b3ff041092e509401f47f92bb4122586fcb66064d104bd",
+                        "typeString": "literal_string \"User already exists\""
+                      }
+                    ],
+                    "id": 17733,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "1731:7:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 17744,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1731:66:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17745,
+                "nodeType": "ExpressionStatement",
+                "src": "1731:66:45"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 17749,
+                      "name": "_user",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17724,
+                      "src": "1843:5:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    {
+                      "id": 17750,
+                      "name": "_isMasterLinked",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17728,
+                      "src": "1850:15:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    ],
+                    "expression": {
+                      "id": 17746,
+                      "name": "verification",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17685,
+                      "src": "1808:12:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IVerification_$18773",
+                        "typeString": "contract IVerification"
+                      }
+                    },
+                    "id": 17748,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "registerMasterAddress",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 18765,
+                    "src": "1808:34:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_bool_$returns$__$",
+                      "typeString": "function (address,bool) external"
+                    }
+                  },
+                  "id": 17751,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1808:58:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17752,
+                "nodeType": "ExpressionStatement",
+                "src": "1808:58:45"
+              },
+              {
+                "expression": {
+                  "id": 17757,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "baseExpression": {
+                      "id": 17753,
+                      "name": "userData",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17690,
+                      "src": "1877:8:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_string_storage_$",
+                        "typeString": "mapping(address => string storage ref)"
+                      }
+                    },
+                    "id": 17755,
+                    "indexExpression": {
+                      "id": 17754,
+                      "name": "_user",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17724,
+                      "src": "1886:5:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "1877:15:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "id": 17756,
+                    "name": "_metadata",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 17726,
+                    "src": "1895:9:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory_ptr",
+                      "typeString": "string memory"
+                    }
+                  },
+                  "src": "1877:27:45",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage",
+                    "typeString": "string storage ref"
+                  }
+                },
+                "id": 17758,
+                "nodeType": "ExpressionStatement",
+                "src": "1877:27:45"
+              },
+              {
+                "eventCall": {
+                  "arguments": [
+                    {
+                      "id": 17760,
+                      "name": "_user",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17724,
+                      "src": "1935:5:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    {
+                      "id": 17761,
+                      "name": "_isMasterLinked",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17728,
+                      "src": "1942:15:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "id": 17762,
+                      "name": "_metadata",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17726,
+                      "src": "1959:9:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    ],
+                    "id": 17759,
+                    "name": "UserRegistered",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 18784,
+                    "src": "1920:14:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (address,bool,string memory)"
+                    }
+                  },
+                  "id": 17763,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "1920:49:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17764,
+                "nodeType": "EmitStatement",
+                "src": "1915:54:45"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 17722,
+            "nodeType": "StructuredDocumentation",
+            "src": "1299:278:45",
+            "text": " @notice used to register user\n @dev ohly owner can register users\n @param _user address of the user being registered\n @param _metadata metadata related to the user\n @param _isMasterLinked should master address be linked to itself"
+          },
+          "functionSelector": "16596d7f",
+          "id": 17766,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 17731,
+              "modifierName": {
+                "id": 17730,
+                "name": "onlyOwner",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 121,
+                "src": "1710:9:45",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_modifier$__$",
+                  "typeString": "modifier ()"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "1710:9:45"
+            }
+          ],
+          "name": "registerUser",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 17729,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17724,
+                "mutability": "mutable",
+                "name": "_user",
+                "nodeType": "VariableDeclaration",
+                "scope": 17766,
+                "src": "1615:13:45",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17723,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1615:7:45",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 17726,
+                "mutability": "mutable",
+                "name": "_metadata",
+                "nodeType": "VariableDeclaration",
+                "scope": 17766,
+                "src": "1639:23:45",
+                "stateVariable": false,
+                "storageLocation": "memory",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_memory_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 17725,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1639:6:45",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 17728,
+                "mutability": "mutable",
+                "name": "_isMasterLinked",
+                "nodeType": "VariableDeclaration",
+                "scope": 17766,
+                "src": "1673:20:45",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 17727,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1673:4:45",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "1604:96:45"
+          },
+          "returnParameters": {
+            "id": 17732,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "1720:0:45"
+          },
+          "scope": 17837,
+          "src": "1583:394:45",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 17806,
+            "nodeType": "Block",
+            "src": "2206:225:45",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 17783,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "baseExpression": {
+                                "id": 17777,
+                                "name": "userData",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 17690,
+                                "src": "2231:8:45",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_mapping$_t_address_$_t_string_storage_$",
+                                  "typeString": "mapping(address => string storage ref)"
+                                }
+                              },
+                              "id": 17779,
+                              "indexExpression": {
+                                "id": 17778,
+                                "name": "_user",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 17769,
+                                "src": "2240:5:45",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "2231:15:45",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage",
+                                "typeString": "string storage ref"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_string_storage",
+                                "typeString": "string storage ref"
+                              }
+                            ],
+                            "id": 17776,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "2225:5:45",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                              "typeString": "type(bytes storage pointer)"
+                            },
+                            "typeName": {
+                              "id": 17775,
+                              "name": "bytes",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "2225:5:45",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 17780,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2225:22:45",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_storage_ptr",
+                            "typeString": "bytes storage pointer"
+                          }
+                        },
+                        "id": 17781,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "src": "2225:29:45",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "hexValue": "30",
+                        "id": 17782,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2258:1:45",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      },
+                      "src": "2225:34:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    {
+                      "hexValue": "5573657220646f65736e7420657869737473",
+                      "id": 17784,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "2261:20:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_5e2b51c366cb0b8af6a0ce0845b90fcb55ea3fdd284be0ede8bc724c39d3fdff",
+                        "typeString": "literal_string \"User doesnt exists\""
+                      },
+                      "value": "User doesnt exists"
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      {
+                        "typeIdentifier": "t_stringliteral_5e2b51c366cb0b8af6a0ce0845b90fcb55ea3fdd284be0ede8bc724c39d3fdff",
+                        "typeString": "literal_string \"User doesnt exists\""
+                      }
+                    ],
+                    "id": 17774,
+                    "name": "require",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [
+                      -18,
+                      -18
+                    ],
+                    "referencedDeclaration": -18,
+                    "src": "2217:7:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                      "typeString": "function (bool,string memory) pure"
+                    }
+                  },
+                  "id": 17785,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2217:65:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17786,
+                "nodeType": "ExpressionStatement",
+                "src": "2217:65:45"
+              },
+              {
+                "expression": {
+                  "id": 17790,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "nodeType": "UnaryOperation",
+                  "operator": "delete",
+                  "prefix": true,
+                  "src": "2293:22:45",
+                  "subExpression": {
+                    "baseExpression": {
+                      "id": 17787,
+                      "name": "userData",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17690,
+                      "src": "2300:8:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_string_storage_$",
+                        "typeString": "mapping(address => string storage ref)"
+                      }
+                    },
+                    "id": 17789,
+                    "indexExpression": {
+                      "id": 17788,
+                      "name": "_user",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17769,
+                      "src": "2309:5:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": true,
+                    "nodeType": "IndexAccess",
+                    "src": "2300:15:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17791,
+                "nodeType": "ExpressionStatement",
+                "src": "2293:22:45"
+              },
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 17795,
+                      "name": "_user",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17769,
+                      "src": "2363:5:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    {
+                      "arguments": [
+                        {
+                          "id": 17798,
+                          "name": "this",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": -28,
+                          "src": "2378:4:45",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_AdminVerifier_$17837",
+                            "typeString": "contract AdminVerifier"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_contract$_AdminVerifier_$17837",
+                            "typeString": "contract AdminVerifier"
+                          }
+                        ],
+                        "id": 17797,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "2370:7:45",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": {
+                          "id": 17796,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "2370:7:45",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 17799,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2370:13:45",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "expression": {
+                      "id": 17792,
+                      "name": "verification",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17685,
+                      "src": "2326:12:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IVerification_$18773",
+                        "typeString": "contract IVerification"
+                      }
+                    },
+                    "id": 17794,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "unregisterMasterAddress",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 18772,
+                    "src": "2326:36:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$returns$__$",
+                      "typeString": "function (address,address) external"
+                    }
+                  },
+                  "id": 17800,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2326:58:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17801,
+                "nodeType": "ExpressionStatement",
+                "src": "2326:58:45"
+              },
+              {
+                "eventCall": {
+                  "arguments": [
+                    {
+                      "id": 17803,
+                      "name": "_user",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17769,
+                      "src": "2417:5:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 17802,
+                    "name": "UserUnregistered",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 18789,
+                    "src": "2400:16:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 17804,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2400:23:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17805,
+                "nodeType": "EmitStatement",
+                "src": "2395:28:45"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 17767,
+            "nodeType": "StructuredDocumentation",
+            "src": "1985:157:45",
+            "text": " @notice used to unregister user\n @dev ohly owner can unregister users\n @param _user address of the user being unregistered"
+          },
+          "functionSelector": "21f2ca3b",
+          "id": 17807,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 17772,
+              "modifierName": {
+                "id": 17771,
+                "name": "onlyOwner",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 121,
+                "src": "2196:9:45",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_modifier$__$",
+                  "typeString": "modifier ()"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "2196:9:45"
+            }
+          ],
+          "name": "unregisterUser",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 17770,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17769,
+                "mutability": "mutable",
+                "name": "_user",
+                "nodeType": "VariableDeclaration",
+                "scope": 17807,
+                "src": "2172:13:45",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17768,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2172:7:45",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2171:15:45"
+          },
+          "returnParameters": {
+            "id": 17773,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "2206:0:45"
+          },
+          "scope": 17837,
+          "src": "2148:283:45",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 17819,
+            "nodeType": "Block",
+            "src": "2689:53:45",
+            "statements": [
+              {
+                "expression": {
+                  "arguments": [
+                    {
+                      "id": 17816,
+                      "name": "_verification",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17810,
+                      "src": "2720:13:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 17815,
+                    "name": "_updateVerification",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 17836,
+                    "src": "2700:19:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 17817,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2700:34:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17818,
+                "nodeType": "ExpressionStatement",
+                "src": "2700:34:45"
+              }
+            ]
+          },
+          "documentation": {
+            "id": 17808,
+            "nodeType": "StructuredDocumentation",
+            "src": "2439:174:45",
+            "text": " @notice used to update verification contract address\n @dev ohly owner can update\n @param _verification address of the verification contract"
+          },
+          "functionSelector": "4714a411",
+          "id": 17820,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [
+            {
+              "id": 17813,
+              "modifierName": {
+                "id": 17812,
+                "name": "onlyOwner",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 121,
+                "src": "2679:9:45",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_modifier$__$",
+                  "typeString": "modifier ()"
+                }
+              },
+              "nodeType": "ModifierInvocation",
+              "src": "2679:9:45"
+            }
+          ],
+          "name": "updateVerification",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 17811,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17810,
+                "mutability": "mutable",
+                "name": "_verification",
+                "nodeType": "VariableDeclaration",
+                "scope": 17820,
+                "src": "2647:21:45",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17809,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2647:7:45",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2646:23:45"
+          },
+          "returnParameters": {
+            "id": 17814,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "2689:0:45"
+          },
+          "scope": 17837,
+          "src": "2619:123:45",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": {
+            "id": 17835,
+            "nodeType": "Block",
+            "src": "2811:112:45",
+            "statements": [
+              {
+                "expression": {
+                  "id": 17829,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "lValueRequested": false,
+                  "leftHandSide": {
+                    "id": 17825,
+                    "name": "verification",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 17685,
+                    "src": "2822:12:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVerification_$18773",
+                      "typeString": "contract IVerification"
+                    }
+                  },
+                  "nodeType": "Assignment",
+                  "operator": "=",
+                  "rightHandSide": {
+                    "arguments": [
+                      {
+                        "id": 17827,
+                        "name": "_verification",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 17822,
+                        "src": "2851:13:45",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 17826,
+                      "name": "IVerification",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 18773,
+                      "src": "2837:13:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IVerification_$18773_$",
+                        "typeString": "type(contract IVerification)"
+                      }
+                    },
+                    "id": 17828,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2837:28:45",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IVerification_$18773",
+                      "typeString": "contract IVerification"
+                    }
+                  },
+                  "src": "2822:43:45",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IVerification_$18773",
+                    "typeString": "contract IVerification"
+                  }
+                },
+                "id": 17830,
+                "nodeType": "ExpressionStatement",
+                "src": "2822:43:45"
+              },
+              {
+                "eventCall": {
+                  "arguments": [
+                    {
+                      "id": 17832,
+                      "name": "_verification",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 17822,
+                      "src": "2901:13:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  ],
+                  "expression": {
+                    "argumentTypes": [
+                      {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    ],
+                    "id": 17831,
+                    "name": "VerificationUpdated",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 17695,
+                    "src": "2881:19:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                      "typeString": "function (address)"
+                    }
+                  },
+                  "id": 17833,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": false,
+                  "kind": "functionCall",
+                  "lValueRequested": false,
+                  "names": [],
+                  "nodeType": "FunctionCall",
+                  "src": "2881:34:45",
+                  "tryCall": false,
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_tuple$__$",
+                    "typeString": "tuple()"
+                  }
+                },
+                "id": 17834,
+                "nodeType": "EmitStatement",
+                "src": "2876:39:45"
+              }
+            ]
+          },
+          "id": 17836,
+          "implemented": true,
+          "kind": "function",
+          "modifiers": [],
+          "name": "_updateVerification",
+          "nodeType": "FunctionDefinition",
+          "parameters": {
+            "id": 17823,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 17822,
+                "mutability": "mutable",
+                "name": "_verification",
+                "nodeType": "VariableDeclaration",
+                "scope": 17836,
+                "src": "2779:21:45",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 17821,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2779:7:45",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "src": "2778:23:45"
+          },
+          "returnParameters": {
+            "id": 17824,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "2811:0:45"
+          },
+          "scope": 17837,
+          "src": "2750:173:45",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "internal"
+        }
+      ],
+      "scope": 17838,
+      "src": "220:2706:45"
+    }
+  ],
+  "src": "33:2895:45"
+}

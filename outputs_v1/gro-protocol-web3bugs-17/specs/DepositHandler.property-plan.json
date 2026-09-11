@@ -1,0 +1,54 @@
+{
+  "contract": "DepositHandler",
+  "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/17/contracts/DepositHandler.sol",
+  "ontology": {"id": "cac-access-control", "version": "1.0.0"},
+  "coverage_status": "FULL",
+  "authority_model": {
+    "kind": "ownership_public_user_functions",
+    "predicate": "per-function: onlyOwner (setDependencies, setFeeToken) | none (depositPwrd/depositGvt are open user entry points gated by whenNotPaused availability control)",
+    "evidence": [
+      "DepositHandler.sol:60 setDependencies external onlyOwner",
+      "DepositHandler.sol:70 setFeeToken external onlyOwner",
+      "DepositHandler.sol:81 depositPwrd external whenNotPaused",
+      "DepositHandler.sol:93 depositGvt external whenNotPaused",
+      "Controllable whenNotPaused checks controller.paused() (availability, not authorization)"
+    ]
+  },
+  "candidates": [
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "applicable",
+      "target": "setDependencies(), setFeeToken(uint256)",
+      "claim": "a caller other than the pre-state owner reverts on dependency wiring and fee-token configuration",
+      "property_kind": "parametric_revert_rule",
+      "symbols": ["owner()", "the 2 exact selectors"],
+      "hypotheses": [],
+      "reachability_check": "owner-only functions; successful-path witnesses require linked ctrl/lg (controllers), so reachability is recorded rather than proven in the isolated proof",
+      "source_evidence": ["DepositHandler.sol:60,70"]
+    },
+    {
+      "ontology_id": "CAC-AC-001",
+      "id": "S4.2.G1",
+      "status": "not_applicable",
+      "target": "depositPwrd/depositGvt (uint256[3],uint256,address)",
+      "claim": "deposits are deliberately unrestricted public entry points (gated only by whenNotPaused availability control); token mint authorization is enforced on the Controller side (mintGToken = depositHandler-only). No owner/whitelist authorization is intended and none is claimed.",
+      "property_kind": "none",
+      "symbols": ["depositPwrd(uint256[3],uint256,address)", "depositGvt(uint256[3],uint256,address)"],
+      "hypotheses": [],
+      "reachability_check": "n/a",
+      "source_evidence": ["DepositHandler.sol:81-99"]
+    }
+  ],
+  "not_applicable": [
+    {"id": "S4.1.G2", "reason": "no RBAC", "evidence": "owner + open user functions"},
+    {"id": "S4.1.G4", "reason": "no ERC20 debit surface", "evidence": "no transferFrom"},
+    {"id": "S4.1.G7", "reason": "no privileged asset withdrawal; user assets minted by handler", "evidence": "no rescue/sweep"},
+    {"id": "S4.1.G8", "reason": "no timelock", "evidence": "no delay state"},
+    {"id": "S4.1.G9", "reason": "deposits are public by design; only depositHandler gate on Controller side", "evidence": "DepositHandler.sol:81-99"},
+    {"id": "S4.1.G10", "reason": "no initialize()", "evidence": "constructor sets feeToken"},
+    {"id": "S4.1.G11", "reason": "inherits OZ one-step ownership transfer", "evidence": "Ownable via Controllable"},
+    {"id": "S4.2.G3", "reason": "no callback surface", "evidence": "no callback"},
+    {"id": "S4.2.G4", "reason": "no allowance policy", "evidence": "no allowance state"}
+  ]
+}

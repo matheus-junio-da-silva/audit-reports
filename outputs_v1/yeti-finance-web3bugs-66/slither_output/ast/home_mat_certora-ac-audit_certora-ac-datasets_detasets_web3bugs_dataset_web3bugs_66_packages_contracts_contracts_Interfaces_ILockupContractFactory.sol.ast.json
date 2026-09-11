@@ -1,0 +1,455 @@
+{
+  "absolutePath": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/66/packages/contracts/contracts/Interfaces/ILockupContractFactory.sol",
+  "exportedSymbols": {
+    "ILockupContractFactory": [
+      493
+    ]
+  },
+  "id": 494,
+  "license": "UNLICENSED",
+  "nodeType": "SourceUnit",
+  "nodes": [
+    {
+      "id": 459,
+      "literals": [
+        "solidity",
+        "0.6",
+        ".11"
+      ],
+      "nodeType": "PragmaDirective",
+      "src": "42:23:5"
+    },
+    {
+      "abstract": false,
+      "baseContracts": [],
+      "contractDependencies": [],
+      "contractKind": "interface",
+      "documentation": null,
+      "fullyImplemented": false,
+      "id": 493,
+      "linearizedBaseContracts": [
+        493
+      ],
+      "name": "ILockupContractFactory",
+      "nodeType": "ContractDefinition",
+      "nodes": [
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 463,
+          "name": "YETITokenAddressSet",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 462,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 461,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_yetiTokenAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 463,
+                "src": "170:25:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 460,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "170:7:5",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "169:27:5"
+          },
+          "src": "144:53:5"
+        },
+        {
+          "anonymous": false,
+          "documentation": null,
+          "id": 473,
+          "name": "LockupContractDeployedThroughFactory",
+          "nodeType": "EventDefinition",
+          "parameters": {
+            "id": 472,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 465,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_lockupContractAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 473,
+                "src": "246:30:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 464,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "246:7:5",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 467,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_beneficiary",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 473,
+                "src": "278:20:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 466,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "278:7:5",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 469,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_unlockTime",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 473,
+                "src": "300:16:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 468,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "300:4:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 471,
+                "indexed": false,
+                "mutability": "mutable",
+                "name": "_deployer",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 473,
+                "src": "318:17:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 470,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "318:7:5",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "245:91:5"
+          },
+          "src": "203:134:5"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "0d3e21f8",
+          "id": 478,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "setYETITokenAddress",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 476,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 475,
+                "mutability": "mutable",
+                "name": "_yetiTokenAddress",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 478,
+                "src": "402:25:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 474,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "402:7:5",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "401:27:5"
+          },
+          "returnParameters": {
+            "id": 477,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "437:0:5"
+          },
+          "scope": 493,
+          "src": "373:65:5",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "34c44b4d",
+          "id": 485,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "deployLockupContract",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 483,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 480,
+                "mutability": "mutable",
+                "name": "_beneficiary",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 485,
+                "src": "476:20:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 479,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "476:7:5",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 482,
+                "mutability": "mutable",
+                "name": "_unlockTime",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 485,
+                "src": "498:16:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 481,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "498:4:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "475:40:5"
+          },
+          "returnParameters": {
+            "id": 484,
+            "nodeType": "ParameterList",
+            "parameters": [],
+            "src": "524:0:5"
+          },
+          "scope": 493,
+          "src": "446:79:5",
+          "stateMutability": "nonpayable",
+          "virtual": false,
+          "visibility": "external"
+        },
+        {
+          "body": null,
+          "documentation": null,
+          "functionSelector": "bb7603f1",
+          "id": 492,
+          "implemented": false,
+          "kind": "function",
+          "modifiers": [],
+          "name": "isRegisteredLockup",
+          "nodeType": "FunctionDefinition",
+          "overrides": null,
+          "parameters": {
+            "id": 488,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 487,
+                "mutability": "mutable",
+                "name": "_addr",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 492,
+                "src": "561:13:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 486,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "561:7:5",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "560:15:5"
+          },
+          "returnParameters": {
+            "id": 491,
+            "nodeType": "ParameterList",
+            "parameters": [
+              {
+                "constant": false,
+                "id": 490,
+                "mutability": "mutable",
+                "name": "",
+                "nodeType": "VariableDeclaration",
+                "overrides": null,
+                "scope": 492,
+                "src": "599:4:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 489,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "599:4:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "src": "598:6:5"
+          },
+          "scope": 493,
+          "src": "533:72:5",
+          "stateMutability": "view",
+          "virtual": false,
+          "visibility": "external"
+        }
+      ],
+      "scope": 494,
+      "src": "73:535:5"
+    }
+  ],
+  "src": "42:568:5"
+}

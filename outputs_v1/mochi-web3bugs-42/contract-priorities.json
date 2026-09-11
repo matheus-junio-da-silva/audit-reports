@@ -1,0 +1,2663 @@
+{
+  "schema_version": "1.1",
+  "ontology": {
+    "id": "cac-access-control",
+    "version": "1.0.0"
+  },
+  "selection_rule": "Generate CVL for High and Medium; review Low; skip only explicit structural exclusions.",
+  "contracts": [
+    {
+      "contract": "MochiVault",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/vault/MochiVault.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "initialize",
+        "accrueDebt",
+        "increase",
+        "decrease",
+        "mint",
+        "deposit",
+        "withdraw",
+        "borrow",
+        "repay",
+        "liquidate",
+        "claim",
+        "flashLoan"
+      ],
+      "critical_functions": [
+        "initialize"
+      ],
+      "asset_functions": [
+        "accrueDebt",
+        "borrow",
+        "claim",
+        "deposit",
+        "liquidate",
+        "mint",
+        "repay",
+        "withdraw"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "accrueDebt",
+        "mint"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "claimable",
+        "debtIndex",
+        "debts",
+        "deposits",
+        "lastDeposit",
+        "liquidated"
+      ],
+      "modifiers": [
+        "initializer",
+        "updateDebt",
+        "wait"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "CheapERC20",
+        "Detail",
+        "Float",
+        "ICSSRRouter",
+        "IDiscountProfile",
+        "IERC20",
+        "IERC3156FlashBorrower",
+        "IERC3156FlashLender",
+        "ILiquidator",
+        "IMinter",
+        "IMochiEngine",
+        "IMochiNFT",
+        "IMochiProfile",
+        "IMochiVault",
+        "IReferralFeePool",
+        "IUSDM",
+        "Initializable",
+        "Status",
+        "float",
+        "initializer",
+        "updateDebt",
+        "wait"
+      ],
+      "score": 32,
+      "priority": "High",
+      "reasons": [
+        "12 mutable entry points",
+        "critical lifecycle/configuration functions (+3)",
+        "asset or accounting functions (+12)",
+        "critical surface without explicit modifier (+4)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "MochiTreasuryV0",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/treasury/MochiTreasuryV0.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "receive",
+        "withdrawCRV",
+        "withdrawLock",
+        "veCRVInitialize",
+        "toggleLocking",
+        "updateFee",
+        "claimOperationCost",
+        "veCRVlock"
+      ],
+      "critical_functions": [
+        "veCRVInitialize"
+      ],
+      "asset_functions": [
+        "claimOperationCost",
+        "withdrawCRV",
+        "withdrawLock"
+      ],
+      "payable_functions": [
+        "receive"
+      ],
+      "unmodified_critical_functions": [
+        "claimOperationCost",
+        "veCRVInitialize",
+        "withdrawCRV",
+        "withdrawLock"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "operationShare",
+        "uniswapRouter",
+        "veCRVShare"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "ICurveVotingEscrow",
+        "IERC20",
+        "IMochiEngine",
+        "IUSDM",
+        "IUniswapV2Router02"
+      ],
+      "score": 30,
+      "priority": "High",
+      "reasons": [
+        "8 mutable entry points",
+        "critical lifecycle/configuration functions (+3)",
+        "asset or accounting functions (+6)",
+        "payable/receive surface (+3)",
+        "critical surface without explicit modifier (+6)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "ERC20",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "transfer",
+        "approve",
+        "transferFrom",
+        "increaseAllowance",
+        "decreaseAllowance"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "decreaseAllowance",
+        "increaseAllowance",
+        "transfer",
+        "transferFrom"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "decreaseAllowance",
+        "increaseAllowance",
+        "transfer",
+        "transferFrom"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "_allowances",
+        "_balances",
+        "_totalSupply"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Context",
+        "IERC20",
+        "IERC20Metadata"
+      ],
+      "score": 25,
+      "priority": "High",
+      "reasons": [
+        "5 mutable entry points",
+        "asset or accounting functions (+8)",
+        "critical surface without explicit modifier (+6)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "FeePoolV0",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/feePool/FeePoolV0.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "updateReserve",
+        "changecrvVoterRewardPool",
+        "changeTreasuryRatio",
+        "changevMochiRatio",
+        "distributeMochi",
+        "sendToTreasury"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "changeTreasuryRatio",
+        "sendToTreasury",
+        "updateReserve"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "changeTreasuryRatio",
+        "sendToTreasury",
+        "updateReserve"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "mochiShare",
+        "treasuryRatio",
+        "treasuryShare",
+        "uniswapRouter"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IFeePool",
+        "IMochi",
+        "IMochiEngine",
+        "IUSDM",
+        "IUniswapV2Router02",
+        "IVMochi"
+      ],
+      "score": 24,
+      "priority": "High",
+      "reasons": [
+        "6 mutable entry points",
+        "asset or accounting functions (+6)",
+        "critical surface without explicit modifier (+6)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "ERC721",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "approve",
+        "setApprovalForAll",
+        "transferFrom",
+        "safeTransferFrom",
+        "safeTransferFrom"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "safeTransferFrom",
+        "transferFrom"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "safeTransferFrom",
+        "transferFrom"
+      ],
+      "authority_variables": [
+        "_operatorApprovals",
+        "_owners"
+      ],
+      "asset_variables": [
+        "_balances"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Address",
+        "Context",
+        "ERC165",
+        "IERC165",
+        "IERC721",
+        "IERC721Metadata",
+        "IERC721Receiver",
+        "Strings",
+        "super"
+      ],
+      "score": 21,
+      "priority": "High",
+      "reasons": [
+        "5 mutable entry points",
+        "asset or accounting functions (+4)",
+        "critical surface without explicit modifier (+4)",
+        "authority state (+2 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "MochiEngine",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/MochiEngine.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "changeMochi",
+        "changeVMochi",
+        "changeUSDM",
+        "changeMinter",
+        "changeGovernance",
+        "changeTreasury",
+        "changeOperationWallet",
+        "changeCSSR",
+        "changeProfile",
+        "changeDiscountProfile",
+        "changeLiquidator",
+        "changeFeePool",
+        "changeReferralFeePool",
+        "changeNFT"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "changeLiquidator",
+        "changeMinter",
+        "changeTreasury"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [
+        "governance"
+      ],
+      "asset_variables": [
+        "liquidator",
+        "minter",
+        "treasury",
+        "vaultFactory"
+      ],
+      "modifiers": [
+        "onlyGov"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "ICSSRRouter",
+        "IDiscountProfile",
+        "IFeePool",
+        "ILiquidator",
+        "IMinter",
+        "IMochi",
+        "IMochiEngine",
+        "IMochiNFT",
+        "IMochiProfile",
+        "IMochiVaultFactory",
+        "IReferralFeePool",
+        "IUSDM",
+        "IVMochi",
+        "MochiVaultFactory",
+        "onlyGov"
+      ],
+      "score": 21,
+      "priority": "High",
+      "reasons": [
+        "14 mutable entry points",
+        "asset or accounting functions (+6)",
+        "authority state (+2 supporting)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "NoMochiFeePool",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/feePool/NoMochiFeePool.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "updateReserve",
+        "withdraw",
+        "changeWithdrawer"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "changeWithdrawer",
+        "updateReserve",
+        "withdraw"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "changeWithdrawer",
+        "updateReserve",
+        "withdraw"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "withdrawer"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IFeePool",
+        "IMochiEngine",
+        "IUSDM"
+      ],
+      "score": 20,
+      "priority": "High",
+      "reasons": [
+        "3 mutable entry points",
+        "asset or accounting functions (+6)",
+        "critical surface without explicit modifier (+6)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+3)"
+      ]
+    },
+    {
+      "contract": "MinterV0",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/minter/UsdmMinter.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "addMinter",
+        "removeMinter",
+        "mint"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "addMinter",
+        "mint",
+        "removeMinter"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [
+        "isMinter"
+      ],
+      "modifiers": [
+        "onlyGov",
+        "onlyPermission"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "IERC20",
+        "IMinter",
+        "IMochiEngine",
+        "IMochiVault",
+        "IMochiVaultFactory",
+        "IUSDM",
+        "onlyGov",
+        "onlyPermission"
+      ],
+      "score": 16,
+      "priority": "High",
+      "reasons": [
+        "3 mutable entry points",
+        "asset or accounting functions (+6)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "MochiProfileV0",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/profile/MochiProfileV0.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "changeLiquidityRequirement",
+        "registerAsset",
+        "registerAssetByGov",
+        "changeMinimumDebt",
+        "changeAssetClass",
+        "changeCreditCap",
+        "setDelay"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "changeMinimumDebt"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [
+        "minimumDebt"
+      ],
+      "modifiers": [
+        "onlyGov"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "AssetClass",
+        "Float",
+        "ICSSRRouter",
+        "IMochiEngine",
+        "IMochiProfile",
+        "IMochiVault",
+        "IMochiVaultFactory",
+        "float",
+        "onlyGov"
+      ],
+      "score": 15,
+      "priority": "High",
+      "reasons": [
+        "7 mutable entry points",
+        "asset or accounting functions (+2)",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "MochiVaultFactory",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/vault/MochiVaultFactory.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "updateTemplate",
+        "deployVault"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "deployVault"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "deployVault"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [
+        "call"
+      ],
+      "references": [
+        "Beacon",
+        "IMochiEngine",
+        "IMochiVault",
+        "IMochiVaultFactory"
+      ],
+      "score": 14,
+      "priority": "High",
+      "reasons": [
+        "2 mutable entry points",
+        "asset or accounting functions (+2)",
+        "low-level external execution (+4)",
+        "critical surface without explicit modifier (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "USDM",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/assets/usdm.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "mint",
+        "burn",
+        "flashLoan"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "burn",
+        "mint"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "burn"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [
+        "onlyMinter"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "ERC20",
+        "IERC3156FlashBorrower",
+        "IMinter",
+        "IMochiEngine",
+        "IUSDM",
+        "onlyMinter"
+      ],
+      "score": 14,
+      "priority": "High",
+      "reasons": [
+        "3 mutable entry points",
+        "asset or accounting functions (+4)",
+        "critical surface without explicit modifier (+2)",
+        "access modifiers (+1 supporting)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "VestedRewardPool",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/emission/VestedRewardPool.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "vest",
+        "claim",
+        "lock",
+        "forceClaim"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "claim",
+        "forceClaim"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [
+        "checkClaimable"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "IMochi",
+        "IVMochi",
+        "Vesting",
+        "checkClaimable"
+      ],
+      "score": 13,
+      "priority": "High",
+      "reasons": [
+        "4 mutable entry points",
+        "asset or accounting functions (+4)",
+        "access modifiers (+1 supporting)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "ReferralFeePoolV0",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/feePool/ReferralFeePoolV0.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "addReward",
+        "claimRewardAsMochi"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "claimRewardAsMochi"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "claimRewardAsMochi"
+      ],
+      "authority_variables": [],
+      "asset_variables": [
+        "uniswapRouter"
+      ],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IMochi",
+        "IMochiEngine",
+        "IReferralFeePool",
+        "IUSDM",
+        "IUniswapV2Router02"
+      ],
+      "score": 12,
+      "priority": "High",
+      "reasons": [
+        "2 mutable entry points",
+        "asset or accounting functions (+2)",
+        "critical surface without explicit modifier (+2)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "MochiCSSRv0",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/MochiCSSRv0.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "setBluechip",
+        "removeBluechip",
+        "listAdapter",
+        "delistAdapter",
+        "setFiatPriceAdapter",
+        "setPriceSource",
+        "setLiquiditySource",
+        "setDefaultPriceSource",
+        "setDefaultLiquiditySource",
+        "update"
+      ],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [
+        "onlyGov"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "ICSSRAdapter",
+        "ICSSRRouter",
+        "IGovernanceOwned",
+        "float",
+        "onlyGov"
+      ],
+      "score": 11,
+      "priority": "Medium",
+      "reasons": [
+        "10 mutable entry points",
+        "access modifiers (+1 supporting)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "UniswapV2TokenAdapter",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/adapter/UniswapV2TokenAdapter.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "addKeyCurrency",
+        "removeKeyCurrency",
+        "setMinimumLiquidity",
+        "update"
+      ],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [
+        "uniswapCSSR"
+      ],
+      "modifiers": [
+        "onlyGov"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "ICSSRAdapter",
+        "ICSSRRouter",
+        "IGovernanceOwned",
+        "IUniswapV2CSSR",
+        "float",
+        "onlyGov"
+      ],
+      "score": 11,
+      "priority": "Medium",
+      "reasons": [
+        "4 mutable entry points",
+        "access modifiers (+1 supporting)",
+        "asset/accounting state (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "DutchAuctionLiquidator",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/liquidator/DutchAuctionLiquidator.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "triggerLiquidation",
+        "buy"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "triggerLiquidation"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "triggerLiquidation"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Auction",
+        "Float",
+        "IERC20",
+        "IFeePool",
+        "ILiquidator",
+        "IMochiEngine",
+        "IMochiProfile",
+        "IMochiVault",
+        "IMochiVaultFactory",
+        "IUSDM"
+      ],
+      "score": 10,
+      "priority": "Medium",
+      "reasons": [
+        "2 mutable entry points",
+        "asset or accounting functions (+2)",
+        "critical surface without explicit modifier (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "MochiNFT",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/vault/MochiNft.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "setDescriptor",
+        "mint"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "mint"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "mint"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "ERC721",
+        "ERC721Enumerable",
+        "IMochiEngine",
+        "IMochiNFT",
+        "IMochiPositionDescriptor",
+        "IMochiVault",
+        "IMochiVaultFactory",
+        "MochiInfo"
+      ],
+      "score": 10,
+      "priority": "Medium",
+      "reasons": [
+        "2 mutable entry points",
+        "asset or accounting functions (+2)",
+        "critical surface without explicit modifier (+2)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "NoMochiReferralFeePool",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/feePool/NoMochiReferralFeePool.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "addReward",
+        "claimReward"
+      ],
+      "critical_functions": [],
+      "asset_functions": [
+        "claimReward"
+      ],
+      "payable_functions": [],
+      "unmodified_critical_functions": [
+        "claimReward"
+      ],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IMochiEngine",
+        "IReferralFeePool",
+        "IUSDM"
+      ],
+      "score": 9,
+      "priority": "Medium",
+      "reasons": [
+        "2 mutable entry points",
+        "asset or accounting functions (+2)",
+        "critical surface without explicit modifier (+2)",
+        "protocol dependency centrality (+3)"
+      ]
+    },
+    {
+      "contract": "ChainlinkAdapterEth",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/adapter/ChainlinkAdapter.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "update",
+        "setFeed"
+      ],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [
+        "onlyGov"
+      ],
+      "low_level_calls": [],
+      "references": [
+        "AggregatorV3Interface",
+        "ICSSRAdapter",
+        "IERC20Metadata",
+        "IGovernanceOwned",
+        "float",
+        "onlyGov"
+      ],
+      "score": 7,
+      "priority": "Medium",
+      "reasons": [
+        "2 mutable entry points",
+        "access modifiers (+1 supporting)",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "SushiswapV2LPAdapter",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/adapter/SushiswapV2LPAdapter.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "update"
+      ],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Float",
+        "ICSSRAdapter",
+        "ICSSRRouter",
+        "IUniswapV2CSSR",
+        "IUniswapV2Pair",
+        "float"
+      ],
+      "score": 5,
+      "priority": "Low",
+      "reasons": [
+        "1 mutable entry points",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "UniswapV2LPAdapter",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/adapter/UniswapV2LPAdapter.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "update"
+      ],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Float",
+        "ICSSRAdapter",
+        "ICSSRRouter",
+        "IUniswapV2CSSR",
+        "IUniswapV2Pair",
+        "float"
+      ],
+      "score": 5,
+      "priority": "Low",
+      "reasons": [
+        "1 mutable entry points",
+        "protocol dependency centrality (+4)"
+      ]
+    },
+    {
+      "contract": "Beacon",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@mochifi/library/contracts/Beacon.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "fallback"
+      ],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 2,
+      "priority": "Low",
+      "reasons": [
+        "1 mutable entry points",
+        "protocol dependency centrality (+1)"
+      ]
+    },
+    {
+      "contract": "Beacon",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/Beacon.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [
+        "fallback"
+      ],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 2,
+      "priority": "Low",
+      "reasons": [
+        "1 mutable entry points",
+        "protocol dependency centrality (+1)"
+      ]
+    },
+    {
+      "contract": "AccountVerifier",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/AccountVerifier.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Item"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Address",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/utils/Address.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "AddressUpgradeable",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "AggregatorV3Interface",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "BeaconProxyDeployer",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@mochifi/library/contracts/BeaconProxyDeployer.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Create2BeaconMaker"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "BeaconProxyDeployer",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/BeaconProxyDeployer.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Create2BeaconMaker"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "BlockVerifier",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/BlockVerifier.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "CheapERC20",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@mochifi/library/contracts/CheapERC20.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC20"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "CheapERC20",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/CheapERC20.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC20"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Context",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/utils/Context.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "Create2BeaconMaker",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@mochifi/library/contracts/Create2BeaconMaker.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "no public/external mutable entry points"
+      ]
+    },
+    {
+      "contract": "Create2BeaconMaker",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/Create2BeaconMaker.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "no public/external mutable entry points"
+      ]
+    },
+    {
+      "contract": "ERC165",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC165"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "ERC721Enumerable",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "ERC721",
+        "IERC165",
+        "IERC721Enumerable",
+        "super"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "Float",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@mochifi/library/contracts/Float.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "float"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Float",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/node_modules/@mochifi/library/contracts/Float.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "float"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Float",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/Float.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "float"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "ICSSRAdapter",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/interfaces/ICSSRAdapter.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "float"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "ICSSRRouter",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@mochifi/cssr/contracts/interfaces/ICSSRRouter.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "float"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "ICSSRRouter",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/interfaces/ICSSRRouter.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "float"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "ICurveAddressProvider",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/interfaces/curve/ICurveAddressProvider.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "ICurvePool",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/interfaces/curve/ICurvePool.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "ICurveRegistry",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/interfaces/curve/ICurveRegistry.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "ICurveVotingEscrow",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/ICurveVotingEscrow.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IDiscountProfile",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IDiscountProfile.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "float"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC165",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC20",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC20",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC20",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC20Metadata",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC20"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC20Metadata",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC20"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC3156FlashBorrower",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IERC3156FlashBorrower.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC3156FlashLender",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IERC3156FlashLender.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC3156FlashBorrower"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC721",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC165"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC721Enumerable",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC721"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC721Metadata",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC721"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IERC721Receiver",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IFeePool",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IFeePool.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IGovernanceOwned",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/interfaces/IGovernanceOwned.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "ILiquidator",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/ILiquidator.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IMinter",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IMinter.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IMochi",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IMochi.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC20"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IMochiEngine",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IMochiEngine.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "ICSSRRouter",
+        "IDiscountProfile",
+        "IFeePool",
+        "ILiquidator",
+        "IMinter",
+        "IMochi",
+        "IMochiNFT",
+        "IMochiProfile",
+        "IMochiVaultFactory",
+        "IReferralFeePool",
+        "IUSDM",
+        "IVMochi"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IMochiNFT",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IMochiNFT.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC721Enumerable"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IMochiPositionDescriptor",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IMochiPositionDescriptor.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IMochiProfile",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IMochiProfile.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "AssetClass",
+        "float"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IMochiVault",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IMochiVault.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC20",
+        "Status"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IMochiVaultFactory",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IMochiVaultFactory.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IMochiVault"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IReferralFeePool",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IReferralFeePool.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IUSDM",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/interfaces/IUSDM.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IERC20",
+        "IERC3156FlashLender"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IUniswapV2CSSR",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/contracts/interfaces/IUniswapV2CSSR.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "ObservedData"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IUniswapV2Pair",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/node_modules/@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IUniswapV2Pair",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/node_modules/@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IUniswapV2Router01",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IUniswapV2Router02",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IUniswapV2Router01"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "IVMochi",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@mochifi/vmochi/contracts/interfaces/IVMochi.sol",
+      "kind": "interface",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "interface is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Initializable",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+      "kind": "contract",
+      "abstract": true,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "is"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "abstract contract"
+      ]
+    },
+    {
+      "contract": "Math",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/utils/math/Math.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Rounding"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "MerklePatriciaVerifier",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/MerklePatriciaVerifier.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Item"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Mochi",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/assets/Mochi.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "ERC20"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "no public/external mutable entry points"
+      ]
+    },
+    {
+      "contract": "NoDiscountProfile",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/contracts/profile/NoDiscountProfile.sol",
+      "kind": "contract",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IDiscountProfile",
+        "float"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "no public/external mutable entry points"
+      ]
+    },
+    {
+      "contract": "Rlp",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/Rlp.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "Item",
+        "Iterator"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "SignedMath",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/utils/math/SignedMath.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "Strings",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-core/node_modules/@openzeppelin/contracts/utils/Strings.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "SushiswapV2Library",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/node_modules/@mochifi/library/contracts/SushiswapV2Library.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IUniswapV2Pair"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "SushiswapV2Library",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/SushiswapV2Library.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IUniswapV2Pair"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "UQ112x112",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/UQ112x112.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "UniswapV2Library",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-cssr/node_modules/@mochifi/library/contracts/UniswapV2Library.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IUniswapV2Pair"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    },
+    {
+      "contract": "UniswapV2Library",
+      "source": "/home/mat/certora-ac-audit/certora-ac-datasets/detasets/web3bugs/dataset/web3bugs/42/projects/mochi-library/contracts/UniswapV2Library.sol",
+      "kind": "library",
+      "abstract": false,
+      "test_contract": false,
+      "mutable_entrypoints": [],
+      "critical_functions": [],
+      "asset_functions": [],
+      "payable_functions": [],
+      "unmodified_critical_functions": [],
+      "authority_variables": [],
+      "asset_variables": [],
+      "modifiers": [],
+      "low_level_calls": [],
+      "references": [
+        "IUniswapV2Pair"
+      ],
+      "score": 0,
+      "priority": "Skip",
+      "reasons": [
+        "library is not independently deployable"
+      ]
+    }
+  ]
+}
